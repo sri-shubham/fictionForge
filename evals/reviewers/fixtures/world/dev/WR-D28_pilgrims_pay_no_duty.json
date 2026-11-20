@@ -1,0 +1,176 @@
+{
+  "case_id": "WR-D28",
+  "agent": "world",
+  "split": "dev",
+  "category": "false_contradiction_trap",
+  "slug": "pilgrims_pay_no_duty",
+  "context_validated": true,
+  "brief": {
+    "title": "The Jade Meridian",
+    "premise": "A cartographer's daughter in a caravan city on an ancient trade route must carry a forged customs seal across the desert before the monsoon closes the passes.",
+    "genre": "historical adventure",
+    "tone": "adventurous",
+    "target_audience": "general",
+    "constraints": [
+      "forbid:gunpowder",
+      "require:caravan",
+      "Technology must stay at a pre-industrial level: no mechanised transport or firearms.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_jade_meridian",
+    "name": "The Jade Meridian",
+    "description": "The Jade Meridian is a desert trade route of customs posts, oases and mountain passes governed by the imperial seal.",
+    "locations": [
+      {
+        "id": "loc_jade_gate",
+        "name": "Jade Gate",
+        "description": "The fortified customs post where caravans pay duties and receive sealed travel papers."
+      },
+      {
+        "id": "loc_salt_oasis",
+        "name": "Salt Oasis",
+        "description": "A walled oasis town with brackish wells and a busy caravanserai."
+      },
+      {
+        "id": "loc_dune_pass",
+        "name": "Dune Pass",
+        "description": "A narrow mountain pass that is open to caravans only between the spring thaw and the autumn monsoon."
+      },
+      {
+        "id": "loc_scribes_quarter",
+        "name": "Scribes' Quarter",
+        "description": "A district of ink-sellers and map-makers who copy charts and customs papers."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_customs_wardens",
+        "name": "Customs Wardens",
+        "description": "Officials who inspect caravans at Jade Gate and stamp travel papers with the imperial seal.",
+        "location_ids": [
+          "loc_jade_gate"
+        ]
+      },
+      {
+        "id": "fac_caravan_league",
+        "name": "Caravan League",
+        "description": "A merchant association that organises caravans through Salt Oasis and Dune Pass.",
+        "location_ids": [
+          "loc_salt_oasis",
+          "loc_dune_pass"
+        ]
+      },
+      {
+        "id": "fac_scribes_guild",
+        "name": "Scribes' Guild",
+        "description": "Copyists and cartographers who quietly sell forged papers.",
+        "location_ids": [
+          "loc_scribes_quarter"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_seal",
+        "statement": "Only papers bearing the imperial seal, stamped at Jade Gate, are accepted along the route.",
+        "category": "social"
+      },
+      {
+        "id": "rul_monsoon",
+        "statement": "The monsoon closes Dune Pass from autumn until the spring thaw.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_pack_animals",
+        "statement": "All goods travel by camel, mule or on foot.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_duty",
+        "statement": "Every caravan pays one tenth of its cargo as duty at Jade Gate.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_gate_raised",
+        "name": "The Raising of Jade Gate",
+        "era": "First Dynasty",
+        "description": "The emperor ordered Jade Gate built to tax the route and stamp its papers; pilgrims travelling on foot without cargo paid no duty there.",
+        "location_ids": [
+          "loc_jade_gate"
+        ]
+      },
+      {
+        "id": "evt_oasis_walled",
+        "name": "Walling of Salt Oasis",
+        "era": "Second Dynasty",
+        "description": "Merchants walled Salt Oasis after raiders from the dunes seized a season's caravan.",
+        "location_ids": [
+          "loc_salt_oasis"
+        ]
+      },
+      {
+        "id": "evt_league_founded",
+        "name": "Founding of the Caravan League",
+        "era": "Third Dynasty",
+        "description": "Salt Oasis merchants formed the League to share the cost of guarding caravans through Dune Pass.",
+        "location_ids": [
+          "loc_salt_oasis",
+          "loc_dune_pass"
+        ]
+      },
+      {
+        "id": "evt_forgery_scandal",
+        "name": "The Forged Seal Scandal",
+        "era": "Third Dynasty",
+        "description": "A scribe of the Scribes' Guild was caught selling papers stamped with a counterfeit imperial seal.",
+        "location_ids": [
+          "loc_scribes_quarter"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_forged_papers",
+        "name": "The Forged Papers",
+        "description": "The Customs Wardens hunt the Scribes' Guild over counterfeit travel papers.",
+        "faction_ids": [
+          "fac_customs_wardens",
+          "fac_scribes_guild"
+        ]
+      },
+      {
+        "id": "cnf_duty_dispute",
+        "name": "The Duty Dispute",
+        "description": "The Caravan League resists the Customs Wardens' tenth-part duty.",
+        "faction_ids": [
+          "fac_caravan_league",
+          "fac_customs_wardens"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [
+    {
+      "suffix": "T1",
+      "artifact_paths": [
+        "$.history[0].description"
+      ],
+      "evidence_quotes": [
+        "pilgrims travelling on foot without cargo paid no duty there"
+      ],
+      "anchor_terms": [
+        "paid no duty"
+      ],
+      "why_not_a_defect": "Rule rul_duty taxes caravan cargo; cargo-less foot pilgrims are not caravans.",
+      "trap_id": "WR-D28-T1"
+    }
+  ],
+  "evidence_summary": "The duty rule applies to caravans; foot pilgrims without cargo are not caravans, so their exemption does not contradict it."
+}

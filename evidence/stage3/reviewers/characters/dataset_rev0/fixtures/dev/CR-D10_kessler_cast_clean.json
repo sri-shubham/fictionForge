@@ -1,0 +1,272 @@
+{
+  "case_id": "CR-D10",
+  "agent": "characters",
+  "split": "dev",
+  "category": "valid",
+  "slug": "kessler_cast_clean",
+  "context_validated": true,
+  "brief": {
+    "title": "Kessler Ring",
+    "premise": "On a spinning orbital habitat that cannot receive help from Earth for a generation, an air-quality inspector finds that the ring's oxygen budget has been falsified, and must decide whom to tell before the ration vote.",
+    "genre": "science fiction",
+    "tone": "claustrophobic",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:faster-than-light",
+      "forbid:artificial intelligence",
+      "require:oxygen",
+      "No teleportation or instantaneous travel of any kind.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_kessler_ring",
+    "name": "Kessler Ring",
+    "description": "Kessler Ring is a spinning orbital habitat cut off from Earth, where oxygen, gravity and rations are managed by hand-checked tables and the Air Board.",
+    "locations": [
+      {
+        "id": "loc_spin_deck",
+        "name": "Spin Deck",
+        "description": "The habitat's residential cylinder, where centrifugal gravity keeps one full G at the rim."
+      },
+      {
+        "id": "loc_algae_vault",
+        "name": "Algae Vault",
+        "description": "A sealed farm of photosynthetic tanks that produces the ring's oxygen and food."
+      },
+      {
+        "id": "loc_dock_nine",
+        "name": "Dock Nine",
+        "description": "The only docking spar, used by supply tugs from the lunar depot."
+      },
+      {
+        "id": "loc_ration_office",
+        "name": "Ration Office",
+        "description": "The administrative hub where oxygen and food quotas are calculated from printed tables."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_air_board",
+        "name": "Air Board",
+        "description": "Technocrats who set oxygen quotas for each deck.",
+        "location_ids": [
+          "loc_ration_office",
+          "loc_algae_vault"
+        ]
+      },
+      {
+        "id": "fac_rim_union",
+        "name": "Rim Union",
+        "description": "Residents of the Spin Deck who organise ration strikes.",
+        "location_ids": [
+          "loc_spin_deck"
+        ]
+      },
+      {
+        "id": "fac_tug_guild",
+        "name": "Tug Guild",
+        "description": "Pilots who ferry supplies between Dock Nine and the lunar depot.",
+        "location_ids": [
+          "loc_dock_nine"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_no_resupply",
+        "statement": "No ship from Earth can reach the ring for twenty-five years; only slower tugs from the lunar depot can.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_one_g",
+        "statement": "Gravity exists only on the Spin Deck rim; the Algae Vault and Dock Nine are weightless.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_manual_tables",
+        "statement": "All quota calculations are done from hand-checked printed tables, because the ring's controllers can only run fixed programs.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_air_decay",
+        "statement": "Oxygen stored in tanks loses ten percent each year to leakage.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_ring_built",
+        "name": "Ring Construction",
+        "era": "Year 0",
+        "description": "Engineers spun up the ring and seeded the Algae Vault from lunar stock.",
+        "location_ids": [
+          "loc_spin_deck",
+          "loc_algae_vault"
+        ]
+      },
+      {
+        "id": "evt_earth_cutoff",
+        "name": "The Cutoff",
+        "era": "Year 12",
+        "description": "An embargo on Earth shipping began the twenty-five-year isolation, leaving only lunar tugs to supply Dock Nine.",
+        "location_ids": [
+          "loc_dock_nine"
+        ]
+      },
+      {
+        "id": "evt_first_strike",
+        "name": "The First Ration Strike",
+        "era": "Year 20",
+        "description": "Rim Union workers halted deliveries to the Ration Office to demand larger oxygen quotas.",
+        "location_ids": [
+          "loc_spin_deck",
+          "loc_ration_office"
+        ]
+      },
+      {
+        "id": "evt_leak",
+        "name": "The Dock Nine Leak",
+        "era": "Year 24",
+        "description": "A cracked tank at Dock Nine vented a season's oxygen reserve, which the Air Board hid from the ring.",
+        "location_ids": [
+          "loc_dock_nine"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_quota_fraud",
+        "name": "The Quota Fraud",
+        "description": "The Rim Union suspects the Air Board of falsifying oxygen quotas.",
+        "faction_ids": [
+          "fac_rim_union",
+          "fac_air_board"
+        ]
+      },
+      {
+        "id": "cnf_tug_tolls",
+        "name": "The Tug Tolls",
+        "description": "The Tug Guild demands higher payment from the Air Board for carrying emergency oxygen.",
+        "faction_ids": [
+          "fac_tug_guild",
+          "fac_air_board"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_kessler_ring",
+    "characters": [
+      {
+        "id": "chr_noor",
+        "name": "Noor Adeyemi",
+        "role": "protagonist",
+        "description": "An air-quality inspector who measures oxygen on every deck by hand and logs each reading in a paper journal.",
+        "personality_traits": [
+          "methodical",
+          "anxious",
+          "honest"
+        ],
+        "motivation": "To make sure the ring's oxygen figures are true before the ration vote.",
+        "goal": "Put her measured readings in front of the ration vote.",
+        "flaw": "Freezes when forced to choose a side.",
+        "internal_conflict": "She fears the truth will start a riot.",
+        "external_conflict": "The Air Board controls the printed tables she must reconcile her readings against.",
+        "home_location_id": "loc_spin_deck",
+        "faction_id": null,
+        "abilities": [
+          {
+            "name": "Leak-sense",
+            "description": "Notices a pressure drop by the pop in her ears before the gauges move.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Noor stops auditing alone and brings the Rim Union into the open."
+      },
+      {
+        "id": "chr_halvard",
+        "name": "Halvard Brecht",
+        "role": "antagonist",
+        "description": "Director of the Air Board, who works from the Ration Office and has hidden the Dock Nine leak from the ring.",
+        "personality_traits": [
+          "composed",
+          "evasive",
+          "dutiful"
+        ],
+        "motivation": "To prevent panic until the lunar tugs can bring replacement oxygen.",
+        "goal": "Keep the leak out of the ration vote.",
+        "flaw": "Believes the ring cannot handle the truth.",
+        "internal_conflict": "He knows hiding the leak shortens everyone's margin.",
+        "external_conflict": "Noor's readings contradict his tables.",
+        "home_location_id": "loc_ration_office",
+        "faction_id": "fac_air_board",
+        "abilities": [
+          {
+            "name": "Table-memory",
+            "description": "Recalls every printed quota table from memory.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Halvard is forced to publish the true figures when the readings spread."
+      },
+      {
+        "id": "chr_ilse",
+        "name": "Ilse Moreau",
+        "role": "supporting",
+        "description": "A tug pilot who flies supply runs between Dock Nine and the lunar depot.",
+        "personality_traits": [
+          "daring",
+          "blunt",
+          "loyal"
+        ],
+        "motivation": "To get fair payment for emergency oxygen runs.",
+        "goal": "Force the Air Board to pay the Guild's higher toll.",
+        "flaw": "Prefers a fight to a negotiation.",
+        "internal_conflict": "She is tempted to sell the leak story to the Rim Union.",
+        "external_conflict": "The Air Board stalls on payment.",
+        "home_location_id": "loc_dock_nine",
+        "faction_id": "fac_tug_guild",
+        "abilities": [
+          {
+            "name": "Zero-g docking",
+            "description": "Docks tugs at Dock Nine by hand in weightlessness.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Ilse learns that leverage needs allies."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_noor_halvard",
+        "source_character_id": "chr_noor",
+        "target_character_id": "chr_halvard",
+        "relationship_type": "adversary",
+        "description": "Noor's readings undermine Halvard's quota tables.",
+        "conflict": "He wants her readings kept off the record."
+      },
+      {
+        "id": "rel_noor_ilse",
+        "source_character_id": "chr_noor",
+        "target_character_id": "chr_ilse",
+        "relationship_type": "ally",
+        "description": "Ilse ferries Noor's sample tanks to the lunar depot for testing.",
+        "conflict": null
+      },
+      {
+        "id": "rel_halvard_ilse",
+        "source_character_id": "chr_halvard",
+        "target_character_id": "chr_ilse",
+        "relationship_type": "debtor",
+        "description": "Halvard owes Ilse's Guild payment for emergency oxygen runs.",
+        "conflict": "He delays payment."
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The cast is consistent with the world's rules, history, entities and the brief."
+}

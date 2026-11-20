@@ -1,0 +1,307 @@
+{
+  "case_id": "CR-H10",
+  "agent": "characters",
+  "split": "holdout",
+  "category": "conflicting_information",
+  "slug": "ally_and_never_spoken",
+  "context_validated": true,
+  "brief": {
+    "title": "The Lantern Coast",
+    "premise": "A ferry-girl who carries smugglers between lantern-lit coves discovers a harbour-master's ledger naming the buyers of a stolen royal charter, and must outrun both the Navy and the smugglers.",
+    "genre": "adventure",
+    "tone": "swashbuckling",
+    "target_audience": "all ages",
+    "constraints": [
+      "forbid:magic",
+      "require:lantern",
+      "No supernatural events; everything has a natural explanation.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_lantern_coast",
+    "name": "The Lantern Coast",
+    "description": "The Lantern Coast is a smugglers' shoreline of coloured signal lanterns, naval patrols and ledgers that name who owns what.",
+    "locations": [
+      {
+        "id": "loc_heron_cove",
+        "name": "Heron Cove",
+        "description": "A shallow cove used by smugglers, marked at night by a single green lantern."
+      },
+      {
+        "id": "loc_harbour_house",
+        "name": "Harbour-Master's House",
+        "description": "A whitewashed house above Port Sable where the harbour-master keeps his ledgers."
+      },
+      {
+        "id": "loc_port_sable",
+        "name": "Port Sable",
+        "description": "A busy harbour town with a naval garrison and crowded quays."
+      },
+      {
+        "id": "loc_cliff_light",
+        "name": "Cliff Light",
+        "description": "A lighthouse on a sheer cliff whose lantern guides ships past the reef."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_garrison",
+        "name": "Sable Garrison",
+        "description": "Naval officers who patrol the coast and enforce the customs.",
+        "location_ids": [
+          "loc_port_sable"
+        ]
+      },
+      {
+        "id": "fac_runners",
+        "name": "Lantern Runners",
+        "description": "Smugglers who signal with coloured lanterns from Heron Cove.",
+        "location_ids": [
+          "loc_heron_cove"
+        ]
+      },
+      {
+        "id": "fac_harbour_office",
+        "name": "Harbour Office",
+        "description": "Clerks and the harbour-master, who record every ship's cargo.",
+        "location_ids": [
+          "loc_harbour_house",
+          "loc_port_sable"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_lantern_code",
+        "statement": "Smugglers signal with lantern colours: green means safe, red means patrol.",
+        "category": "social"
+      },
+      {
+        "id": "rul_reef",
+        "statement": "Ships may pass the reef only at high tide, guided by the Cliff Light.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_ledger",
+        "statement": "Every ship entering Port Sable must be entered in the harbour-master's ledger.",
+        "category": "social"
+      },
+      {
+        "id": "rul_charter",
+        "statement": "Royal charters can be sealed only by the crown's seal.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_light_built",
+        "name": "Building of the Cliff Light",
+        "era": "Old Reign",
+        "description": "Engineers built the Cliff Light after three ships were lost on the reef.",
+        "location_ids": [
+          "loc_cliff_light"
+        ]
+      },
+      {
+        "id": "evt_garrison_founded",
+        "name": "Founding of the Sable Garrison",
+        "era": "Old Reign",
+        "description": "The crown posted a naval garrison at Port Sable to enforce customs.",
+        "location_ids": [
+          "loc_port_sable"
+        ]
+      },
+      {
+        "id": "evt_charter_theft",
+        "name": "Theft of the Royal Charter",
+        "era": "Young Reign",
+        "description": "A smuggler broke into the Harbour-Master's House and stole a sealed royal charter.",
+        "location_ids": [
+          "loc_harbour_house"
+        ]
+      },
+      {
+        "id": "evt_green_night",
+        "name": "The Green Night",
+        "era": "Young Reign",
+        "description": "The Lantern Runners landed a full cargo at Heron Cove under a green lantern while the Garrison patrolled elsewhere.",
+        "location_ids": [
+          "loc_heron_cove"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_charter_hunt",
+        "name": "The Charter Hunt",
+        "description": "The Sable Garrison hunts the Lantern Runners for the stolen royal charter.",
+        "faction_ids": [
+          "fac_garrison",
+          "fac_runners"
+        ]
+      },
+      {
+        "id": "cnf_ledger_secrets",
+        "name": "The Ledger Secrets",
+        "description": "The Harbour Office guards a ledger naming the charter's buyers from both the Garrison and the Lantern Runners.",
+        "faction_ids": [
+          "fac_harbour_office",
+          "fac_garrison",
+          "fac_runners"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_lantern_coast",
+    "characters": [
+      {
+        "id": "chr_wren",
+        "name": "Wren Calloway",
+        "role": "protagonist",
+        "description": "A ferry-girl who carries smugglers between lantern-lit coves.",
+        "personality_traits": [
+          "reckless",
+          "quick",
+          "loyal"
+        ],
+        "motivation": "To keep her family's ferry out of the Garrison's hands.",
+        "goal": "Get the harbour-master's ledger to someone who can use it.",
+        "flaw": "Cannot resist a dare.",
+        "internal_conflict": "She owes the Runners her livelihood but they would sell her out.",
+        "external_conflict": "The Garrison and the Runners both want the ledger.",
+        "home_location_id": "loc_heron_cove",
+        "faction_id": "fac_runners",
+        "abilities": [
+          {
+            "name": "Night-rowing",
+            "description": "Rows between coves in the dark by the colour of the lantern signals.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Wren learns whom to trust with the ledger."
+      },
+      {
+        "id": "chr_idris",
+        "name": "Captain Idris Hale",
+        "role": "antagonist",
+        "description": "A Sable Garrison captain who hunts the stolen royal charter and is named among its buyers in the ledger.",
+        "personality_traits": [
+          "ambitious",
+          "brisk",
+          "secretive"
+        ],
+        "motivation": "To recover the charter before his own name surfaces.",
+        "goal": "Seize the ledger and the ferry-girl.",
+        "flaw": "Mistakes pursuit for innocence.",
+        "internal_conflict": "He knows the ledger will ruin him.",
+        "external_conflict": "Wren and the Harbour Office hold the evidence.",
+        "home_location_id": "loc_port_sable",
+        "faction_id": "fac_garrison",
+        "abilities": [
+          {
+            "name": "Patrol-planning",
+            "description": "Arranges naval patrols to cover a stretch of coast.",
+            "category": "social"
+          }
+        ],
+        "arc": "Idris is exposed when the ledger reaches the crown's inspectors."
+      },
+      {
+        "id": "chr_pell",
+        "name": "Pell Marrow",
+        "role": "supporting",
+        "description": "A harbour clerk who keeps the ledgers and copied out the names of the charter's buyers.",
+        "personality_traits": [
+          "careful",
+          "nervous",
+          "honest"
+        ],
+        "motivation": "To see the buyers named before they can destroy the evidence.",
+        "goal": "Pass the copied names to someone beyond the Garrison's reach.",
+        "flaw": "Freezes under pressure.",
+        "internal_conflict": "He fears the Harbour Office will blame him.",
+        "external_conflict": "Idris suspects he copied the names.",
+        "home_location_id": "loc_harbour_house",
+        "faction_id": "fac_harbour_office",
+        "abilities": [
+          {
+            "name": "Ledger-keeping",
+            "description": "Keeps a clean, cross-checked record of every ship's cargo.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Pell finds the nerve to act."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_wren_pell",
+        "source_character_id": "chr_wren",
+        "target_character_id": "chr_pell",
+        "relationship_type": "ally",
+        "description": "Pell gives Wren copies of the ledger pages.",
+        "conflict": null
+      },
+      {
+        "id": "rel_idris_wren",
+        "source_character_id": "chr_idris",
+        "target_character_id": "chr_wren",
+        "relationship_type": "hunter",
+        "description": "Idris hunts Wren for the ledger.",
+        "conflict": "She keeps slipping past his patrols."
+      },
+      {
+        "id": "rel_idris_pell",
+        "source_character_id": "chr_idris",
+        "target_character_id": "chr_pell",
+        "relationship_type": "suspect",
+        "description": "Idris suspects Pell of copying the names.",
+        "conflict": null
+      },
+      {
+        "id": "rel_pell_wren",
+        "source_character_id": "chr_pell",
+        "target_character_id": "chr_wren",
+        "relationship_type": "enemy",
+        "description": "Pell has never spoken to Wren and would sooner burn the ledger than hand it to her.",
+        "conflict": null
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "RELATIONSHIP_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.relationships[3].description"
+      ],
+      "reference_paths": [
+        "$.relationships[0].description"
+      ],
+      "evidence_quotes": [
+        "Pell has never spoken to Wren",
+        "Pell gives Wren copies of the ledger pages"
+      ],
+      "anchor_terms": [
+        "never spoken to wren"
+      ],
+      "rationale": "The two relationships between the same pair contradict each other.",
+      "correction_hint": "Remove or rewrite rel_pell_wren.",
+      "label_id": "CR-H10-L1"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "A second relationship says Pell has never spoken to Wren, contradicting the ally relationship in which Pell gives Wren ledger copies."
+}

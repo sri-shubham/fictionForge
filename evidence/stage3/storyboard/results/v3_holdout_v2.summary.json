@@ -1,0 +1,960 @@
+{
+  "label": "v3_holdout_v2",
+  "calibration_only": false,
+  "prompt_version": "v3",
+  "prompt_path": "evidence/stage3/storyboard/prompts/v3.md",
+  "prompt_sha256": "933cbbc632ef772a680bb0d9e4035b052369b00908e5288c8e5778cb09c45611",
+  "split": [
+    "holdout_v2"
+  ],
+  "raw_result_file": "evidence/stage3/storyboard/results/v3_holdout_v2.json",
+  "raw_result_sha256": "d3adb934b4098835f675e93502db94efa25d2e6d2c80a8d44222ebbbfc902f7b",
+  "eval_id": "eval-8iK-2026-11-14T07:08:57",
+  "timestamp": "2026-11-14T07:08:57.180Z",
+  "promptfoo_version": "0.124.1",
+  "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+  "dataset_sha256": {
+    "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+    "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+  },
+  "summarizer_sha256": "0a2ad1097935cc4ec2b98b4297646d67580ee659c3878e1df648d380fc17640a",
+  "models": {
+    "generation": {
+      "model": "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium",
+      "timeout": 600000,
+      "devin_timeout": 180,
+      "retries": 1,
+      "respect_workspace_trust": false
+    },
+    "grader": {
+      "model": "swe-2-medium",
+      "timeout": 600000,
+      "devin_timeout": 90,
+      "retries": 1,
+      "respect_workspace_trust": false
+    }
+  },
+  "cases_attempted": 10,
+  "provider_errors": [],
+  "grader_errors": [],
+  "criteria": {
+    "structural_validity": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "schema_validity": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "referential_integrity": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "not_evaluable": 1,
+      "mean_score": null
+    },
+    "dependency_validity": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "not_evaluable": 1,
+      "mean_score": null
+    },
+    "narrative_phase_correctness": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "not_evaluable": 1,
+      "mean_score": null
+    },
+    "format_discipline": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "causal_coherence": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": 4.9
+    },
+    "character_consistency": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": 5.0
+    },
+    "narrative_structure": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": 5.0
+    },
+    "world_consistency": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": 5.0
+    },
+    "pacing": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": 5.0
+    }
+  },
+  "overall_quality": {
+    "cases_scored": 10,
+    "cases_passed": 9,
+    "pass_rate": 0.9,
+    "pass_rate_strict_of_attempted": 0.9
+  },
+  "weighted_score": {
+    "cases": 10,
+    "mean": 0.994,
+    "weights": {
+      "causal_coherence": 0.3,
+      "character_consistency": 0.25,
+      "narrative_structure": 0.2,
+      "world_consistency": 0.15,
+      "pacing": 0.1
+    }
+  },
+  "failed_cases": [
+    {
+      "case": "v2_08_space_opera_comet_market",
+      "failures": [
+        {
+          "metric": "structural_validity",
+          "score": 0,
+          "reason": "Output is not valid JSON: Expecting ',' delimiter: line 1 column 1075 (char 1074)"
+        },
+        {
+          "metric": "schema_validity",
+          "score": 0,
+          "reason": "Output is not valid JSON: Expecting ',' delimiter: line 1 column 1075 (char 1074)"
+        },
+        {
+          "metric": "format_discipline",
+          "score": 0,
+          "reason": "Raw reply is not a single bare JSON object (fence, prose or malformed JSON)"
+        }
+      ]
+    }
+  ],
+  "per_case": {
+    "v2_01_solarpunk_tidal_conservatories": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene follows from a prior outcome (soundings\u2192guild refusal\u2192hiring Sana\u2192joint chart\u2192terrace pledges\u2192rebuff\u2192sill collapse\u2192assembly\u2192dredge\u2192silt spreading\u2192new calendar\u2192tide returns); (b) all depends_on entries are truthful, including scn_guild_hall_rebuff on scn_apprentice_work (Pell's standing refusal) and scn_terrace_silt on the combined chart; (c) every pre-final outcome is used later; (d) reversals are set up \u2014 Pell's turn is prepared by scn_sill_collapse and his known access to the same tables, Sana's alliance by the barge bargain; (e) climax and resolution follow causally",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) All actions fit: Mara's precision/stubbornness, Pell's pride shielding the season, Sana's bargaining, all motivated by prior scenes (Pell's turn at scn_mara_speaks follows scn_sill_collapse). (b) Abilities used correctly\u2014silt-reading, channel-reading via tiller; Pell's knowledge of tables is established in his character sheet and scn_apprentice_work. (c) Relationships honored: Mara\u2013Sana alliance forms via the barge hire and silt-rights bargain; Mara\u2013Pell opposition resolves only through shown events. (d) Mara carries proof into the guild hall and accepts help (scn_mara_speaks, scn_tide_returns); Pell chooses the lagoon over the season (scn_mara_speaks, scn_new_calendar). (e) Both mains pursue stated goals repeatedly; Mara's flaw complicates scn_guild_hall_rebuff and her fear of alarmism recurs; Sana's bargaining-when-she-should-listen flaw appears in scn_barge_bargain/scn_terrace_silt.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Setup establishes Mara, the silting gates, and the kiln-calendar stakes before escalation. (b) Rising action escalates: combined channel chart, terrace pledge and silt-rights cost, guild rebuff, then a jammed gate \u2014 each raises the stakes. (c) Climax directly confronts the logline conflict; Pell breaks with his calendar and Mara makes the persuasive leap, then the dredge resolves it. (d) Resolution gives concrete consequences \u2014 silt debt paid, new calendar, Mara made full warden \u2014 over three scenes. (e) Title, logline and theme match delivery; no dragons, no combustion engines, tide required and 4 locations within max.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes match their location descriptions and travel is plausible; (b) only World-named places, factions and events (Glassgate Locks, Mangrove Terraces, Algae Fields, Bellmaker's Quay, guilds, wardens, cooperative, Great Silting, silt debt, lock oath) appear; (c) rules are honoured \u2014 silt debt spreading in scn_silt_spread, lock oath drives scn_dredge_the_gates, no banned tech; (d) factions act per description and cnf_kiln_calendar/cnf_silt_rights plus evt_great_silting drive multiple scenes; (e) no forbidden or invented elements \u2014 no dragons, tide required and present, no combustion.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 12 scenes have distinct goals/beats; (b) rising action escalates from soundings to guild rebuff to sill collapse; (c) setup 3, rising 4, climax 2, resolution 3 \u2014 proportionate with specific goal/conflict/outcome each; (d) no exposition-only scenes, setup scenes carry conflict; (e) three aftermath scenes settle the silt debt, kiln calendar, and Mara's arc",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_02_wuxia_crane_banner_coast": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every scene's goal/conflict follows from a prior outcome, e.g. the moot obligation drives scn_dojo_memory and the challenge drives scn_bannerhall_record; (b) all depends_on entries are truthful enablers (scn_dojo_memory names the sects enabling scn_saltmarket_registry, scn_gao_pressure_market sends Gao Ren to the rookery enabling scn_rookery_envoy, etc.); (c) every outcome is picked up by a later scene; (d) reversals are set up \u2014 the hidden disowning payoff in scn_rookery_duel and scn_saltmarket_moot is established from scn_bannerhall_oath onward; (e) the duel climax follows from the formal challenge chain and the moot resolution follows from Gao Ren's lawful loss",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "Lin Wei hides her disowning (flaw) then reveals it at the moot (arc realised); Gao Ren bends the covenant but won't forge or ambush, consistent with pride/internal conflict, concedes after lawful duel (arc realised); both pursue stated goals; flaws cause complications (provisional tally, exposure at Saltmarket); reed-step/light-body limits respected (boat over open water); Mei Sura's caution, covenant recall, and staked neutrality all match her sheet; relationships used as given.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Lin Wei, the disputed tally and the rookery stakes; (b) rising scenes escalate from registration to exposure to the nets-at-the-rookery standoff to a witnessed challenge; (c) the duel directly confronts the tally dispute and Lin Wei's decisive choice is to stop hiding her disowning and win lawfully; (d) resolution shows concrete consequences \u2014 Gao Ren concedes, the moot settles fishing rights under the nesting ban, and Lin Wei releases her shame; (e) title, logline and theme match the scenes, no gunpowder, cranes present, duels only by formal challenge, and only 4 named locations used.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their location_ids and travel is explained (boat over open water, returns to Bannerhall); (b) only World-named places, factions and institutions are used; (c) light-body limit, formal-challenge rule, nesting ban and tally rule are all respected \u2014 duel is witnessed and set at Bannerhall; (d) factions act per description and cnf_unanswered_tally/cnf_rookery_rights plus rul_* drive most scenes; (e) no forbidden or outside elements introduced",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal/beat; (b) rising action escalates from registration to exposure of her shame to near-breaking the nesting ban to a formal duel; (c) setup 3 < rising 4, climax and resolution each have scenes with goal/conflict/outcome; (d) no pure-exposition scenes, setup scenes carry conflict; (e) resolution earned via concession, moot, and dojo coda ending in a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_03_hard_sf_perihelion_yard": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene's goal/conflict references a prior outcome (readings, ledger check, audit clock); (b) all depends_on entries are truthful\u2014scn_spine_confrontation on scn_ledger_gap is slightly loose (Savane's visit is motivated by scn_savane_certificate's queries, not the ledger gap) but still enabled by the audit clock it established; (c) every outcome is consumed downstream; (d) Bex's arrival with ledger entries at the hearing is set up by scn_ledger_gap; (e) climax and resolution follow from accumulated choices",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit motivations/traits: Ria hoards evidence, Savane trusts procedure, Bex shields her crew; (b) Ria uses only load-path reading, Savane only ledger manipulation, no unsupported knowledge\u2014Savane learns of Ria's queries via the log in scn_savane_certificate; (c) ally/adversary relationships used as given, fracture shown in scn_shed_split; (d) both arcs realized: Ria hands over evidence in scn_audit_hearing and deposits records in scn_spine_aftermath, Savane's charter turns on him in scn_savane_fall; (e) both mains pursue stated goals and flaws cause complications (scn_shed_split, scn_ledger_gap)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Ria, the scrapped-hull conflict and audit stakes; (b) rising scenes escalate from confirmed gap to confrontation, costly dock excursion, and fractured alliance under seizure notice; (c) climax confronts the logline's audit conflict with Ria's decisive choice to surrender her evidence; (d) resolution shows concrete consequences (certificate voided, Savane removed, records deposited with union); (e) title/logline/theme match and constraints hold (sail required element present, no teleporter/FTL, 4 locations <= 5)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations and movements are plausible excursions; (b) only World-named places, factions (union, charter auditors, Helio Tank merger) and institutions appear; (c) heat budget, mass ledger, Shadow Dock thermal-invisibility and duty-log rules are all respected and drive costs, no invented tech; (d) union and audit office act per description, and the scrap-ledger conflict, heat-roster rule and audit-charter history drive multiple scenes (scn_ledger_gap, scn_spine_confrontation, scn_savane_fall); (e) brief's sail/orbital constraints are honored, nothing forbidden imported.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal/beat with no repeats; (b) escalation builds \u2014 trace, ledger gap, confrontation, dock proof, fractured alliance, audit; (c) setup 3 / rising 4 / climax 2 / resolution 2 \u2014 proportionate; (d) setup scenes carry conflict (heat budget, withholding evidence, audit clock); (e) two resolution scenes show aftermath and a settled state (hull entered in ledger, records shared)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_04_postapocalyptic_seedways": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene follows from a prior outcome via depends_on or text; (b) all depends_on entries are truthful \u2014 orchard_claim, ford_ledger both stem from vault_grading, weigh_stall uses orchard_road+ford_ledger, scoring uses frost_warning's plan; (c) every outcome is consumed downstream; (d) Vane's confession is set up by his cornered trait and the public proof, Tove's turn to Nuna is set up by her flaw and the wasted day at the weigh-house; (e) the public scoring climax follows from the shared-work pact and the repayment/hand-on resolution follows from the confession. Minor oddity: the frost_gate detour then return to market is geographically loose but causally sound.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Tove's self-reliance/exactness shown (refuses help scn_weigh_stall, grades by eye), Vane's pragmatic concealment consistent (scn_ford_ledger, scn_weigh_stall), Nuna's pushy stubbornness fits; (b) no abilities exceeded\u2014Tove uses only seed-scoring, Vane weigh-house politics, Nuna graft-keeping; knowledge earned via prior scenes (chaff dust seen in scn_weigh_stall); (c) ally/adversary relationships used as given, shift to cooperation shown through scn_frost_warning; (d) Tove's arc realized in scn_handing_on (teaches Nuna, shares route), Vane confesses in scn_public_scoring per his arc; (e) both mains pursue goals (Tove: reach Ford/score stock; Vane: delay audit) and Tove's flaw wastes a day (scn_weigh_stall), Vane's flaw drives escalation; minor nit: Vane's town-wide culpability slightly softens his personal agency in the fraud but remains consistent.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Tove, the cut-tithe conflict, and stakes before escalation; (b) rising scenes escalate from evidence-gathering to denied access to time pressure; (c) climax directly confronts the tithe fraud with Tove's public scoring and choice to accept help; (d) resolution shows repayment, claim honored, and skill handed on across two scenes; (e) title/logline/theme match, seed required, no forbidden tech, 4 locations within max",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations and travel Granary Hill\u2192Ash Orchards\u2192Ford Market\u2192Frost Gate is coherent; (b) only World-named places/institutions used (weigh-house is part of Ford Market's description; 'thaw audit' is generic); (c) no rule contradicted\u2014no powered tech, Frost Gate closure honored, tithe rule drives the plot, and Vane is a miller not a keeper so rul_grain_truth is not violated; (d) millers/keepers/orchard families act per description and cnf_forged_tithe + cnf_orchard_claims drive most scenes; (e) constraints respected: no spaceship, seed required and central, 4 locations \u2264 5.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 9 scenes have distinct goals and beats with no repeats; (b) conflict escalates from suspected fraud to procedural stalling to a closing frost deadline, with reveals (cut sacks, chaff dust, public scoring) ordered to build; (c) act sizes 3/3/1/2 \u2014 setup not longer than rising action, climax and resolution each have full goal/conflict/outcome scenes; (d) no exposition-only scene \u2014 even the opening grading scene contains fraud conflict; (e) two aftermath scenes settle the debt and hand on the route, ending in a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_05_mythic_underworld_ledger": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes follow prior outcomes or world setup; (b) every depends_on is truthful\u2014gate_slip proof enables scribe_key, hemo_index's page reference enables scribe_key/hemo_chooses, ors_certifies enables scales_barred; (c) all outcomes are used downstream; (d) Ors's threat, Hemo's testimony and the three-key mechanism are set up by World rules and earlier scenes; (e) climax flows from gathered keys and Ors's fear, resolution settles lamp and certification consequences.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit traits/flaws: Itho's obstinacy and ink-over-people flaw, Ors's self-deceiving 'mercy', Hemo hiding behind procedure; (b) abilities respected\u2014fault-sight only spots miscasts, index memory never reads a sealed page, scale-craft confirms true weight; (c) ally/adversary relationships used as defined and evolve via shown scenes (scn_ors_threat, scn_hemo_chooses); (d) arcs realized: Ors chooses the scales' honesty in scn_the_weighing, Itho learns corrections need hands in scn_new_column, Hemo risks his lamp; (e) each main character pursues their stated goal and each flaw causes a complication (scn_scales_barred, scn_ors_certifies, scn_hemo_index)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup introduces Itho, the miscast ledger and the Erasure Wells stakes before escalation; (b) rising scenes escalate from barred petition to threat on Hemo's lamp to the weighing deadline; (c) climax directly confronts the weighing and forces the decisive choice of the seal; (d) resolution shows concrete consequences across three scenes (correction sealed, Hemo keeps lamp, Ors exposed); (e) title, logline and theme match, 5 locations within max 6, ledger required, no resurrection",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations and movement is coherent; (b) only World-named places, factions, and institutions appear \u2014 tally-slip, seals, bells are generic; (c) rules are honored: three-key sealing drives the plot (scn_scribe_key, scn_hemo_chooses, scn_the_weighing), lamp oath respected via index-memory workaround (scn_hemo_index, scn_hemo_keeps_lamp), erasure and no-return rules observed (scn_wells_warning); (d) factions act per description and the Miscast Harvest and Sealed Ledgers conflicts drive multiple scenes; (e) brief's ledger requirement and resurrection ban are fully adapted to World terms.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal and beat; (b) rising action escalates from refusal to threat to ticking clock; (c) setup 3 < rising 5, climax and resolution have specific scenes; (d) no pure exposition, setup scenes carry conflict; (e) two aftermath scenes settle Hemo's lamp and Dame Ors's cost in a settled final state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_06_gaslamp_bellwether": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every scene follows from a prior outcome; (b) all depends_on links are truthful (e.g., fogmarket_approach sets the salt-chapel meeting, salt_registry motivates Hale's pressure, tallow_choice supplies the proof used in the confrontation); (c) every outcome is consumed by a later scene; (d) the forged-mark twist and Tallow's choice are set up by the CharacterSet and earlier scenes; (e) the climax uses the proof Elsa earned and the resolution follows from Hale's exposure and the restored registry",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Elsa's earnest, unbending pursuit of the caster, Hale's writ-driven zeal, and Tallow's priced-honesty all match their traits/motivations; (b) ring-sight, writ authority, and name-keeping are used within stated limits and knowledge flows only through earlier scenes (scn_belfry_listening, scn_salt_registry, scn_tallow_choice); (c) ally/adversary relationships match rel_elsa_tallow and rel_elsa_hale, including the name-token price conflict; (d) both arcs are realised \u2014 the forged mark breaks Elsa's faith in marks (scn_salt_registry) and ends in her new rule (scn_foundry_return), and Hale's own unmarked bell tolls his confession (scn_belfry_confrontation); (e) both mains pursue stated goals throughout, and flaws cause complications (Elsa's trust in marks, Hale's ends-justify-means escalation in scn_hale_pressure, Tallow's pricing in scn_fogmarket_approach).",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Elsa, the unmarked tenth ring, and the silence writ stakes; (b) rising scenes escalate from buying a clue, to the forged-mark revelation, to the deadline moved up, to Tallow's cornered choice; (c) climax at the belfry directly confronts the writ/tenth-bell conflict with Elsa's decisive ring-sight exposure; (d) resolution spans three scenes showing the writ withdrawn, Hale held, registry restored and collegium reformed; (e) title, logline and forged-signature theme match the scenes, all 5 world locations used, bells central, no electricity.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations and movement between them is plausible (Tallow's arrival at the belfry in scn_belfry_confrontation is a minor jump but motivated by his sale); (b) every named place/faction (Founder Row, Sea-Wall Belfry, Fogmarket, Bailiff's Stairs, Salt Chapel, collegium, watch, brokers, Chiming) exists in the World; (c) all rules honored \u2014 the tenth bell is treason, silence in fog respected, forged mark is the established plot mechanism not a contradiction, salt-registry forfeiture is respected; no electricity or foreign tech; (d) watch, founders, and brokers act per their descriptions and cnf_tenth_ring plus cnf_name_debts drive multiple scenes; (e) the required bell element is present and nothing forbidden imported",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal/conflict/outcome with no repeated beats; (b) rising action escalates \u2014 rumour to forged mark to Hale's bargain to the name sale, with ordered reveals; (c) act sizes proportionate: setup 3, rising 4, climax 1, resolution 3, each with full goal/conflict/outcome; (d) no pure-exposition scenes \u2014 even the first scene contains the unmarked-ring conflict and the writ is read under deadline pressure; (e) resolution is earned across three aftermath scenes ending in a settled state (writ withdrawn, registry restored, collegium reformed)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_07_cozy_thistledown_fair": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) holds: each scene's goal/conflict visibly follows earlier outcomes. (b) mostly holds but scn_mabel_lessons_in_memory's depends_on scn_damson_courts_the_round is weak\u2014the Round's delayed answer doesn't enable the lesson, which really follows scn_the_wishing_barn_door. (c) holds: outcomes (recipe must be served, favour owed to Carter Kin, hearing granted, promised cup brewed) are all consumed later. (d) holds: Mabel's hidden tag, taste-truthing, and the kept-favour solution are all set up earlier or in the CharacterSet. (e) holds: climax uses the tag and kept favour; resolution's bargain and stall opening follow the climax's outcome. One minor weak link only.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit traits/motivations: Poppy apologises and withdraws (scn_gossip_at_the_commons, scn_damson_courts_the_round), Damson reads clauses literally and bargains, Mabel lets rules do her kindness; (b) taste-truthing and lease-craft used within stated limits, no unearned knowledge (Poppy learns the favour's owner via scn_carter_secrets); (c) mentor/rival relationships used as specified and evolve only through shown events; (d) both arcs realised \u2014 Poppy speaks without apology in scn_closing_day_claim, Damson's lease 'reads him back' in scn_damson_reads_back, Mabel speaks the tag aloud; (e) both mains pursue stated goals, and flaws cause complications (Poppy's self-doubt stalls her, Damson's clause-reading fails him)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Poppy, the lease-sale conflict, and the third-bell stakes before escalation; (b) rising scenes escalate\u2014Round courted, recipe lesson, tempting trade, contested vote, timed favour\u2014each raising cost; (c) climax directly confronts the logline's claim vs sale with Poppy's decisive act of speaking without apology; (d) resolution gives two concrete consequence scenes\u2014Damson's recorded debt bargain and the stall's opening; (e) title/logline/theme match scenes, fair required, no violence, 4 locations within max 5",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their location_ids and travel is explained (Poppy pushes her cart, goes among the Carter Kin); (b) only World-named places/factions appear (Leap Lane, Kettle Commons, Wishing Barn, Ninth Stall, Stallholders' Round, Tallykeepers, Carter Kin); (c) no rule contradicted \u2014 disputes settled by contest/bargain per rul_no_sharp_edges, favour kept before the fair moves per rul_favour_currency, claim made before third bell per rul_ninth_lease, lanes fold per rul_leap_season; (d) factions act per description and cnf_ninth_claim plus evt_stall_forfeit drive multiple scenes; (e) brief elements adapted into World terms with no imports.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal with no repeated beats; (b) rising action escalates from gossip to contest to the discovered owed favour, reveals ordered well; (c) setup 3 < rising 5, climax and resolution each present with goal/conflict/outcome; (d) no pure-exposition scenes, setup scenes carry conflict; (e) two resolution scenes settle Damson's debt and the stall opening to a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 0.94
+    },
+    "v2_08_space_opera_comet_market": {
+      "structural_validity": {
+        "pass": false,
+        "score": 0,
+        "reason": "Output is not valid JSON: Expecting ',' delimiter: line 1 column 1075 (char 1074)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": false,
+        "score": 0,
+        "reason": "Output is not valid JSON: Expecting ',' delimiter: line 1 column 1075 (char 1074)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": false,
+        "score": 0,
+        "reason": "NOT_EVALUABLE: Output is not valid JSON: Expecting ',' delimiter: line 1 column 1075 (char 1074)",
+        "grader_error": false,
+        "not_evaluable": true
+      },
+      "dependency_validity": {
+        "pass": false,
+        "score": 0,
+        "reason": "NOT_EVALUABLE: Output is not valid JSON: Expecting ',' delimiter: line 1 column 1075 (char 1074)",
+        "grader_error": false,
+        "not_evaluable": true
+      },
+      "narrative_phase_correctness": {
+        "pass": false,
+        "score": 0,
+        "reason": "NOT_EVALUABLE: Output is not valid JSON: Expecting ',' delimiter: line 1 column 1075 (char 1074)",
+        "grader_error": false,
+        "not_evaluable": true
+      },
+      "format_discipline": {
+        "pass": false,
+        "score": 0,
+        "reason": "Raw reply is not a single bare JSON object (fence, prose or malformed JSON)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every scene flows from prior outcomes via depends_on and text; (b) dependencies are truthful \u2014 only mildly loose link is scn_new_route listing scn_kest_collapse, though the settled claims do precede re-filing; (c) all outcomes are used by later scenes; (d) reversals (Kest as first buyer, Rho's truce, charter-cost ruling) are set up by seal-reading scenes and CharacterSet flaws; (e) the hearing climax and post-burn resolution follow directly from accumulated choices.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit motivations/flaws (Sable's procedure-blindness in scn_reading_the_seal, Rho's grievance in scn_rho_at_docks/scn_tether_grab, Kest's acquisitiveness in scn_kest_offer); (b) seal-reading and perihelion piloting used within stated limits, all knowledge earned in earlier scenes (scn_reading_the_seal before scn_cinder_gardens_chase); (c) opposed-claimant and counterparty relationships used as given and evolve only through shown events; (d) Sable's arc lands in scn_charter_doubt/scn_sable_judgement, Rho's in scn_new_route; (e) both mains pursue stated goals, and flaws cause complications (scn_kest_offer, scn_tether_grab); supporting Kest stays in character with his arc resolved in scn_kest_collapse",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Sable, the stolen-chart arbitration and the burn-forfeiture stakes before escalation; (b) rising scenes escalate from Kest's bribe to the tether grab, the Cinder Gardens chase, and the delay gambit; (c) climax is the eve-of-burn hearing where Sable directly rules on the map and chooses a side; (d) resolution gives concrete consequences across three scenes (Kest's collapse, sealed compact route, Sable's reckoning with procedure); (e) title, logline and theme match, locations stay at 5 (max 6), no energy weapons, comet/burn premise honored",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations and travel is motivated (docks, vaults, gardens, hall); (b) only World-named places/factions used (Long Hall, Map House, Tether Docks, Core Vaults, Cinder Gardens, compact, ice barons); (c) rules honored \u2014 burn deadline drives stakes, only blades/tethers/harpoons used, Sable opens the map under arbitral authority in the Long Hall; (d) factions act per description and both World conflicts (stolen chart, tether grab) plus burn articles and ice-tithe rules drive multiple scenes; (e) brief's sail/tether/no-energy constraints fully respected",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 12 scenes have distinct goals/beats with no repeats; (b) rising action escalates from Kest's offer to tether grab to chase to charter dilemma, reveals ordered well; (c) setup 3 < rising 4, climax 2 and resolution 3 scenes each with specific goal/conflict/outcome; (d) no pure-exposition scene, setup scenes carry conflict; (e) three post-climax scenes show aftermath and end in a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_09_historical_monsoon_court": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every scene follows from a prior outcome \u2014 the audit chain (three_claims \u2192 envoy_quarrel \u2192 qadir_receives \u2192 ledger_audit \u2192 gift_register \u2192 amara \u2192 pressure \u2192 audit_closed \u2192 oath \u2192 correction) is sequential and motivated; (b) all depends_on entries are truthful, e.g. scn_qadir_pressure follows the deadline set in scn_amara_at_the_ghat, and scn_audit_closed follows Qadir turning to the court; (c) every outcome is used by a later scene; (d) all developments are set up \u2014 pepper-oath by rul_oath_spice, Amara's rite by her character, ink-reading by Deva's ability; (e) climax (wind declared exposing the pre-dated entry, Qadir refusing the oath) follows accumulated choices, and the resolution (ledger corrected, fleet sails, Qadir's reduced season) follows the climax's outcome.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit motivations\u2014Deva audits scrupulously, Qadir bribes/pressures urbanely, Amara stays incorruptible; (b) only stated abilities used (Deva's ledger memory, Amara's wind-reading), no unearned knowledge; (c) ally and adversary relationships used as given and evolve through shown events (scn_amara_at_the_ghat, scn_wind_declared); (d) Deva's arc realized in scn_wind_declared/scn_ledger_corrected ('a ledger is only as honest as its writer'), Qadir's slot-vs-name choice realized in scn_qadir_oath; (e) both mains pursue stated goals across scenes, Deva's flaw complicates scn_ledger_audit/scn_wind_declared and Qadir's flaw drives the unregistered-gift scheme",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Deva, the three same-hour claims and the season stakes; (b) rising scenes escalate from audit doubt to bribery discovery, deadline, threats and removal; (c) climax directly confronts the forged-filing conflict with Qadir's oath refusal and Deva's acceptance that a ledger is only as honest as its writer; (d) resolution shows the corrected ledger, struck entry, opened gift register, Qadir's diminished season and the fleet sailing in honest order; (e) title/logline/theme match, monsoon required, no telegraph, 4 of max 5 locations, pre-industrial setting respected",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their location_id and movement is orderly; (b) only world-named places, factions and institutions appear (Harbour Office, Envoy House, Pepper Warehouses, Pilot Ghat, pepper factors, slot-keepers, gift register); (c) all four rules are honored \u2014 wind declared before sailing, slot-order, gift register, and the binding pepper oath in scn_qadir_oath; no anachronisms like telegraph; (d) harbour court, pepper factors and envoys behave per description, and both cnf_slot_rivalry and cnf_gift_scandal drive multiple scenes; (e) brief elements adapted within world terms",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 12 scenes have distinct goals and no repeated beats; (b) rising action escalates from audit suspicion to bribery attempt to forced compromise closure; (c) setup 3, rising 5, climax 2, resolution 2 \u2014 proportionate; (d) every setup scene carries conflict, no pure exposition; (e) two post-climax scenes show the corrected ledger and the fleet sailing in honest order, a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "v2_10_folk_horror_lantern_parish": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene follows from a prior outcome (ledger gap -> wardens -> Lob -> writ -> bargain -> bog line -> dimming -> moot); (b) all depends_on entries truthful, e.g. scn_oil_sharing's promise enables scn_bog_line, scn_wall_dimming's near-confession and Lob's debt enable scn_moot_reading; (c) all outcomes feed later scenes; (d) Toll's guilt, Lob's testimony, and the oil shortfall are all set up by earlier scenes and the CharacterSet; (e) climax (moot reading + midwinter lighting) follows from accumulated choices, resolution consequences flow from it",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Actions fit all motivations, goals, flaws, and traits; (b) abilities and knowledge remain earned through prior scenes; (c) ally and adversary relationships evolve through shown events; (d) Wenna's and Toll's arcs are realized in scn_moot_reading, scn_midwinter_wall, and scn_new_entry; (e) both main characters pursue stated goals, with Wenna's proof-seeking and Toll's belief in orderly lies causing complications.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Wenna, the cut-page mystery and the never-dark stake before escalation; (b) rising scenes escalate from questioning to oil seizure to wall nearly failing; (c) climax confronts the buried-truth conflict directly via the moot reading and midwinter lighting, with Wenna driving the choice; (d) resolution shows concrete consequences \u2014 ledger restored, Toll steps down, Lob's oil returned, Wenna's chosen keeping; (e) title/logline/theme match scenes, 4 locations \u2264 5, lantern required, no forbidden elements",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes match their location descriptions and movement is explained (walks to Bog Hollow by day, returns to wall); (b) only World-named places/factions/events appear (Lantern Wall, Moot Kirk, Bog Hollow, Keeper's Croft, wardens, council, turf-cutters); (c) rules are honored or paid: rul_bog_line is explicitly invoked and Wenna turns back, rul_oil_tithe drives the writ and midwinter call-in, rul_lit_ledger drives the cut-page plot, rul_never_dark drives scn_wall_dimming and midwinter lighting; (d) factions act per description and cnf_missing_night, cnf_oil_shortfall, and evt_missing_page drive scene goals/conflicts throughout; (e) brief constraints respected \u2014 lanterns required and present, no firearms/engines or new named imports",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal/beat; (b) stakes escalate from secrecy to oil seizure to the failing wall; (c) 3/5/2/3 scene split is proportionate, climax and resolution well-formed; (d) setup scenes carry conflict, no pure exposition; (e) three aftermath scenes restore the ledger, Lob's hearth, and Wenna's settled keeping",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    }
+  }
+}

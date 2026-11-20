@@ -1,0 +1,466 @@
+{
+  "agent": "world",
+  "label": "v7_dsv4_holdout_v2_r2",
+  "prompt_version": "v7",
+  "prompt_path": "evidence/stage3/reviewers/world/prompts/v7.md",
+  "prompt_sha256": "a6e5b720df2f38f862eca203396c21b562db4e626b00e650127b00923135b959",
+  "split": [
+    "holdout_v2"
+  ],
+  "raw_result_file": "evidence/stage3/reviewers/world/results/v7_dsv4_holdout_v2_r2.json",
+  "raw_result_sha256": "dabd1aa59a298373a18f48fa6bdb47024d0034713ad935ddcc859e2f716a433e",
+  "eval_id": "eval-s2J-2026-11-17T17:09:43",
+  "timestamp": "2026-11-17T17:09:43.585Z",
+  "promptfoo_version": "0.124.1",
+  "config_sha256": "c1b64c9ce09c06992439a40ef69cfafe85a93d5d531cc0d3262762827e8f5bb1",
+  "dataset_sha256": {
+    "dev": "018b9f5a2175de3e7d5a1397ec7bd62051cf1ac1bb67979195de0032093591f3",
+    "holdout": "00ca37a8efa2a4337e533e5d36187a2141ca7523570bdca2ac8c122bab73f0cd"
+  },
+  "summarizer_sha256": "2a6ca685a5a2420d47d148f1e5850ffc4865234855f94d0c4dd459ea1dcddfff",
+  "scoring_sha256": "46e982b9fc2abc98c612fa8e0f094bb96f5f9173425d74ab05d1ba16d215cc1c",
+  "thresholds_sha256": "3d454761c78240c64c943df15a1389c6e5590a22717fcf25d4201c20696383d4",
+  "models": [
+    {
+      "id": "file://../world_stage3_provider.py",
+      "config": {
+        "model": "deepseek-v4-1-flash-1017-high",
+        "timeout": 600000,
+        "devin_timeout": 180,
+        "retries": 1,
+        "respect_workspace_trust": false
+      }
+    }
+  ],
+  "cases_total": 10,
+  "cases_passed": 10,
+  "provider_errors": [],
+  "grader_errors": [],
+  "valid_run": true,
+  "assertion_mismatches": [],
+  "metrics": {
+    "critical_detection_rate": null,
+    "blocking_recall": null,
+    "blocking_precision": null,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": null,
+    "verdict_accuracy": 1.0,
+    "evidence_grounding_rate": 1.0,
+    "contract_validity_rate": 1.0,
+    "weighted_score": 1.0,
+    "case_pass_rate": 1.0
+  },
+  "criteria": {
+    "evidence_grounding": {
+      "applicable_cases": 2,
+      "passed": 2,
+      "pass_rate": 1.0,
+      "mean_score": 1.0
+    },
+    "false_positive_avoidance": {
+      "applicable_cases": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "mean_score": 1.0
+    },
+    "issue_classification": {
+      "applicable_cases": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "mean_score": 1.0
+    }
+  },
+  "thresholds": {
+    "case_pass_rate": {
+      "value": 1.0,
+      "threshold": 0.95,
+      "kind": "min",
+      "met": true,
+      "hard_gate": false
+    },
+    "critical_detection_rate": {
+      "value": null,
+      "threshold": 0.95,
+      "kind": "min",
+      "met": false,
+      "hard_gate": true
+    },
+    "false_positive_rate": {
+      "value": 0.0,
+      "threshold": 0.05,
+      "kind": "max",
+      "met": true,
+      "hard_gate": true
+    },
+    "blocking_precision": {
+      "value": null,
+      "threshold": 0.9,
+      "kind": "min",
+      "met": false,
+      "hard_gate": false
+    },
+    "blocking_recall": {
+      "value": null,
+      "threshold": 0.9,
+      "kind": "min",
+      "met": false,
+      "hard_gate": false
+    },
+    "verdict_accuracy": {
+      "value": 1.0,
+      "threshold": 0.95,
+      "kind": "min",
+      "met": true,
+      "hard_gate": false
+    },
+    "evidence_grounding_rate": {
+      "value": 1.0,
+      "threshold": 0.95,
+      "kind": "min",
+      "met": true,
+      "hard_gate": false
+    },
+    "weighted_score": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "kind": "min",
+      "met": true,
+      "hard_gate": false
+    },
+    "contract_validity_rate": {
+      "value": 1.0,
+      "threshold": 1.0,
+      "kind": "min",
+      "met": true,
+      "hard_gate": true
+    }
+  },
+  "hard_gates_failed": [
+    "critical_detection_rate"
+  ],
+  "meets_all_thresholds": false,
+  "counts": {
+    "cases": 10,
+    "contract_valid": 10,
+    "verdict_correct": 10,
+    "pass_cases": 10,
+    "pass_cases_blocked": 0,
+    "issues": 2,
+    "issues_grounded": 2
+  },
+  "verdict_confusion": {
+    "PASS": {
+      "PASS": 10
+    }
+  },
+  "by_category": {
+    "valid": {
+      "cases": 10,
+      "passed": 10,
+      "pass_rate": 1.0
+    }
+  },
+  "failed_cases": {},
+  "per_case": {
+    "WR-V2-01": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-02": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-03": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-04": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-05": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-06": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-07": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-08": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-09": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "evidence_grounding": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "1/1 issues grounded"
+        },
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    },
+    "WR-V2-10": {
+      "category": "valid",
+      "expected_verdict": "PASS",
+      "verdict": "PASS",
+      "case_pass": true,
+      "grader_error": false,
+      "failed_criteria": [],
+      "weighted_score": 1.0,
+      "criteria": {
+        "evidence_grounding": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "1/1 issues grounded"
+        },
+        "false_positive_avoidance": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "valid artifact accepted"
+        },
+        "issue_classification": {
+          "pass": true,
+          "score": 1.0,
+          "reason": "verdict PASS vs expected PASS; misclassified detected labels: none"
+        }
+      },
+      "actionable_feedback": null,
+      "gates": {},
+      "missed_labels": [],
+      "misclassified_labels": [],
+      "unsupported_blocking_issues": [],
+      "ungrounded_issues": [],
+      "unknown_codes": [],
+      "contract_error": null
+    }
+  }
+}

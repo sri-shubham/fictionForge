@@ -1,0 +1,91 @@
+{
+  "world_id": "wld_aetheria",
+  "title": "The Skybridge Chronicles",
+  "logline": "Veya the cartographer must unite rival enclaves before Aetheria's skybridges collapse and the floating isles drift apart.",
+  "theme": "cooperation in the face of loss",
+  "acts": [
+    {
+      "id": "act_setup",
+      "title": "The Failing Maps",
+      "purpose": "setup",
+      "scenes": [
+        {
+          "id": "scn_veya_discovers",
+          "title": "Veya Discovers the Collapse",
+          "summary": "At Silverspine Academy, Veya's measurements reveal a skybridge route is vanishing.",
+          "location_id": "loc_silverspine",
+          "character_ids": ["chr_veya"],
+          "goal": "Document the bridge decay.",
+          "conflict": "The Academy dismisses her findings.",
+          "outcome": "Veya decides to act alone.",
+          "depends_on": []
+        }
+      ]
+    },
+    {
+      "id": "act_rising",
+      "title": "The Toll War Escalates",
+      "purpose": "rising_action",
+      "scenes": [
+        {
+          "id": "scn_kael_raises_tolls",
+          "title": "Kael Closes the Docks",
+          "summary": "Kael raises skybridge tolls, sparking protests.",
+          "location_id": "loc_mistral_docks",
+          "character_ids": ["chr_kael"],
+          "goal": "Secure cartel control.",
+          "conflict": "Merchants refuse to pay.",
+          "outcome": "The Drift Cartel tightens its grip.",
+          "depends_on": []
+        },
+        {
+          "id": "scn_veya_discovers",
+          "title": "Maris Finds a Secret Route",
+          "summary": "Maris reveals a hidden grain path that bypasses the toll.",
+          "location_id": "loc_the_hollow",
+          "character_ids": ["chr_maris", "chr_veya"],
+          "goal": "Move grain safely.",
+          "conflict": "Cartel enforcers patrol the route.",
+          "outcome": "They escape, but Kael now hunts them.",
+          "depends_on": ["scn_kael_raises_tolls"]
+        }
+      ]
+    },
+    {
+      "id": "act_climax",
+      "title": "The Bridge is Severed",
+      "purpose": "climax",
+      "scenes": [
+        {
+          "id": "scn_bridge_battle",
+          "title": "The Bridge Battle",
+          "summary": "Veya, Maris and Kael clash atop a fracturing skybridge.",
+          "location_id": "loc_emberroost",
+          "character_ids": ["chr_veya", "chr_kael", "chr_maris"],
+          "goal": "Stabilise the final bridge.",
+          "conflict": "Kael would rather rule the ruins than save the realm.",
+          "outcome": "Kael's ledger is destroyed; he flees.",
+          "depends_on": ["scn_kael_raises_tolls", "scn_veya_discovers"]
+        }
+      ]
+    },
+    {
+      "id": "act_resolution",
+      "title": "A New Chart",
+      "purpose": "resolution",
+      "scenes": [
+        {
+          "id": "scn_new_map",
+          "title": "The First Shared Map",
+          "summary": "The enclaves pool knowledge and begin a new chart of the drift.",
+          "location_id": "loc_silverspine",
+          "character_ids": ["chr_veya", "chr_maris"],
+          "goal": "Plan a new future.",
+          "conflict": "Trust remains fragile.",
+          "outcome": "Aetheria charts its own course.",
+          "depends_on": ["scn_bridge_battle"]
+        }
+      ]
+    }
+  ]
+}

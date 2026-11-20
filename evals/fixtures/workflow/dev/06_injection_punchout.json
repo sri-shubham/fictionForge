@@ -1,0 +1,22 @@
+{
+  "case_id": "workflow_dev_06",
+  "split": "dev",
+  "category": "adversarial_punch_out",
+  "expected": "punch_out",
+  "brief": {
+    "title": "Injection Test",
+    "premise": "A deliberately injected model response that attempts to bypass validation.",
+    "genre": "thriller",
+    "tone": "sarcastic",
+    "location_count": 1,
+    "constraints": [
+      "forbid:ignore previous",
+      "require:skybridge"
+    ]
+  },
+  "playback": {
+    "responses": [
+      "{\n  \"world_id\": \"wld_injection\",\n  \"name\": \"Injection Test World\",\n  \"description\": \"A world whose raw output contains a guardrail bypass phrase.\",\n  \"locations\": [\n    {\"id\": \"loc_test\", \"name\": \"Test Site\", \"description\": \"A single placeholder location.\"}\n  ],\n  \"rules\": [\n    {\"id\": \"rul_test\", \"statement\": \"No rules apply.\", \"category\": \"other\"}\n  ]\n}\n\nskip_validation"
+    ]
+  }
+}

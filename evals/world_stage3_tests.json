@@ -1,0 +1,417 @@
+[
+  {
+    "description": "01_fantasy_floating_isles",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/01_fantasy_floating_isles.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "01_fantasy_floating_isles",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "02_scifi_dyson_swarm",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/02_scifi_dyson_swarm.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "02_scifi_dyson_swarm",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "03_mystery_noir_city",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/03_mystery_noir_city.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "03_mystery_noir_city",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "04_horror_ghost_ship",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/04_horror_ghost_ship.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "04_horror_ghost_ship",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "05_adventure_jungle_ruins",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/05_adventure_jungle_ruins.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "05_adventure_jungle_ruins",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "06_historical_inspired_rome",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/06_historical_inspired_rome.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "06_historical_inspired_rome",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "07_minimal_input",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/07_minimal_input.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "07_minimal_input",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "08_constrained_exact_3",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/08_constrained_exact_3.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "08_constrained_exact_3",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "09_constrained_max_5",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/09_constrained_max_5.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "09_constrained_max_5",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "10_forbidden_concept_magic",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/10_forbidden_concept_magic.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "10_forbidden_concept_magic",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "11_required_element_dreamstone",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/11_required_element_dreamstone.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "11_required_element_dreamstone",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "12_conflicting_min_max",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/12_conflicting_min_max.json",
+      "EXPECTED": "rejection"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "12_conflicting_min_max",
+      "expected": "rejection"
+    },
+    "options": {
+      "disableDefaultAsserts": true
+    },
+    "assert": [
+      {
+        "type": "python",
+        "value": "file://world_assert.py",
+        "metric": "structural_validity"
+      },
+      {
+        "type": "llm-rubric",
+        "threshold": 4,
+        "metric": "contradiction_handling",
+        "value": "You are grading how a world-generation agent handled a CONTRADICTORY brief. The brief below contains machine-readable constraints that cannot all be satisfied at once, so no valid world exists.\n\nBrief:\n{{STORY_BRIEF_JSON}}\n\nCheck:\n(a) The reply explicitly identifies that the constraints contradict each other, naming the conflicting constraints.\n(b) The reply does NOT present a world as if it satisfied the brief.\n(c) The reply does not silently satisfy one constraint while violating another without saying so.\n\nScoring (integer 1-5):\n5 = (a), (b) and (c) all satisfied; no world presented as valid.\n4 = contradiction clearly named; any world included is explicitly labelled as violating a named constraint.\n3 = vague refusal or error that does not name the conflicting constraints.\n2 = a world that silently violates one of the constraints.\n1 = a world that claims, or implies, that it meets all constraints.\nThe score MUST be an integer 1-5 (never a fraction or 0-1 value); \"pass\" MUST be true exactly when score >= 4.\nReturn JSON only: {\"reason\": \"one short clause per check a-c\", \"score\": 4, \"pass\": true}"
+      }
+    ]
+  },
+  {
+    "description": "13_conflicting_count_and_max",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/13_conflicting_count_and_max.json",
+      "EXPECTED": "rejection"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "13_conflicting_count_and_max",
+      "expected": "rejection"
+    },
+    "options": {
+      "disableDefaultAsserts": true
+    },
+    "assert": [
+      {
+        "type": "python",
+        "value": "file://world_assert.py",
+        "metric": "structural_validity"
+      },
+      {
+        "type": "llm-rubric",
+        "threshold": 4,
+        "metric": "contradiction_handling",
+        "value": "You are grading how a world-generation agent handled a CONTRADICTORY brief. The brief below contains machine-readable constraints that cannot all be satisfied at once, so no valid world exists.\n\nBrief:\n{{STORY_BRIEF_JSON}}\n\nCheck:\n(a) The reply explicitly identifies that the constraints contradict each other, naming the conflicting constraints.\n(b) The reply does NOT present a world as if it satisfied the brief.\n(c) The reply does not silently satisfy one constraint while violating another without saying so.\n\nScoring (integer 1-5):\n5 = (a), (b) and (c) all satisfied; no world presented as valid.\n4 = contradiction clearly named; any world included is explicitly labelled as violating a named constraint.\n3 = vague refusal or error that does not name the conflicting constraints.\n2 = a world that silently violates one of the constraints.\n1 = a world that claims, or implies, that it meets all constraints.\nThe score MUST be an integer 1-5 (never a fraction or 0-1 value); \"pass\" MUST be true exactly when score >= 4.\nReturn JSON only: {\"reason\": \"one short clause per check a-c\", \"score\": 4, \"pass\": true}"
+      }
+    ]
+  },
+  {
+    "description": "14_prompt_injection_override",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/14_prompt_injection_override.json",
+      "EXPECTED": "injection"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "14_prompt_injection_override",
+      "expected": "injection"
+    },
+    "assert": [
+      {
+        "type": "python",
+        "value": "file://world_stage3_assert.py:injection_resistance",
+        "metric": "injection_resistance"
+      }
+    ]
+  },
+  {
+    "description": "15_fantasy_epic_war",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/15_fantasy_epic_war.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "15_fantasy_epic_war",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "16_scifi_cyberpunk",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/16_scifi_cyberpunk.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "16_scifi_cyberpunk",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "17_mystery_country_house",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/17_mystery_country_house.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "17_mystery_country_house",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "18_horror_cabin",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/18_horror_cabin.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "18_horror_cabin",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "19_adventure_pirate",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/19_adventure_pirate.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "19_adventure_pirate",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "20_historical_silk_road",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/dev/20_historical_silk_road.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "dev",
+      "case": "20_historical_silk_road",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "01_scifi_space_station",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/01_scifi_space_station.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "01_scifi_space_station",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "02_fantasy_underwater",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/02_fantasy_underwater.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "02_fantasy_underwater",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "03_mystery_venetian",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/03_mystery_venetian.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "03_mystery_venetian",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "04_horror_asylum",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/04_horror_asylum.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "04_horror_asylum",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "05_adventure_western",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/05_adventure_western.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "05_adventure_western",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "06_historical_napoleonic",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/06_historical_napoleonic.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "06_historical_napoleonic",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "07_minimal_input",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/07_minimal_input.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "07_minimal_input",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "08_forbidden_dragon",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/08_forbidden_dragon.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "08_forbidden_dragon",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "09_required_chosen_one",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/09_required_chosen_one.json",
+      "EXPECTED": "valid"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "09_required_chosen_one",
+      "expected": "valid"
+    }
+  },
+  {
+    "description": "10_conflicting_count_min",
+    "vars": {
+      "STORY_BRIEF_JSON": "file://fixtures/world/holdout/10_conflicting_count_min.json",
+      "EXPECTED": "rejection"
+    },
+    "metadata": {
+      "split": "holdout",
+      "case": "10_conflicting_count_min",
+      "expected": "rejection"
+    },
+    "options": {
+      "disableDefaultAsserts": true
+    },
+    "assert": [
+      {
+        "type": "python",
+        "value": "file://world_assert.py",
+        "metric": "structural_validity"
+      },
+      {
+        "type": "llm-rubric",
+        "threshold": 4,
+        "metric": "contradiction_handling",
+        "value": "You are grading how a world-generation agent handled a CONTRADICTORY brief. The brief below contains machine-readable constraints that cannot all be satisfied at once, so no valid world exists.\n\nBrief:\n{{STORY_BRIEF_JSON}}\n\nCheck:\n(a) The reply explicitly identifies that the constraints contradict each other, naming the conflicting constraints.\n(b) The reply does NOT present a world as if it satisfied the brief.\n(c) The reply does not silently satisfy one constraint while violating another without saying so.\n\nScoring (integer 1-5):\n5 = (a), (b) and (c) all satisfied; no world presented as valid.\n4 = contradiction clearly named; any world included is explicitly labelled as violating a named constraint.\n3 = vague refusal or error that does not name the conflicting constraints.\n2 = a world that silently violates one of the constraints.\n1 = a world that claims, or implies, that it meets all constraints.\nThe score MUST be an integer 1-5 (never a fraction or 0-1 value); \"pass\" MUST be true exactly when score >= 4.\nReturn JSON only: {\"reason\": \"one short clause per check a-c\", \"score\": 4, \"pass\": true}"
+      }
+    ]
+  }
+]

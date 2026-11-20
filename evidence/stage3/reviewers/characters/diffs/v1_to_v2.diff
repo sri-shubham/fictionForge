@@ -1,0 +1,10 @@
+--- v1.md
++++ v2.md
+@@ -24,6 +24,7 @@
+ ## Evidence
+ - Report a defect only if you can support it with a verbatim quote from the brief, the world or the character set. No speculation.
+ - Quote only the text values of fields (the words of a name, description, motivation, goal, arc or statement, or an id string such as `loc_example_site`), never JSON keys, brackets or quotation marks around keys.
++- Every quoted fragment must be at least eight characters long. Never quote a shorter value on its own (for example an era such as "Age 7"); quote the longer text around it instead, and cite the field that holds the short value in `artifact_path` or `reference_path`.
+ - Every issue must quote the exact words in `evidence` (join two quotes with ` || `), give the path of the character-set field containing the defect in `artifact_path`, and give the path of the conflicting passage in `reference_path` (use null only when no second passage is involved).
+ - Every critical or major issue must identify the relevant character through its `artifact_path` (`$.characters[i]...` or `$.relationships[j]...`) and cite its supporting evidence in `reference_path`: the world rule, history event, entity or brief constraint it conflicts with, or the other passage of the character set it contradicts.
+ - Paths use only `.key` and `[index]` segments rooted at `$`. Paths into the character set are written `$.characters[0].abilities[0]`; paths into the world are written `world::$.rules[0].statement`; paths into the brief are written `brief::$.constraints[1]`.

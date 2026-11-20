@@ -1,0 +1,13 @@
+--- prompts/v1.md	2026-11-02 16:31:56
++++ prompts/v2.md	2026-11-02 18:15:45
+@@ -24,8 +24,8 @@
+ - `title`: a short story title (1-120 chars).
+ - `logline`: a one-sentence summary of the central conflict and stakes (1-2000 chars).
+ - `theme`: a short thematic statement (1-120 chars).
+-- `acts`: 1-10 acts. Each act has `id` starting with `act_` (lowercase letters, digits, underscores only), a `title`, a `purpose`, and `scenes`. Use exactly the four required purposes in this order: `setup`, `rising_action`, `climax`, `resolution`. If you use fewer or more than four acts, the purposes must still appear in non-decreasing order and must all be present at least once.
+-- `scenes` (per act): 1-25 scenes. Each scene has `id` starting with `scn_` (lowercase letters, digits, underscores only, max 48 chars after prefix). Scene ids must be **unique across the whole storyboard**, not just within an act.
++- `acts`: 1-10 acts. Each act has exactly these keys: `id` starting with `act_` (lowercase letters, digits, underscores only), `title`, `purpose`, and `scenes`. Nothing else goes on an act: `depends_on` and the scene keys below belong only inside a scene. Use exactly the four required purposes in this order: `setup`, `rising_action`, `climax`, `resolution`. If you use fewer or more than four acts, the purposes must still appear in non-decreasing order and must all be present at least once.
++- `scenes` (per act): 1-25 scenes. Every scene object has exactly these keys: `id`, `title`, `summary`, `location_id`, `character_ids`, `goal`, `conflict`, `outcome`, and optionally `depends_on`. `title` (1-120 chars) is required on every scene. `id` starts with `scn_` (lowercase letters, digits, underscores only, max 48 chars after prefix). Scene ids must be **unique across the whole storyboard**, not just within an act.
+ - `location_id` in a scene must be an `id` from the World `locations` list. Do not invent locations.
+ - `character_ids` in a scene must use `id`s from the CharacterSet `characters` list. A scene needs at least one and at most ten characters. Do not duplicate a character inside the same scene and do not introduce characters not in the provided set.
+ - `goal`, `conflict`, `outcome`: non-empty, specific, and limited to 1-2000 chars. Every scene must have a clear goal, conflict, and outcome.

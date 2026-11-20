@@ -1,0 +1,443 @@
+{
+  "case_id": "SR-H05",
+  "agent": "storyboard",
+  "split": "holdout",
+  "category": "stylistic_weakness",
+  "slug": "bare_coast_scenes",
+  "context_validated": true,
+  "brief": {
+    "title": "The Lantern Coast",
+    "premise": "A ferry-girl who carries smugglers between lantern-lit coves discovers a harbour-master's ledger naming the buyers of a stolen royal charter, and must outrun both the Navy and the smugglers.",
+    "genre": "adventure",
+    "tone": "swashbuckling",
+    "target_audience": "all ages",
+    "constraints": [
+      "forbid:magic",
+      "require:lantern",
+      "No supernatural events; everything has a natural explanation.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_lantern_coast",
+    "name": "The Lantern Coast",
+    "description": "The Lantern Coast is a smugglers' shoreline of coloured signal lanterns, naval patrols and ledgers that name who owns what.",
+    "locations": [
+      {
+        "id": "loc_heron_cove",
+        "name": "Heron Cove",
+        "description": "A shallow cove used by smugglers, marked at night by a single green lantern."
+      },
+      {
+        "id": "loc_harbour_house",
+        "name": "Harbour-Master's House",
+        "description": "A whitewashed house above Port Sable where the harbour-master keeps his ledgers."
+      },
+      {
+        "id": "loc_port_sable",
+        "name": "Port Sable",
+        "description": "A busy harbour town with a naval garrison and crowded quays."
+      },
+      {
+        "id": "loc_cliff_light",
+        "name": "Cliff Light",
+        "description": "A lighthouse on a sheer cliff whose lantern guides ships past the reef."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_garrison",
+        "name": "Sable Garrison",
+        "description": "Naval officers who patrol the coast and enforce the customs.",
+        "location_ids": [
+          "loc_port_sable"
+        ]
+      },
+      {
+        "id": "fac_runners",
+        "name": "Lantern Runners",
+        "description": "Smugglers who signal with coloured lanterns from Heron Cove.",
+        "location_ids": [
+          "loc_heron_cove"
+        ]
+      },
+      {
+        "id": "fac_harbour_office",
+        "name": "Harbour Office",
+        "description": "Clerks and the harbour-master, who record every ship's cargo.",
+        "location_ids": [
+          "loc_harbour_house",
+          "loc_port_sable"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_lantern_code",
+        "statement": "Smugglers signal with lantern colours: green means safe, red means patrol.",
+        "category": "social"
+      },
+      {
+        "id": "rul_reef",
+        "statement": "Ships may pass the reef only at high tide, guided by the Cliff Light.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_ledger",
+        "statement": "Every ship entering Port Sable must be entered in the harbour-master's ledger.",
+        "category": "social"
+      },
+      {
+        "id": "rul_charter",
+        "statement": "Royal charters can be sealed only by the crown's seal.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_light_built",
+        "name": "Building of the Cliff Light",
+        "era": "Old Reign",
+        "description": "Engineers built the Cliff Light after three ships were lost on the reef.",
+        "location_ids": [
+          "loc_cliff_light"
+        ]
+      },
+      {
+        "id": "evt_garrison_founded",
+        "name": "Founding of the Sable Garrison",
+        "era": "Old Reign",
+        "description": "The crown posted a naval garrison at Port Sable to enforce customs.",
+        "location_ids": [
+          "loc_port_sable"
+        ]
+      },
+      {
+        "id": "evt_charter_theft",
+        "name": "Theft of the Royal Charter",
+        "era": "Young Reign",
+        "description": "A smuggler broke into the Harbour-Master's House and stole a sealed royal charter.",
+        "location_ids": [
+          "loc_harbour_house"
+        ]
+      },
+      {
+        "id": "evt_green_night",
+        "name": "The Green Night",
+        "era": "Young Reign",
+        "description": "The Lantern Runners landed a full cargo at Heron Cove under a green lantern while the Garrison patrolled elsewhere.",
+        "location_ids": [
+          "loc_heron_cove"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_charter_hunt",
+        "name": "The Charter Hunt",
+        "description": "The Sable Garrison hunts the Lantern Runners for the stolen royal charter.",
+        "faction_ids": [
+          "fac_garrison",
+          "fac_runners"
+        ]
+      },
+      {
+        "id": "cnf_ledger_secrets",
+        "name": "The Ledger Secrets",
+        "description": "The Harbour Office guards a ledger naming the charter's buyers from both the Garrison and the Lantern Runners.",
+        "faction_ids": [
+          "fac_harbour_office",
+          "fac_garrison",
+          "fac_runners"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_lantern_coast",
+    "characters": [
+      {
+        "id": "chr_wren",
+        "name": "Wren Calloway",
+        "role": "protagonist",
+        "description": "A ferry-girl who carries smugglers between lantern-lit coves.",
+        "personality_traits": [
+          "reckless",
+          "quick",
+          "loyal"
+        ],
+        "motivation": "To keep her family's ferry out of the Garrison's hands.",
+        "goal": "Get the harbour-master's ledger to someone who can use it.",
+        "flaw": "Cannot resist a dare.",
+        "internal_conflict": "She owes the Runners her livelihood but they would sell her out.",
+        "external_conflict": "The Garrison and the Runners both want the ledger.",
+        "home_location_id": "loc_heron_cove",
+        "faction_id": "fac_runners",
+        "abilities": [
+          {
+            "name": "Night-rowing",
+            "description": "Rows between coves in the dark by the colour of the lantern signals.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Wren learns whom to trust with the ledger."
+      },
+      {
+        "id": "chr_idris",
+        "name": "Captain Idris Hale",
+        "role": "antagonist",
+        "description": "A Sable Garrison captain who hunts the stolen royal charter and is named among its buyers in the ledger.",
+        "personality_traits": [
+          "ambitious",
+          "brisk",
+          "secretive"
+        ],
+        "motivation": "To recover the charter before his own name surfaces.",
+        "goal": "Seize the ledger and the ferry-girl.",
+        "flaw": "Mistakes pursuit for innocence.",
+        "internal_conflict": "He knows the ledger will ruin him.",
+        "external_conflict": "Wren and the Harbour Office hold the evidence.",
+        "home_location_id": "loc_port_sable",
+        "faction_id": "fac_garrison",
+        "abilities": [
+          {
+            "name": "Patrol-planning",
+            "description": "Arranges naval patrols to cover a stretch of coast.",
+            "category": "social"
+          }
+        ],
+        "arc": "Idris is exposed when the ledger reaches the crown's inspectors."
+      },
+      {
+        "id": "chr_pell",
+        "name": "Pell Marrow",
+        "role": "supporting",
+        "description": "A harbour clerk who keeps the ledgers and copied out the names of the charter's buyers.",
+        "personality_traits": [
+          "careful",
+          "nervous",
+          "honest"
+        ],
+        "motivation": "To see the buyers named before they can destroy the evidence.",
+        "goal": "Pass the copied names to someone beyond the Garrison's reach.",
+        "flaw": "Freezes under pressure.",
+        "internal_conflict": "He fears the Harbour Office will blame him.",
+        "external_conflict": "Idris suspects he copied the names.",
+        "home_location_id": "loc_harbour_house",
+        "faction_id": "fac_harbour_office",
+        "abilities": [
+          {
+            "name": "Ledger-keeping",
+            "description": "Keeps a clean, cross-checked record of every ship's cargo.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Pell finds the nerve to act."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_wren_pell",
+        "source_character_id": "chr_wren",
+        "target_character_id": "chr_pell",
+        "relationship_type": "ally",
+        "description": "Pell gives Wren copies of the ledger pages.",
+        "conflict": null
+      },
+      {
+        "id": "rel_idris_wren",
+        "source_character_id": "chr_idris",
+        "target_character_id": "chr_wren",
+        "relationship_type": "hunter",
+        "description": "Idris hunts Wren for the ledger.",
+        "conflict": "She keeps slipping past his patrols."
+      },
+      {
+        "id": "rel_idris_pell",
+        "source_character_id": "chr_idris",
+        "target_character_id": "chr_pell",
+        "relationship_type": "suspect",
+        "description": "Idris suspects Pell of copying the names.",
+        "conflict": null
+      }
+    ]
+  },
+  "storyboard": {
+    "world_id": "wld_lantern_coast",
+    "title": "The Lantern Coast",
+    "logline": "Wren carries a clerk's copy of the harbour-master's ledger past the Navy and the smugglers to someone who can use it.",
+    "theme": "who can be trusted with the truth",
+    "acts": [
+      {
+        "id": "act_setup",
+        "title": "Setup",
+        "purpose": "setup",
+        "scenes": [
+          {
+            "id": "scn_pell_copies",
+            "title": "The Copy",
+            "summary": "Pell copies the names of the charter's buyers from the harbour-master's ledger and asks Wren to carry the copy out of Port Sable.",
+            "location_id": "loc_harbour_house",
+            "character_ids": [
+              "chr_pell",
+              "chr_wren"
+            ],
+            "goal": "Copy the buyers' names.",
+            "conflict": "Danger.",
+            "outcome": "Wren takes the copied pages under her coat.",
+            "depends_on": []
+          },
+          {
+            "id": "scn_cove_signal",
+            "title": "The Green Lantern",
+            "summary": "Wren returns to Heron Cove, where the Runners signal with a green lantern that it is safe to land.",
+            "location_id": "loc_heron_cove",
+            "character_ids": [
+              "chr_wren"
+            ],
+            "goal": "Reach the cove unseen.",
+            "conflict": "A red lantern would mean a patrol.",
+            "outcome": "Wren lands safely and hides the pages.",
+            "depends_on": [
+              "scn_pell_copies"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_rising",
+        "title": "Rising Action",
+        "purpose": "rising_action",
+        "scenes": [
+          {
+            "id": "scn_idris_hunts",
+            "title": "The Search",
+            "summary": "Idris questions Pell about the copied names and has the harbour house searched.",
+            "location_id": "loc_port_sable",
+            "character_ids": [
+              "chr_idris",
+              "chr_pell"
+            ],
+            "goal": "Find the ledger copy.",
+            "conflict": "Pell freezes under pressure.",
+            "outcome": "Idris finds nothing but marks Pell as a suspect.",
+            "depends_on": [
+              "scn_pell_copies"
+            ]
+          },
+          {
+            "id": "scn_runners_offer",
+            "title": "The Offer",
+            "summary": "The Lantern Runners offer to buy the copy, planning to sell it to the highest buyer.",
+            "location_id": "loc_heron_cove",
+            "character_ids": [
+              "chr_wren"
+            ],
+            "goal": "Refuse.",
+            "conflict": "They would sell her out.",
+            "outcome": "Wren refuses and slips away at night.",
+            "depends_on": [
+              "scn_cove_signal"
+            ]
+          },
+          {
+            "id": "scn_red_lantern",
+            "title": "The Ruse",
+            "summary": "Idris's patrol closes on Wren's boat; she lights a false red lantern to draw the Garrison toward the Runners' cove while she rows past the reef at high tide.",
+            "location_id": "loc_cliff_light",
+            "character_ids": [
+              "chr_wren",
+              "chr_idris"
+            ],
+            "goal": "Row past the reef.",
+            "conflict": "The reef can be passed only at high tide, guided by the Cliff Light.",
+            "outcome": "Wren passes the reef and the patrol seizes the Runners' cargo instead.",
+            "depends_on": [
+              "scn_runners_offer",
+              "scn_idris_hunts"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_climax",
+        "title": "Climax",
+        "purpose": "climax",
+        "scenes": [
+          {
+            "id": "scn_crown_inspectors",
+            "title": "The Inspectors",
+            "summary": "Wren delivers Pell's copy to the crown's inspectors at Port Sable, who read Idris's name among the buyers.",
+            "location_id": "loc_port_sable",
+            "character_ids": [
+              "chr_wren",
+              "chr_idris",
+              "chr_pell"
+            ],
+            "goal": "Put the copy in the inspectors' hands.",
+            "conflict": "Idris tries to arrest her on the quay.",
+            "outcome": "The inspectors read the copy and detain Idris.",
+            "depends_on": [
+              "scn_red_lantern"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_resolution",
+        "title": "Resolution",
+        "purpose": "resolution",
+        "scenes": [
+          {
+            "id": "scn_charter_found",
+            "title": "The Charter",
+            "summary": "The stolen royal charter is traced from the copied names and returned, and Pell takes over the harbour ledgers.",
+            "location_id": "loc_harbour_house",
+            "character_ids": [
+              "chr_pell",
+              "chr_wren"
+            ],
+            "goal": "Close the charter case.",
+            "conflict": "The Garrison resents the inspectors.",
+            "outcome": "Done.",
+            "depends_on": [
+              "scn_crown_inspectors"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "minor",
+      "blocking": false,
+      "accepted_codes": [
+        "OTHER_CONSISTENCY_DEFECT"
+      ],
+      "accepted_severities": [
+        "minor"
+      ],
+      "artifact_paths": [
+        "$.acts[0].scenes[0].conflict",
+        "$.acts[1].scenes[1].goal",
+        "$.acts[3].scenes[0].outcome"
+      ],
+      "reference_paths": [],
+      "evidence_quotes": [
+        "Danger.",
+        "Refuse.",
+        "Done."
+      ],
+      "anchor_terms": [],
+      "rationale": "Thin detail only.",
+      "correction_hint": "Optional: add detail; not a blocking defect.",
+      "label_id": "SR-H05-L1"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "A few scene fields are bare but nothing contradicts the world, the cast or earlier scenes."
+}

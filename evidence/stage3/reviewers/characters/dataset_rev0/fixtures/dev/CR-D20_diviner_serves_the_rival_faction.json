@@ -1,0 +1,292 @@
+{
+  "case_id": "CR-D20",
+  "agent": "characters",
+  "split": "dev",
+  "category": "conflicting_information",
+  "slug": "diviner_serves_the_rival_faction",
+  "context_validated": true,
+  "brief": {
+    "title": "Ashfall Verge",
+    "premise": "Two generations after the sky burned, a water-diviner leads a caravan across the Verge, a belt of ash-dunes where a cult is hoarding the last working wells.",
+    "genre": "post-apocalyptic",
+    "tone": "bleak but hopeful",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:radiation",
+      "require:well",
+      "No functioning electronics: all machinery is mechanical.",
+      "min_locations:3",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_ashfall_verge",
+    "name": "The Ashfall Verge",
+    "description": "The Ashfall Verge is a belt of ash-dunes and slag walls two generations after the sky burned, where water is the only real power.",
+    "locations": [
+      {
+        "id": "loc_cinder_well",
+        "name": "Cinder Well",
+        "description": "The deepest surviving well, ringed by a wall of fused slag."
+      },
+      {
+        "id": "loc_ash_dunes",
+        "name": "The Ash Dunes",
+        "description": "A shifting belt of grey dunes where wind erases tracks within hours."
+      },
+      {
+        "id": "loc_rust_depot",
+        "name": "Rust Depot",
+        "description": "A salvage yard of hand-cranked machines and rusted rail wagons."
+      },
+      {
+        "id": "loc_glass_ridge",
+        "name": "Glass Ridge",
+        "description": "A ridge of fused sand that shelters a caravan stop with a rain-catching cistern."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_well_keepers",
+        "name": "Well Keepers",
+        "description": "A cult that rations water from Cinder Well and preaches that the sky punished the wasteful.",
+        "location_ids": [
+          "loc_cinder_well"
+        ]
+      },
+      {
+        "id": "fac_dune_runners",
+        "name": "Dune Runners",
+        "description": "Caravaners who guide travellers across the Ash Dunes by reading the wind.",
+        "location_ids": [
+          "loc_ash_dunes",
+          "loc_glass_ridge"
+        ]
+      },
+      {
+        "id": "fac_depot_menders",
+        "name": "Depot Menders",
+        "description": "Mechanics who restore hand-cranked machines for trade.",
+        "location_ids": [
+          "loc_rust_depot"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_no_power",
+        "statement": "No electronic device works anymore; every working machine is mechanical or hand-cranked.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_ash_hides",
+        "statement": "Wind erases tracks within hours, so travel across the dunes needs a diviner's or a runner's guidance.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_water_tithe",
+        "statement": "Anyone drawing from Cinder Well must leave a tithe of grain or labour.",
+        "category": "social"
+      },
+      {
+        "id": "rul_rain_rare",
+        "statement": "Rain falls only a few times a year and only on Glass Ridge.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_sky_burned",
+        "name": "The Burning Sky",
+        "era": "Year 0",
+        "description": "The sky burned for a season, scorching the land and killing the old cities.",
+        "location_ids": [
+          "loc_ash_dunes"
+        ]
+      },
+      {
+        "id": "evt_well_walled",
+        "name": "Walling of Cinder Well",
+        "era": "Year 9",
+        "description": "Survivors fused a slag wall around the Cinder Well to protect it from raiders.",
+        "location_ids": [
+          "loc_cinder_well"
+        ]
+      },
+      {
+        "id": "evt_depot_founded",
+        "name": "Founding of Rust Depot",
+        "era": "Year 21",
+        "description": "Menders gathered wrecked rail wagons and rebuilt them as hand-cranked haulers.",
+        "location_ids": [
+          "loc_rust_depot"
+        ]
+      },
+      {
+        "id": "evt_cult_rises",
+        "name": "Rise of the Well Keepers",
+        "era": "Year 33",
+        "description": "The Well Keepers began charging tithes at Cinder Well, claiming the sky's judgement.",
+        "location_ids": [
+          "loc_cinder_well"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_water_tithe",
+        "name": "The Water Tithe",
+        "description": "The Dune Runners resent the Well Keepers' growing tithes at Cinder Well.",
+        "faction_ids": [
+          "fac_dune_runners",
+          "fac_well_keepers"
+        ]
+      },
+      {
+        "id": "cnf_haulage_rights",
+        "name": "The Haulage Rights",
+        "description": "The Depot Menders and the Dune Runners disagree over who may use the rebuilt wagons on the dunes.",
+        "faction_ids": [
+          "fac_depot_menders",
+          "fac_dune_runners"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_ashfall_verge",
+    "characters": [
+      {
+        "id": "chr_sela",
+        "name": "Sela Okonjo",
+        "role": "protagonist",
+        "description": "A water-diviner who serves the Well Keepers as a tithe-collector at Cinder Well.",
+        "personality_traits": [
+          "patient",
+          "observant",
+          "wary"
+        ],
+        "motivation": "To get her caravan to Cinder Well with enough water to survive the crossing.",
+        "goal": "Negotiate passage and a fair tithe at Cinder Well.",
+        "flaw": "Underestimates people who seem weak.",
+        "internal_conflict": "She distrusts the Well Keepers but needs their well.",
+        "external_conflict": "The Well Keepers raise the tithe each season.",
+        "home_location_id": "loc_glass_ridge",
+        "faction_id": "fac_dune_runners",
+        "abilities": [
+          {
+            "name": "Water-divining",
+            "description": "Reads wind, soil and plant stress to judge where water lies.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Sela learns to bargain with the cult rather than flee it."
+      },
+      {
+        "id": "chr_vane",
+        "name": "Brother Vane",
+        "role": "antagonist",
+        "description": "An elder of the Well Keepers who rations Cinder Well's water and preaches that the sky punished the wasteful.",
+        "personality_traits": [
+          "stern",
+          "devout",
+          "calculating"
+        ],
+        "motivation": "To keep the well from being drained by outsiders.",
+        "goal": "Make every caravan pay the full tithe.",
+        "flaw": "Confuses control with devotion.",
+        "internal_conflict": "He half-suspects the doctrine is a convenient story.",
+        "external_conflict": "The Dune Runners resent his tithes.",
+        "home_location_id": "loc_cinder_well",
+        "faction_id": "fac_well_keepers",
+        "abilities": [
+          {
+            "name": "Tithe-reckoning",
+            "description": "Judges at a glance what grain or labour each traveller can afford to pay.",
+            "category": "social"
+          }
+        ],
+        "arc": "Vane learns that a well guarded by fear soon has no one left to guard it for."
+      },
+      {
+        "id": "chr_pip",
+        "name": "Pip Tarn",
+        "role": "supporting",
+        "description": "A young mechanic at Rust Depot who rebuilds hand-cranked haulers from salvaged rail wagons.",
+        "personality_traits": [
+          "inventive",
+          "restless",
+          "earnest"
+        ],
+        "motivation": "To prove the Depot can build haulers that cross the dunes.",
+        "goal": "Finish a hand-cranked hauler that can carry a caravan's water.",
+        "flaw": "Overpromises on repairs.",
+        "internal_conflict": "He wants the Runners' trust but covets their wagons.",
+        "external_conflict": "The Runners dispute the Menders' claim to the wagons.",
+        "home_location_id": "loc_rust_depot",
+        "faction_id": "fac_depot_menders",
+        "abilities": [
+          {
+            "name": "Crank-mechanics",
+            "description": "Rebuilds hand-cranked haulers from salvaged rail wagons.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Pip learns to share the haulers."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_sela_vane",
+        "source_character_id": "chr_sela",
+        "target_character_id": "chr_vane",
+        "relationship_type": "tithe-payer",
+        "description": "Sela must pay Vane's tithe to draw water.",
+        "conflict": "He keeps raising it."
+      },
+      {
+        "id": "rel_sela_pip",
+        "source_character_id": "chr_sela",
+        "target_character_id": "chr_pip",
+        "relationship_type": "ally",
+        "description": "Pip is building a hauler for Sela's caravan.",
+        "conflict": null
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "CHARACTER_WORLD_MISMATCH"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.characters[0].description"
+      ],
+      "reference_paths": [
+        "$.characters[0].faction_id",
+        "world::$.factions[1].description"
+      ],
+      "evidence_quotes": [
+        "serves the Well Keepers as a tithe-collector",
+        "fac_dune_runners"
+      ],
+      "anchor_terms": [
+        "tithe-collector"
+      ],
+      "rationale": "The description contradicts the character's own faction.",
+      "correction_hint": "Rewrite Sela's description as a Dune Runner diviner.",
+      "label_id": "CR-D20-L1"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Sela's description says she serves the Well Keepers as a tithe-collector, but her faction is the Dune Runners and her home is Glass Ridge."
+}

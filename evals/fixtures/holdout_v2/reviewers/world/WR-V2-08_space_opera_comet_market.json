@@ -1,0 +1,157 @@
+{
+  "case_id": "WR-V2-08",
+  "agent": "world",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "space_opera_comet_market",
+  "context_validated": true,
+  "brief": {
+    "title": "Ice and Coin",
+    "premise": "A guild factotum on a nomad market built into a captured comet must arbitrate the theft of a sealed star-map before the comet's perihelion burn scatters the fleet.",
+    "genre": "space opera",
+    "tone": "swashbuckling",
+    "target_audience": "adult",
+    "location_count": 5,
+    "constraints": [
+      "forbid:laser",
+      "require:comet",
+      "Ships manoeuvre on sails, tethers and reaction plumes; no energy weapons.",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_comet_market",
+    "name": "The Comet Market",
+    "description": "A captured comet hollowed into a rotating bazaar that rides its own orbit, where guilds, pilots and ice-miners trade under burn articles until perihelion scatters them.",
+    "locations": [
+      {
+        "id": "loc_core_vaults",
+        "name": "The Core Vaults",
+        "description": "Hollowed ice halls near the comet's heart where the ice barons keep their claims."
+      },
+      {
+        "id": "loc_tether_docks",
+        "name": "The Tether Docks",
+        "description": "The sprawl of tethers where ships berth against the comet's slow spin."
+      },
+      {
+        "id": "loc_map_house",
+        "name": "The Map House",
+        "description": "The guild house where star-maps are drawn, sealed and registered."
+      },
+      {
+        "id": "loc_cinder_gardens",
+        "name": "The Cinder Gardens",
+        "description": "Sunward glasshouses in the slag skin where growers farm the perihelion light."
+      },
+      {
+        "id": "loc_long_hall",
+        "name": "The Long Hall",
+        "description": "The arbitration hall where claims are heard under the burn articles."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_mapmakers",
+        "name": "The Mapmakers' Guild",
+        "description": "The guild that draws, seals and arbitrates every registered star-map.",
+        "location_ids": [
+          "loc_map_house",
+          "loc_long_hall"
+        ]
+      },
+      {
+        "id": "fac_ice_barons",
+        "name": "The Ice Barons",
+        "description": "Claim-holders who mine the core and buy up tethers before each burn.",
+        "location_ids": [
+          "loc_core_vaults"
+        ]
+      },
+      {
+        "id": "fac_free_pilots",
+        "name": "The Free Pilots' Compact",
+        "description": "Independent pilots who fly the routes the guilds only chart.",
+        "location_ids": [
+          "loc_tether_docks"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_burn_articles",
+        "statement": "At perihelion every claim is settled or forfeited; nothing litigates through the burn.",
+        "category": "social"
+      },
+      {
+        "id": "rul_map_seal",
+        "statement": "A sealed star-map may be opened only by its sealer or by the arbiter of the Long Hall.",
+        "category": "social"
+      },
+      {
+        "id": "rul_no_energy_arms",
+        "statement": "Weapons aboard are blades, tools and harpoons; powered arms breach the market's charter.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_ice_tithe",
+        "statement": "Every ship pays an ice-tithe for its berth; unpaid tithes cost tether rights.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_capture",
+        "name": "The Capture",
+        "era": "The First Orbit",
+        "description": "Free pilots netted the comet, hollowed its core and founded a market no planet could tax.",
+        "location_ids": [
+          "loc_core_vaults"
+        ]
+      },
+      {
+        "id": "evt_map_wars",
+        "name": "The Map Wars",
+        "era": "The Second Orbit",
+        "description": "Rival charts nearly wrecked the fleet at a perihelion; the guild won the right to seal every route.",
+        "location_ids": [
+          "loc_map_house"
+        ]
+      },
+      {
+        "id": "evt_compact",
+        "name": "The Pilots' Compact",
+        "era": "The Third Orbit",
+        "description": "The free pilots won arbitration rights in the Long Hall after refusing to fly sealed routes.",
+        "location_ids": [
+          "loc_long_hall",
+          "loc_tether_docks"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_stolen_chart",
+        "name": "The Stolen Chart",
+        "description": "A sealed map of the perihelion route was stolen and resold; the guild calls it piracy, the pilot who holds it calls it salvage.",
+        "faction_ids": [
+          "fac_mapmakers",
+          "fac_free_pilots"
+        ]
+      },
+      {
+        "id": "cnf_tether_rights",
+        "name": "The Tether Grab",
+        "description": "The ice barons are buying up tethers before the burn, stranding pilots who owe ice-tithes.",
+        "faction_ids": [
+          "fac_ice_barons",
+          "fac_free_pilots"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's nomad comet-market setting; deterministic validators are clean and there are no blocking defects."
+}

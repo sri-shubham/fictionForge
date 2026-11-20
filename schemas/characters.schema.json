@@ -1,0 +1,274 @@
+{
+  "$defs": {
+    "Character": {
+      "additionalProperties": false,
+      "description": "A story character with role, motivation, conflicts, and development arc.",
+      "properties": {
+        "abilities": {
+          "description": "Structured abilities or skills.",
+          "items": {
+            "$ref": "#/$defs/CharacterAbility"
+          },
+          "maxItems": 10,
+          "title": "Abilities",
+          "type": "array"
+        },
+        "arc": {
+          "description": "Character development arc summary.",
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Arc",
+          "type": "string"
+        },
+        "description": {
+          "description": "Character background, identity, and look.",
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "external_conflict": {
+          "description": "External opposition.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "External Conflict",
+          "type": "string"
+        },
+        "faction_id": {
+          "anyOf": [
+            {
+              "pattern": "^fac_[a-z0-9_]{1,48}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional faction; must exist in the referenced world.",
+          "title": "Faction Id"
+        },
+        "flaw": {
+          "description": "Internal weakness.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Flaw",
+          "type": "string"
+        },
+        "goal": {
+          "description": "Concrete objective.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Goal",
+          "type": "string"
+        },
+        "home_location_id": {
+          "description": "Home or primary location; must exist in the referenced world.",
+          "pattern": "^loc_[a-z0-9_]{1,48}$",
+          "title": "Home Location Id",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier; chr_ prefix.",
+          "pattern": "^chr_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "internal_conflict": {
+          "description": "Personal struggle.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Internal Conflict",
+          "type": "string"
+        },
+        "motivation": {
+          "description": "Primary driving motivation.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Motivation",
+          "type": "string"
+        },
+        "name": {
+          "description": "Non-empty character name.",
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "personality_traits": {
+          "description": "Traits that define personality.",
+          "items": {
+            "maxLength": 120,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 20,
+          "title": "Personality Traits",
+          "type": "array"
+        },
+        "role": {
+          "description": "Narrative role: protagonist, antagonist, or supporting.",
+          "enum": [
+            "protagonist",
+            "antagonist",
+            "supporting"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "role",
+        "description",
+        "motivation",
+        "goal",
+        "flaw",
+        "internal_conflict",
+        "external_conflict",
+        "home_location_id",
+        "arc"
+      ],
+      "title": "Character",
+      "type": "object"
+    },
+    "CharacterAbility": {
+      "additionalProperties": false,
+      "description": "A structured capability, skill, or power belonging to a character.",
+      "properties": {
+        "category": {
+          "default": "other",
+          "description": "Machine-readable ability category for downstream guardrails.",
+          "enum": [
+            "physical",
+            "mental",
+            "social",
+            "supernatural",
+            "technological",
+            "other"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "description": {
+          "description": "What the ability allows.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the ability.",
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ],
+      "title": "CharacterAbility",
+      "type": "object"
+    },
+    "CharacterRelationship": {
+      "additionalProperties": false,
+      "description": "A directed relationship between two characters.",
+      "properties": {
+        "conflict": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Optional source of tension in the relationship.",
+          "title": "Conflict"
+        },
+        "description": {
+          "description": "Nature of the relationship.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier; rel_ prefix.",
+          "pattern": "^rel_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "relationship_type": {
+          "description": "Type such as friend, enemy, ally, rival, mentor.",
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Relationship Type",
+          "type": "string"
+        },
+        "source_character_id": {
+          "description": "Subject of the relationship.",
+          "pattern": "^chr_[a-z0-9_]{1,48}$",
+          "title": "Source Character Id",
+          "type": "string"
+        },
+        "target_character_id": {
+          "description": "Object of the relationship.",
+          "pattern": "^chr_[a-z0-9_]{1,48}$",
+          "title": "Target Character Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source_character_id",
+        "target_character_id",
+        "relationship_type",
+        "description"
+      ],
+      "title": "CharacterRelationship",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Complete set of characters and their relationships for a given world.",
+  "properties": {
+    "characters": {
+      "description": "Characters who inhabit the world.",
+      "items": {
+        "$ref": "#/$defs/Character"
+      },
+      "maxItems": 20,
+      "minItems": 1,
+      "title": "Characters",
+      "type": "array"
+    },
+    "relationships": {
+      "description": "Directed relationships between characters.",
+      "items": {
+        "$ref": "#/$defs/CharacterRelationship"
+      },
+      "maxItems": 100,
+      "title": "Relationships",
+      "type": "array"
+    },
+    "world_id": {
+      "description": "References the source world.",
+      "pattern": "^wld_[a-z0-9_]{1,48}$",
+      "title": "World Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "world_id",
+    "characters"
+  ],
+  "title": "CharacterSet",
+  "type": "object"
+}

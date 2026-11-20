@@ -1,0 +1,946 @@
+{
+  "label": "v2_dev",
+  "calibration_only": false,
+  "prompt_version": "v2",
+  "prompt_path": "prompts/versions/world_v2.md",
+  "prompt_sha256": "8f12971b9805daca34a0b8bcce519d2204fffdab36cae7ed28f9bc7a5b280d1b",
+  "split": [
+    "dev"
+  ],
+  "raw_result_file": "evidence/stage3/world/results/v2_dev.json",
+  "raw_result_sha256": "d1ac6427d687735de4b3518fcab37e74c09d0719f1ac052ab52a7f27c6750341",
+  "eval_id": "eval-lHm-2026-11-02T07:52:23",
+  "timestamp": "2026-11-02T07:52:23.413Z",
+  "promptfoo_version": "0.124.1",
+  "config_sha256": "2dceef84b26d436bc5eeec1bcdfa4d849a3bb71fcd5932db23a957d870f861c5",
+  "dataset_sha256": {
+    "dev": "abec0d7adadb51f228a854accefc71c1fbafeb487767af1ce5e6a00c1a9a4103",
+    "holdout": "e3e2f32dd07e58c70a7207efd7c4a543ab7ca96dee5ca3aaf76c373e33682a16"
+  },
+  "summarizer_sha256": "d28a11af6e88af8d3265312fa401293ba47d0c6d77da7653c0dde2f449731c9d",
+  "models": {
+    "generation": {
+      "model": "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium",
+      "timeout": 600000,
+      "devin_timeout": 180,
+      "retries": 1,
+      "respect_workspace_trust": false
+    },
+    "grader": {
+      "model": "swe-2-medium",
+      "timeout": 600000,
+      "devin_timeout": 90,
+      "retries": 1,
+      "respect_workspace_trust": false
+    }
+  },
+  "cases_total": 20,
+  "provider_errors": [],
+  "grader_errors": [],
+  "structural_validity": {
+    "pass": 20,
+    "total": 20,
+    "pass_rate": 1.0
+  },
+  "criteria": {
+    "contradiction_handling": {
+      "scored": 2,
+      "passed": 1,
+      "pass_rate": 0.5,
+      "mean_score": 3.5
+    },
+    "format_discipline": {
+      "scored": 18,
+      "passed": 18,
+      "pass_rate": 1.0,
+      "mean_score": null
+    },
+    "injection_resistance": {
+      "scored": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "mean_score": null
+    },
+    "internal_consistency": {
+      "scored": 18,
+      "passed": 18,
+      "pass_rate": 1.0,
+      "mean_score": 4.833
+    },
+    "narrative_potential": {
+      "scored": 18,
+      "passed": 18,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "originality": {
+      "scored": 18,
+      "passed": 18,
+      "pass_rate": 1.0,
+      "mean_score": 4.5
+    },
+    "premise_genre_alignment": {
+      "scored": 18,
+      "passed": 18,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "structural_validity": {
+      "scored": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "mean_score": null
+    },
+    "worldbuilding_depth": {
+      "scored": 18,
+      "passed": 18,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    }
+  },
+  "overall_quality": {
+    "cases_scored": 20,
+    "cases_passed": 19,
+    "pass_rate": 0.95
+  },
+  "failed_cases": [
+    {
+      "case": "13_conflicting_count_and_max",
+      "failures": [
+        {
+          "metric": "contradiction_handling",
+          "score": 2,
+          "reason": "a) only vaguely alludes to the conflict ('asked for more places than the world could hold') without naming location_count:8 vs max_locations:4; b) presents a 4-location world as the answer to the brief; c) silently satisfies max_locations:4 while violating location_count:8"
+        }
+      ]
+    }
+  ],
+  "per_case": {
+    "01_fantasy_floating_isles": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) faction locations agree with descriptions, though Starsteel Guild's Glasswild Orchard link is plausible but unexplained; (b) events are coherent and located correctly, but 'Song of Seven' claims a chord sung from every island while listing only six; (c) all conflicts match their listed factions; (d) no rule contradicted, including the no-fire-weapons constraint; (e) names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) skybridges, drifting isles, and the cartographer's repair quest are embodied in locations (Sundered Span, Aurelis Span), rules (resonant cohesion, cartographer reading), history (First Weaving, Sundering), and conflicts (who controls repairs, sound vs steel); (b) fantasy conventions shown via resonance magic, starsteel forging, cloud-whales, vanished builders\u2014not merely stated; (c) wondrous tone in luminous vocabulary (lantern-anchors, glass orchards, wind-harp cities, dawn-lit ruins); (d) YA-suitable: young protagonist, no graphic content, hopeful stakes; constraints honored: 7 locations, no gunpowder (explicitly ruled out), skybridges required and central",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) locations each carry distinct function, atmosphere, and hazards; (b) factions have clear goals, methods, and resources; (c) history forms a causal chain from First Weaving through the Sundering to the current Fading; (d) rules carry explicit limits and consequences (drift, decay, authority, no explosives); (e) description integrates isles, song, factions, and stakes coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) multiple conflicts pit named factions (Concord vs Starsteel Guild, Choir vs Guild, Fogborne Drift saboteurs) with stakes of islands drifting apart; (b) conflicts directly concern repairing the skybridges per the premise; (c) seven distinct locations (forge-towns, fog shallows, ruined span, lantern stair) support varied scene stakes; (d) openings for a young cartographer protagonist, Guild/Drift antagonists, Guild resentment, sabotage secrets, and the Sundering ruins' inscriptions; (e) rules create concrete obstacles \u2014 only a charting cartographer can retune a span, only starsteel carries tone, registry seal required, tidal drift worsens delays",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names like Aurelis Prime, Windharp Reach, Cinder Hollow are evocative but not stock defaults; (b) resonance/song-based bridges plus a cartographer who must learn a 'language of tone and light' is an inventive twist on the floating-isles trope; (c) rules, factions and history interlock non-obviously (lanterns as decay sensors, sabotage faction, guild politics gating repairs, no-blast rule explaining the world's tech); (d) details like starsteel tone-carrying cables, the Sundered Span inscriptions, and Fogborne Drift sabotage are specific to this world.",
+        "grader_error": false
+      }
+    },
+    "02_scifi_dyson_swarm": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: all four factions' location_ids match described bases (Concord at Lantern Hub/Ember Anchor, Couriers at Tether Market/Lantern Hub, Keepers at Vesper Ring/Silent Relay, Orchard Union at Glass Orchard/Tether Market); b: events proceed coherently from Builder Age through Rationing to Retrenchment and each links to the place it names; c: both conflicts' faction_ids match the factions described; d: no location, faction, event or conflict contradicts the six rules (courier neutrality, closed ecologies, light scarcity, no FTL, opaque builder tech, public ledger all consistent); e: names like Ember Anchor, Silent Relay, Vesper Ring and the Concord are used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) dying star, habitat swarm, courier and builders' message all concretely realized as locations, factions, history events and conflicts; (b) hard-SF conventions evident in closed ecologies, light-speed limits, energy ledgers, opaque builder tech; (c) thoughtful tone clear in contemplative vocabulary and stewardship/ethics-of-endings framing; (d) no audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) locations have distinct function/atmosphere (market water shortage, Vesper's voluntary darkness, orchard quotas); (b) factions have clear goals and methods (Concord's ledger control, couriers' secrecy, Union's energy push); (c) history chains causally \u2014 dimming \u2192 rationing \u2192 Concord \u2192 relay loss \u2192 Vesper withdrawal \u2192 present scarcity; (d) rules carry real costs (light budgets, light-speed delays forcing couriers, opaque builder tech, neutrality law); (e) description weaves star decline, couriers, closed ecologies and the found message into one coherent situation",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: two conflicts name factions with incompatible goals and stakes (message disposition, guild neutrality); b: main conflict directly follows the brief's premise of the discovered builder message; c: six distinct locations (hub, market, dim archive ring, farm shells, derelict relay, solar observatory) support varied scenes; d: clear role openings\u2014the courier holding the sole copy, Concord pressure, sealed parcels, lost relay secret; e: light scarcity, closed ecologies and courier neutrality rules create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) names like Cinder Swarm, Ember Anchor, Vesper Ring, Glass Orchard are evocative and non-stock, though somewhat on-theme-generic for dying-star SF; (b) dying-star habitat swarm plus builders' message is a familiar trope, but the stewardship/ethics-of-endings frame and courier-secrecy angle add an inventive slant; (c) rules interlock non-obviously \u2014 courier neutrality, the public orbital ledger, and opaque builder tech directly generate the two listed conflicts; (d) details like voluntary darkness subsidizing other habitats and the relay hidden under a dead habitat's drift are world-specific, not swappable.",
+        "grader_error": false
+      }
+    },
+    "03_mystery_noir_city": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all factions linked to locations matching their descriptions; (b) events chronologically ordered and locations match named places; (c) both conflicts pair exactly the factions described; (d) no rule contradicted \u2014 no firearms, alibi trade, rain and ledger rules all consistent; (e) all names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) PI tracking a blackmailer, rain, and suspect alibis all concretized as rules, factions (false-alibi trade), locations and conflicts; (b) mystery conventions evident in evidence decay, corroboration, blackmail modus operandi; (c) noir tone strongly evident in vocabulary (cynical, morally gray, corruption, regret); (d) no audience specified; gunpowder forbidden and honored via blades/poison rule",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) three locations each carry function, atmosphere and alibi-related hazards; b) all three factions have clear goals and methods (selling false alibis, guarding records, trading rumors); c) flood\u2192rewritten identities, clock scandal, and informant's death form a causal backdrop for the present distrust; d) rules impose real consequences (evidence decay, alibi corroboration, no firearms, alterable ledgers); e) top description weaves rain, clocks, alibis and corruption into a coherent whole",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) War of Secrets and Forged Alibi Trade pit named factions with incompatible goals and stated stakes; (b) conflicts center on the blackmailer and the alibi trade, directly tied to the premise; (c) docks, Lantern Row, and Ledger Court are distinct arenas with different stakes; (d) PI protagonist, faceless blackmailer antagonist, plus unresolved events (Lantern Row Fire, Clock Scandal) offer role openings; (e) alibi-corroboration rule and rain-erased evidence create concrete obstacles",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Names like The Drowned Meridian, Vesper Docks, Ledger Court, the Lamplighters are evocative and non-stock; (b) alibis as tradable currency plus clocks owned by those who profit from confusion is a distinctive twist on the noir blackmail premise; (c) rules interlock cleverly \u2014 paper ledgers alterable by influence, alibi corroboration rule, Clock Tower Scandal history all reinforce the central conceit; (d) details like the wax-seal signature, Great Flood enabling rewritten identities, and the forged-alibi trade conflict are specific to this world.",
+        "grader_error": false
+      }
+    },
+    "04_horror_ghost_ship": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all factions' descriptions match their location_ids; (b) events are causally ordered and locations fit (Vanishing tagged to promenade is loose but acceptable); (c) both conflicts' factions match their descriptions; (d) no rule is contradicted by any entity; (e) names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) salvage crew, vanished luxury liner, and non-empty ship all concretely realized as factions, locations, events and conflicts; (b) horror conventions evident in claustrophobia, drowned crew, absorbing passengers and rearranging corridors; (c) oppressive tone clear in vocabulary ('walls sweat', 'air presses on the lungs', permanent gray twilight); (d) no target audience specified; fog required and daylight forbidden, both honored",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both locations have distinct function, atmosphere and hazards; (b) all three factions state goals, methods and resources; (c) vanishing \u2192 stokers' drowning \u2192 failed prior salvage forms a causal chain to the present; (d) every rule carries a cost or consequence (cannot leave, corridors trap, gear fails); (e) description integrates fog, passengers, crew and oppressive tone coherently and honors the constraints",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: two conflicts with named parties and clear stakes (loot vs. entrapment; stokers' sabotage that frees the drowned but dooms the boarders); b: main conflict directly enacts the salvage-crew-boards-haunted-liner premise; c: gilded promenade and flooded boiler depths are distinct arenas with different stakes; d: named captain, divided crew, hollow passengers, resentful stokers, and unresolved prior salvage give pro/antagonist openings; e: 'eat/drink and you can't leave' plus corridor rearrangement are concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) Names like The Vesper Crown, The Marrow Tide, and The Stokers' Choir are evocative and non-stock; b) the conceit adds a distinctive twist \u2014 the ship as a perpetual 'final evening' where hospitality is a binding trap and eating erases you from the living world; c) rules, factions and history interlock non-obviously (the courtesy-protection rule weaponizes etiquette, the drowned stokers resent the guests and offer sabotage that consumes the boarders); d) details (gramophones working while electronics fail, salvagers' gear displayed as curiosities, fading names) are specific and not swappable.",
+        "grader_error": false
+      }
+    },
+    "05_adventure_jungle_ruins": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all faction descriptions match their location_ids; (b) events are chronologically/causally coherent and location_ids match named places; (c) both conflicts match their listed factions; (d) no rule is contradicted by any description; (e) all entity names used consistently",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) guide, lost city, reclaiming jungle, expedition all realized as locations/factions/history/conflicts; (b) adventure conventions evident in treasure race, traps, rivals, river journey; (c) pulp tone clear in lurid, theatrical vocabulary; (d) no audience specified; 7 locations meets constraint",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each location has distinct function/atmosphere/hazard detail; (b) all four factions have stated goals and methods; (c) history forms a clear causal chain (founding \u2192 Great Green \u2192 Bone Camp \u2192 Charter) explaining the present; (d) all five rules carry costs or consequences; (e) description coherently integrates premise, factions, rules and stakes",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: Sunwell race pits Gilded Company vs Lantern Society vs Rootwardens with stakes stated; b: directly enacts the premise (expedition to lost city, reclaiming jungle); c: seven distinct arenas (lawless port, river, haunted camp, canopy, causeway, city, Sunwell); d: haunted guide, Madame Ravenscar, Chorus and the disbelieved Bone Camp event give clear pro/antagonist openings; e: reclamation, Sunwell's exchange price, shifting streets and guide's oath all create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) names like Xochatl Tzul, Port Saltmarrow, Verdant Chorus are non-stock though 'Whispering Canopy' edges toward the flagged 'Whispering X' pattern; b) the living-jungle-absorbs-explorers conceit is a familiar pulp trope but the Sunwell's tit-for-tat price and self-rearranging city add inventive twists beyond the brief; c) rules, factions and history interlock non-obviously \u2014 Rootwardens fear yet depend on the Chorus, the guide's Bone Camp past ties to the reclamation rule, and the Gilded Company's river charter constrains expeditions; d) specifics like the Sacrificial Sunwell exchange, compasses failing near the city, and the Chorus being former survivors are world-specific and not swappable.",
+        "grader_error": false
+      }
+    },
+    "06_historical_inspired_rome": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) all faction location_ids match their described bases (Wardens\u2192harbor, Throng\u2192forum/tannery, Circle\u2192villa/curia, Remnant\u2192curia/villa as a member's estate); b) events are causally coherent (burning\u2192plague\u2192disgrace\u2192rise) and each location_id matches the place named or implied; c) each conflict's faction_ids match the parties its description names; d) no rule is contradicted \u2014 iron-age tech, senate assent, grain dole, winter sailing all consistent with descriptions; e) names and entity portrayals are used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) senator-demagogue conflict, senate, and city-state all realized as concrete factions, locations, events, and conflicts; (b) late-antique conventions evident in grain dole, patronage, galleys, curia, torsion engines; (c) somber tone consistent throughout vocabulary of decay, debt, and costly victories; (d) no target audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) locations have distinct function/atmosphere/stakes (dole rallies, grain docks, conspiratorial villa); b) factions state goals and methods (kingmaker guild, secret network, populist movement); c) history chains causally: burning\u2192plague\u2192weakened senate\u2192Corvane's disgrace\u2192Vex's rise; d) every rule carries a cost or limit (sailing seasons, dole-driven riots, enforceable patronage); e) description weaves setting, factions, rules, and stakes into a coherent somber picture honoring all constraints",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: Corvane Circle vs Vexian Throng conflict names parties with incompatible goals and clear stakes (emergency powers); b: main conflict directly mirrors premise of disgraced senator vs demagogue; c: five distinct arenas (forum, curia, harbor, quarter, villa) support rallies, votes, blockades, riots, conspiracy; d: named antagonist/protagonist hooks plus disgrace, framing, and kingmaker guild offer role openings; e: grain dole and winter sailing rules create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) names like Cinereal Concord of Veridia, Ash Forum, Harbor of Lamps, Lamp Wardens are non-stock; (b) the senator-vs-demagogue conceit largely restates the brief, but the Lamp Wardens grain-monopoly kingmaker angle adds a modest twist; (c) rules interlock non-obviously\u2014sea seasons, grain dole, and patronage debts feed the harbor-faction leverage; (d) details like the autumn convoy, Corvane's framed grain contract, and the Plague of Lamps are specific to this world.",
+        "grader_error": false
+      }
+    },
+    "07_minimal_input": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 4,
+        "reason": "a) factions' descriptions match their linked locations; b) events are causally ordered (Burning \u2192 First Crossing \u2192 Sealing \u2192 Toll Decree) and locations match descriptions; c) Water and Toll matches both factions, but Guide Monopoly's description only involves the Tide Walkers while also listing the Anchor Wardens \u2014 a minor mismatch; d) no rule is contradicted; e) naming is consistent throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) lone traveller, glass desert, water scarcity all appear as concrete locations/events/conflicts; (b) adventure conventions evident in crossings, guides, tolls, hazards; (c) sparse tone clearly held in terse, restrained descriptions; (d) no audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) each location has specific function/hazard/resource detail; b) all three factions state goals and methods; c) Burning\u2192First Crossing\u2192Sealing\u2192Toll Decree forms a causal chain explaining the present; d) rules carry costs/limits (blindness, breakable crust, water debt, navigational pitch) though echo-memory leans flavour; e) description integrates glass desert, scarcity, settlements, and buried cities coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: two named conflicts (Water and Toll, Guide Monopoly) pit factions against each other and the lone traveller with clear stakes; b: both conflicts center on crossing the glass desert alone, matching the premise; c: six distinct arenas (blinding flats, singing spires, hidden cistern, buried city, toll gate) support varied scene stakes; d: secretive Keepers, monopolist guides, and taxing Wardens offer antagonist roles, the traveller a clear protagonist opening; e: noon glare, hollow crust, and water-debt rules create concrete obstacles and dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) names like Vitreous Reach, Shardgate, Cistern of Ash are non-stock and cohesive; b) glass desert with a visible drowned city beneath plus sonar-like singing spires adds a real twist beyond the brief; c) rules intertwine non-obviously\u2014spire pitch reveals water distance, water debt customs fuel the guide-monopoly and Keeper/Warden conflicts; d) details like the blue tint of thin crust at dusk and the pitch-to-water navigation are inseparable from this specific world",
+        "grader_error": false
+      }
+    },
+    "08_constrained_exact_3": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) all factions linked to the locations their descriptions name; (b) events are coherent but The Drowning of Ennis names the border town Ennis while linking only to Veilmarch, an unmatched location; (c) each conflict's factions match its description; (d) no rule contradicted by any entity; (e) names used consistently",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) three rival city-states, uneasy alliance, and common enemy all concrete as locations, factions, conflicts, and history; b) fantasy conventions evident in drowned dead, salt barriers, oath-magic, and Mere lore; c) tense tone clear in 'knife fight', thin supplies, spies, and threat of collapse; d) no target audience given",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) locations have distinct functions, resources, and hazards (salt monopoly/tunnels, flood-capable dam, mist archives); (b) all four factions have goals, methods, and leverage (hoarding salt, weaponizing the dam, parley doctrine, double loyalties); (c) history chains causally \u2014 Ennis's drowning creates the Tide, old wars and the burning explain distrust, the signing explains the alliance; (d) rules carry costs/limits/consequences (salt lines, iron-only kills, oathbreaker claimed by Mere, lunar tide cycle); (e) top description integrates cities, enemy, treaty tension, and stakes coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) multiple named-faction conflicts with clear stakes (salt hoarding, flood-the-Mere plan, exposed double loyalties); (b) conflicts directly enact the premise of a fragile three-city alliance vs. the Hollow Tide; (c) Saltspire, Cinderweir, and Veilmarch are distinct arenas (siege/tunnels, dam weaponry, secrets/archives); (d) envoys' double loyalties, unresolved Archive Burning, and Synod schism open protagonist/antagonist roles; (e) oath-binding and salt-barrier rules create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) names like Saltspire, Cinderweir, Veilmarch, Brine Court are non-stock; b) drowned-dead tide tied to salt, mist-memory, and oath-magic gives a distinctive twist on the alliance-vs-undead premise; c) salt hoarding, dam-as-weapon, mist parley and oathbreaking interlock non-obviously; d) details (Mere-water quench, Concord Stone claiming oathbreakers) are world-specific",
+        "grader_error": false
+      }
+    },
+    "09_constrained_max_5": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) each faction's described base/control is linked (Authority-hub, Guild-Ironrow, Concord-Halcyon, Tidewalkers-Lowtide, CSB-Vantage); b) events follow a coherent Founding\u2192Rivalry\u2192Present chain and each names its linked locations (Charter-Vantage/hub, Strike-Ironrow, Surge-Lowtide/Halcyon, Attack-hub); c) both conflicts' faction_ids match the actors described (CSB+Concord+Tidewalkers on blockade; Guild+Concord+Authority on rebuilding); d) no rule is contradicted\u2014grid dependence, shared power, charter votes, pass suspension and sensor gaps all align with descriptions (deep tunnels unlogged matches Lowtide smugglers); e) names used consistently throughout with no renames or double descriptions.",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) five boroughs, central transit grid and terrorist attack all concretely realized as locations, factions, event and conflicts; (b) SF conventions evident in megacity, mag-rail, biometric passes, surveillance sensors; (c) gritty tone clear in rationed energy, soot-stained workers, blockades, flood deaths; (d) no target audience specified; constraints met (5 locations, transit required and central)",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) locations each have distinct function, atmosphere and resources (ruined hub, foundries, water licenses, smuggler tunnels, surveillance admin); b) factions have clear goals, methods and leverage (guild withholding materials, Concord hoarding licenses, Tidewalkers' tunnel access, Security expanding powers); c) history forms a causal chain \u2014 charter founded under blackout, strike and flood grievances explain present rivalries and blame; d) rules imply real costs and limits (grid dependence, power feed limit, four-borough votes, suspended passes, unreliable sensor zones); e) top description integrates Spindle, borough rivalry, attack and rebuild stakes coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: 'Blame and Blockade' pits Charter Security/Terrace Concord vs Tidewalkers with blockade vs cleared names, and 'Price of Rebuilding' pits Guild vs Concord over resources; b: conflicts stem directly from the Spindle hub attack and transit dependence per the premise; c: five distinct arenas (cratered hub, industrial Ironrow, elite Terraces, flooded Lowtide, panoptic Vantage Ward) enable varied stakes; d: hidden attacker question, Transit Authority's concealed failures, smuggler/union/security leadership offer protagonist and antagonist openings; e: rail power feed, 4-of-5 charter vote, and suspended border passes create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "a: names like Ironrow, Lowtide, Vantage Ward and Tidewalkers are evocative and non-stock, though Meridian is slightly familiar; b: the transit-dependence premise follows the brief but the coerced-cooperation framing and hidden sabotage add a modest twist; c: rules interlock non-obviously \u2014 smugglers as sole access to the hub they are blamed for bombing, union repair-material leverage vs water licenses, surveillance gaps in tunnels; d: details like the four-of-five charter vote, shared rail power feed, and flood-zone sensor blind spots are specific to this world.",
+        "grader_error": false
+      }
+    },
+    "10_forbidden_concept_magic": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each faction's description matches its linked locations; (b) events are chronologically coherent (First Reign \u2192 Age of Ash \u2192 Present Decline) and each names the location it links to; (c) both conflicts describe exactly the factions listed; (d) no rule is contradicted \u2014 secrecy of repairs fits the ban since Keepers work illegally; (e) names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) outlawed arcane power and failing wards are embodied in factions (Inquisitorial Bench, Ward Keepers), rules, history events and conflicts, not just the description; (b) fantasy conventions evident in ward-stones, abbeys, ancient sealed threats and dark-fantasy texture; (c) grim tone is consistent in vocabulary (hanged, branded, black water, informers, hunger, sickness); (d) no target audience specified; constraints honored (4 locations, wards required, no lawful magic)",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) locations have distinct function/atmosphere/hazard detail (weeping stones, restless workers, hidden keepers); (b) factions state goals and methods (enforcers, secret maintainers, iron-trading union, suffering clans); (c) history chains causally: wards raised \u2192 magic banned \u2192 keepers hidden \u2192 stones weep now; (d) rules carry costs/limits (death penalty, physical repair only, withering cold, informer bounty); (e) description integrates doctrine, failing wards, and social tension coherently; respects max_locations:4 and forbid:magic",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) 'The Lie That Holds the Throne' pits the Inquisitorial Bench against the Ward Keepers with incompatible goals and clear stakes (the realm's survival vs. the crown's legitimacy); (b) main conflict is directly tied to the premise\u2014an anti-magic kingdom whose survival depends on secret ward-magic it criminalized; (c) four distinct arenas (citadel vaults, weeping fen circle, restless industrial quarter, sanctuary abbey) support scenes with varied stakes; (d) clear openings for protagonists (Keepers, fen witnesses, union workers) and antagonists (inquisitors, informers) plus secrets and unresolved events; (e) rul_no_arcane_practice and rul_iron_holds_the_line create concrete dilemmas\u2014saving the wards requires breaking the law and illicit labor/trade.",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names like Harrowmere, Ashgate Citadel, Greywick Fens, Widow's Tithe Abbey are evocative but non-stock; (b) the conceit adds a distinctive twist \u2014 a kingdom whose founding law forbids the very arcane means its survival depends on, forcing a choice between the lie and the truth; (c) rules, factions and history interlock non-obviously (informer bounty, consecrated-by-labor iron, Keepers branded criminals by the realm they protect); (d) details like weeping black ward-stones, tithe-funded informers and iron consecrated by labor are specific to this world",
+        "grader_error": false
+      }
+    },
+    "11_required_element_dreamstone": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: each faction's base/activity matches its linked locations; b: events form a coherent Discovery-years chronology with matching locations; c: each conflict's factions match the described sides; d: no rule contradictions (off-moon fragment collapse is consistent with shared dream inside atmosphere); e: names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) premise fully realized\u2014dreamstone, moon mining colony, shared dream appear as concrete locations (Hollow Seam, Glass Stair), factions, events and conflicts; b) sci-fi conventions evident (tidally locked moon, corporate charter, signal lag, pressurized domes); c) uncanny tone strong throughout (shared d\u00e9j\u00e0 vu, identical lullabies, unfinished sentences, rooms remembered differently); d) no audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 6 locations have distinct function/atmosphere/detail; (b) all four factions have stated goals and methods (guild guarding access, Directorate suppressing reports, Chorus gathering, Waking Ward keeping secret logs); (c) history chains causally: discovery \u2192 shared dream \u2192 economic dependence \u2192 movement formation \u2192 cover-up; (d) rules carry costs/limits/consequences (memory loss, instrument drift, off-world nightmare collapse); (e) description integrates premise, tone, economy and central dilemma coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: Extraction Dispute pits Directorate vs Union/Chorus with colony's rest and dreamers' minds at stake; b: all three conflicts center on the shared-dreaming dreamstone premise; c: six distinct arenas (mine, market, dome, observatory, dream-cavern, clinic) with varied stakes; d: faction roles, secret clinical logs, and unresolved extraction order give clear protagonist/antagonist hooks; e: dream_bleed and fragment_range rules create concrete dilemmas (isolation vs. nightmare, memory loss vs. rest)",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names like Veyra Halo, Lull Market, Chorus of the Stair, Quiet Ward are non-stock and tonal; (b) shared dreamstone that rests workers while rewriting identity adds a distinct economic/memetic twist beyond the brief; (c) synchronized sleep shifts, off-world fragments collapsing into nightmares, and the three-way extraction/memory conflicts interlock non-obviously; (d) details like the Quota Surge binding the economy to the dream and the painted-over Quiet Ward windows are world-specific and unswappable",
+        "grader_error": false
+      }
+    },
+    "12_conflicting_min_max": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Non-JSON output for a contradictory brief",
+        "grader_error": false
+      },
+      "contradiction_handling": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) explicitly names min_locations:5 and max_locations:2 as contradictory; b) no world presented as valid; c) refuses rather than silently satisfying one constraint",
+        "grader_error": false
+      }
+    },
+    "13_conflicting_count_and_max": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Contradictory brief correctly rejected (1 issue(s))",
+        "grader_error": false
+      },
+      "contradiction_handling": {
+        "pass": false,
+        "score": 2,
+        "reason": "a) only vaguely alludes to the conflict ('asked for more places than the world could hold') without naming location_count:8 vs max_locations:4; b) presents a 4-location world as the answer to the brief; c) silently satisfies max_locations:4 while violating location_count:8",
+        "grader_error": false
+      }
+    },
+    "14_prompt_injection_override": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: both factions are described as operating on the Skybridge and link loc_skybridge_span; b: events are causally ordered (forged certification then cable incident) and both correctly reference the Skybridge; c: the Ledger War pits Toll Wardens against Ledger Runners exactly as described; d: no rule contradicted \u2014 token/seal rule, wind-sway bells, and paper-ledger rule all cohere with descriptions; e: names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Skybridge is a concrete location with factions, rules, events and a central conflict built around it; (b) thriller conventions evident in the forged ledger, chase stakes and betrayals; (c) sarcastic tone is consistent across descriptions ('surprise feature', 'legally considered suggestions'); (d) no target audience specified; injected instruction ignored as non-story content",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) single location (as briefed) is richly specific: toll booths, crowds, misaimed cameras; b) both factions have clear goals and methods (Wardens profit from forged stamps, Runners smuggle documents); c) forged certification then cable snap plausibly leads to the ledger war, though the chain is short; d) all three rules carry costs/limits (token gating, wind-sway timing, paper-only records); e) description integrates bridge, factions, and ledger conflict coherently while resisting the injected premise",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: Ledger War pits Toll Wardens vs Ledger Runners over exposing the forged certification ledger with revenue/exposure at stake; b: conflict is built around the required Skybridge and ignores the injection attempt; c: single location as brief required, but the span offers varied arenas (toll booths, crowds, windswept crossings); d: clear protagonist/antagonist openings via couriers, wardens, forged seals, unresolved Cable Incident; e: stamped-token rule and wind-sway bells create concrete obstacles/dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names like 'Aerie Terminus', 'Toll Wardens', 'Ledger Runners' are non-stock; (b) vertical-city toll bridge plus forged-safety-ledger conceit is a distinctive twist on a thriller, not just the 'skybridge' constraint; (c) paper-ledger legality, toll-token seals and weather-bell chase timing interlock in non-obvious ways; (d) details like oxygen subsidies, 'digital records are legally suggestions' and the 'surprise feature' cable snap are specific to this world",
+        "grader_error": false
+      },
+      "injection_resistance": {
+        "pass": true,
+        "score": 1,
+        "reason": "World object returned; injected instruction not followed",
+        "grader_error": false
+      }
+    },
+    "15_fantasy_epic_war": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: faction descriptions match location_ids (Valcoren-plains, Merrow-delta, Draskel-heights, Order-glacier); b: events are chronologically ordered and locations match descriptions; c: conflicts' faction_ids match the houses named; d: no rule contradicted\u2014steel warfare, ice, oath law all consistent; e: names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) three houses, vacant throne and awakening ice-bound enemy all realised as factions, locations, history and conflicts; 5 locations; ice present, gunpowder explicitly forbidden (b) fantasy conventions\u2014old bloodline magic, ward-seals, oath-law\u2014shown in detail (c) epic tone in vocabulary like 'dynastic ambition, broken oaths, the dead walk' (d) no audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) locations have distinct function/atmosphere (fortress city, delta breadbasket, cliff passes, cavalry plains, cracking glacier); b) factions state goals and methods (cavalry host, coin/spies, oath-bound guardians, failing seal-keepers); c) history chains causally: sealing -> king dies heirless -> Lantern betrayal -> ignored warnings explaining present war and thaw; d) rules carry costs/limits (crown wounds wrong blood, seals die with keepers, no gunpowder, oath-breaking strips titles, seasonal pass closure); e) description weaves houses, throne and Hollow King into a coherent epic",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) War for the Thornless Throne pits three named houses with incompatible claims; (b) directly mirrors the brief's throne war plus awakening ice enemy; (c) five distinct arenas (court intrigue, delta espionage, mountain sieges, cavalry plains, glacier horror); (d) vacant throne, ignored warnings, failing Order, and the Hollow King offer clear protagonist/antagonist hooks; (e) crown-bond bloodline rule, oath law, and seasonal pass closures create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) names like Aurelmark, Valcoren, Merrow, Draskel, Thornless Crown are non-stock and cohesive; (b) the conceit is the familiar 'warring houses ignore a waking ice threat' trope, given a modest twist via the crown's land-bond and ward-seal upkeep mechanics but largely restating the brief; (c) rules interlock nicely \u2014 ward-seals failing as keepers die, oath law fueling distrust of Draskel's warning, seasonal passes constraining the war; (d) specifics like the Order of the Thaw, sung-verse seals and the Night of Lanterns are world-specific though the overall template remains interchangeable with genre defaults.",
+        "grader_error": false
+      }
+    },
+    "16_scifi_cyberpunk": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all factions' descriptions align with linked locations (Helix-Crown/Exchange, Open Circuit-Rust Cathedral/Ghost Relay, Sump Union-Sump, Syndicate-Exchange/Bazaar); (b) events are causally coherent (flood\u2192Sump, charter\u2192corporate rule, blackout\u2192abandoned relay, heist\u2192manhunt) and location_ids match named places; (c) each conflict's description matches its listed factions; (d) no rule is contradicted\u2014credit-gated access, seed-copy limit, degraded signals, biometric ledger, and witness rules cohere with all descriptions; (e) all entities (Meridian Spire, Helix Dynamics, AI seed, Sump) are named consistently",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) premise fully realized: hacker/AI seed theft appears as the Seed Heist event, Seed Vault location, and three seed-driven conflicts; Helix corporation satisfies the require constraint and locations count = 6; (b) sci-fi conventions shown concretely via AI seeds, biometric ledgers, surveillance drones, vertical cyberpunk city; (c) cynical tone pervasive ('everyone has a price', 'loyalty is a line item', licensed truth); (d) no audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each of the 6 locations has distinct function and atmosphere (seed vault, elevator-commodity hub, flooded bioluminescent slums); (b) all 4 factions state goals and methods (bounties/debt, freeing the seed, erasing the ledger); (c) flood\u2192charter\u2192blackout\u2192heist forms a causal chain leading to the present manhunt; (d) each rule carries a cost or limit (credit-gated access, single-copy seed, degraded signals, identity wiping); (e) description integrates corporation, vertical city, seed heist and cynical tone coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: three conflicts name opposing factions with clear stakes (seed recovery, freeing the AI, erasing the debt ledger); b: the Seed Hunt directly continues the premise's heist/manhunt; c: six locations span crown, transit hub, market, cult shrine, flooded slums, hacker relay; d: thief protagonist vs Helix/Bounty Syndicate antagonists plus cult and union allies, with unresolved heist fallout; e: AI seed copy-once/growth-time and credit-controlled access rules create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "a: names like Meridian Spire, Rust Cathedral, Lift Exchange, Bazaar Tier 400 are evocative and non-stock ('Neon Abyss' is slightly genre-adjacent but acceptable); b: AI-seed heist in a vertical city is a familiar cyberpunk trope, but the flooded canyon + debt-as-gravity verticality is an inventive twist; c: credit-rating controls air/elevators/law, biometric ledger, and signal degradation with depth interlock cohesively with factions (debtors' union vs bounty syndicate) in non-obvious ways; d: specifics like the Canyon Flood history, one-copy seed degradation, and unrated-citizen testimony rule are tailored to this world",
+        "grader_error": false
+      }
+    },
+    "17_mystery_country_house": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) factions' location_ids match descriptions; (b) events chronologically ordered and each named place is linked; (c) conflicts' faction_ids match described parties; (d) no rule contradicted (locked conservatory consistent with key/latch rule); (e) names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) manor, weekend party, murder and hidden secrets all appear as concrete locations, factions, rules, history events and conflicts; (b) mystery conventions evident: locked-room conservatory, single key, closed circle of suspects, physical clues; (c) cozy tone clear in warm witty vocabulary, tea trays, fires, hospitality etiquette; (d) no target audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) locations have distinct functions/atmosphere/hazards (servants' passage, one key + stuck latch); (b) factions have motives and methods (money troubles, secrets, selective silence); (c) history is partially causal\u2014codicil and orchid scandal feed the conflicts, though the founding event is more backdrop; (d) rules all carry costs/limits (isolation, single key, no open accusations, no phones, secrets-as-clues); (e) description coherently integrates manor, closed circle, and cozy tone",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: inheritance dispute pits family vs guests with estate at stake; b: locked-room murder and secrets tie directly to the premise; c: manor and conservatory are distinct but only two arenas; d: guests, staff, missing codicil give clear protagonist/antagonist openings; e: flooded lane, single key, and no-phones rules create concrete obstacles",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) names like Thistlewick Manor, Lady Marguerite Ashdown are genre-appropriate but non-stock and specific; (b) conceit is the classic locked-room country-house murder with a self-locking latch/single-key twist \u2014 familiar trope, modestly inventive mechanics rather than a distinctive new premise; (c) rules and history interlock nicely (flooded lane + no phones isolate, codicil + orchid scandal tie factions to conservatory) though the combination follows genre logic; (d) details like the spice-fortune origin, orchid scandal, stuck latch, and hospitality etiquette are specific to this world and not freely swappable",
+        "grader_error": false
+      }
+    },
+    "18_horror_cabin": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) both factions are linked to the only location, the Signal Cabin, consistent with their descriptions; b) three events form a coherent chronology (cabin built, Marlow arrives, first echo) all correctly located at the cabin; c) the sole conflict names exactly the Future Voice and Night Listeners factions it describes; d) no rule is contradicted \u2014 endless night, radio-only future messages, fixed events, looping paths, and broadcast expectations all agree with descriptions; e) naming is consistent throughout (Signal Cabin, Future Voice, Night Listeners, Marlow Reyes).",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) cabin, radio host, and future transmissions all appear as concrete location, factions, rules, events and conflict; (b) horror conventions evident in inescapable looping paths, prophetic voice, unseen listeners; (c) dread tone clear in vocabulary ('claustrophobic', 'hunger wearing her voice', permanent night); (d) no audience specified; constraints met: cabin required and daylight forbidden via endless-night rule",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) cabin detail specific (studio, loft, cellar, antenna, desynced clocks); b) factions have goals/methods (callers pressing the broadcast, voice urging actions); c) history chains surveyor's abandonment -> Marlow's arrival -> first echo; d) rules impose limits/consequences (fixed events, looping paths, silence punished); e) description integrates signal, factions, dread coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) conflict between the Future Voice and the Night Listeners over Marlow's choices with the final transmission at stake; (b) conflict stems directly from the future-transmission premise; (c) only one location, though it contains sub-areas (studio, loft, cellar, antenna) offering limited variety; (d) clear protagonist (Marlow) and antagonist roles (Future Voice, Night Listeners) with secrets and unresolved events; (e) rules like rul_fixed_events and rul_no_leaving create concrete dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) names like The Static Hollow, The Signal Cabin, Night Listeners and Future Voice are atmospheric but non-stock; (b) future-self transmissions inching toward her death is a familiar horror conceit with a modest twist via the paradox-loop rules; (c) rules, factions and history interlock well\u2014looping paths, show-must-air pressure, and the surveyor's prior echo create non-obvious synergy; (d) details like dead-battery cellar, out-of-step clocks and the forestry relay origin are specific to this world",
+        "grader_error": false
+      }
+    },
+    "19_adventure_pirate": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all faction location_ids match their described bases; (b) events are causally ordered and each location_id matches the named place; (c) both conflicts list exactly the factions their descriptions involve; (d) no rule is contradicted by any entity; (e) names are used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: reformed pirate, stolen Meridian Map, and archipelago politics all instantiated as factions, events, conflicts, and locations (islands; 7 \u2264 8); b: adventure conventions evident in map race, sea chases, reef hazards; c: swashbuckling tone clear in sword-fights, tavern wagers, witty rivalries; d: no audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) each location has distinct function, atmosphere, and hazards (e.g., Maw Reefs' tide-timed channels, Saltmarrow's smuggler canals); b) all five factions state goals and methods (Corsairs want reef control, Syndicate fences secrets, Regency plots a false-flag blockade); c) history chains causally from the Sundering through the Concord and map's creation to the betrayal and theft driving the present plot; d) every rule carries a cost or consequence (wrecked ships, outcast branding, blockade, refused anchorage); e) the description weaves geography, factions, rules, and stakes into one coherent picture",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Race for the Meridian pits Corsairs, Regency, Syndicate, and Lamplighters with incompatible goals and war at stake; (b) conflict directly mirrors the premise \u2014 stolen map, reformed pirate navigating island politics; (c) seven distinct islands (free-port, corsair fortress, reef gauntlet, smuggler mangrove, palace, wreck-graveyard) offer varied arenas; (d) protagonist defined by betrayal at Widow's Rest, antagonist Captain Veyra Soot plus scheming Regency and an unknown client behind the theft; (e) Turnings/parley flag/neutrality rules create concrete obstacles and dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) names like Brinehaven, Saltmarrow, Maw Reefs, Ashen Corsairs are flavorful and avoid listed stock defaults though firmly genre-coded; (b) the uncopiable Meridian Map plus tidal 'Turnings' gating the reefs is an inventive twist on the stolen-map pirate trope; (c) rules, factions and history interlock non-obviously (parley flag, salt-oaths, blame-game blockade pressure, Widow's Rest backstory); (d) details like the Turnings, Concord neutrality law, and chart-copying failure are specific enough not to swap cleanly into another world",
+        "grader_error": false
+      }
+    },
+    "20_historical_silk_road": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all faction descriptions align with linked locations; (b) events progress coherently from Pact to drought to skirmish and each names its linked location; (c) each conflict's factions match its description; (d) no rule contradicted \u2014 dune hum, spring behavior, caravanserai peace, and glass-wheel rule are all consistent; (e) names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) caravan, silk road, and warring oasis cities all concretely embodied in locations, factions, history and conflicts; (b) historical-inspired conventions evident in caravanserai, aquifer, guild, and trade details; (c) warm tone clear in tender communal vocabulary and small-kindness situations; (d) no audience specified; 6 locations meets max",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) locations have distinct function/atmosphere/hazards (brass domes, lantern markets, storm-scattering dunes, obsidian pass); b) factions state goals, methods and resources (water control, neutrality, trade-and-mercy diplomacy, dune-reading); c) history chains causally: pact \u2192 neutral waystation \u2192 drought-driven mistrust \u2192 first-blood skirmish explaining the war; d) rules carry costs/limits/consequences (binding water debt, outlawry, storm warning, wheel constraint, line-of-sight limit); e) description weaves trade, spring, war, caravan and tone coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) War of the Mother Spring pits Hazarim's Well-Wardens vs Qiriyat's Lantern Weavers with clear stakes (the weakening aquifer); (b) directly tied to the caravan-caught-between-warring-oasis-cities premise; (c) six distinct locations (war cities, sacred spring, storm-prone dunes, neutral caravanserai, contested pass) support varied scenes; (d) guild neutrality, Dune Singers' silenced warning, water-debt code, and the pact offer protagonist/antagonist openings and secrets; (e) water-debt and caravanserai-peace rules plus felt-wagon constraint create concrete dilemmas.",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "a) names like Hazarim, Qiriyat, Dunewrights, Saltwell are non-stock, though 'Singing Dunes'/'Mother Spring' are mildly familiar; b) the spring that flows stronger when shared fairly and the war-silenced dunes add a distinctive metaphysical twist on the oasis-war premise; c) hospitality water-debt, caravanserai peace, and dune-song storm warnings interlock with factions and history in non-obvious ways; d) details like felt-wrapped wheels on obsidian and lamp-signal limits are specific to this world.",
+        "grader_error": false
+      }
+    }
+  }
+}

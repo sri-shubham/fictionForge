@@ -1,0 +1,504 @@
+{
+  "case_id": "SR-D06",
+  "agent": "storyboard",
+  "split": "dev",
+  "category": "multiple_subtle",
+  "slug": "costless_renewal_crown_inspector_closed_before_summoned",
+  "context_validated": true,
+  "brief": {
+    "title": "The Salt Ledger",
+    "premise": "In a city built on a tidal flat, a debt-clerk discovers that the tide-bound magic that keeps the sea out is being quietly overdrawn, and must expose the guild hiding the shortfall before the next spring tide.",
+    "genre": "fantasy",
+    "tone": "tense",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:gunpowder",
+      "require:tide",
+      "Magic must always carry a visible physical cost.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_saltmere",
+    "name": "Saltmere",
+    "description": "Saltmere is a walled city on a tidal flat where tide-bound magic holds back the sea and every working of it is recorded as a debt in the Salt Clerks' ledgers.",
+    "locations": [
+      {
+        "id": "loc_ledger_hall",
+        "name": "Ledger Hall",
+        "description": "The counting-house where tide-debts are recorded in salt-ink ledgers, built on the highest ground of the flat."
+      },
+      {
+        "id": "loc_drowned_quay",
+        "name": "Drowned Quay",
+        "description": "A harbour district that floods twice daily, home to ferrymen and smugglers."
+      },
+      {
+        "id": "loc_brine_gate",
+        "name": "Brine Gate",
+        "description": "The great sluice-wall holding back the sea, protected by tide-bound wardings renewed each month."
+      },
+      {
+        "id": "loc_mudflat_market",
+        "name": "Mudflat Market",
+        "description": "A stilted bazaar on the exposed flats, open only at low tide."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_salt_clerks",
+        "name": "Salt Clerks",
+        "description": "A guild of accountants who record and ration tide-magic debts.",
+        "location_ids": [
+          "loc_ledger_hall"
+        ]
+      },
+      {
+        "id": "fac_gate_wardens",
+        "name": "Gate Wardens",
+        "description": "Warders who renew the wardings on the Brine Gate each month, paying for it with their own bodies.",
+        "location_ids": [
+          "loc_brine_gate"
+        ]
+      },
+      {
+        "id": "fac_quay_ferrymen",
+        "name": "Quay Ferrymen",
+        "description": "Boatmen and smugglers who work the flooded streets and resent the clerks' levies.",
+        "location_ids": [
+          "loc_drowned_quay",
+          "loc_mudflat_market"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_tide_cost",
+        "statement": "Every working of tide-magic leaves a visible mark on the caster, such as salt-crusted skin or white hair.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_spring_renewal",
+        "statement": "Tide-bound wardings can be renewed only at the turn of a spring tide.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_debt_binds",
+        "statement": "A tide-debt, once entered in the ledger, binds the debtor's family until it is paid.",
+        "category": "social"
+      },
+      {
+        "id": "rul_salt_ink",
+        "statement": "Entries written in salt-ink cannot be altered without leaving a pale scar on the page.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_founding",
+        "name": "The Founding of the Gate",
+        "era": "Age of Walls",
+        "description": "Settlers raised the Brine Gate on the flat and bound it with the first tide-wardings.",
+        "location_ids": [
+          "loc_brine_gate"
+        ]
+      },
+      {
+        "id": "evt_first_ledger",
+        "name": "The First Ledger",
+        "era": "Age of Debt",
+        "description": "The Salt Clerks began recording tide-debts after the first warding renewal drained a ferryman's family of its savings.",
+        "location_ids": [
+          "loc_ledger_hall"
+        ]
+      },
+      {
+        "id": "evt_great_flood",
+        "name": "The Great Flood",
+        "era": "Age of Debt",
+        "description": "A warding lapsed and the sea flooded the Drowned Quay for a week, until the Gate Wardens renewed the wardings at the next spring tide.",
+        "location_ids": [
+          "loc_drowned_quay"
+        ]
+      },
+      {
+        "id": "evt_market_charter",
+        "name": "The Market Charter",
+        "era": "Age of Levies",
+        "description": "The Salt Clerks granted the Quay Ferrymen the right to trade on the flats at low tide in return for a levy.",
+        "location_ids": [
+          "loc_mudflat_market"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_levy_dispute",
+        "name": "The Levy Dispute",
+        "description": "The Quay Ferrymen refuse to pay the Salt Clerks' rising levies on low-tide trade.",
+        "faction_ids": [
+          "fac_quay_ferrymen",
+          "fac_salt_clerks"
+        ]
+      },
+      {
+        "id": "cnf_overdrawn_gate",
+        "name": "The Overdrawn Gate",
+        "description": "The Gate Wardens suspect the Salt Clerks of hiding how much tide-magic the Brine Gate has already consumed.",
+        "faction_ids": [
+          "fac_gate_wardens",
+          "fac_salt_clerks"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_saltmere",
+    "characters": [
+      {
+        "id": "chr_ines",
+        "name": "Ines Varro",
+        "role": "protagonist",
+        "description": "A junior debt-clerk at Ledger Hall who audits salt-ink entries and keeps a private tally of every correction she finds.",
+        "personality_traits": [
+          "meticulous",
+          "wary",
+          "stubborn"
+        ],
+        "motivation": "To learn whether the Brine Gate's tide-debt is being hidden before the next spring tide.",
+        "goal": "Prove the shortfall in the ledgers and present it to the Gate Wardens.",
+        "flaw": "Trusts written records over people.",
+        "internal_conflict": "She owes her post to the guild she is about to expose.",
+        "external_conflict": "Senior clerks bury her audit requests.",
+        "home_location_id": "loc_ledger_hall",
+        "faction_id": "fac_salt_clerks",
+        "abilities": [
+          {
+            "name": "Salt-ink reading",
+            "description": "Spots erased or recopied entries by the pale scars and fresh ink they leave on the page.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Ines learns that records are only as honest as the people who keep them."
+      },
+      {
+        "id": "chr_oren",
+        "name": "Oren Dask",
+        "role": "antagonist",
+        "description": "The ledger-master of Ledger Hall, who hides the Brine Gate's shortfall by recopying whole ledger pages instead of correcting them.",
+        "personality_traits": [
+          "calm",
+          "precise",
+          "ruthless"
+        ],
+        "motivation": "To keep the guild's credit intact until the next spring tide.",
+        "goal": "Silence Ines and keep the shortfall off the record.",
+        "flaw": "Mistakes secrecy for prudence.",
+        "internal_conflict": "He knows the gate cannot be renewed on the guild's accounts alone.",
+        "external_conflict": "The Gate Wardens demand a full audit.",
+        "home_location_id": "loc_ledger_hall",
+        "faction_id": "fac_salt_clerks",
+        "abilities": [
+          {
+            "name": "Page-recopying",
+            "description": "Recopies a ledger page in a close imitation of the original hand, so that only the fresh ink gives it away.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Oren's concealment collapses when the Wardens demand the original pages."
+      },
+      {
+        "id": "chr_tamsin",
+        "name": "Tamsin Reel",
+        "role": "supporting",
+        "description": "A ferrywoman whose family is bound by a tide-debt entered before she was born.",
+        "personality_traits": [
+          "bold",
+          "resentful",
+          "generous"
+        ],
+        "motivation": "To free her family from a debt it never chose.",
+        "goal": "Find the ledger entry that created the debt and have it cancelled.",
+        "flaw": "Acts before thinking.",
+        "internal_conflict": "She resents the clerks but needs Ines's access.",
+        "external_conflict": "The clerks levy her low-tide trade.",
+        "home_location_id": "loc_drowned_quay",
+        "faction_id": "fac_quay_ferrymen",
+        "abilities": [
+          {
+            "name": "Flood-navigation",
+            "description": "Poles a ferry through the Drowned Quay's streets at any tide.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Tamsin learns the debt can be challenged openly rather than dodged."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_ines_oren",
+        "source_character_id": "chr_ines",
+        "target_character_id": "chr_oren",
+        "relationship_type": "subordinate",
+        "description": "Oren trained Ines and still reviews her audits.",
+        "conflict": "She is auditing his books."
+      },
+      {
+        "id": "rel_ines_tamsin",
+        "source_character_id": "chr_ines",
+        "target_character_id": "chr_tamsin",
+        "relationship_type": "ally",
+        "description": "Tamsin gives Ines access to the quay's unofficial tide records in return for help tracing her family's debt.",
+        "conflict": null
+      },
+      {
+        "id": "rel_oren_tamsin",
+        "source_character_id": "chr_oren",
+        "target_character_id": "chr_tamsin",
+        "relationship_type": "creditor",
+        "description": "Oren's office holds the entry that binds Tamsin's family.",
+        "conflict": "He refuses to release it."
+      }
+    ]
+  },
+  "storyboard": {
+    "world_id": "wld_saltmere",
+    "title": "The Salt Ledger",
+    "logline": "Ines uncovers the hidden shortfall in the Brine Gate's tide-debt and must expose it before the next spring tide.",
+    "theme": "honesty against comfortable silence",
+    "acts": [
+      {
+        "id": "act_setup",
+        "title": "Setup",
+        "purpose": "setup",
+        "scenes": [
+          {
+            "id": "scn_audit_begins",
+            "title": "The Gate Ledger",
+            "summary": "Ines audits the Brine Gate's tide-debt entries at Ledger Hall.",
+            "location_id": "loc_ledger_hall",
+            "character_ids": [
+              "chr_ines"
+            ],
+            "goal": "Audit the Brine Gate's tide-debt entries.",
+            "conflict": "Senior clerks delay her requests.",
+            "outcome": "She finds ledger pages for the Brine Gate written in fresh ink.",
+            "depends_on": []
+          },
+          {
+            "id": "scn_tamsin_debt",
+            "title": "The Quay Records",
+            "summary": "Tamsin shows Ines the quay's unofficial tide records and the debt that binds her family.",
+            "location_id": "loc_drowned_quay",
+            "character_ids": [
+              "chr_tamsin",
+              "chr_ines"
+            ],
+            "goal": "Trade the tide records for help tracing the debt.",
+            "conflict": "Tamsin distrusts clerks.",
+            "outcome": "Ines gets the records and promises to trace the debt.",
+            "depends_on": [
+              "scn_audit_begins"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_rising",
+        "title": "Rising Action",
+        "purpose": "rising_action",
+        "scenes": [
+          {
+            "id": "scn_records_compared",
+            "title": "The Gap",
+            "summary": "Ines compares the quay's tide records with the gate ledger and finds that the Brine Gate has consumed far more tide-magic than the ledger shows.",
+            "location_id": "loc_ledger_hall",
+            "character_ids": [
+              "chr_ines"
+            ],
+            "goal": "Quantify the shortfall.",
+            "conflict": "Oren checks her work and grows suspicious.",
+            "outcome": "Ines has proof of a shortfall, and Oren knows she has it.",
+            "depends_on": [
+              "scn_audit_begins",
+              "scn_tamsin_debt"
+            ]
+          },
+          {
+            "id": "scn_oren_moves",
+            "title": "The Audit Closed",
+            "summary": "Oren confronts Ines at Ledger Hall after the Wardens have already summoned him, and orders the audit closed, warning that he can recopy any page he likes.",
+            "location_id": "loc_ledger_hall",
+            "character_ids": [
+              "chr_oren",
+              "chr_ines"
+            ],
+            "goal": "Silence Ines and close the audit.",
+            "conflict": "She refuses to hand over her notes.",
+            "outcome": "Ines smuggles her notes out to Tamsin at the quay.",
+            "depends_on": [
+              "scn_records_compared"
+            ]
+          },
+          {
+            "id": "scn_wardens_warned",
+            "title": "The Wardens",
+            "summary": "Ines takes her notes from Tamsin to the Gate Wardens at the Brine Gate and shows them the gap between the records.",
+            "location_id": "loc_brine_gate",
+            "character_ids": [
+              "chr_ines",
+              "chr_tamsin"
+            ],
+            "goal": "Convince the Wardens.",
+            "conflict": "The Wardens fear another failed renewal.",
+            "outcome": "The Wardens agree to demand the original ledger pages at the spring-tide renewal.",
+            "depends_on": [
+              "scn_oren_moves"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_climax",
+        "title": "Climax",
+        "purpose": "climax",
+        "scenes": [
+          {
+            "id": "scn_original_pages",
+            "title": "The Original Pages",
+            "summary": "On the day of the spring-tide renewal the Wardens demand the original pages; Ines proves the pages were recopied by their fresh ink, and Oren's concealment collapses.",
+            "location_id": "loc_ledger_hall",
+            "character_ids": [
+              "chr_ines",
+              "chr_oren",
+              "chr_tamsin"
+            ],
+            "goal": "Expose the recopied pages before the wardings are renewed.",
+            "conflict": "Oren tries to destroy the original pages before the Wardens can read them.",
+            "outcome": "A Crown inspector arrives and arrests Oren on the spot, and the true shortfall is entered in the ledger.",
+            "depends_on": [
+              "scn_wardens_warned",
+              "scn_oren_moves"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_resolution",
+        "title": "Resolution",
+        "purpose": "resolution",
+        "scenes": [
+          {
+            "id": "scn_renewal",
+            "title": "The Renewal",
+            "summary": "That evening the Gate Wardens renew the wardings at the turn of the spring tide on the corrected accounts, at no cost to themselves.",
+            "location_id": "loc_brine_gate",
+            "character_ids": [
+              "chr_ines",
+              "chr_tamsin"
+            ],
+            "goal": "Renew the gate on honest accounts.",
+            "conflict": "The Clerks resist the corrected levy.",
+            "outcome": "The gate holds, and Tamsin's family debt is reopened for open challenge.",
+            "depends_on": [
+              "scn_original_pages"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "WORLD_RULE_CONTRADICTION",
+        "UNSUPPORTED_PLOT_DEVELOPMENT"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.acts[3].scenes[0].summary"
+      ],
+      "reference_paths": [
+        "world::$.rules[0].statement"
+      ],
+      "evidence_quotes": [
+        "at no cost to themselves",
+        "Every working of tide-magic leaves a visible mark on the caster"
+      ],
+      "anchor_terms": [
+        "no cost to themselves"
+      ],
+      "rationale": "Tide-magic always leaves a visible mark.",
+      "correction_hint": "Restore the cost the Wardens pay.",
+      "label_id": "SR-D06-L1"
+    },
+    {
+      "suffix": "L2",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "MISSING_SETUP",
+        "UNSUPPORTED_PLOT_DEVELOPMENT",
+        "CAUSALITY_BREAK"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.acts[2].scenes[0].outcome"
+      ],
+      "reference_paths": [
+        "$.acts[1].scenes[2].outcome"
+      ],
+      "evidence_quotes": [
+        "A Crown inspector arrives and arrests Oren on the spot",
+        "The Wardens agree to demand the original ledger pages"
+      ],
+      "anchor_terms": [
+        "crown inspector"
+      ],
+      "rationale": "The climax is resolved by an inspector no earlier scene sets up.",
+      "correction_hint": "Resolve the climax through the Wardens and the original pages.",
+      "label_id": "SR-D06-L2"
+    },
+    {
+      "suffix": "L3",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "CAUSALITY_BREAK",
+        "CONTINUITY_ERROR"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.acts[1].scenes[1].summary"
+      ],
+      "reference_paths": [
+        "$.acts[1].scenes[2].summary"
+      ],
+      "evidence_quotes": [
+        "after the Wardens have already summoned him",
+        "Ines takes her notes from Tamsin to the Gate Wardens"
+      ],
+      "anchor_terms": [
+        "already summoned him"
+      ],
+      "rationale": "The Wardens are only approached in a later scene that depends on this one.",
+      "correction_hint": "Remove the reference to the Wardens from this scene.",
+      "label_id": "SR-D06-L3"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Three defects: a costless renewal (world rule), a Crown inspector who arrives from nowhere to resolve the climax, and a scene that depends on events that happen later."
+}

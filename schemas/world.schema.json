@@ -1,0 +1,276 @@
+{
+  "$defs": {
+    "Conflict": {
+      "additionalProperties": false,
+      "description": "An active source of tension in the world.",
+      "properties": {
+        "description": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "faction_ids": {
+          "description": "Identifiers of factions involved in the conflict.",
+          "items": {
+            "pattern": "^fac_[a-z0-9_]{1,48}$",
+            "type": "string"
+          },
+          "maxItems": 15,
+          "title": "Faction Ids",
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^cnf_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ],
+      "title": "Conflict",
+      "type": "object"
+    },
+    "Faction": {
+      "additionalProperties": false,
+      "description": "A group or power bloc, optionally tied to locations.",
+      "properties": {
+        "description": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^fac_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "location_ids": {
+          "description": "Identifiers of locations this faction is associated with.",
+          "items": {
+            "pattern": "^loc_[a-z0-9_]{1,48}$",
+            "type": "string"
+          },
+          "maxItems": 25,
+          "title": "Location Ids",
+          "type": "array"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ],
+      "title": "Faction",
+      "type": "object"
+    },
+    "HistoricalEvent": {
+      "additionalProperties": false,
+      "description": "A notable event in the world's past.",
+      "properties": {
+        "description": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "era": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Era"
+        },
+        "id": {
+          "pattern": "^evt_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "location_ids": {
+          "description": "Identifiers of locations where the event took place.",
+          "items": {
+            "pattern": "^loc_[a-z0-9_]{1,48}$",
+            "type": "string"
+          },
+          "maxItems": 25,
+          "title": "Location Ids",
+          "type": "array"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ],
+      "title": "HistoricalEvent",
+      "type": "object"
+    },
+    "Location": {
+      "additionalProperties": false,
+      "description": "A distinct place in the world.",
+      "properties": {
+        "description": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^loc_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ],
+      "title": "Location",
+      "type": "object"
+    },
+    "WorldRule": {
+      "additionalProperties": false,
+      "description": "An invariant rule or restriction of the world.",
+      "properties": {
+        "category": {
+          "default": "other",
+          "enum": [
+            "physics",
+            "metaphysics",
+            "social",
+            "technology",
+            "other"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^rul_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "statement": {
+          "description": "The rule expressed as a single declarative statement.",
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "statement"
+      ],
+      "title": "WorldRule",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Structured world artifact produced by the World Generation agent.",
+  "properties": {
+    "conflicts": {
+      "items": {
+        "$ref": "#/$defs/Conflict"
+      },
+      "maxItems": 15,
+      "title": "Conflicts",
+      "type": "array"
+    },
+    "description": {
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "factions": {
+      "items": {
+        "$ref": "#/$defs/Faction"
+      },
+      "maxItems": 15,
+      "title": "Factions",
+      "type": "array"
+    },
+    "history": {
+      "items": {
+        "$ref": "#/$defs/HistoricalEvent"
+      },
+      "maxItems": 40,
+      "title": "History",
+      "type": "array"
+    },
+    "locations": {
+      "items": {
+        "$ref": "#/$defs/Location"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "title": "Locations",
+      "type": "array"
+    },
+    "name": {
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "rules": {
+      "items": {
+        "$ref": "#/$defs/WorldRule"
+      },
+      "maxItems": 25,
+      "minItems": 1,
+      "title": "Rules",
+      "type": "array"
+    },
+    "world_id": {
+      "pattern": "^wld_[a-z0-9_]{1,48}$",
+      "title": "World Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "world_id",
+    "name",
+    "description",
+    "locations",
+    "rules"
+  ],
+  "title": "World",
+  "type": "object"
+}

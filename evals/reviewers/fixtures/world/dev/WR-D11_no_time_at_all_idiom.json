@@ -1,0 +1,178 @@
+{
+  "case_id": "WR-D11",
+  "agent": "world",
+  "split": "dev",
+  "category": "ambiguous_evidence",
+  "slug": "no_time_at_all_idiom",
+  "context_validated": true,
+  "brief": {
+    "title": "Kessler Ring",
+    "premise": "On a spinning orbital habitat that cannot receive help from Earth for a generation, an air-quality inspector finds that the ring's oxygen budget has been falsified, and must decide whom to tell before the ration vote.",
+    "genre": "science fiction",
+    "tone": "claustrophobic",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:faster-than-light",
+      "forbid:artificial intelligence",
+      "require:oxygen",
+      "No teleportation or instantaneous travel of any kind.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_kessler_ring",
+    "name": "Kessler Ring",
+    "description": "Kessler Ring is a spinning orbital habitat cut off from Earth, where oxygen, gravity and rations are managed by hand-checked tables and the Air Board.",
+    "locations": [
+      {
+        "id": "loc_spin_deck",
+        "name": "Spin Deck",
+        "description": "The habitat's residential cylinder, where centrifugal gravity keeps one full G at the rim."
+      },
+      {
+        "id": "loc_algae_vault",
+        "name": "Algae Vault",
+        "description": "A sealed farm of photosynthetic tanks that produces the ring's oxygen and food."
+      },
+      {
+        "id": "loc_dock_nine",
+        "name": "Dock Nine",
+        "description": "The only docking spar, used by supply tugs from the lunar depot."
+      },
+      {
+        "id": "loc_ration_office",
+        "name": "Ration Office",
+        "description": "The administrative hub where oxygen and food quotas are calculated from printed tables."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_air_board",
+        "name": "Air Board",
+        "description": "Technocrats who set oxygen quotas for each deck.",
+        "location_ids": [
+          "loc_ration_office",
+          "loc_algae_vault"
+        ]
+      },
+      {
+        "id": "fac_rim_union",
+        "name": "Rim Union",
+        "description": "Residents of the Spin Deck who organise ration strikes.",
+        "location_ids": [
+          "loc_spin_deck"
+        ]
+      },
+      {
+        "id": "fac_tug_guild",
+        "name": "Tug Guild",
+        "description": "Pilots who ferry supplies between Dock Nine and the lunar depot, and who brag that the run takes 'no time at all'.",
+        "location_ids": [
+          "loc_dock_nine"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_no_resupply",
+        "statement": "No ship from Earth can reach the ring for twenty-five years; only slower tugs from the lunar depot can.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_one_g",
+        "statement": "Gravity exists only on the Spin Deck rim; the Algae Vault and Dock Nine are weightless.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_manual_tables",
+        "statement": "All quota calculations are done from hand-checked printed tables, because the ring's controllers can only run fixed programs.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_air_decay",
+        "statement": "Oxygen stored in tanks loses ten percent each year to leakage.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_ring_built",
+        "name": "Ring Construction",
+        "era": "Year 0",
+        "description": "Engineers spun up the ring and seeded the Algae Vault from lunar stock.",
+        "location_ids": [
+          "loc_spin_deck",
+          "loc_algae_vault"
+        ]
+      },
+      {
+        "id": "evt_earth_cutoff",
+        "name": "The Cutoff",
+        "era": "Year 12",
+        "description": "An embargo on Earth shipping began the twenty-five-year isolation, leaving only lunar tugs to supply Dock Nine.",
+        "location_ids": [
+          "loc_dock_nine"
+        ]
+      },
+      {
+        "id": "evt_first_strike",
+        "name": "The First Ration Strike",
+        "era": "Year 20",
+        "description": "Rim Union workers halted deliveries to the Ration Office to demand larger oxygen quotas.",
+        "location_ids": [
+          "loc_spin_deck",
+          "loc_ration_office"
+        ]
+      },
+      {
+        "id": "evt_leak",
+        "name": "The Dock Nine Leak",
+        "era": "Year 24",
+        "description": "A cracked tank at Dock Nine vented a season's oxygen reserve, which the Air Board hid from the ring.",
+        "location_ids": [
+          "loc_dock_nine"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_quota_fraud",
+        "name": "The Quota Fraud",
+        "description": "The Rim Union suspects the Air Board of falsifying oxygen quotas.",
+        "faction_ids": [
+          "fac_rim_union",
+          "fac_air_board"
+        ]
+      },
+      {
+        "id": "cnf_tug_tolls",
+        "name": "The Tug Tolls",
+        "description": "The Tug Guild demands higher payment from the Air Board for carrying emergency oxygen.",
+        "faction_ids": [
+          "fac_tug_guild",
+          "fac_air_board"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [
+    {
+      "suffix": "T1",
+      "artifact_paths": [
+        "$.factions[2].description"
+      ],
+      "evidence_quotes": [
+        "the run takes 'no time at all'"
+      ],
+      "anchor_terms": [
+        "no time at all"
+      ],
+      "why_not_a_defect": "A boast about a fast tug run is idiomatic, not a claim of instantaneous travel.",
+      "trap_id": "WR-D11-T1"
+    }
+  ],
+  "evidence_summary": "'No time at all' is the pilots' boast, an idiom; nothing establishes instantaneous travel."
+}

@@ -1,0 +1,156 @@
+{
+  "case_id": "WR-V2-06",
+  "agent": "world",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "gaslamp_bellwether",
+  "context_validated": true,
+  "brief": {
+    "title": "The Ninth Bell",
+    "premise": "A bell-founder's apprentice in a fog-drowned estuary city hears the storm-bells ring a pattern no founder cast, and the parish orders the bells silenced before the next fog.",
+    "genre": "gaslamp fantasy",
+    "tone": "eerie",
+    "target_audience": "adult",
+    "location_count": 5,
+    "constraints": [
+      "forbid:electricity",
+      "require:bell",
+      "Lit by gas and oil only; no electrical devices.",
+      "min_locations:4",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_bellwether",
+    "name": "Bellwether",
+    "description": "A gas-lit estuary city where nine bronze storm-bells on the sea-wall hold back the Chiming, a fog that steals the names of anyone it hears spoken.",
+    "locations": [
+      {
+        "id": "loc_sea_wall",
+        "name": "The Sea-Wall Belfry",
+        "description": "The great wall mounting the nine storm-bells that ring the fog back."
+      },
+      {
+        "id": "loc_founder_row",
+        "name": "Founder Row",
+        "description": "The foundry street where every bell was cast and struck with its maker's mark."
+      },
+      {
+        "id": "loc_fogmarket",
+        "name": "The Fogmarket",
+        "description": "A licensed night market that opens only in fog, where names and secrets are traded."
+      },
+      {
+        "id": "loc_bailiffs_stairs",
+        "name": "Bailiff's Stairs",
+        "description": "The steps up to the parish court where the watch's writs are read."
+      },
+      {
+        "id": "loc_salt_chapel",
+        "name": "The Salt Chapel",
+        "description": "The chapel where every citizen's name is written on salt and kept against the fog."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_bell_founders",
+        "name": "The Founder Collegium",
+        "description": "The collegium of bell-founders who cast, tune and answer for every bell on the wall.",
+        "location_ids": [
+          "loc_founder_row"
+        ]
+      },
+      {
+        "id": "fac_parish_watch",
+        "name": "The Parish Watch",
+        "description": "The wardens who keep the silence laws and can still a bell by writ.",
+        "location_ids": [
+          "loc_bailiffs_stairs"
+        ]
+      },
+      {
+        "id": "fac_fog_brokers",
+        "name": "The Fog Brokers",
+        "description": "Licensed traders in names and secrets who work the Fogmarket under charter.",
+        "location_ids": [
+          "loc_fogmarket"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_nine_bells",
+        "statement": "The wall mounts nine bells and no more; casting a tenth is treason against the parish.",
+        "category": "social"
+      },
+      {
+        "id": "rul_fog_names",
+        "statement": "In fog, a spoken name belongs to the fog; citizens carry name-tokens and answer to signs.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_founder_mark",
+        "statement": "Every bell is struck with its founder's mark, and its ring can be traced back to the caster.",
+        "category": "social"
+      },
+      {
+        "id": "rul_salt_registry",
+        "statement": "Every citizen's name is registered on salt at the chapel; an unregistered name is forfeit to the fog.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_wall_raised",
+        "name": "The Raising of the Wall",
+        "era": "The Ringing Years",
+        "description": "Nine bells were cast and mounted on the sea-wall to hold the Chiming at bay.",
+        "location_ids": [
+          "loc_sea_wall"
+        ]
+      },
+      {
+        "id": "evt_lost_parish",
+        "name": "The Lost Parish",
+        "era": "The Ringing Years",
+        "description": "In a fog that lasted nine nights, a whole parish forgot its names; the salt registry was founded in answer.",
+        "location_ids": [
+          "loc_salt_chapel"
+        ]
+      },
+      {
+        "id": "evt_brokers_charter",
+        "name": "The Brokers' Charter",
+        "era": "The Quiet Years",
+        "description": "Trading in names was licensed and confined to the Fogmarket to keep it out of the parlours.",
+        "location_ids": [
+          "loc_fogmarket"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_tenth_ring",
+        "name": "The Tenth Ring",
+        "description": "An unmarked tenth bell has been heard in the pattern; the founders deny casting it and the watch wants the bells stilled.",
+        "faction_ids": [
+          "fac_bell_founders",
+          "fac_parish_watch"
+        ]
+      },
+      {
+        "id": "cnf_name_debts",
+        "name": "The Name Debts",
+        "description": "Fog brokers hold name-debts over half the parish; the watch calls it extortion, the brokers call it charter.",
+        "faction_ids": [
+          "fac_fog_brokers",
+          "fac_parish_watch"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's gas-lit storm-bell setting; deterministic validators are clean and there are no blocking defects."
+}

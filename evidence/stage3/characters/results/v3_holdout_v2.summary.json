@@ -1,0 +1,563 @@
+{
+  "label": "v3_holdout_v2",
+  "calibration_only": false,
+  "prompt_version": "v3",
+  "prompt_path": "evidence/stage3/characters/prompts/v3.md",
+  "prompt_sha256": "2a0b8426a9b57cbd23a736a248612ddd6e93b9bbe9010b621abd3d88d495d4f1",
+  "split": [
+    "holdout_v2"
+  ],
+  "raw_result_file": "evidence/stage3/characters/results/v3_holdout_v2.json",
+  "raw_result_sha256": "0c2b43ef4690e6d4f632c63ec18169bf1d527706ed5cffdbde44ae5f0e2caaf1",
+  "eval_id": "eval-q8T-2026-11-14T07:05:03",
+  "timestamp": "2026-11-14T07:05:03.629Z",
+  "promptfoo_version": "0.124.1",
+  "config_sha256": "115ac28c1ade31eec35e3237d2c358715f1ab3f5fd94fca095958b904b6941ac",
+  "dataset_sha256": {
+    "dev": "ea62cfbf9b63c499b366fb30721062e5f82b9bdb169be718c2a14522aac17555",
+    "holdout": "166b2055f5fd0aa97dd04ad3c89e8a77495fb36d736f2a9471226879c299c1a8"
+  },
+  "summarizer_sha256": "c1a519b32858355039df589ad90f0088518e676c9ddb2f16f1366262e9209d26",
+  "models": {
+    "generation": {
+      "model": "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium",
+      "timeout": 600000,
+      "devin_timeout": 180,
+      "retries": 1,
+      "respect_workspace_trust": false
+    },
+    "grader": {
+      "model": "swe-2-medium",
+      "timeout": 600000,
+      "devin_timeout": 90,
+      "retries": 1,
+      "respect_workspace_trust": false
+    }
+  },
+  "cases_total": 10,
+  "provider_errors": [],
+  "grader_errors": [],
+  "structural_validity": {
+    "pass": 9,
+    "total": 10,
+    "pass_rate": 0.9
+  },
+  "criteria": {
+    "character_development": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "mean_score": 4.6
+    },
+    "character_differentiation": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "mean_score": 4.8
+    },
+    "conflict_potential": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "mean_score": 4.9
+    },
+    "format_discipline": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "mean_score": null
+    },
+    "motivation_clarity": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "mean_score": 4.8
+    },
+    "structural_validity": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "mean_score": null
+    },
+    "world_consistency": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    }
+  },
+  "overall_quality": {
+    "cases_scored": 10,
+    "cases_passed": 9,
+    "pass_rate": 0.9
+  },
+  "failed_cases": [
+    {
+      "case": "v2_08_space_opera_comet_market",
+      "failures": [
+        {
+          "metric": "structural_validity",
+          "score": 0,
+          "reason": "Output is not valid JSON: Expecting property name enclosed in double quotes: line 1 column 5967 (char 5966)"
+        },
+        {
+          "metric": "format_discipline",
+          "score": 0,
+          "reason": "Reply is not a bare JSON document (extra text around or invalid JSON)"
+        },
+        {
+          "metric": "motivation_clarity",
+          "score": 3,
+          "reason": "(a) mains pass: motivations tie to Map Wars, brother's death on a sealed route, and baronial claims; (b) goals are concrete and checkable (rule on chart, hold/fly route, corner tethers); (c) flaws plausibly obstruct each goal; (d) motivations are distinct; but supporting character Wren Tamsin is malformed/truncated with no motivation, goal, or flaw \u2014 worse than a single weak item"
+        },
+        {
+          "metric": "character_differentiation",
+          "score": 3,
+          "reason": "(a) trait lists for Isolde, Corvin and Brannock are distinct and behaviour-specific, but Wren Tamsin is a truncated placeholder with no traits so the check cannot hold across the whole cast; (b) locations, factions, roles and abilities are well spread across the three complete characters; (c) descriptions are specific and individual (seal-press and harpoon belt, salt-white braid and Tallow Gull, frost-fox coat and soft-spoken paying of debts); (d) flaws differ in kind \u2014 procedural evasion, grief-certainty, avarice-as-prudence; (e) swap test passes for the three complete characters \u2014 motivations and flaws are tightly bound to each backstory. The incomplete/malformed fourth character keeps this below the top band."
+        }
+      ]
+    }
+  ],
+  "per_case": {
+    "v2_01_solarpunk_tidal_conservatories": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations are tied to concrete world elements (Great Silting/terraces, guild members' livelihoods, wardens' survey record, Cooperative silt rights, terrace garden); (b) all goals are concrete and can visibly succeed or fail (halt kilns for dredging, keep kilns burning, verify readings, secure silt claim, rally families); (c) each flaw plausibly obstructs its goal (self-reliance, pride, caution, opportunism, clinging to old ways); (d) all five motivations are distinct in nature",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id assignments match roles (wardens at Glassgate Locks, guild master at Bellmaker's Quay, ferry captain at Algae Fields, terrace keeper on Mangrove Terraces); (b) only World-named places, factions and events used (Glassgate Locks, Bellmaker's Quay, Great Silting, Bell Charter, guilds, Cooperative); (c) rules respected \u2014 lock oath, bell-recast duty and silt-debt rule are all invoked correctly; (d) no outside tech/magic/institutions introduced, abilities are mundane and fitting; (e) Marin, Tamsin, Joss and Odalys all tie to the Kiln Calendar, Silt Rights, Bell Charter or Great Silting",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait overlap is minimal \u2014 only Marin and Ilse share 'stubborn'; several traits like 'self-reliant', 'fair-minded under pressure', 'meticulous' are behaviour-specific rather than stock adjectives; (b) cast spans all four locations, three factions plus a non-affiliated terrace keeper, and distinct roles/trades; (c) descriptions give specific details \u2014 salt-cracked hands, scarred forearms, margin-correcting habit, root-stained hands; (d) flaws differ in kind \u2014 distrust of authority, pride, paralysis-by-caution, opportunism, clinging to old ways; (e) swap test passes \u2014 e.g., Joss's silt-bargaining goal tied to the Cooperative, Tamsin's kiln-calendar goal tied to guild charter, each motivation grounded in its own description and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Marin (career vs. raising alarm) and Tamsin (lagoon safety vs. guild standing) have genuine dilemmas; (b) external conflicts name concrete parties (Glassblower Guild, senior wardens, Kiln Calendar/Silt Rights disputes); (c) Marin halting kilns vs. Tamsin keeping them burning are mutually exclusive; (d) six relationships with concrete history/causes and explicit tensions; (e) conflicts interlock via the shared Kiln Calendar and Silt Rights disputes \u2014 Joss, Odalys, Marin, Tamsin each cost another.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) every arc has a start, pivot, and end state; (b) each arc resolves the stated flaw/internal_conflict; (c) pivots are grounded in world elements (ring-test per Bell Charter, re-sounding, silt-trap overflow, silt-debt rule); (d) all arcs are growth/yield shapes with no truly distinct fall, though several carry costs (Odalys's public admission, Tamsin's loss of guild standing) \u2014 partial; (e) supporting arcs are concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "v2_02_wuxia_crane_banner_coast": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) all motivations tie to concrete world elements (Hallow's dying request, rookery shallows/Net Wars, covenant record, Broken Challenge, the feud); b) all goals are concrete and follow from motivations; c) each flaw plausibly obstructs its goal; d) motivations are all distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id assignments fit (Mei Lin/Hallow at Thunder Reed Dojo, Kesh at Mist Rookery/Eel School, Sora at Bannerhall/Crane Sect, Dun at Saltmarket/Salt Wardens); (b) only World-named places, factions, and events appear (Net Wars, Broken Challenge, Bannerhall, tally-stick, covenant); (c) abilities and actions obey rules \u2014 Light-Body Art copies rul_light_body verbatim including the open-water limit, duels are always formal challenges, Mei Lin refuses a covert dock duel honoring rul_challenge; (d) no foreign tech/magic/institutions introduced; (e) multiple characters are bound to named conflicts/rules (Unanswered Tally, Rookery Rights, nesting ban, covenant precedent)",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait overlap \u2264 half across all pairs; most traits specific though 'proud' repeats and 'loyal'/'warm' are stock \u2014 partial; (b) distinct homes, factions, roles, abilities; (c) each description has unique concrete detail (tally-stick, net-scar, crane-bone comb, brass whistle); (d) flaws differ in kind: pride, secrecy, honor-blindness, precedent-rigidity, suspicion; (e) swap test passes \u2014 motivations and goals are tightly bound to each character's history and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mei Lin's recognition-vs-worthiness and Kesh's covenant-duty-vs-nesting-ban are genuine dilemmas, not restated flaws; (b) external conflicts name concrete parties (the deadlocked sects/cnf_unanswered_tally, the Crane Sect nesting ban, sect elders); (c) Mei Lin's goal of seating envoys via the binding stick directly contradicts Kesh's goal of voiding it by defeating her; (d) six relationships each give concrete shared history and stated tension (mentor's undisclosed bequest, judge's precedent doubts, warden's wary oath); (e) Mei Lin, Kesh, and Sora all interlock through cnf_unanswered_tally and cnf_rookery_rights so one's success costs another.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all arcs have start/pivot/end; (b) each arc addresses flaw or internal conflict; (c) pivots grounded in Bannerhall challenge, covenant, relationships; (d) varied shapes\u2014humbling, grudging alliance, precedent-bending, wary-to-guarantor\u2014with cost/ambiguity in Kesh and Sora yielding; (e) supporting arcs concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "v2_03_hard_sf_perihelion_yard": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation cites a concrete event/element (mentor's falsified duty log, Sail Fire, ledger write-downs, overturned audit, sister's passage); (b) all goals are concrete and checkable (document the hull, protect the roster, keep hull off ledger, prove hidden hulls, keep posting); (c) each flaw plausibly obstructs its goal (hoarding data, secret roster edits, reliance on paperwork, procedural rigidity, avoidance); (d) all five motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id assignments fit (rigger\u2192Yard Spine/union, steward\u2192Mirror Shed, liaison & auditor\u2192Bastion Hulk, dock hand\u2192Shadow Dock); (b) only World-named places/factions/events used (Sail Fire, Austerity, Charter Audit Office, Helio Tank, Shadow Dock); 'outer belt' is a generic noun; (c) heat budget, mass ledger, light delay, and Shadow Dock thermal rules are all respected and drive the conflicts; (d) no foreign tech/magic/institutions introduced\u2014spectrometer/tap meter fit a hard-SF shipyard; (e) Maren, Tomas, Ines, Dara, and Pell are all tied to the Scrap Ledger, Heat Roster, Sail Fire, and heat-budget/light-delay rules.",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) no pairwise trait overlap exceeds half; traits mostly behavioral though a few are stock adjectives (loyal, protective); (b) cast spans all four locations and three factions with distinct roles and abilities, though three share the union \u2014 justified by the premise; (c) each description has unique detail (burn scars, limp from the Austerity, stammer when lying, reads documents twice); (d) flaws differ in kind \u2014 hoarding data, hypocritical record-fudging, self-justification, procedural rigidity, avoidance; (e) swap test holds \u2014 motivations and goals are tightly bound to each character's position and history",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) internal conflicts are genuine dilemmas (Maren: loyalty vs truth; Ines: honest-accountant self-image vs fraud); (b) external conflicts name concrete forces (auditors' arrival + light delay; Audit Office + consortium); (c) Maren's goal to expose the hull and Ines's goal to keep it hidden are mutually exclusive; (d) 8 relationships with concrete history and stated tensions; (e) conflicts interlock tightly \u2014 Ines/Maren over the hull, Tomas/Ines over rosters, Pell caught between Ines's leverage and Maren's investigation, all tied to the Scrap Ledger world conflict",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains (Maren, Ines) have clear start/pivot/end states; (b) each arc transforms the stated flaw/internal conflict (data-hoarding, self-justifying fraud); (c) pivots are grounded in world elements (heat budget, auditors, evidence reaching Whitlock); (d) arc shapes vary \u2014 trust growth, confession at cost, collapse/evasion, procedural softening, sacrifice of posting \u2014 with cost/ambiguity in Ines and Pell; (e) all supporting arcs are concrete and story-specific.",
+        "grader_error": false
+      }
+    },
+    "v2_04_postapocalyptic_seedways": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation ties to a concrete world element or past event (seed tithe, Millers' Split, Frost Gate, keeper rolls); (b) all goals are concrete and checkable within the story; (c) each flaw plausibly obstructs its goal; (d) all six motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home locations and factions match roles (keepers at Granary Hill, millers at Ford Market, orchard elder at Ash Orchards, guide at Frost Gate); (b) only World-named places, factions, events and conflicts are referenced (Millers' Split, Cut Grain, Orchard Claims, rul_grain_truth); (c) rules respected \u2014 Joss the adulterator is a miller's clerk not a keeper, Ilse's struck-from-rolls backstory matches rul_grain_truth, Frost Gate deadline obeyed, no powered tech; (d) no foreign technology, magic or institutions introduced; (e) most characters are tied to the Cut Grain, Orchard Claims, Millers' Split or frost rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) traits are mostly specific and no pair shares more than one trait ('proud' appears on Maren and Ilse, 1 of 4); (b) cast spans three locations, three factions, and distinct roles/trades; (c) each description has unique physical and biographical detail (flour in knuckles, ink-stained fingers, limp from the pass); (d) flaws differ in kind\u2014pride, concealment from eagerness, grudge-driven certainty, cowardice, distrustful escalation, withholding resentment\u2014though pride/resentment echo thematically across Maren, Edda, and Ilse, each is mechanized differently; (e) motivations and goals are bound to each character's position and secrets, so swaps would contradict the relationships.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Maren (order's blamelessness vs memory of mentor's short measure) and Edda (knows forgery was Compact's work vs authority built on blaming keepers) are genuine dilemmas; (b) external conflicts name concrete parties \u2014 the Cut Grain dispute, millers, Orchard Families, the closing Frost Gate; (c) Maren's delivery-with-honor goal is incompatible with Edda's goal of proving keeper guilt and seizing weighing rights; (d) seven relationships give concrete shared causes (mentor pressure causing concealment, Joss letting suspicion fall on Tobin) with stated tensions; (e) conflicts interlock \u2014 Joss's adulteration drives the accusations against Tobin and the keepers, so his concealment directly costs them",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both main chars (Maren, Edda) have start/pivot/end; (b) each arc resolves the stated flaw (Maren's pride, Edda's grudge); (c) pivots stem from external conflict/world elements (weigh-house evidence, falsified ledger); (d) arcs vary \u2014 exposure/humility, relinquished authority, confession, partnership \u2014 and several end at cost (mentor struck, authority surrendered, guilt borne); (e) all supporting arcs are concrete and story-specific (Tobin's tally-book, Joss's concealment, Ilse's seal-mark)",
+        "grader_error": false
+      }
+    },
+    "v2_05_mythic_underworld_ledger": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation ties to a concrete element \u2014 Ilse's honest-entry creed and dissolved scribe, Oswin's memory of the wells running dark in the War of the Wrong Column, Corvane's fear of the old war's chaos, Pell's decades of unblemished standing; (b) all goals are concrete and checkable (seal the correction, find the miscast cause, keep ledgers closed, bury the tally) and follow from motivations; (c) each flaw plausibly obstructs its goal (literalism, passivity, dogmatic pride, self-serving cowardice); (d) all four motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id pairings match roles; (b) only World-named places, factions and the War of the Wrong Column are referenced; (c) three-key rule, lamp oath cost, and erasure stakes are all respected; (d) no foreign tech/magic/institutions introduced; (e) multiple characters tied to the Miscast Harvest, Sealed Ledgers conflict, and lamp oath rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets are distinct with minimal overlap; (b) cast spans three factions and four locations with differing roles/abilities; (c) descriptions carry specific habits/history/appearance; (d) flaws differ in kind\u2014literalism, passivity, dogmatic pride, cowardice; (e) swap test holds\u2014motivations and flaws are tightly bound to each character's position and arc.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Ilse's dilemma (honesty vs career) and Corvane's (oath vs hidden contradiction) are genuine value conflicts, not restated flaws; (b) external conflicts name concrete parties: the scribe-weigher blame dispute, Corvane's superiors and Ilse's correction, Pell's accountability for his section; (c) Ilse's goal (open ledgers, seal the correction) directly contradicts Corvane's goal (keep ledgers sealed, avoid audit) and Pell's (bury the tally); (d) five relationships each state concrete history/cause and tension; (e) conflicts interlock via the shared Miscast Harvest and Sealed Ledgers world conflicts\u2014Ilse's success forces Corvane's loss of post and Pell's exposure.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Ilse, Corvane arcs each give start state, pivotal choice (confessing to Oswin / reading the sealed page), and end state; (b) Ilse's arc transforms her rigid literalism, Corvane's resolves his dogmatic pride; (c) pivots are caused by world rules (warrant requirement, lamp oath) and relationships; (d) shapes differ \u2014 Ilse grows, Oswin shifts from passivity, Corvane gains freedom by losing his post, Pell is exposed then redeemed, and Corvane's ends at cost; (e) Oswin's and Pell's arcs are concrete and tied to the warrant/blame plot",
+        "grader_error": false
+      }
+    },
+    "v2_06_gaslamp_bellwether": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation ties to a concrete world element or past event (the Chiming, Orsolya's foundry, Thorne's daughter's lost name, family name-debts, the salt registry); (b) each goal is a concrete, falsifiable objective following from the motivation; (c) each flaw plausibly obstructs its goal; (d) all five motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id assignments match roles (founder apprentice/master at Founder Row, warden at Bailiff's Stairs, broker at Fogmarket, scribe at Salt Chapel); (b) only World locations, factions and events are named\u2014no invented places or organisations; (c) no rule contradictions\u2014the tenth bell is investigated not cast, name-token and salt-registry rules are respected; (d) no foreign technology or social structures introduced (ear-trumpet, writs, salt script all fit the gaslamp world); (e) Wren, Orsolya, Thorne and Lilith are all tied to the Tenth Ring and Name Debts conflicts and the world rules",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets are distinct with no pair sharing more than half; (b) cast spans different homes, factions, roles and trades (foundry, watch, brokers, chapel); (c) each description carries specific detail \u2014 burn scar, ear-trumpet, daughter lost to fog, charter-seal ring, failing eyesight; (d) flaws differ in kind \u2014 timidity, pride, rigid law-grief, transactional distrust, concealment of failing sight; (e) swap test holds: e.g. Thorne's writ-silencing goal would contradict Wren's foundry loyalty or Lilith's debt-clearing motive",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Wren's loyalty-vs-truth and Thorne's fear-of-bells-vs-dependence-on-them are genuine dilemmas, not flaw restatements; (b) external conflicts name concrete parties (Parish Watch, Collegium, Fog Brokers) tied to World conflicts cnf_tenth_ring and cnf_name_debts; (c) Wren's goal to trace the tenth ring is incompatible with both Orsolya's goal to bury it and Thorne's writ to silence the bells; (d) six relationships each give concrete shared history/cause (raised-and-trained, writ obstruction, name-debt extortion) and state the separating tension; (e) conflicts interlock \u2014 Orsolya and Thorne clash over silencing, Lilith's sale of Wren's secret pits her against both, Thorne's writ directly opposes Wren's and Orsolya's aims",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all arcs name start state, pivotal choice, and end state; (b) each arc directly addresses its flaw/internal conflict (Wren's timidity, Orsolya's pride, Thorne's rigid grief, Lilith's transactionalism, Tobias's hidden failing sight); (c) pivots are caused by world conflicts/relationships (tenth ring trace, writ, fog, salt registry); (d) arc shapes vary\u2014speaking out, humbled confession, relinquishing control, first free act, accepting help\u2014and Thorne's/Orsolya's endings carry cost; (e) supporting arcs are concrete and story-specific, none boilerplate",
+        "grader_error": false
+      }
+    },
+    "v2_07_cozy_thistledown_fair": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: each motivation is tied to concrete world elements (Ninth Stall forfeit, Carter wains failing, Tallykeepers' Favour Shortage, Round's vote balance); b: each goal is concrete and checkable within the story (claim lease before third bell, complete sale, rule the shortage, sway the vote); c: each flaw plausibly obstructs the goal (refusing help vs needing allies, secrecy vs confessing sale, rule-literalism vs novel ruling, vanity vs voting for a rival); d: all four motivations are distinct (family name, funding wains, proving judgment, protecting status)",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_ids and faction_ids match character roles and faction purposes; (b) every named place, faction and event (Ninth Stall, Kettle Commons, Wishing Barn, Carter Kin, Tallykeepers, Stallholders' Round, Leap Lane) exists in the World; (c) no rule is contradicted \u2014 disputes resolve via tea-tasting contests, bargains and Tallykeeper rulings per rul_no_sharp_edges, and the lease claim respects rul_ninth_lease's third-bell deadline and family-only clause; (d) no foreign technology, magic or social structure introduced \u2014 abilities fit the fair's cozy favour-economy; (e) all four characters are tied to cnf_ninth_claim, cnf_favour_shortage or rul_ninth_lease.",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) traits overlap minimally (only 'proud' shared by Marrowyn/Hester) and are behavioral; (b) cast spans all three factions, three home locations, and distinct trades; (c) each description has unique specifics (mittens and chamomile, patch-coat and lane-key, ink-stained cuffs and two quills, copper urns and bell hat); (d) flaws differ in kind \u2014 self-reliant hoarding, habitual secrecy, rule-literalist freezing, vanity; (e) swapping motivations/goals/flaws would contradict each character's role and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) internal conflicts are genuine dilemmas\u2014Marrowyn's family shame vs. suspected rule-bending, Oswin's valuing promises vs. bending the lease rule; (b) external conflicts name concrete parties\u2014Carter Kin's sale and Tallykeeper scrutiny; (c) goals are mutually exclusive\u2014claiming vs. selling the same lease; (d) five relationships each give concrete causes and tensions; (e) conflicts interlock via the Ninth Claim and Favour Shortage so one's success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) all arcs have start/pivot/end; (b) each arc addresses the flaw/internal conflict; (c) pivots are grounded in world elements (Wishing Barn tag, tasting contest, Favour Shortage); (d) shapes differ but every arc ends positively \u2014 no clear cost or ambiguous ending, so partial; (e) supporting arcs are concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "v2_08_space_opera_comet_market": {
+      "structural_validity": {
+        "pass": false,
+        "score": 0,
+        "reason": "Output is not valid JSON: Expecting property name enclosed in double quotes: line 1 column 5967 (char 5966)",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": false,
+        "score": 0,
+        "reason": "Reply is not a bare JSON document (extra text around or invalid JSON)",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": false,
+        "score": 3,
+        "reason": "(a) mains pass: motivations tie to Map Wars, brother's death on a sealed route, and baronial claims; (b) goals are concrete and checkable (rule on chart, hold/fly route, corner tethers); (c) flaws plausibly obstruct each goal; (d) motivations are distinct; but supporting character Wren Tamsin is malformed/truncated with no motivation, goal, or flaw \u2014 worse than a single weak item",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all location/faction ids fit descriptions; (b) names only World entities \u2014 Map Wars, Pilots' Compact, burn articles, Long Hall, Tallow Gull is a ship not a place; (c) no rule contradictions \u2014 seal rule invoked correctly, no powered arms, tithes/tethers honored; (d) no foreign tech or structures; (e) multiple characters tied to the Stolen Chart, Tether Grab, burn articles and map-seal rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": false,
+        "score": 3,
+        "reason": "(a) trait lists for Isolde, Corvin and Brannock are distinct and behaviour-specific, but Wren Tamsin is a truncated placeholder with no traits so the check cannot hold across the whole cast; (b) locations, factions, roles and abilities are well spread across the three complete characters; (c) descriptions are specific and individual (seal-press and harpoon belt, salt-white braid and Tallow Gull, frost-fox coat and soft-spoken paying of debts); (d) flaws differ in kind \u2014 procedural evasion, grief-certainty, avarice-as-prudence; (e) swap test passes for the three complete characters \u2014 motivations and flaws are tightly bound to each backstory. The incomplete/malformed fourth character keeps this below the top band.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) internal conflicts are genuine dilemmas (Isolde's justice vs guild identity, Corvin's proof vs arbitration rights, Brannock's lawful pride vs bribery); (b) external conflicts name concrete parties (guild/free pilots, ice barons, Isolde's investigation); (c) goals are mutually exclusive \u2014 Isolde must recover/settle the chart while Corvin must keep it; (d) fails \u2014 relationships array is empty; (e) external conflicts interlock via the stolen chart and tether grab so each success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) all three main arcs have start, pivot, and end states; (b) each arc transforms its stated flaw/internal conflict (Isolde's procedural shield, Corvin's grief-driven certainty, Ostrel's avarice); (c) pivots are caused by external conflicts and world elements (map-seal rule, tether grab, burn articles); (d) arc shapes differ \u2014 growth, costly relinquishment, and diminishment \u2014 with Corvin's and Ostrel's endings carrying real cost; (e) fails \u2014 the only supporting character, Wren Tamsin, is truncated/malformed with no arc at all",
+        "grader_error": false
+      }
+    },
+    "v2_09_historical_monsoon_court": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation ties to a concrete element: Anjali's family ledger service, Rustam's gift-taking, Ishaq's brother lost to the Year of Three Envoys, Leela's warehouse, Tomas's Ghat Oath; (b) all goals are concrete and winnable/losable within the story and follow from motivations; (c) each flaw plausibly obstructs its goal (procedure-hiding, greedy overconfidence, impatience, distrust, rigid pride); (d) no two characters share an underlying motivation",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id assignments fit each character's described role; (b) only World-named entities are referenced (harbour ledger, gift register, Year of Three Envoys, Ghat Oath, Majlis, pepper warehouses); (c) wind law, slot order, gift register and pepper-oath rules are all respected and drive character arcs; (d) no anachronistic tech, magic or outside social structures; (e) all five characters tie to named conflicts/rules (slot rivalry, gift scandal, wind law, ghat oath)",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets are distinct with no pair sharing more than half, mostly behavioural; (b) cast spans all four locations, three factions, varied trades and roles; (c) descriptions carry specific detail (brass stylus, dyed silks beyond wages, hennaed beard, saffron silk and inherited warehouses); (d) flaws differ in kind: procedural hiding, greed, impatience, instrumental generosity, rigid pride; (e) swap test passes \u2014 motivations and goals are tightly bound to each character's role and relationships.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Anjali's ledger-neutrality vs justice and Rustam's self-image as guardian vs knowledge he sells authority are real dilemmas, not restated flaws; (b) external conflicts name concrete parties \u2014 rival envoys and tainted slot-keepers for Anjali, the unregistered gifts/inquiry for Rustam; (c) Anjali's honest ruling and Rustam's paid-envoy outcome are mutually exclusive; (d) five relationships give concrete causes and shared history with stated tensions (investigation, bribery bond, pressure for speed); (e) conflicts interlock via the shared gift scandal and slot-rivalry World conflicts \u2014 Leela's confession and Ishaq's pressure each cost another character.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains' arcs show start state, pivotal choice/event, end state; (b) Anjali's arc resolves her hiding-behind-procedure flaw, Rustam's greed/overconfidence drives his fall; (c) pivots stem from the gift scandal, ledger ambiguity, and relationships (Leela's testimony, envoys' claims); (d) shapes vary \u2014 Anjali growth, Rustam fall, Ishaq restraint, Leela confession at cost of her season, Tomas partial humility, with Leela/Rustam carrying cost; (e) all supporting arcs are concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "v2_10_folk_horror_lantern_parish": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations are concrete and tied to world elements (Missing Page, ledger, guild, brother lost to the bog); (b) goals are concrete and follow from motivations; (c) flaws plausibly obstruct goals; (d) motivations are distinct across all four characters",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id assignments fit; (b) only World-named places, factions and events used (lowland town is generic); (c) bog line, oil tithe, ledger and never-dark rules respected; (d) no foreign tech, magic or institutions; (e) all four characters tie into the Missing Night or Oil Shortfall conflicts",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) no pair shares >half traits and traits are behavioral; (b) cast spans 3 factions, 4 locations, distinct roles/trades (lamplighter, clerk, warden, turf-cutter); (c) each description has unique detail \u2014 cracked horn lantern and double-counting, ink-stained cuffs, milky eye and oil scars, peat-dark arms and a lost brother; (d) flaws differ in kind \u2014 secrecy, record-worship, guild-over-justice, grudge-holding; (e) swapping motivations/goals/flaws would break each character's established arc and relationships.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Wren's belonging-vs-truth and Osric's record-vs-lie dilemmas are genuine, not flaw restatements; (b) external conflicts name concrete parties (wardens, council, turf-cutters); (c) Wren's goal to reveal the night directly contradicts Osric's goal to keep it unspoken; (d) five relationships each cite shared history/cause and the tension dividing the pair; (e) conflicts interlock through the Missing Night and Oil Shortfall so each character's success costs another.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) each arc has start, pivot, end state; (b) each change resolves the stated flaw/internal conflict; (c) pivots are caused by external conflicts, relationships, or world elements (wick bench tally, oil shortfall, bog walk); (d) arcs vary somewhat but all end in honest confession/speaking-truth redemptions, and no arc ends at clear cost or ambiguity \u2014 partial; (e) supporting arcs are concrete and story-specific (Hester's over-count admission, Tamsin's willing tithe). Arcs are strong but share one shape: secret-keeper learns to speak truth; Osric 'lets the truth stand' and Wren 'trusts parish with hard truths' mirror each other, and no arc carries loss or unresolved tension.",
+        "grader_error": false
+      }
+    }
+  }
+}

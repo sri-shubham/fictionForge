@@ -1,0 +1,258 @@
+{
+  "case_id": "CR-V2-08",
+  "agent": "characters",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "space_opera_comet_market",
+  "context_validated": true,
+  "brief": {
+    "title": "Ice and Coin",
+    "premise": "A guild factotum on a nomad market built into a captured comet must arbitrate the theft of a sealed star-map before the comet's perihelion burn scatters the fleet.",
+    "genre": "space opera",
+    "tone": "swashbuckling",
+    "target_audience": "adult",
+    "location_count": 5,
+    "constraints": [
+      "forbid:laser",
+      "require:comet",
+      "Ships manoeuvre on sails, tethers and reaction plumes; no energy weapons.",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_comet_market",
+    "name": "The Comet Market",
+    "description": "A captured comet hollowed into a rotating bazaar that rides its own orbit, where guilds, pilots and ice-miners trade under burn articles until perihelion scatters them.",
+    "locations": [
+      {
+        "id": "loc_core_vaults",
+        "name": "The Core Vaults",
+        "description": "Hollowed ice halls near the comet's heart where the ice barons keep their claims."
+      },
+      {
+        "id": "loc_tether_docks",
+        "name": "The Tether Docks",
+        "description": "The sprawl of tethers where ships berth against the comet's slow spin."
+      },
+      {
+        "id": "loc_map_house",
+        "name": "The Map House",
+        "description": "The guild house where star-maps are drawn, sealed and registered."
+      },
+      {
+        "id": "loc_cinder_gardens",
+        "name": "The Cinder Gardens",
+        "description": "Sunward glasshouses in the slag skin where growers farm the perihelion light."
+      },
+      {
+        "id": "loc_long_hall",
+        "name": "The Long Hall",
+        "description": "The arbitration hall where claims are heard under the burn articles."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_mapmakers",
+        "name": "The Mapmakers' Guild",
+        "description": "The guild that draws, seals and arbitrates every registered star-map.",
+        "location_ids": [
+          "loc_map_house",
+          "loc_long_hall"
+        ]
+      },
+      {
+        "id": "fac_ice_barons",
+        "name": "The Ice Barons",
+        "description": "Claim-holders who mine the core and buy up tethers before each burn.",
+        "location_ids": [
+          "loc_core_vaults"
+        ]
+      },
+      {
+        "id": "fac_free_pilots",
+        "name": "The Free Pilots' Compact",
+        "description": "Independent pilots who fly the routes the guilds only chart.",
+        "location_ids": [
+          "loc_tether_docks"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_burn_articles",
+        "statement": "At perihelion every claim is settled or forfeited; nothing litigates through the burn.",
+        "category": "social"
+      },
+      {
+        "id": "rul_map_seal",
+        "statement": "A sealed star-map may be opened only by its sealer or by the arbiter of the Long Hall.",
+        "category": "social"
+      },
+      {
+        "id": "rul_no_energy_arms",
+        "statement": "Weapons aboard are blades, tools and harpoons; powered arms breach the market's charter.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_ice_tithe",
+        "statement": "Every ship pays an ice-tithe for its berth; unpaid tithes cost tether rights.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_capture",
+        "name": "The Capture",
+        "era": "The First Orbit",
+        "description": "Free pilots netted the comet, hollowed its core and founded a market no planet could tax.",
+        "location_ids": [
+          "loc_core_vaults"
+        ]
+      },
+      {
+        "id": "evt_map_wars",
+        "name": "The Map Wars",
+        "era": "The Second Orbit",
+        "description": "Rival charts nearly wrecked the fleet at a perihelion; the guild won the right to seal every route.",
+        "location_ids": [
+          "loc_map_house"
+        ]
+      },
+      {
+        "id": "evt_compact",
+        "name": "The Pilots' Compact",
+        "era": "The Third Orbit",
+        "description": "The free pilots won arbitration rights in the Long Hall after refusing to fly sealed routes.",
+        "location_ids": [
+          "loc_long_hall",
+          "loc_tether_docks"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_stolen_chart",
+        "name": "The Stolen Chart",
+        "description": "A sealed map of the perihelion route was stolen and resold; the guild calls it piracy, the pilot who holds it calls it salvage.",
+        "faction_ids": [
+          "fac_mapmakers",
+          "fac_free_pilots"
+        ]
+      },
+      {
+        "id": "cnf_tether_rights",
+        "name": "The Tether Grab",
+        "description": "The ice barons are buying up tethers before the burn, stranding pilots who owe ice-tithes.",
+        "faction_ids": [
+          "fac_ice_barons",
+          "fac_free_pilots"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_comet_market",
+    "characters": [
+      {
+        "id": "chr_sable_onuoha",
+        "name": "Sable Onuoha",
+        "role": "protagonist",
+        "description": "A factotum of the Mapmakers' Guild apprenticed to the Long Hall's arbiter, who reads broken seals the way pilots read weather.",
+        "personality_traits": [
+          "precise",
+          "fair-minded",
+          "untested"
+        ],
+        "motivation": "To see the map settled by charter and not by whoever holds it last.",
+        "goal": "Arbitrate the stolen chart before the perihelion burn forfeits every claim.",
+        "flaw": "She believes procedure protects her from choosing sides.",
+        "internal_conflict": "The charter she serves may be wrong about who the map belongs to.",
+        "external_conflict": "Every claimant wants the arbitration to outlast the burn.",
+        "home_location_id": "loc_long_hall",
+        "faction_id": "fac_mapmakers",
+        "abilities": [
+          {
+            "name": "Seal-reading",
+            "description": "Reads a broken guild seal to tell when and by whom it was opened.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Sable learns to judge the charter by what it costs, not what it says."
+      },
+      {
+        "id": "chr_rho_vass",
+        "name": "Rho Vass",
+        "role": "antagonist",
+        "description": "A free pilot of the compact who bought the stolen map believing it was salvage and now holds the only copy of the burn route.",
+        "personality_traits": [
+          "bold",
+          "grievance-rich",
+          "resourceful"
+        ],
+        "motivation": "To keep the route for the compact, which the guilds priced out of its own skies.",
+        "goal": "Hold the map until arbitration concedes the compact's claim.",
+        "flaw": "He cannot admit the fence was wrong because the cause feels right.",
+        "internal_conflict": "He stole nothing, yet everything he built rests on a theft.",
+        "external_conflict": "Sable's seal-reading can prove the map was opened before he bought it.",
+        "home_location_id": "loc_tether_docks",
+        "faction_id": "fac_free_pilots",
+        "abilities": [
+          {
+            "name": "Perihelion piloting",
+            "description": "Flies a sail rig through a burn approach better than any guild pilot.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Rho trades the stolen map for a route the compact can win honestly."
+      },
+      {
+        "id": "chr_kest_inger",
+        "name": "Kest Inger",
+        "role": "supporting",
+        "description": "An ice baron factor who bought the stolen map to convert it into tether rights and quietly started the Tether Grab.",
+        "personality_traits": [
+          "suave",
+          "acquisitive",
+          "pragmatic"
+        ],
+        "motivation": "To turn the map into tethers before the burn makes every claim void.",
+        "goal": "Convert the chart into berth options he can sell at perihelion prices.",
+        "flaw": "He treats every debt as an asset until it is collected from him.",
+        "internal_conflict": "His father's ship was wrecked in the Map Wars; he swore never to starve on principle.",
+        "external_conflict": "If the theft is arbitrated, his purchases unwind with the claim.",
+        "home_location_id": "loc_core_vaults",
+        "faction_id": "fac_ice_barons",
+        "abilities": [
+          {
+            "name": "Claim-stacking",
+            "description": "Bundles claims, tithes and options so debtors owe him before they know it.",
+            "category": "social"
+          }
+        ],
+        "arc": "Kest's stacked claims collapse at perihelion and he must pick which debts to keep."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_sable_rho",
+        "source_character_id": "chr_sable_onuoha",
+        "target_character_id": "chr_rho_vass",
+        "relationship_type": "opposed claimant",
+        "description": "Sable arbitrates Rho's salvage claim on the stolen map.",
+        "conflict": "Her charter calls it piracy; his compact calls it salvage."
+      },
+      {
+        "id": "rel_sable_kest",
+        "source_character_id": "chr_sable_onuoha",
+        "target_character_id": "chr_kest_inger",
+        "relationship_type": "counterparty",
+        "description": "Kest's purchases unwind if Sable rules the map stolen.",
+        "conflict": "He buys influence over the arbitration she must keep honest."
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's nomad comet-market setting; deterministic validators are clean and there are no blocking defects."
+}

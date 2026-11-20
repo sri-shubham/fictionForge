@@ -1,0 +1,1332 @@
+schema_version: 2
+submission:
+  title: FictionForge
+  stage: 4
+workflow:
+  name: fictionforge_story_planning
+  entry_point: src/fictionforge/runner.py
+  artifacts:
+    guardrails: src/fictionforge/guardrails/validators.py
+    punch_out: evidence/punch_out.md
+    success_rate: evidence/success_rate.json
+    audit_trail: evidence/audit_trail.jsonl
+    log: evidence/iterations/workflow.md
+  steps:
+  - name: world_generation
+    prompt_file: prompts/world.md
+    eval_files:
+    - evals/fixtures/holdout_v2/manifest.json
+    - evals/fixtures/holdout_v2/world/v2_01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/world/v2_02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/world/v2_03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/world/v2_04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/world/v2_05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/world/v2_06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/world/v2_07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/world/v2_08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/world/v2_09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/world/v2_10_folk_horror_lantern_parish.json
+    - evals/fixtures/workflow/dev/01_skybridge_standard.json
+    - evals/fixtures/workflow/dev/02_arcade_ai_1980s.json
+    - evals/fixtures/workflow/dev/03_biopunk_ocean_colony.json
+    - evals/fixtures/workflow/dev/04_minimal_steppe_spirits.json
+    - evals/fixtures/workflow/dev/05_conflicting_constraints.json
+    - evals/fixtures/workflow/dev/06_injection_punchout.json
+    - evals/fixtures/workflow/dev/07_reviewer_policy_punchout.json
+    - evals/fixtures/workflow/dev/08_character_output_punchout.json
+    - evals/fixtures/workflow/dev/09_storyboard_output_punchout.json
+    - evals/fixtures/workflow/dev/10_brief_injection_punchout.json
+    - evals/fixtures/workflow/holdout/01_scifi_space_station.json
+    - evals/fixtures/workflow/holdout/02_fantasy_underwater.json
+    - evals/fixtures/workflow/manifest.json
+    - evals/fixtures/world/dev/01_fantasy_floating_isles.json
+    - evals/fixtures/world/dev/02_scifi_dyson_swarm.json
+    - evals/fixtures/world/dev/03_mystery_noir_city.json
+    - evals/fixtures/world/dev/04_horror_ghost_ship.json
+    - evals/fixtures/world/dev/05_adventure_jungle_ruins.json
+    - evals/fixtures/world/dev/06_historical_inspired_rome.json
+    - evals/fixtures/world/dev/07_minimal_input.json
+    - evals/fixtures/world/dev/08_constrained_exact_3.json
+    - evals/fixtures/world/dev/09_constrained_max_5.json
+    - evals/fixtures/world/dev/10_forbidden_concept_magic.json
+    - evals/fixtures/world/dev/11_required_element_dreamstone.json
+    - evals/fixtures/world/dev/12_conflicting_min_max.json
+    - evals/fixtures/world/dev/13_conflicting_count_and_max.json
+    - evals/fixtures/world/dev/14_prompt_injection_override.json
+    - evals/fixtures/world/dev/15_fantasy_epic_war.json
+    - evals/fixtures/world/dev/16_scifi_cyberpunk.json
+    - evals/fixtures/world/dev/17_mystery_country_house.json
+    - evals/fixtures/world/dev/18_horror_cabin.json
+    - evals/fixtures/world/dev/19_adventure_pirate.json
+    - evals/fixtures/world/dev/20_historical_silk_road.json
+    - evals/fixtures/world/holdout/01_scifi_space_station.json
+    - evals/fixtures/world/holdout/02_fantasy_underwater.json
+    - evals/fixtures/world/holdout/03_mystery_venetian.json
+    - evals/fixtures/world/holdout/04_horror_asylum.json
+    - evals/fixtures/world/holdout/05_adventure_western.json
+    - evals/fixtures/world/holdout/06_historical_napoleonic.json
+    - evals/fixtures/world/holdout/07_minimal_input.json
+    - evals/fixtures/world/holdout/08_forbidden_dragon.json
+    - evals/fixtures/world/holdout/09_required_chosen_one.json
+    - evals/fixtures/world/holdout/10_conflicting_count_min.json
+    - evals/fixtures/world/manifest.json
+    - evals/holdout_v2/world_tests.json
+    - evals/workflow.yaml
+    - evals/world.yaml
+    - evals/world_assert.py
+    - evals/world_holdout_v2.yaml
+    - evals/world_holdout_v2_luna.yaml
+    - evals/world_provider.py
+    - evals/world_stage3.yaml
+    - evals/world_stage3_assert.py
+    - evals/world_stage3_luna.yaml
+    - evals/world_stage3_provider.py
+    - evals/world_stage3_tests.json
+    - evals/world_tests.json
+    - evals/world_tests_smoke.json
+    - examples/story_brief.json
+    - examples/worlds/invalid/bad_id_format.json
+    - examples/worlds/invalid/duplicate_cross_type_id.json
+    - examples/worlds/invalid/duplicate_location_id.json
+    - examples/worlds/invalid/empty_locations.json
+    - examples/worlds/invalid/extra_field.json
+    - examples/worlds/invalid/missing_required_field.json
+    - examples/worlds/invalid/too_many_locations.json
+    - examples/worlds/invalid/unknown_conflict_faction.json
+    - examples/worlds/invalid/unknown_event_location.json
+    - examples/worlds/invalid/unknown_faction_location.json
+    - examples/worlds/invalid/whitespace_only_name.json
+    - examples/worlds/invalid/wrong_type.json
+    - examples/worlds/valid_world.json
+    - scripts/generate_world_stage3_tests.py
+    - scripts/run_workflow_evals.py
+    - scripts/world_stage3.py
+    - tests/conftest.py
+    - tests/test_bypass.py
+    - tests/test_guardrails.py
+    - tests/test_runner.py
+    - tests/test_workflow_docs.py
+    - tests/test_punch_out_decisions.py
+    - tests/test_world.py
+    - tests/test_world_agent.py
+    log_files:
+    - evidence/iterations/world.md
+    - evidence/stage3/luna_model_comparison.md
+    - evidence/stage3/world/01_audit.md
+    - evidence/stage3/world/02_iteration1_preregistration.md
+    - evidence/stage3/world/03_iteration1_result_and_iteration2_preregistration.md
+    - evidence/stage3/world/04_iteration2_result_and_final_selection.md
+    - evidence/stage3/world/05_v4_result_and_v5_preregistration.md
+    - evidence/stage3/world/06_v5_result_and_v6_preregistration.md
+    - evidence/stage3/world/07_v6_result.md
+    - evidence/stage3/world/08_v7_result_and_final_selection.md
+    - evidence/stage3/world/archive/world_iteration_log_pre_stage3.md
+    - evidence/stage3/world/calibration/pilot_v1.json
+    - evidence/stage3/world/calibration/pilot_v1.summary.json
+    - evidence/stage3/world/diffs/v1_to_v2.diff
+    - evidence/stage3/world/diffs/v2_to_v3.diff
+    - evidence/stage3/world/diffs/v3_to_v4.diff
+    - evidence/stage3/world/diffs/v4_to_v5.diff
+    - evidence/stage3/world/diffs/v5_to_v6.diff
+    - evidence/stage3/world/frozen_eval_config.json
+    - evidence/stage3/world/matrices/load_bearing_v1.json
+    - evidence/stage3/world/matrices/load_bearing_v1.md
+    - evidence/stage3/world/matrices/load_bearing_v2.json
+    - evidence/stage3/world/matrices/load_bearing_v2.md
+    - evidence/stage3/world/matrices/load_bearing_v3.json
+    - evidence/stage3/world/matrices/load_bearing_v3.md
+    - evidence/stage3/world/prompts/v1.md
+    - evidence/stage3/world/prompts/v2.md
+    - evidence/stage3/world/prompts/v3.md
+    - evidence/stage3/world/prompts/v4.md
+    - evidence/stage3/world/prompts/v5.md
+    - evidence/stage3/world/prompts/v6.md
+    - evidence/stage3/world/prompts/v7.md
+    - evidence/stage3/world/results/compare_all.md
+    - evidence/stage3/world/results/compare_v1_v2_dev.md
+    - evidence/stage3/world/results/compare_v1_v2_v3_dev.md
+    - evidence/stage3/world/results/final_dev.json
+    - evidence/stage3/world/results/final_dev.summary.json
+    - evidence/stage3/world/results/final_full_suite_v3.summary.json
+    - evidence/stage3/world/results/final_holdout.json
+    - evidence/stage3/world/results/final_holdout.summary.json
+    - evidence/stage3/world/results/holdout_v2.json
+    - evidence/stage3/world/results/holdout_v2.summary.json
+    - evidence/stage3/world/results/v1_dev.json
+    - evidence/stage3/world/results/v1_dev.summary.json
+    - evidence/stage3/world/results/v2_dev.json
+    - evidence/stage3/world/results/v2_dev.summary.json
+    - evidence/stage3/world/results/v3_dev.json
+    - evidence/stage3/world/results/v3_dev.summary.json
+    - evidence/stage3/world/results/v4_dev.json
+    - evidence/stage3/world/results/v4_dev.summary.json
+    - evidence/stage3/world/results/v5_dev.json
+    - evidence/stage3/world/results/v5_dev.summary.json
+    - evidence/stage3/world/results/v5_holdout_diag.json
+    - evidence/stage3/world/results/v5_holdout_diag.summary.json
+    - evidence/stage3/world/results/v6_dev.json
+    - evidence/stage3/world/results/v6_dev.summary.json
+    - evidence/stage3/world/results/v6_holdout_diag.json
+    - evidence/stage3/world/results/v6_holdout_diag.summary.json
+    - evidence/stage3/world/results/v6_holdout_v2.json
+    - evidence/stage3/world/results/v6_holdout_v2.summary.json
+    - evidence/stage3/world/results/v6_luna_dev.json
+    - evidence/stage3/world/results/v6_luna_dev.summary.json
+    - evidence/stage3/world/results/v6_luna_holdout.json
+    - evidence/stage3/world/results/v6_luna_holdout.summary.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2.summary.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2_r1.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2_r1.summary.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2_r2.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2_r2.summary.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2_r3.json
+    - evidence/stage3/world/results/v6_luna_holdout_v2_r3.summary.json
+    - evidence/stage3/world/results/v7_dev.json
+    - evidence/stage3/world/results/v7_dev.summary.json
+  - name: world_review
+    prompt_file: prompts/reviewers/world.md
+    eval_files:
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/reviewers/world/WR-V2-10_folk_horror_lantern_parish.json
+    - evals/reviewers/fixtures/world/dev/WR-D01_salt_ledger_clean.json
+    - evals/reviewers/fixtures/world/dev/WR-D02_renewal_at_neap_tide.json
+    - evals/reviewers/fixtures/world/dev/WR-D03_falsified_ledger_claim.json
+    - evals/reviewers/fixtures/world/dev/WR-D04_black_powder_synonym.json
+    - evals/reviewers/fixtures/world/dev/WR-D05_thin_descriptions.json
+    - evals/reviewers/fixtures/world/dev/WR-D06_kessler_ring_clean.json
+    - evals/reviewers/fixtures/world/dev/WR-D07_station_mind_synonym.json
+    - evals/reviewers/fixtures/world/dev/WR-D08_phase_gate_teleportation.json
+    - evals/reviewers/fixtures/world/dev/WR-D09_strike_after_leak.json
+    - evals/reviewers/fixtures/world/dev/WR-D10_gravity_rule_conflict.json
+    - evals/reviewers/fixtures/world/dev/WR-D11_no_time_at_all_idiom.json
+    - evals/reviewers/fixtures/world/dev/WR-D12_battery_radio_network.json
+    - evals/reviewers/fixtures/world/dev/WR-D13_depot_founded_on_glass_ridge.json
+    - evals/reviewers/fixtures/world/dev/WR-D14_keepers_raiders_satellites_footprints.json
+    - evals/reviewers/fixtures/world/dev/WR-D15_terse_blank_descriptions.json
+    - evals/reviewers/fixtures/world/dev/WR-D16_reviewer_override_in_location.json
+    - evals/reviewers/fixtures/world/dev/WR-D17_ghost_signs_charter.json
+    - evals/reviewers/fixtures/world/dev/WR-D18_sailors_swear_haunted_wharf.json
+    - evals/reviewers/fixtures/world/dev/WR-D19_wharf_gates_opened_with_guild_keys.json
+    - evals/reviewers/fixtures/world/dev/WR-D20_board_master_key.json
+    - evals/reviewers/fixtures/world/dev/WR-D21_markup_unicode_text.json
+    - evals/reviewers/fixtures/world/dev/WR-D22_minimal_world_empty_collections.json
+    - evals/reviewers/fixtures/world/dev/WR-D23_entity_explained_chapel_lit_surveyor_returns.json
+    - evals/reviewers/fixtures/world/dev/WR-D24_wardens_say_only_weather.json
+    - evals/reviewers/fixtures/world/dev/WR-D25_system_note_in_brief.json
+    - evals/reviewers/fixtures/world/dev/WR-D26_real_world_harm_incitement.json
+    - evals/reviewers/fixtures/world/dev/WR-D27_steam_freight_on_iron_rails.json
+    - evals/reviewers/fixtures/world/dev/WR-D28_pilgrims_pay_no_duty.json
+    - evals/reviewers/fixtures/world/dev/WR-D29_gate_stamps_league_papers.json
+    - evals/reviewers/fixtures/world/dev/WR-D30_benign_motto_ignore_orders.json
+    - evals/reviewers/fixtures/world/holdout/WR-H01_frostmarch_clean.json
+    - evals/reviewers/fixtures/world/holdout/WR-H02_lake_crossed_in_thaw.json
+    - evals/reviewers/fixtures/world/holdout/WR-H03_entangled_link_and_fresh_water.json
+    - evals/reviewers/fixtures/world/holdout/WR-H04_molecular_assemblers_make_water.json
+    - evals/reviewers/fixtures/world/holdout/WR-H05_bland_coast.json
+    - evals/reviewers/fixtures/world/holdout/WR-H06_false_red_lantern_ruse.json
+    - evals/reviewers/fixtures/world/holdout/WR-H07_eighty_winter_spellcaster.json
+    - evals/reviewers/fixtures/world/holdout/WR-H08_council_note_to_reviewer.json
+    - evals/reviewers/fixtures/world/holdout/WR-H09_japanese_minimal_world.json
+    - evals/reviewers/fixtures/world/holdout/WR-H10_harbour_office_seals_charter.json
+    - evals/reviewers/fixtures/world/manifest.json
+    - evals/reviewers/holdout_v2_world_tests.json
+    - evals/reviewers/reviewer_assert.py
+    - evals/reviewers/reviewer_scoring.py
+    - evals/reviewers/thresholds.json
+    - evals/reviewers/world.yaml
+    - evals/reviewers/world_dev_dsv4.yaml
+    - evals/reviewers/world_holdout_v2.yaml
+    - evals/reviewers/world_holdout_v2_dsv4.yaml
+    - evals/reviewers/world_holdout_v2_luna.yaml
+    - evals/reviewers/world_holdout_v2_lunahigh.yaml
+    - evals/reviewers/world_luna.yaml
+    - evals/reviewers/world_tests.json
+    - evals/world_stage3_provider.py
+    - scripts/generate_reviewer_tests.py
+    - scripts/reviewer_stage3.py
+    - tests/test_review_guardrails.py
+    - tests/test_reviewer_contract.py
+    - tests/test_reviewer_world_eval.py
+    - tests/test_stage4_integration.py
+    log_files:
+    - evidence/iterations/reviewers/world.md
+    - evidence/stage3/reviewers/SUMMARY.md
+    - evidence/stage3/reviewers/world/diffs/v1_to_v2.diff
+    - evidence/stage3/reviewers/world/diffs/v2_to_v3.diff
+    - evidence/stage3/reviewers/world/diffs/v3_to_v4.diff
+    - evidence/stage3/reviewers/world/diffs/v4_to_v5.diff
+    - evidence/stage3/reviewers/world/diffs/v5_to_v6.diff
+    - evidence/stage3/reviewers/world/diffs/v6_to_v7.diff
+    - evidence/stage3/reviewers/world/frozen_eval_config.json
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v1.json
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v1.md
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v2.json
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v2.md
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v3.json
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v3.md
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v6.json
+    - evidence/stage3/reviewers/world/matrices/load_bearing_v6.md
+    - evidence/stage3/reviewers/world/measurements.json
+    - evidence/stage3/reviewers/world/prompt_hashes.json
+    - evidence/stage3/reviewers/world/prompts/v1.md
+    - evidence/stage3/reviewers/world/prompts/v2.md
+    - evidence/stage3/reviewers/world/prompts/v3.md
+    - evidence/stage3/reviewers/world/prompts/v4.md
+    - evidence/stage3/reviewers/world/prompts/v5.md
+    - evidence/stage3/reviewers/world/prompts/v6.md
+    - evidence/stage3/reviewers/world/prompts/v7.md
+    - evidence/stage3/reviewers/world/results/final_holdout.json
+    - evidence/stage3/reviewers/world/results/final_holdout.summary.json
+    - evidence/stage3/reviewers/world/results/holdout_v2.json
+    - evidence/stage3/reviewers/world/results/holdout_v2.summary.json
+    - evidence/stage3/reviewers/world/results/v1_dev.json
+    - evidence/stage3/reviewers/world/results/v1_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v2_dev.json
+    - evidence/stage3/reviewers/world/results/v2_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v3_dev.json
+    - evidence/stage3/reviewers/world/results/v3_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v3_dev_repeat1.json
+    - evidence/stage3/reviewers/world/results/v3_dev_repeat1.summary.json
+    - evidence/stage3/reviewers/world/results/v4_dev.json
+    - evidence/stage3/reviewers/world/results/v4_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v4_dev_repeat1.json
+    - evidence/stage3/reviewers/world/results/v4_dev_repeat1.summary.json
+    - evidence/stage3/reviewers/world/results/v5_dev.json
+    - evidence/stage3/reviewers/world/results/v5_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v5_dev_repeat1.json
+    - evidence/stage3/reviewers/world/results/v5_dev_repeat1.summary.json
+    - evidence/stage3/reviewers/world/results/v6_dev.json
+    - evidence/stage3/reviewers/world/results/v6_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v6_dsv4_holdout_v2_r1.json
+    - evidence/stage3/reviewers/world/results/v6_dsv4_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/world/results/v6_dsv4_holdout_v2_r2.json
+    - evidence/stage3/reviewers/world/results/v6_dsv4_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/world/results/v6_dsv4_holdout_v2_r3.json
+    - evidence/stage3/reviewers/world/results/v6_dsv4_holdout_v2_r3.summary.json
+    - evidence/stage3/reviewers/world/results/v6_holdout_diag.json
+    - evidence/stage3/reviewers/world/results/v6_holdout_diag.summary.json
+    - evidence/stage3/reviewers/world/results/v6_holdout_v2.json
+    - evidence/stage3/reviewers/world/results/v6_holdout_v2.summary.json
+    - evidence/stage3/reviewers/world/results/v6_luna_dev.json
+    - evidence/stage3/reviewers/world/results/v6_luna_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v6_luna_holdout.json
+    - evidence/stage3/reviewers/world/results/v6_luna_holdout.summary.json
+    - evidence/stage3/reviewers/world/results/v6_luna_holdout_v2.json
+    - evidence/stage3/reviewers/world/results/v6_luna_holdout_v2.summary.json
+    - evidence/stage3/reviewers/world/results/v6_lunahigh_holdout_v2_r1.json
+    - evidence/stage3/reviewers/world/results/v6_lunahigh_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/world/results/v6_lunahigh_holdout_v2_r2.json
+    - evidence/stage3/reviewers/world/results/v6_lunahigh_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/world/results/v6_lunahigh_holdout_v2_r3.json
+    - evidence/stage3/reviewers/world/results/v6_lunahigh_holdout_v2_r3.summary.json
+    - evidence/stage3/reviewers/world/results/v7_dev.json
+    - evidence/stage3/reviewers/world/results/v7_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_dev.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_dev.summary.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_dev_r2.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_dev_r2.summary.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_dev_r3.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_dev_r3.summary.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_holdout_v2_r1.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_holdout_v2_r2.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_holdout_v2_r3.json
+    - evidence/stage3/reviewers/world/results/v7_dsv4_holdout_v2_r3.summary.json
+  - name: character_design
+    prompt_file: prompts/characters.md
+    eval_files:
+    - evals/characters.yaml
+    - evals/characters_assert.py
+    - evals/characters_holdout_v2.yaml
+    - evals/characters_holdout_v2_luna.yaml
+    - evals/characters_stage3.yaml
+    - evals/characters_stage3_assert.py
+    - evals/characters_stage3_luna.yaml
+    - evals/characters_stage3_provider.py
+    - evals/characters_stage3_tests.json
+    - evals/characters_tests.json
+    - evals/characters_tests_smoke.json
+    - evals/fixtures/characters/dev/01_fantasy_floating_isles.json
+    - evals/fixtures/characters/dev/02_scifi_dyson_swarm.json
+    - evals/fixtures/characters/dev/03_mystery_noir_city.json
+    - evals/fixtures/characters/dev/04_horror_ghost_ship.json
+    - evals/fixtures/characters/dev/05_adventure_jungle_ruins.json
+    - evals/fixtures/characters/dev/06_historical_inspired_rome.json
+    - evals/fixtures/characters/dev/07_minimal_input.json
+    - evals/fixtures/characters/dev/08_constrained_exact_3.json
+    - evals/fixtures/characters/dev/09_constrained_max_5.json
+    - evals/fixtures/characters/dev/10_forbidden_concept_magic.json
+    - evals/fixtures/characters/dev/11_required_element_dreamstone.json
+    - evals/fixtures/characters/dev/12_conflicting_min_max.json
+    - evals/fixtures/characters/dev/13_conflicting_count_and_max.json
+    - evals/fixtures/characters/dev/14_prompt_injection_override.json
+    - evals/fixtures/characters/dev/15_fantasy_epic_war.json
+    - evals/fixtures/characters/dev/16_scifi_cyberpunk.json
+    - evals/fixtures/characters/dev/17_mystery_country_house.json
+    - evals/fixtures/characters/dev/18_horror_cabin.json
+    - evals/fixtures/characters/dev/19_adventure_pirate.json
+    - evals/fixtures/characters/dev/20_historical_silk_road.json
+    - evals/fixtures/characters/holdout/01_scifi_space_station.json
+    - evals/fixtures/characters/holdout/02_fantasy_underwater.json
+    - evals/fixtures/characters/holdout/03_mystery_venetian.json
+    - evals/fixtures/characters/holdout/04_horror_asylum.json
+    - evals/fixtures/characters/holdout/05_adventure_western.json
+    - evals/fixtures/characters/holdout/06_historical_napoleonic.json
+    - evals/fixtures/characters/holdout/07_minimal_input.json
+    - evals/fixtures/characters/holdout/08_forbidden_dragon.json
+    - evals/fixtures/characters/holdout/09_required_chosen_one.json
+    - evals/fixtures/characters/holdout/10_conflicting_count_min.json
+    - evals/fixtures/characters/manifest.json
+    - evals/fixtures/characters/worlds/aetheria.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/characters/briefs/v2_10_folk_horror_lantern_parish.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/characters/worlds/v2_10_folk_horror_lantern_parish.json
+    - evals/fixtures/holdout_v2/manifest.json
+    - evals/fixtures/workflow/dev/01_skybridge_standard.json
+    - evals/fixtures/workflow/dev/02_arcade_ai_1980s.json
+    - evals/fixtures/workflow/dev/03_biopunk_ocean_colony.json
+    - evals/fixtures/workflow/dev/04_minimal_steppe_spirits.json
+    - evals/fixtures/workflow/dev/05_conflicting_constraints.json
+    - evals/fixtures/workflow/dev/06_injection_punchout.json
+    - evals/fixtures/workflow/dev/07_reviewer_policy_punchout.json
+    - evals/fixtures/workflow/dev/08_character_output_punchout.json
+    - evals/fixtures/workflow/dev/09_storyboard_output_punchout.json
+    - evals/fixtures/workflow/dev/10_brief_injection_punchout.json
+    - evals/fixtures/workflow/holdout/01_scifi_space_station.json
+    - evals/fixtures/workflow/holdout/02_fantasy_underwater.json
+    - evals/fixtures/workflow/manifest.json
+    - evals/holdout_v2/characters_tests.json
+    - evals/workflow.yaml
+    - evals/world_provider.py
+    - examples/characters/invalid/duplicate_character_id.json
+    - examples/characters/invalid/duplicate_relationship.json
+    - examples/characters/invalid/invalid_world_id.json
+    - examples/characters/invalid/missing_protagonist.json
+    - examples/characters/invalid/unknown_character_ref.json
+    - examples/characters/invalid/unknown_faction.json
+    - examples/characters/invalid/unknown_location.json
+    - examples/characters/valid_characters.json
+    - examples/story_brief.json
+    - scripts/characters_stage3.py
+    - scripts/characters_stage3_measure.py
+    - scripts/generate_characters_stage3_tests.py
+    - scripts/run_workflow_evals.py
+    - tests/conftest.py
+    - tests/test_bypass.py
+    - tests/test_characters.py
+    - tests/test_characters_agent.py
+    - tests/test_guardrails.py
+    - tests/test_runner.py
+    - tests/test_workflow_docs.py
+    - tests/test_punch_out_decisions.py
+    log_files:
+    - evidence/iterations/characters.md
+    - evidence/runs/characters/eval_smoke_5.json
+    - evidence/stage3/characters/01_v1_result_and_v2_preregistration.md
+    - evidence/stage3/characters/02_v2_result_and_v3_preregistration.md
+    - evidence/stage3/characters/03_v3_result_and_final_selection.md
+    - evidence/stage3/characters/04_final_verification.md
+    - evidence/stage3/characters/05_v4_result_and_close.md
+    - evidence/stage3/characters/archive/characters_iteration_log_pre_stage3.md
+    - evidence/stage3/characters/archive/historical_prompt_v1.0_recovered.md
+    - evidence/stage3/characters/archive/historical_v1.0_to_v1.1.diff
+    - evidence/stage3/characters/diffs/v1_to_v2.diff
+    - evidence/stage3/characters/diffs/v2_to_v3.diff
+    - evidence/stage3/characters/frozen_eval_config.json
+    - evidence/stage3/characters/matrices/load_bearing_v1.json
+    - evidence/stage3/characters/matrices/load_bearing_v1.md
+    - evidence/stage3/characters/matrices/load_bearing_v2.json
+    - evidence/stage3/characters/matrices/load_bearing_v2.md
+    - evidence/stage3/characters/matrices/load_bearing_v3.json
+    - evidence/stage3/characters/matrices/load_bearing_v3.md
+    - evidence/stage3/characters/measurements.json
+    - evidence/stage3/characters/prompts/v1.md
+    - evidence/stage3/characters/prompts/v2.md
+    - evidence/stage3/characters/prompts/v3.md
+    - evidence/stage3/characters/prompts/v4.md
+    - evidence/stage3/characters/results/compare_all.md
+    - evidence/stage3/characters/results/compare_v1_v2_v3_dev.md
+    - evidence/stage3/characters/results/final_dev.json
+    - evidence/stage3/characters/results/final_dev.summary.json
+    - evidence/stage3/characters/results/final_holdout.json
+    - evidence/stage3/characters/results/final_holdout.summary.json
+    - evidence/stage3/characters/results/holdout_v2.json
+    - evidence/stage3/characters/results/holdout_v2.summary.json
+    - evidence/stage3/characters/results/v1_dev.json
+    - evidence/stage3/characters/results/v1_dev.summary.json
+    - evidence/stage3/characters/results/v2_dev.json
+    - evidence/stage3/characters/results/v2_dev.summary.json
+    - evidence/stage3/characters/results/v3_dev.json
+    - evidence/stage3/characters/results/v3_dev.summary.json
+    - evidence/stage3/characters/results/v3_holdout_v2.json
+    - evidence/stage3/characters/results/v3_holdout_v2.summary.json
+    - evidence/stage3/characters/results/v3_luna_dev.json
+    - evidence/stage3/characters/results/v3_luna_dev.summary.json
+    - evidence/stage3/characters/results/v3_luna_holdout.json
+    - evidence/stage3/characters/results/v3_luna_holdout.summary.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2.summary.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2_r1.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2_r1.summary.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2_r2.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2_r2.summary.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2_r3.json
+    - evidence/stage3/characters/results/v3_luna_holdout_v2_r3.summary.json
+    - evidence/stage3/characters/results/v4_dev.json
+    - evidence/stage3/characters/results/v4_dev.summary.json
+    - evidence/stage3/luna_model_comparison.md
+  - name: characters_review
+    prompt_file: prompts/reviewers/characters.md
+    eval_files:
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/reviewers/characters/CR-V2-10_folk_horror_lantern_parish.json
+    - evals/reviewers/agent_assert.py
+    - evals/reviewers/agent_gates.py
+    - evals/reviewers/characters.yaml
+    - evals/reviewers/characters_dev_dsv4.yaml
+    - evals/reviewers/characters_holdout_v2.yaml
+    - evals/reviewers/characters_holdout_v2_dsv4.yaml
+    - evals/reviewers/characters_holdout_v2_luna.yaml
+    - evals/reviewers/characters_holdout_v2_lunahigh.yaml
+    - evals/reviewers/characters_luna.yaml
+    - evals/reviewers/characters_tests.json
+    - evals/reviewers/fixtures/characters/dev/CR-D01_saltmere_cast_clean.json
+    - evals/reviewers/fixtures/characters/dev/CR-D02_scarless_erasure_ability.json
+    - evals/reviewers/fixtures/characters/dev/CR-D03_tide_sense_is_not_magic.json
+    - evals/reviewers/fixtures/characters/dev/CR-D04_debt_since_age_of_walls.json
+    - evals/reviewers/fixtures/characters/dev/CR-D05_motivation_opposes_goal.json
+    - evals/reviewers/fixtures/characters/dev/CR-D06_ally_and_stranger.json
+    - evals/reviewers/fixtures/characters/dev/CR-D07_tide_calling_before_gate_unfulfilled_goal.json
+    - evals/reviewers/fixtures/characters/dev/CR-D08_terse_character_fields.json
+    - evals/reviewers/fixtures/characters/dev/CR-D09_unverified_paid_off_rumour.json
+    - evals/reviewers/fixtures/characters/dev/CR-D10_kessler_cast_clean.json
+    - evals/reviewers/fixtures/characters/dev/CR-D11_self_learning_model_ability.json
+    - evals/reviewers/fixtures/characters/dev/CR-D12_instant_hop_tug.json
+    - evals/reviewers/fixtures/characters/dev/CR-D13_full_g_at_dock_nine.json
+    - evals/reviewers/fixtures/characters/dev/CR-D14_pilot_boast.json
+    - evals/reviewers/fixtures/characters/dev/CR-D15_director_home_vs_description.json
+    - evals/reviewers/fixtures/characters/dev/CR-D16_radio_repair_ability.json
+    - evals/reviewers/fixtures/characters/dev/CR-D17_old_footprints_founded_cult_scrap_goal.json
+    - evals/reviewers/fixtures/characters/dev/CR-D18_bare_arc_traits_flaw.json
+    - evals/reviewers/fixtures/characters/dev/CR-D19_reviewer_note_in_world_location.json
+    - evals/reviewers/fixtures/characters/dev/CR-D20_diviner_serves_the_rival_faction.json
+    - evals/reviewers/fixtures/characters/dev/CR-D21_rain_follows_the_runners_saying.json
+    - evals/reviewers/fixtures/characters/dev/CR-D22_ghost_speech_ability.json
+    - evals/reviewers/fixtures/characters/dev/CR-D23_galvanic_lamp_lighting.json
+    - evals/reviewers/fixtures/characters/dev/CR-D24_inspector_master_key.json
+    - evals/reviewers/fixtures/characters/dev/CR-D25_borrowed_officer_key.json
+    - evals/reviewers/fixtures/characters/dev/CR-D26_shared_logs_and_never_shared.json
+    - evals/reviewers/fixtures/characters/dev/CR-D27_override_in_osric_arc.json
+    - evals/reviewers/fixtures/characters/dev/CR-D28_real_world_harm_in_arc.json
+    - evals/reviewers/fixtures/characters/dev/CR-D29_markup_emoji_unicode_fields.json
+    - evals/reviewers/fixtures/characters/dev/CR-D30_minimal_cast_empty_collections.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H01_frostmarch_cast_clean.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H02_costless_life_weaving.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H03_live_link_antenna_year_broadcast_goal.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H04_lantern_whisper_ability.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H05_bare_cast_fields.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H06_replies_before_the_question_joke.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H07_captain_swears_without_proof.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H08_note_to_ai_reviewer_in_dmitri.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H09_japanese_minimal_cast.json
+    - evals/reviewers/fixtures/characters/holdout/CR-H10_ally_and_never_spoken.json
+    - evals/reviewers/fixtures/characters/manifest.json
+    - evals/reviewers/holdout_v2_characters_tests.json
+    - evals/reviewers/reviewer_assert.py
+    - evals/reviewers/reviewer_scoring.py
+    - evals/reviewers/thresholds.json
+    - evals/world_stage3_provider.py
+    - scripts/generate_reviewer_tests.py
+    - scripts/reviewer_stage3.py
+    - tests/test_review_guardrails.py
+    - tests/test_reviewer_characters_eval.py
+    - tests/test_reviewer_contract.py
+    - tests/test_stage4_integration.py
+    log_files:
+    - evidence/iterations/reviewers/characters.md
+    - evidence/stage3/reviewers/SUMMARY.md
+    - evidence/stage3/reviewers/characters/dataset_rev0/characters_tests.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D01_saltmere_cast_clean.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D02_scarless_erasure_ability.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D03_tide_sense_is_not_magic.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D04_debt_since_age_of_walls.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D05_motivation_opposes_goal.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D06_ally_and_stranger.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D07_tide_calling_before_gate_unfulfilled_goal.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D08_terse_character_fields.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D09_unverified_paid_off_rumour.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D10_kessler_cast_clean.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D11_self_learning_model_ability.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D12_instant_hop_tug.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D13_full_g_at_dock_nine.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D14_pilot_boast.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D15_director_home_vs_description.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D16_radio_repair_ability.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D17_old_footprints_founded_cult_scrap_goal.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D18_bare_arc_traits_flaw.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D19_reviewer_note_in_world_location.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D20_diviner_serves_the_rival_faction.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D21_rain_follows_the_runners_saying.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D22_ghost_speech_ability.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D23_galvanic_lamp_lighting.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D24_inspector_master_key.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D25_borrowed_officer_key.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D26_shared_logs_and_never_shared.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D27_override_in_osric_arc.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D28_real_world_harm_in_arc.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D29_markup_emoji_unicode_fields.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/dev/CR-D30_minimal_cast_empty_collections.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H01_frostmarch_cast_clean.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H02_costless_life_weaving.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H03_live_link_antenna_year_broadcast_goal.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H04_lantern_whisper_ability.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H05_bare_cast_fields.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H06_replies_before_the_question_joke.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H07_captain_swears_without_proof.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H08_note_to_ai_reviewer_in_dmitri.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H09_japanese_minimal_cast.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/holdout/CR-H10_ally_and_never_spoken.json
+    - evidence/stage3/reviewers/characters/dataset_rev0/fixtures/manifest.json
+    - evidence/stage3/reviewers/characters/diffs/v1_to_v2.diff
+    - evidence/stage3/reviewers/characters/diffs/v2_to_v3.diff
+    - evidence/stage3/reviewers/characters/diffs/v3_to_v4.diff
+    - evidence/stage3/reviewers/characters/frozen_eval_config.json
+    - evidence/stage3/reviewers/characters/frozen_eval_config.rev0.json
+    - evidence/stage3/reviewers/characters/matrices/load_bearing_v1.json
+    - evidence/stage3/reviewers/characters/matrices/load_bearing_v1.md
+    - evidence/stage3/reviewers/characters/matrices/load_bearing_v2.json
+    - evidence/stage3/reviewers/characters/matrices/load_bearing_v2.md
+    - evidence/stage3/reviewers/characters/matrices/load_bearing_v3.json
+    - evidence/stage3/reviewers/characters/matrices/load_bearing_v3.md
+    - evidence/stage3/reviewers/characters/measurements.json
+    - evidence/stage3/reviewers/characters/prompt_hashes.json
+    - evidence/stage3/reviewers/characters/prompts/v1.md
+    - evidence/stage3/reviewers/characters/prompts/v2.md
+    - evidence/stage3/reviewers/characters/prompts/v3.md
+    - evidence/stage3/reviewers/characters/prompts/v4.md
+    - evidence/stage3/reviewers/characters/results/final_holdout.json
+    - evidence/stage3/reviewers/characters/results/final_holdout.summary.json
+    - evidence/stage3/reviewers/characters/results/holdout_v2.json
+    - evidence/stage3/reviewers/characters/results/holdout_v2.summary.json
+    - evidence/stage3/reviewers/characters/results/v1_dev.json
+    - evidence/stage3/reviewers/characters/results/v1_dev.summary.json
+    - evidence/stage3/reviewers/characters/results/v1_dev_repeat1.json
+    - evidence/stage3/reviewers/characters/results/v1_dev_repeat1.summary.json
+    - evidence/stage3/reviewers/characters/results/v1_dev_rev1.json
+    - evidence/stage3/reviewers/characters/results/v1_dev_rev1.summary.json
+    - evidence/stage3/reviewers/characters/results/v2_dev.json
+    - evidence/stage3/reviewers/characters/results/v2_dev.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_dev.json
+    - evidence/stage3/reviewers/characters/results/v3_dev.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_dsv4_holdout_v2_r1.json
+    - evidence/stage3/reviewers/characters/results/v3_dsv4_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_dsv4_holdout_v2_r2.json
+    - evidence/stage3/reviewers/characters/results/v3_dsv4_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_dsv4_holdout_v2_r3.json
+    - evidence/stage3/reviewers/characters/results/v3_dsv4_holdout_v2_r3.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_holdout_diag.json
+    - evidence/stage3/reviewers/characters/results/v3_holdout_diag.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_holdout_v2.json
+    - evidence/stage3/reviewers/characters/results/v3_holdout_v2.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_luna_dev.json
+    - evidence/stage3/reviewers/characters/results/v3_luna_dev.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_luna_holdout.json
+    - evidence/stage3/reviewers/characters/results/v3_luna_holdout.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_luna_holdout_v2.json
+    - evidence/stage3/reviewers/characters/results/v3_luna_holdout_v2.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_lunahigh_holdout_v2_r1.json
+    - evidence/stage3/reviewers/characters/results/v3_lunahigh_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_lunahigh_holdout_v2_r2.json
+    - evidence/stage3/reviewers/characters/results/v3_lunahigh_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/characters/results/v3_lunahigh_holdout_v2_r3.json
+    - evidence/stage3/reviewers/characters/results/v3_lunahigh_holdout_v2_r3.summary.json
+    - evidence/stage3/reviewers/characters/results/v4_dev.json
+    - evidence/stage3/reviewers/characters/results/v4_dev.summary.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_dev.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_dev.summary.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_holdout_v2_r1.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_holdout_v2_r2.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_holdout_v2_r3.json
+    - evidence/stage3/reviewers/characters/results/v4_dsv4_holdout_v2_r3.summary.json
+  - name: storyboard_building
+    prompt_file: prompts/storyboard.md
+    eval_files:
+    - evals/fixtures/holdout_v2/manifest.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/storyboard/briefs/v2_10_folk_horror_lantern_parish.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/storyboard/characters/v2_10_folk_horror_lantern_parish.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/storyboard/worlds/v2_10_folk_horror_lantern_parish.json
+    - evals/fixtures/storyboard/characters/aetheria_cast.json
+    - evals/fixtures/storyboard/characters/aetheria_injected.json
+    - evals/fixtures/storyboard/characters/minimal.json
+    - evals/fixtures/storyboard/dev/briefs/01_fantasy_adventure.json
+    - evals/fixtures/storyboard/dev/briefs/02_scifi_exploration.json
+    - evals/fixtures/storyboard/dev/briefs/03_mystery_investigation.json
+    - evals/fixtures/storyboard/dev/briefs/04_political_conflict.json
+    - evals/fixtures/storyboard/dev/briefs/05_survival_horror.json
+    - evals/fixtures/storyboard/dev/briefs/06_multiple_protagonists.json
+    - evals/fixtures/storyboard/dev/briefs/07_conflicting_objectives.json
+    - evals/fixtures/storyboard/dev/briefs/08_morally_ambiguous_antagonist.json
+    - evals/fixtures/storyboard/dev/briefs/09_interdependent_arcs.json
+    - evals/fixtures/storyboard/dev/briefs/10_multiple_factions_locations.json
+    - evals/fixtures/storyboard/dev/briefs/11_restricted_abilities.json
+    - evals/fixtures/storyboard/dev/briefs/12_minimum_supported_acts.json
+    - evals/fixtures/storyboard/dev/briefs/13_maximum_supported_acts.json
+    - evals/fixtures/storyboard/dev/briefs/14_single_location.json
+    - evals/fixtures/storyboard/dev/briefs/15_minimal_character_set.json
+    - evals/fixtures/storyboard/dev/briefs/16_highly_constrained.json
+    - evals/fixtures/storyboard/dev/briefs/17_prompt_injection_brief.json
+    - evals/fixtures/storyboard/dev/briefs/18_prompt_injection_world.json
+    - evals/fixtures/storyboard/dev/briefs/19_prompt_injection_characters.json
+    - evals/fixtures/storyboard/dev/briefs/20_nonexistent_character.json
+    - evals/fixtures/storyboard/dev/briefs/21_invented_location.json
+    - evals/fixtures/storyboard/dev/briefs/22_contradictory_plot.json
+    - evals/fixtures/storyboard/dev/briefs/23_unsupported_abilities.json
+    - evals/fixtures/storyboard/dev/briefs/24_bypass_validation.json
+    - evals/fixtures/storyboard/dev/briefs/25_coming_of_age.json
+    - evals/fixtures/storyboard/holdout/briefs/01_scifi_space_station.json
+    - evals/fixtures/storyboard/holdout/briefs/02_fantasy_underwater.json
+    - evals/fixtures/storyboard/holdout/briefs/03_mystery_venetian.json
+    - evals/fixtures/storyboard/holdout/briefs/04_horror_asylum.json
+    - evals/fixtures/storyboard/holdout/briefs/05_adventure_western.json
+    - evals/fixtures/storyboard/holdout/briefs/06_historical_napoleonic.json
+    - evals/fixtures/storyboard/holdout/briefs/07_minimal_input.json
+    - evals/fixtures/storyboard/holdout/briefs/08_forbidden_dragon.json
+    - evals/fixtures/storyboard/holdout/briefs/09_required_chosen_one.json
+    - evals/fixtures/storyboard/holdout/briefs/10_conflicting_count_min.json
+    - evals/fixtures/storyboard/worlds/aetheria.json
+    - evals/fixtures/storyboard/worlds/aetheria_injected.json
+    - evals/fixtures/storyboard/worlds/minimal.json
+    - evals/fixtures/workflow/dev/01_skybridge_standard.json
+    - evals/fixtures/workflow/dev/02_arcade_ai_1980s.json
+    - evals/fixtures/workflow/dev/03_biopunk_ocean_colony.json
+    - evals/fixtures/workflow/dev/04_minimal_steppe_spirits.json
+    - evals/fixtures/workflow/dev/05_conflicting_constraints.json
+    - evals/fixtures/workflow/dev/06_injection_punchout.json
+    - evals/fixtures/workflow/dev/07_reviewer_policy_punchout.json
+    - evals/fixtures/workflow/dev/08_character_output_punchout.json
+    - evals/fixtures/workflow/dev/09_storyboard_output_punchout.json
+    - evals/fixtures/workflow/dev/10_brief_injection_punchout.json
+    - evals/fixtures/workflow/holdout/01_scifi_space_station.json
+    - evals/fixtures/workflow/holdout/02_fantasy_underwater.json
+    - evals/fixtures/workflow/manifest.json
+    - evals/holdout_v2/storyboard_tests.json
+    - evals/storyboard.yaml
+    - evals/storyboard_assert.py
+    - evals/storyboard_holdout_v2.yaml
+    - evals/storyboard_holdout_v2_luna.yaml
+    - evals/storyboard_stage3.yaml
+    - evals/storyboard_stage3_assert.py
+    - evals/storyboard_stage3_luna.yaml
+    - evals/storyboard_stage3_provider.py
+    - evals/storyboard_stage3_tests.json
+    - evals/storyboard_tests.json
+    - evals/storyboard_tests_smoke.json
+    - evals/workflow.yaml
+    - evals/world_provider.py
+    - examples/story_brief.json
+    - examples/storyboards/invalid/cyclic_dependencies.json
+    - examples/storyboards/invalid/duplicate_scene_id.json
+    - examples/storyboards/invalid/forward_dependency.json
+    - examples/storyboards/invalid/invalid_phase_order.json
+    - examples/storyboards/invalid/invalid_world_id.json
+    - examples/storyboards/invalid/missing_narrative_phase.json
+    - examples/storyboards/invalid/unknown_character.json
+    - examples/storyboards/invalid/unknown_location.json
+    - examples/storyboards/valid_storyboard.json
+    - scripts/generate_storyboard_stage3_tests.py
+    - scripts/run_workflow_evals.py
+    - scripts/storyboard_stage3.py
+    - scripts/storyboard_stage3_measure.py
+    - tests/conftest.py
+    - tests/test_bypass.py
+    - tests/test_guardrails.py
+    - tests/test_runner.py
+    - tests/test_storyboard.py
+    - tests/test_storyboard_agent.py
+    - tests/test_storyboard_stage3.py
+    - tests/test_workflow_docs.py
+    - tests/test_punch_out_decisions.py
+    log_files:
+    - evidence/iterations/storyboard.md
+    - evidence/runs/storyboard/eval_smoke.json
+    - evidence/runs/storyboard/eval_smoke_pass.json
+    - evidence/stage3/luna_model_comparison.md
+    - evidence/stage3/storyboard/00_audit.md
+    - evidence/stage3/storyboard/01_v1_result_and_v2_preregistration.md
+    - evidence/stage3/storyboard/02_v2_result_and_v3_preregistration.md
+    - evidence/stage3/storyboard/03_v3_result_and_final_selection.md
+    - evidence/stage3/storyboard/04_final_verification.md
+    - evidence/stage3/storyboard/05_v4_preregistration.md
+    - evidence/stage3/storyboard/06_v4_v5_result_and_close.md
+    - evidence/stage3/storyboard/archive/storyboard_iteration_log_pre_stage3.md
+    - evidence/stage3/storyboard/diffs/v1_to_v2.diff
+    - evidence/stage3/storyboard/diffs/v2_to_v3.diff
+    - evidence/stage3/storyboard/diffs/v3_to_v4.diff
+    - evidence/stage3/storyboard/frozen_eval_config.json
+    - evidence/stage3/storyboard/matrices/load_bearing_v1.json
+    - evidence/stage3/storyboard/matrices/load_bearing_v1.md
+    - evidence/stage3/storyboard/matrices/load_bearing_v2.json
+    - evidence/stage3/storyboard/matrices/load_bearing_v2.md
+    - evidence/stage3/storyboard/matrices/load_bearing_v3.json
+    - evidence/stage3/storyboard/matrices/load_bearing_v3.md
+    - evidence/stage3/storyboard/measurements.json
+    - evidence/stage3/storyboard/prompts/v1.md
+    - evidence/stage3/storyboard/prompts/v2.md
+    - evidence/stage3/storyboard/prompts/v3.md
+    - evidence/stage3/storyboard/prompts/v4.md
+    - evidence/stage3/storyboard/prompts/v5.md
+    - evidence/stage3/storyboard/results/cases_v1_v2.json
+    - evidence/stage3/storyboard/results/cases_v2_v3.json
+    - evidence/stage3/storyboard/results/cases_v3_final_dev.json
+    - evidence/stage3/storyboard/results/compare_all.md
+    - evidence/stage3/storyboard/results/compare_v1_v2_v3_dev.md
+    - evidence/stage3/storyboard/results/final_dev.json
+    - evidence/stage3/storyboard/results/final_dev.summary.json
+    - evidence/stage3/storyboard/results/final_holdout.json
+    - evidence/stage3/storyboard/results/final_holdout.summary.json
+    - evidence/stage3/storyboard/results/holdout_v2.json
+    - evidence/stage3/storyboard/results/holdout_v2.summary.json
+    - evidence/stage3/storyboard/results/invalid_auth_failure/v4_dev.json
+    - evidence/stage3/storyboard/results/invalid_auth_failure/v4_dev.summary.json
+    - evidence/stage3/storyboard/results/invalid_auth_failure/v4_dev_repeat1.json
+    - evidence/stage3/storyboard/results/invalid_auth_failure/v4_dev_repeat1.summary.json
+    - evidence/stage3/storyboard/results/v1_dev.json
+    - evidence/stage3/storyboard/results/v1_dev.summary.json
+    - evidence/stage3/storyboard/results/v1_dev_attempt1_recovered.json
+    - evidence/stage3/storyboard/results/v1_dev_attempt1_recovered.summary.json
+    - evidence/stage3/storyboard/results/v2_dev.json
+    - evidence/stage3/storyboard/results/v2_dev.summary.json
+    - evidence/stage3/storyboard/results/v3_dev.json
+    - evidence/stage3/storyboard/results/v3_dev.summary.json
+    - evidence/stage3/storyboard/results/v3_dev_attempt1_recovered.json
+    - evidence/stage3/storyboard/results/v3_dev_attempt1_recovered.summary.json
+    - evidence/stage3/storyboard/results/v3_holdout_v2.json
+    - evidence/stage3/storyboard/results/v3_holdout_v2.summary.json
+    - evidence/stage3/storyboard/results/v3_luna_dev.json
+    - evidence/stage3/storyboard/results/v3_luna_dev.summary.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout.summary.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2.summary.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2_r1.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2_r1.summary.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2_r2.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2_r2.summary.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2_r3.json
+    - evidence/stage3/storyboard/results/v3_luna_holdout_v2_r3.summary.json
+    - evidence/stage3/storyboard/results/v4_dev.json
+    - evidence/stage3/storyboard/results/v4_dev.summary.json
+    - evidence/stage3/storyboard/results/v4_dev_repeat1.json
+    - evidence/stage3/storyboard/results/v4_dev_repeat1.summary.json
+    - evidence/stage3/storyboard/results/v5_dev.json
+    - evidence/stage3/storyboard/results/v5_dev.summary.json
+    - evidence/stage3/storyboard/results/v5_holdout_diag.json
+    - evidence/stage3/storyboard/results/v5_holdout_diag.summary.json
+  - name: storyboard_review
+    prompt_file: prompts/reviewers/storyboard.md
+    eval_files:
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-01_solarpunk_tidal_conservatories.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-02_wuxia_crane_banner_coast.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-03_hard_sf_perihelion_yard.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-04_postapocalyptic_seedways.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-05_mythic_underworld_ledger.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-06_gaslamp_bellwether.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-07_cozy_thistledown_fair.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-08_space_opera_comet_market.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-09_historical_monsoon_court.json
+    - evals/fixtures/holdout_v2/reviewers/storyboard/SR-V2-10_folk_horror_lantern_parish.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D01_salt_ledger_storyboard_clean.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D02_renewal_at_neap_tide.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D03_false_neap_claim_rejected.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D04_oren_dies_then_returns.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D05_tamsin_renounces_the_challenge.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D06_costless_renewal_crown_inspector_closed_before_summoned.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D07_terse_scene_fields.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D08_quay_remembers_before_ledgers.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D09_kessler_storyboard_clean.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D10_tug_hops_the_gap.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D11_station_mind_computes_tables.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D12_second_reserve_settles_the_vote.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D13_halvard_dies_then_publishes.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D14_flashback_inside_scene.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D15_ilse_waives_all_payment.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D16_system_note_in_union_scene.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D17_electric_motor_hauler.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D18_refused_tithe_after_bargain.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D19_rain_on_cinder_well.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D20_sela_abandons_the_caravan.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D21_bare_scene_fields.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D22_fresh_track_followed.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D23_ghost_pointer_wharf_lamp_key_galvanic_recorder.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D24_marguerite_dies_then_reopens_lamp_houses.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D25_joke_about_haunting.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D26_reviewer_note_in_world_location.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D27_real_world_harm_in_confrontation.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D28_markup_emoji_unicode_fields.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D29_minimal_storyboard.json
+    - evals/reviewers/fixtures/storyboard/dev/SR-D30_osric_called_the_guild_master.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H01_rime_crown_storyboard_clean.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H02_lake_crossed_in_the_thaw.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H03_instant_reply_spare_by_ship_crowd_announcement.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H04_pell_shot_then_takes_over_ledgers.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H05_bare_coast_scenes.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H06_answer_before_the_ink_is_dry.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H07_prophecy_dismissed.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H08_note_to_ai_reviewer_in_stall.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H09_japanese_minimal_storyboard.json
+    - evals/reviewers/fixtures/storyboard/holdout/SR-H10_raider_chief_confesses_from_nowhere.json
+    - evals/reviewers/fixtures/storyboard/manifest.json
+    - evals/reviewers/holdout_v2_storyboard_tests.json
+    - evals/reviewers/reviewer_assert.py
+    - evals/reviewers/reviewer_scoring.py
+    - evals/reviewers/storyboard.yaml
+    - evals/reviewers/storyboard_assert.py
+    - evals/reviewers/storyboard_dev_dsv4.yaml
+    - evals/reviewers/storyboard_gates.py
+    - evals/reviewers/storyboard_holdout_v2.yaml
+    - evals/reviewers/storyboard_holdout_v2_dsv4.yaml
+    - evals/reviewers/storyboard_holdout_v2_luna.yaml
+    - evals/reviewers/storyboard_holdout_v2_lunahigh.yaml
+    - evals/reviewers/storyboard_luna.yaml
+    - evals/reviewers/storyboard_tests.json
+    - evals/reviewers/thresholds.json
+    - evals/world_stage3_provider.py
+    - scripts/generate_reviewer_tests.py
+    - scripts/reviewer_stage3.py
+    - tests/test_review_guardrails.py
+    - tests/test_reviewer_contract.py
+    - tests/test_reviewer_storyboard_eval.py
+    - tests/test_stage4_integration.py
+    log_files:
+    - evidence/iterations/reviewers/storyboard.md
+    - evidence/stage3/reviewers/SUMMARY.md
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D01_salt_ledger_storyboard_clean.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D02_renewal_at_neap_tide.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D03_false_neap_claim_rejected.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D04_oren_dies_then_returns.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D05_tamsin_renounces_the_challenge.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D06_costless_renewal_crown_inspector_closed_before_summoned.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D07_terse_scene_fields.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D08_quay_remembers_before_ledgers.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D09_kessler_storyboard_clean.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D10_tug_hops_the_gap.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D11_station_mind_computes_tables.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D12_second_reserve_settles_the_vote.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D13_halvard_dies_then_publishes.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D14_flashback_inside_scene.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D15_halvard_always_wanted_publication.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D16_system_note_in_union_scene.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D17_electric_motor_hauler.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D18_refused_tithe_after_bargain.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D19_rain_on_cinder_well.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D20_sela_abandons_the_caravan.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D21_bare_scene_fields.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D22_fresh_track_followed.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D23_ghost_pointer_wharf_lamp_key_galvanic_recorder.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D24_marguerite_dies_then_reopens_lamp_houses.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D25_joke_about_haunting.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D26_reviewer_note_in_world_location.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D27_real_world_harm_in_confrontation.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D28_markup_emoji_unicode_fields.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D29_minimal_storyboard.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/dev/SR-D30_osric_called_the_guild_master.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H01_rime_crown_storyboard_clean.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H02_lake_crossed_in_the_thaw.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H03_instant_reply_spare_by_ship_crowd_announcement.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H04_pell_shot_then_takes_over_ledgers.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H05_bare_coast_scenes.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H06_answer_before_the_ink_is_dry.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H07_prophecy_dismissed.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H08_note_to_ai_reviewer_in_stall.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H09_japanese_minimal_storyboard.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/holdout/SR-H10_raider_chief_confesses_from_nowhere.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/fixtures/manifest.json
+    - evidence/stage3/reviewers/storyboard/dataset_rev0/storyboard_tests.json
+    - evidence/stage3/reviewers/storyboard/diffs/v1_to_v2.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v2_to_v3.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v3_to_v4.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v3_to_v6.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v4_to_v5.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v6_to_v7.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v7_to_v8.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v8_to_v9.diff
+    - evidence/stage3/reviewers/storyboard/diffs/v9_to_v10.diff
+    - evidence/stage3/reviewers/storyboard/frozen_eval_config.json
+    - evidence/stage3/reviewers/storyboard/frozen_eval_config.rev0.json
+    - evidence/stage3/reviewers/storyboard/matrices/load_bearing_v1.json
+    - evidence/stage3/reviewers/storyboard/matrices/load_bearing_v1.md
+    - evidence/stage3/reviewers/storyboard/matrices/load_bearing_v2.json
+    - evidence/stage3/reviewers/storyboard/matrices/load_bearing_v2.md
+    - evidence/stage3/reviewers/storyboard/matrices/load_bearing_v3.json
+    - evidence/stage3/reviewers/storyboard/matrices/load_bearing_v3.md
+    - evidence/stage3/reviewers/storyboard/measurements.json
+    - evidence/stage3/reviewers/storyboard/prompt_hashes.json
+    - evidence/stage3/reviewers/storyboard/prompts/v1.md
+    - evidence/stage3/reviewers/storyboard/prompts/v10.md
+    - evidence/stage3/reviewers/storyboard/prompts/v2.md
+    - evidence/stage3/reviewers/storyboard/prompts/v3.md
+    - evidence/stage3/reviewers/storyboard/prompts/v4.md
+    - evidence/stage3/reviewers/storyboard/prompts/v5.md
+    - evidence/stage3/reviewers/storyboard/prompts/v6.md
+    - evidence/stage3/reviewers/storyboard/prompts/v7.md
+    - evidence/stage3/reviewers/storyboard/prompts/v8.md
+    - evidence/stage3/reviewers/storyboard/prompts/v9.md
+    - evidence/stage3/reviewers/storyboard/results/final_holdout.json
+    - evidence/stage3/reviewers/storyboard/results/final_holdout.summary.json
+    - evidence/stage3/reviewers/storyboard/results/holdout_v2.json
+    - evidence/stage3/reviewers/storyboard/results/holdout_v2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_dev_r2.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_dev_r2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_dev_r3.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_dev_r3.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_holdout_v2_r1.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_holdout_v2_r2.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_holdout_v2_r3.json
+    - evidence/stage3/reviewers/storyboard/results/v10_dsv4_holdout_v2_r3.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v1_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v1_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v1_dev_rev1.json
+    - evidence/stage3/reviewers/storyboard/results/v1_dev_rev1.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v2_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v2_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v3_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v3_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v3_dev_repeat1.json
+    - evidence/stage3/reviewers/storyboard/results/v3_dev_repeat1.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v3_holdout_diag.json
+    - evidence/stage3/reviewers/storyboard/results/v3_holdout_diag.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v4_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v4_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v4_dev_repeat1.json
+    - evidence/stage3/reviewers/storyboard/results/v4_dev_repeat1.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v4_holdout_diag.json
+    - evidence/stage3/reviewers/storyboard/results/v4_holdout_diag.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v5_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v5_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v5_holdout_diag.json
+    - evidence/stage3/reviewers/storyboard/results/v5_holdout_diag.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v6_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v6_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v6_holdout_diag.json
+    - evidence/stage3/reviewers/storyboard/results/v6_holdout_diag.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v7_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v7_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v7_dev_repeat1.json
+    - evidence/stage3/reviewers/storyboard/results/v7_dev_repeat1.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v7_dev_repeat2.json
+    - evidence/stage3/reviewers/storyboard/results/v7_dev_repeat2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v7_holdout_diag.json
+    - evidence/stage3/reviewers/storyboard/results/v7_holdout_diag.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v8_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v8_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v8_holdout_diag.json
+    - evidence/stage3/reviewers/storyboard/results/v8_holdout_diag.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dsv4_holdout_v2_r1.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dsv4_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dsv4_holdout_v2_r2.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dsv4_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dsv4_holdout_v2_r3.json
+    - evidence/stage3/reviewers/storyboard/results/v9_dsv4_holdout_v2_r3.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_holdout_diag.json
+    - evidence/stage3/reviewers/storyboard/results/v9_holdout_diag.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_holdout_v2.json
+    - evidence/stage3/reviewers/storyboard/results/v9_holdout_v2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_luna_dev.json
+    - evidence/stage3/reviewers/storyboard/results/v9_luna_dev.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_luna_holdout.json
+    - evidence/stage3/reviewers/storyboard/results/v9_luna_holdout.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_luna_holdout_v2.json
+    - evidence/stage3/reviewers/storyboard/results/v9_luna_holdout_v2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_lunahigh_holdout_v2_r1.json
+    - evidence/stage3/reviewers/storyboard/results/v9_lunahigh_holdout_v2_r1.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_lunahigh_holdout_v2_r2.json
+    - evidence/stage3/reviewers/storyboard/results/v9_lunahigh_holdout_v2_r2.summary.json
+    - evidence/stage3/reviewers/storyboard/results/v9_lunahigh_holdout_v2_r3.json
+    - evidence/stage3/reviewers/storyboard/results/v9_lunahigh_holdout_v2_r3.summary.json
+not_judged:
+- path: evidence/archive/
+  reason: byte-preserved snapshot of the superseded workflow-v1.0.0 8-case
+    evidence (success_rate.json, audit_trail.jsonl, punch_out.md,
+    punch_out_tests.json, iterations/workflow.md) taken at 2026-11-18T08:11:30Z
+    immediately before the final 12-case workflow-v1.1.0 evaluation overwrote
+    the live evidence files; kept as the pre-enforcement historical baseline
+- path: runner.py
+  reason: thin shim that only calls fictionforge.runner.main; the real runner src/fictionforge/runner.py
+    is the entry_point
+- path: README.md
+  reason: project overview and run/validate/package instructions; not a judged step
+    file
+- path: pyproject.toml
+  reason: packaging metadata and dependency pins
+- path: config/workflow.yaml
+  reason: runtime config (provider, model, retry limits, retryable error codes) read
+    by the runner
+- path: scripts/package_submission.py
+  reason: 'submission tooling: builds the deterministic ZIP and its SHA-256 checksum
+    after validation passes'
+- path: scripts/validate_submission.py
+  reason: 'submission tooling: deterministic structural validator for manifest schema
+    v2 (rules R1-R7)'
+- path: scripts/generate_workflow_fixtures.py
+  reason: one-off generator for the workflow fixtures; its output is declared as eval
+    files
+- path: scripts/generate_world_fixtures.py
+  reason: one-off generator for the world fixtures; its output is declared as eval
+    files
+- path: scripts/generate_world_promptfoo.py
+  reason: one-off generator for promptfoo config; its output is declared as eval files
+- path: src/fictionforge/agents/base.py
+  reason: 'supporting library code: shared agent base class imported by the runner'
+- path: src/fictionforge/agents/world.py
+  reason: 'supporting library code: world step agent wrapper (loads prompt, calls
+    LLM, validates); no manifest key for library code'
+- path: src/fictionforge/agents/characters.py
+  reason: 'supporting library code: character step agent wrapper; no manifest key
+    for library code'
+- path: src/fictionforge/agents/storyboard.py
+  reason: 'supporting library code: storyboard step agent wrapper; no manifest key
+    for library code'
+- path: src/fictionforge/config.py
+  reason: 'supporting library code: loads config/workflow.yaml'
+- path: src/fictionforge/models.py
+  reason: 'supporting library code: pydantic data models for brief, world, characters,
+    storyboard'
+- path: src/fictionforge/schema_export.py
+  reason: 'supporting utility: exports pydantic models to schemas/*.json'
+- path: src/fictionforge/llm/__init__.py
+  reason: 'supporting library code: LLM client package init'
+- path: src/fictionforge/llm/base.py
+  reason: 'supporting library code: LLM client interface'
+- path: src/fictionforge/llm/devin.py
+  reason: 'supporting library code: Devin CLI LLM client'
+- path: src/fictionforge/llm/ollama.py
+  reason: 'supporting library code: Ollama LLM client'
+- path: src/fictionforge/guardrails/punch_out.py
+  reason: 'supporting library code: punch-out exception, record and output scanner;
+    its measured behaviour is in evidence/punch_out.md'
+- path: src/fictionforge/observability/audit.py
+  reason: 'supporting library code: audit-trail writer; its output is evidence/audit_trail.jsonl'
+- path: src/fictionforge/observability/metrics.py
+  reason: 'supporting library code: metrics helpers used by the harness'
+- path: evidence/punch_out_tests.json
+  reason: machine-readable record of the same punch-out test reported in evidence/punch_out.md
+- path: evidence/runs/characters/.gitignore
+  reason: ignore-all git rule inside an eval output directory
+- path: evidence/workflow_eval_runs/
+  reason: per-case brief files extracted from evals/fixtures/workflow by the eval
+    harness and fed to the runner; their hashes are the input hashes in audit_trail.jsonl
+- path: runs/
+  reason: raw per-run output directories written by the runner (the 8 runs behind
+    evidence/success_rate.json plus earlier ad-hoc runs); summarised by evidence/,
+    and runs/c1dd705a5b0f499c/audit.jsonl is the file cited by evidence/punch_out.md
+- path: examples/brief_arcade_ai_1980s.json
+  reason: sample story brief for manual runs; not referenced by tests or evals
+- path: examples/brief_biopunk_ocean_colony.json
+  reason: sample story brief for manual runs; not referenced by tests or evals
+- path: examples/brief_gaslamp_heist.json
+  reason: sample story brief for manual runs; not referenced by tests or evals
+- path: examples/brief_post_apocalyptic_solarpunk.json
+  reason: sample story brief for manual runs; not referenced by tests or evals
+- path: examples/brief_steppe_spirits.json
+  reason: sample story brief for manual runs; not referenced by tests or evals
+- path: schemas/brief.schema.json
+  reason: JSON Schema exported from the pydantic models by schema_export.py; supporting
+    contract, not a judged step file
+- path: schemas/characters.schema.json
+  reason: JSON Schema exported from the pydantic models by schema_export.py; supporting
+    contract, not a judged step file
+- path: schemas/storyboard.schema.json
+  reason: JSON Schema exported from the pydantic models by schema_export.py; supporting
+    contract, not a judged step file
+- path: schemas/world.schema.json
+  reason: JSON Schema exported from the pydantic models by schema_export.py; supporting
+    contract, not a judged step file
+- path: dashboard/
+  reason: generated per-run observability dashboards written by observability/dashboard.py;
+    reproducible from runs/
+- path: data/
+  reason: immutable ACU->USD pricing snapshots consumed by observability/pricing.py
+    for estimated-cost labels
+- path: prompts/reviewers/world_reviewer.md
+  reason: superseded reviewer prompt draft; the Stage 3-selected prompt used by the
+    gate is prompts/reviewers/world.md
+- path: prompts/reviewers/character_reviewer.md
+  reason: superseded reviewer prompt draft; the Stage 3-selected prompt used by the
+    gate is prompts/reviewers/characters.md
+- path: prompts/reviewers/storyboard_reviewer.md
+  reason: superseded reviewer prompt draft; the Stage 3-selected prompt used by the
+    gate is prompts/reviewers/storyboard.md
+- path: evals/review/dataset.json
+  reason: retired legacy review-contract dataset kept for reference; superseded by
+    evals/reviewers/
+- path: scripts/build_review_dataset.py
+  reason: one-off generator for the retired evals/review/dataset.json
+- path: scripts/build_world_reviewer_fixtures.py
+  reason: one-off generator for the world reviewer fixtures; its output is declared
+    as eval files
+- path: scripts/build_characters_reviewer_fixtures.py
+  reason: one-off generator for the characters reviewer fixtures; its output is declared
+    as eval files
+- path: scripts/build_storyboard_reviewer_fixtures.py
+  reason: one-off generator for the storyboard reviewer fixtures; its output is declared
+    as eval files
+- path: scripts/build_dashboard.py
+  reason: dashboard build tooling; output lives in dashboard/
+- path: scripts/serve_dashboard.py
+  reason: live dashboard server tooling; serves runs/ to a browser
+- path: scripts/run_review_evals.py
+  reason: retired stub kept to redirect users; the legacy review contract it measured
+    was removed in Stage 4
+- path: scripts/run_review_rejection_demo.py
+  reason: live demo tooling for the review-rejection path; produces demo runs on demand,
+    not a measured eval
+- path: scripts/stage4_review_gate.py
+  reason: manual single-gate review runner for inspecting gate behaviour on one fixture;
+    inspection tooling
+- path: scripts/stage4_summarize.py
+  reason: offline per-run summary tooling
+- path: src/fictionforge/guardrails/handoff.py
+  reason: 'supporting library code: gate keeper and handoff hook; measured by tests/test_review_guardrails.py'
+- path: src/fictionforge/guardrails/review.py
+  reason: 'supporting library code: reviewer client, evidence grounding and acceptance
+    policy'
+- path: src/fictionforge/guardrails/reviewer_codes.py
+  reason: 'supporting library code: reviewer issue-code taxonomy'
+- path: src/fictionforge/guardrails/reviewer_contract.py
+  reason: 'supporting library code: shared reviewer verdict contract (the code the
+    Stage 3 reviewer evals judged)'
+- path: src/fictionforge/guardrails/storyboard_codes.py
+  reason: 'supporting library code: storyboard reviewer issue-code taxonomy'
+- path: src/fictionforge/observability/consumption.py
+  reason: 'supporting library code: session consumption retrieval for cost accounting'
+- path: src/fictionforge/observability/dashboard.py
+  reason: 'supporting library code: dashboard aggregation and HTML rendering; output
+    is in dashboard/'
+- path: src/fictionforge/observability/live.py
+  reason: 'supporting library code: live dashboard SSE server used by scripts/serve_dashboard.py'
+- path: src/fictionforge/observability/pricing.py
+  reason: 'supporting library code: immutable pricing snapshots for estimated-cost
+    labels'
+- path: tests/test_dashboard.py
+  reason: offline tests for observability/dashboard.py; support-code coverage, not
+    a step eval
+- path: tests/test_live_dashboard.py
+  reason: offline tests for the live dashboard server; support-code coverage, not
+    a step eval
+- path: tests/test_session_tracking.py
+  reason: offline tests for session tracking and audit fields; support-code coverage,
+    not a step eval
+- path: tests/test_workflow_eval_metrics.py
+  reason: offline regression tests for the scripts/run_workflow_evals.py metric
+    calculations and the runner audit-gap fix; support-code coverage, not a step
+    eval
+- path: evidence/stage4/README.md
+  reason: Stage 4 reviewer-gate integration notes; documentation, not a measured log
+- path: evidence/stage4/contract_migration.md
+  reason: design notes for the legacy to shared reviewer-contract migration; documentation
+- path: evidence/stage4/manual_commands.md
+  reason: manual commands for producing live gate evidence; documentation
+- path: docs/workflow.md
+  reason: standalone Stage 4 workflow definition and architecture documentation; referenced by evals/workflow.yaml criteria and asserted consistent with the code by tests/test_workflow_docs.py; documentation, not a judged step file
+- path: evidence/stage4/punch_out/
+  reason: executed offline human punch-out verification evidence (MockClient scenarios PO-01..PO-17, test_results.json, execution_trace.jsonl, approval/denial cases, captured run dirs); mocked evidence distinct from live records
+- path: scripts/run_punch_out_evidence.py
+  reason: offline evidence generator for human punch-out verification; its output is evidence/stage4/punch_out/
+- path: examples/story_brief_punchout.json
+  reason: adversarial sample brief for the manual live punch-out demonstration (require:skip_validation induces the scanned phrase); commands in evidence/punch_out.md
+- path: examples/story_brief_punchout_reviewer.json
+  reason: adversarial sample brief for the manual live punch-out demonstration (require directive forces reviewer-directed control text into the world artifact so a reviewer PUNCH_OUT can be confirmed); commands in evidence/punch_out.md
+- path: examples/story_brief_punchout_characters.json
+  reason: adversarial sample brief for the manual live punch-out demonstration (free-text constraint aims the scanned phrase at the character_design step); commands in evidence/punch_out.md
+- path: examples/story_brief_punchout_storyboard.json
+  reason: adversarial sample brief for the manual live punch-out demonstration (free-text constraint aims the scanned phrase at the storyboard_building step); commands in evidence/punch_out.md
+- path: examples/story_brief_punchout_brief_injection.json
+  reason: adversarial sample brief for the manual live punch-out demonstration (premise itself carries reviewer-directed control text for brief-context corroboration); commands in evidence/punch_out.md
+- path: models.md
+  reason: model selection notes for the generation and reviewer models; documentation
+- path: scripts/build_holdout_v2_fixtures.py
+  reason: one-off generator for holdout_v2 eval fixtures/configs; its output is declared as eval files
+- path: scripts/generate_holdout_v2_evals.py
+  reason: one-off generator for holdout_v2 eval fixtures/configs; its output is declared as eval files
+- path: scripts/holdout_v2_data.py
+  reason: one-off generator for holdout_v2 eval fixtures/configs; its output is declared as eval files
+- path: scripts/run_dsv4_reviewer_holdout_v2_x3.sh
+  reason: manual evaluation runner shell script; invokes live models, run by the operator
+- path: scripts/run_luna_evals.sh
+  reason: manual evaluation runner shell script; invokes live models, run by the operator
+- path: scripts/run_luna_gen_holdout_v2_x3.sh
+  reason: manual evaluation runner shell script; invokes live models, run by the operator
+- path: scripts/run_lunahigh_reviewer_holdout_v2_x3.sh
+  reason: manual evaluation runner shell script; invokes live models, run by the operator

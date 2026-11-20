@@ -1,0 +1,251 @@
+{
+  "case_id": "CR-V2-07",
+  "agent": "characters",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "cozy_thistledown_fair",
+  "context_validated": true,
+  "brief": {
+    "title": "Tea at the Ninth Stall",
+    "premise": "A hedge-witch tea merchant follows a travelling fair that appears only in leap-season, trying to win back her family's lost stall before the fair folds its lanes and moves on.",
+    "genre": "cozy fantasy",
+    "tone": "gentle",
+    "target_audience": "all ages",
+    "location_count": 4,
+    "constraints": [
+      "forbid:violence",
+      "require:fair",
+      "Conflicts are settled by bargains, contests and trade, never violence.",
+      "max_locations:5"
+    ]
+  },
+  "world": {
+    "world_id": "wld_thistledown",
+    "name": "The Thistledown Fair",
+    "description": "A travelling fair that unfolds its lanes only in leap-season, where stall rights are held in favours, debts are settled in trade, and the fair itself seems to remember every promise made under its lanterns.",
+    "locations": [
+      {
+        "id": "loc_leap_lane",
+        "name": "Leap Lane",
+        "description": "The fair's main way, which appears in an ordinary field at leap-season and folds away at season's end."
+      },
+      {
+        "id": "loc_ninth_stall",
+        "name": "The Ninth Stall",
+        "description": "A shuttered stall at the lane's turn whose lease was forfeited on an unkept favour a generation ago."
+      },
+      {
+        "id": "loc_kettle_commons",
+        "name": "The Kettle Commons",
+        "description": "The cluster of tea tents where merchants trade gossip, samples and favours."
+      },
+      {
+        "id": "loc_wishing_barn",
+        "name": "The Wishing Barn",
+        "description": "The tallykeepers' barn where every promised favour is written on a wishing tag and hung until kept."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_stallholders",
+        "name": "The Stallholders' Round",
+        "description": "The merchants who hold the fair's leases and vote the stall rights.",
+        "location_ids": [
+          "loc_kettle_commons"
+        ]
+      },
+      {
+        "id": "fac_tallykeepers",
+        "name": "The Tallykeepers",
+        "description": "The clerks who record every favour on wishing tags and judge disputes of debt.",
+        "location_ids": [
+          "loc_wishing_barn"
+        ]
+      },
+      {
+        "id": "fac_carters",
+        "name": "The Carter Kin",
+        "description": "The families whose wains carry the fair between fields and keep the lanes' secrets.",
+        "location_ids": [
+          "loc_leap_lane"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_leap_season",
+        "statement": "The fair exists only in leap-season; at season's end the lanes fold back into ordinary fields.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_favour_currency",
+        "statement": "Debts at the fair are paid in favours, and a favour once promised must be kept before the fair moves.",
+        "category": "social"
+      },
+      {
+        "id": "rul_no_sharp_edges",
+        "statement": "No contest at the fair may risk harm; disputes go to the Tallykeepers and are settled by bargain or contest.",
+        "category": "social"
+      },
+      {
+        "id": "rul_ninth_lease",
+        "statement": "The Ninth Stall's lease can be claimed only by the family that lost it, before the third bell of closing day.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_first_fair",
+        "name": "The First Fair",
+        "era": "The First Leap",
+        "description": "The fair appeared uninvited in a fallow field, traded for a season, and left a lane where none had been.",
+        "location_ids": [
+          "loc_leap_lane"
+        ]
+      },
+      {
+        "id": "evt_stall_forfeit",
+        "name": "The Forfeit of the Ninth",
+        "era": "The Middle Leaps",
+        "description": "A tea merchant's family lost their stall when a promised favour went unkept past the third bell.",
+        "location_ids": [
+          "loc_ninth_stall"
+        ]
+      },
+      {
+        "id": "evt_tally_accord",
+        "name": "The Tally Accord",
+        "era": "The Middle Leaps",
+        "description": "The tallykeepers were given authority over favour-debts after a season of duelling claims.",
+        "location_ids": [
+          "loc_wishing_barn"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_ninth_claim",
+        "name": "The Ninth Claim",
+        "description": "The Carter Kin are quietly selling the Ninth Stall's lease, while the family that forfeited it still holds a claim.",
+        "faction_ids": [
+          "fac_stallholders",
+          "fac_carters"
+        ]
+      },
+      {
+        "id": "cnf_favour_shortage",
+        "name": "The Favour Shortage",
+        "description": "More favours are owed than can be kept before closing day, and the tallykeepers must rule which debts ride with the fair.",
+        "faction_ids": [
+          "fac_tallykeepers",
+          "fac_stallholders"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_thistledown",
+    "characters": [
+      {
+        "id": "chr_poppy_wren",
+        "name": "Poppy Wren",
+        "role": "protagonist",
+        "description": "A hedge-witch tea merchant who brews her family's recipes from a handcart, carrying the deed-story of the Ninth Stall her grandmother lost.",
+        "personality_traits": [
+          "warm",
+          "persistent",
+          "self-doubting"
+        ],
+        "motivation": "To win back the stall that is the last of her family's name at the fair.",
+        "goal": "Prove her family's claim to the Ninth Stall before the third bell of closing day.",
+        "flaw": "She apologises before she speaks, and hears refusal before it comes.",
+        "internal_conflict": "She wants the stall but fears the fair will find her unworthy of it.",
+        "external_conflict": "The Carter Kin's sale of the lease is lawful unless her claim is proven first.",
+        "home_location_id": "loc_kettle_commons",
+        "faction_id": "fac_stallholders",
+        "abilities": [
+          {
+            "name": "Taste-truthing",
+            "description": "Tastes sincerity in a shared cup of tea, a small hedge-witch gift.",
+            "category": "supernatural"
+          }
+        ],
+        "arc": "Poppy stops apologising for her claim and lets the fair judge it honestly."
+      },
+      {
+        "id": "chr_damson_grey",
+        "name": "Damson Grey",
+        "role": "antagonist",
+        "description": "A carter-kin factor who found the Ninth Stall's lease bundled in an old ledger and means to sell it before the lanes fold.",
+        "personality_traits": [
+          "charming",
+          "literal-minded",
+          "hungry"
+        ],
+        "motivation": "To turn a forgotten lease into the factor's share his kin never gave him.",
+        "goal": "Complete the lease sale before the family's claim can be proved.",
+        "flaw": "He believes the rules serve whoever reads them closest.",
+        "internal_conflict": "He knows the claim is real and tells himself a sale is a kind of settling.",
+        "external_conflict": "Poppy's claim and the tallykeepers' tags stand between him and the sale.",
+        "home_location_id": "loc_leap_lane",
+        "faction_id": "fac_carters",
+        "abilities": [
+          {
+            "name": "Lease-craft",
+            "description": "Finds the clause that lets him do what fairness forbids.",
+            "category": "social"
+          }
+        ],
+        "arc": "Damson reads one clause too many and finds the lease reads him back."
+      },
+      {
+        "id": "chr_mabel_thorn",
+        "name": "Mabel Thorn",
+        "role": "supporting",
+        "description": "The eldest tallykeeper, who keeps the wishing tags and remembers the taste of every tea that ever sealed a bargain.",
+        "personality_traits": [
+          "patient",
+          "sly",
+          "kind"
+        ],
+        "motivation": "To see debts kept and the fair's memory honoured.",
+        "goal": "Rule on the Ninth Stall claim by the tags alone.",
+        "flaw": "She lets the rules do the kindness she could do herself.",
+        "internal_conflict": "She found the forfeited favour long ago and kept it quietly on record.",
+        "external_conflict": "The carters resent any tallykeeper reading old tags aloud.",
+        "home_location_id": "loc_wishing_barn",
+        "faction_id": "fac_tallykeepers",
+        "abilities": [
+          {
+            "name": "Tally memory",
+            "description": "Recalls every wishing tag she ever hung, and who promised what.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Mabel finally speaks the old tag aloud and lets the fair remember with her."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_poppy_mabel",
+        "source_character_id": "chr_poppy_wren",
+        "target_character_id": "chr_mabel_thorn",
+        "relationship_type": "mentor",
+        "description": "Mabel teaches Poppy how the fair's memory can carry her claim.",
+        "conflict": "Mabel will not rule early; Poppy wants certainty now."
+      },
+      {
+        "id": "rel_poppy_damson",
+        "source_character_id": "chr_poppy_wren",
+        "target_character_id": "chr_damson_grey",
+        "relationship_type": "rival",
+        "description": "Poppy's claim contests Damson's lease sale.",
+        "conflict": "Only one of them can hold the stall at closing day."
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's gentle travelling-fair setting; deterministic validators are clean and there are no blocking defects."
+}

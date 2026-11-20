@@ -1,0 +1,382 @@
+{
+  "case_id": "SR-V2-04",
+  "agent": "storyboard",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "postapocalyptic_seedways",
+  "context_validated": true,
+  "brief": {
+    "title": "What the Rain Remembers",
+    "premise": "A seed-keeper's caravan must cross three recovering valley towns before the last frost, trading grain stock and mending an old feud that split the seedway routes.",
+    "genre": "post-apocalyptic",
+    "tone": "wistful but hopeful",
+    "target_audience": "adult",
+    "location_count": 4,
+    "constraints": [
+      "forbid:spaceship",
+      "require:seed",
+      "Technology is pre-industrial salvaged hand-tools; nothing powered remains.",
+      "max_locations:5"
+    ]
+  },
+  "world": {
+    "world_id": "wld_seedways",
+    "name": "The Seedways",
+    "description": "Generations after the Blight Year emptied the fields, valley towns survive on shared seed stock hauled by caravan along the seedway routes between the last granary and the first orchards.",
+    "locations": [
+      {
+        "id": "loc_granary_hill",
+        "name": "Granary Hill",
+        "description": "Terraced seed-vaults cut into the hill, where the tithe grain is graded and sealed."
+      },
+      {
+        "id": "loc_ford_market",
+        "name": "Ford Market",
+        "description": "The river-crossing market where the seedways meet and the weigh-house keeps the tithe ledgers."
+      },
+      {
+        "id": "loc_ash_orchards",
+        "name": "The Ash Orchards",
+        "description": "Replanting rows on blight-ash soil, tended by families who took the worst land first."
+      },
+      {
+        "id": "loc_frost_gate",
+        "name": "The Frost Gate",
+        "description": "The high pass that closes on the last frost and strands whatever is caught beyond it."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_seed_keepers",
+        "name": "The Seed Keepers",
+        "description": "A caravan order sworn to grade, seal and carry seed stock between the valleys.",
+        "location_ids": [
+          "loc_granary_hill"
+        ]
+      },
+      {
+        "id": "fac_millers_compact",
+        "name": "The Millers' Compact",
+        "description": "The town millers who weigh tithe grain and hold the market charters.",
+        "location_ids": [
+          "loc_ford_market"
+        ]
+      },
+      {
+        "id": "fac_orchard_families",
+        "name": "The Orchard Families",
+        "description": "The planters who took the blight-ash land and are owed grafting stock by the vaults.",
+        "location_ids": [
+          "loc_ash_orchards"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_seed_tithe",
+        "statement": "Every town that draws from the seed vaults returns two measures at harvest for each measure taken.",
+        "category": "social"
+      },
+      {
+        "id": "rul_no_engines",
+        "statement": "No powered machinery survived the Blight; all work is done by hand, beast and water.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_frost_gate",
+        "statement": "The Frost Gate closes on the last frost; a caravan caught beyond it winters alone.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_grain_truth",
+        "statement": "A keeper who adulterates seed stock is struck from the rolls and their name is never carried by the caravans again.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_blight_year",
+        "name": "The Blight Year",
+        "era": "The Ruin",
+        "description": "The blight emptied the fields; survivors sealed the first vaults on Granary Hill.",
+        "location_ids": [
+          "loc_granary_hill"
+        ]
+      },
+      {
+        "id": "evt_first_seedway",
+        "name": "The First Seedway",
+        "era": "The Mending",
+        "description": "The first caravan circuit joined the three valleys and made the tithe system possible.",
+        "location_ids": [
+          "loc_ford_market"
+        ]
+      },
+      {
+        "id": "evt_millers_split",
+        "name": "The Millers' Split",
+        "era": "The Mending",
+        "description": "A falsified tithe ledger at Ford Market split the routes for a generation.",
+        "location_ids": [
+          "loc_ford_market"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_forged_tithe",
+        "name": "The Cut Grain",
+        "description": "Someone is diluting tithe grain with chaff at the weigh-house, and the keepers and millers each blame the other.",
+        "faction_ids": [
+          "fac_millers_compact",
+          "fac_seed_keepers"
+        ]
+      },
+      {
+        "id": "cnf_orchard_claims",
+        "name": "The Orchard Claims",
+        "description": "The orchard families claim vault grain promised to them is being carried to the caravan instead.",
+        "faction_ids": [
+          "fac_orchard_families",
+          "fac_seed_keepers"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_seedways",
+    "characters": [
+      {
+        "id": "chr_tove_marka",
+        "name": "Tove Marka",
+        "role": "protagonist",
+        "description": "A seed-keeper of the vault caravan, raised on the routes, who grades grain by eye and counts winters like coin.",
+        "personality_traits": [
+          "patient",
+          "exact",
+          "self-reliant"
+        ],
+        "motivation": "To see the seedways whole again before she hands on her satchel.",
+        "goal": "Reach Ford Market with sound stock before the last frost.",
+        "flaw": "She carries the whole route alone and will not be helped.",
+        "internal_conflict": "Mending the split means trusting the people who broke it.",
+        "external_conflict": "The cut tithe grain makes every town suspect her caravan.",
+        "home_location_id": "loc_granary_hill",
+        "faction_id": "fac_seed_keepers",
+        "abilities": [
+          {
+            "name": "Seed-scoring",
+            "description": "Judges germination and adulteration in a sack of grain by eye and weight.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Tove learns that a route no one else can walk is a route that dies with her."
+      },
+      {
+        "id": "chr_alder_vane",
+        "name": "Alder Vane",
+        "role": "antagonist",
+        "description": "The compact factor at Ford Market who diluted the tithe grain to keep his town's mill turning through a hard year.",
+        "personality_traits": [
+          "urbane",
+          "cornered",
+          "pragmatic"
+        ],
+        "motivation": "To protect his town from an audit that would starve it.",
+        "goal": "Conceal the diluted tithe until after the thaw audit.",
+        "flaw": "He believes a debt concealed is a debt half-paid.",
+        "internal_conflict": "He knows the orchard families paid for his town's lie.",
+        "external_conflict": "Tove's inspection can read the chaff in his sacks.",
+        "home_location_id": "loc_ford_market",
+        "faction_id": "fac_millers_compact",
+        "abilities": [
+          {
+            "name": "Weigh-house politics",
+            "description": "Reads markets, credit and debtors well enough to move a ledger without leaving fingerprints.",
+            "category": "social"
+          }
+        ],
+        "arc": "Vane must confess the cut grain or watch the routes close around him."
+      },
+      {
+        "id": "chr_nuna_brack",
+        "name": "Nuna Brack",
+        "role": "supporting",
+        "description": "An orchard daughter who grafts blight-hardy stock and carries her family's claim to the promised grain.",
+        "personality_traits": [
+          "direct",
+          "hopeful",
+          "stubborn"
+        ],
+        "motivation": "To win the grafting stock her family's orchard was promised.",
+        "goal": "Make the caravan honour the orchard claims before the frost.",
+        "flaw": "She presses her claim so hard it sounds like a threat.",
+        "internal_conflict": "She distrusts every keeper yet needs this caravan.",
+        "external_conflict": "The caravan and the millers both call her claim premature.",
+        "home_location_id": "loc_ash_orchards",
+        "faction_id": "fac_orchard_families",
+        "abilities": [
+          {
+            "name": "Graft-keeping",
+            "description": "Keeps grafted stock alive through cold snaps and rough travel.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Nuna wins her stock by helping the caravan prove the fraud that cheated it."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_tove_nuna",
+        "source_character_id": "chr_tove_marka",
+        "target_character_id": "chr_nuna_brack",
+        "relationship_type": "ally",
+        "description": "Nuna rides with the caravan to press the orchard claim.",
+        "conflict": "Tove cannot honour the claim until the tithe fraud is proven."
+      },
+      {
+        "id": "rel_tove_alder",
+        "source_character_id": "chr_tove_marka",
+        "target_character_id": "chr_alder_vane",
+        "relationship_type": "adversary",
+        "description": "Tove's seed-scoring can expose Vane's diluted tithe.",
+        "conflict": "Vane must stall her inspection past the frost."
+      }
+    ]
+  },
+  "storyboard": {
+    "world_id": "wld_seedways",
+    "title": "What the Rain Remembers",
+    "logline": "A seed-keeper carries sound stock and a buried fraud across three valleys before the frost, and mends the split that broke the seedways.",
+    "theme": "trust measured in grain",
+    "acts": [
+      {
+        "id": "act_setup",
+        "title": "Setup",
+        "purpose": "setup",
+        "scenes": [
+          {
+            "id": "scn_vault_audit",
+            "title": "Chaff in the Sacks",
+            "summary": "Sealing the tithe sacks at Granary Hill, Tove scores the grain and finds chaff cut into the Ford Market delivery.",
+            "location_id": "loc_granary_hill",
+            "character_ids": [
+              "chr_tove_marka"
+            ],
+            "goal": "Certify the tithe stock.",
+            "conflict": "Reporting the cut grain accuses the market that feeds the routes.",
+            "outcome": "Tove seals the evidence and carries it with the caravan.",
+            "depends_on": []
+          },
+          {
+            "id": "scn_caravan_leaves",
+            "title": "The Last Circuit",
+            "summary": "The caravan departs for the last circuit before the Frost Gate closes, with Tove riding guard on the suspect sacks.",
+            "location_id": "loc_frost_gate",
+            "character_ids": [
+              "chr_tove_marka"
+            ],
+            "goal": "Reach Ford Market before the frost.",
+            "conflict": "Every day lost to weather is a day the gate is nearer shut.",
+            "outcome": "The caravan takes the long seedway through the orchards.",
+            "depends_on": [
+              "scn_vault_audit"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_rising",
+        "title": "Rising Action",
+        "purpose": "rising_action",
+        "scenes": [
+          {
+            "id": "scn_orchard_stay",
+            "title": "The Orchard Claim",
+            "summary": "At the Ash Orchards, Nuna demands the promised grafting stock; Tove shows her the cut grain that is starving both claims.",
+            "location_id": "loc_ash_orchards",
+            "character_ids": [
+              "chr_tove_marka",
+              "chr_nuna_brack"
+            ],
+            "goal": "Pass the orchards without forfeiting stock.",
+            "conflict": "Nuna's claim is just, but the caravan's grain is already spoken for.",
+            "outcome": "Nuna joins the caravan to see the fraud proven and her claim honoured.",
+            "depends_on": [
+              "scn_caravan_leaves"
+            ]
+          },
+          {
+            "id": "scn_weigh_house",
+            "title": "The Weigh-House",
+            "summary": "At Ford Market, Alder Vane stalls the audit with courtesy and credit, while Tove scores the market sacks and finds the same cut grain.",
+            "location_id": "loc_ford_market",
+            "character_ids": [
+              "chr_tove_marka",
+              "chr_alder_vane",
+              "chr_nuna_brack"
+            ],
+            "goal": "Prove the tithe was diluted at the market.",
+            "conflict": "Vane's charter lets him delay any audit past the frost.",
+            "outcome": "Tove finds the proof; Vane calls the caravan's own honesty into question.",
+            "depends_on": [
+              "scn_orchard_stay"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_climax",
+        "title": "Climax",
+        "purpose": "climax",
+        "scenes": [
+          {
+            "id": "scn_frost_race",
+            "title": "Before the Gate",
+            "summary": "With the true ledger seized and the frost closing, Tove races Vane's hired riders to the Frost Gate to put the evidence beyond the market's reach.",
+            "location_id": "loc_frost_gate",
+            "character_ids": [
+              "chr_tove_marka",
+              "chr_alder_vane",
+              "chr_nuna_brack"
+            ],
+            "goal": "Carry the true ledger through the gate.",
+            "conflict": "Vane needs the evidence lost before the thaw audit.",
+            "outcome": "The caravan clears the gate at last light; the ledger is safe in the vault towns.",
+            "depends_on": [
+              "scn_weigh_house"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_resolution",
+        "title": "Resolution",
+        "purpose": "resolution",
+        "scenes": [
+          {
+            "id": "scn_shared_granary",
+            "title": "The Rejoined Routes",
+            "summary": "At the thaw audit, the tithe is honestly weighed, the orchards receive their grafting stock, and the split routes are rejoined under one ledger.",
+            "location_id": "loc_ford_market",
+            "character_ids": [
+              "chr_tove_marka",
+              "chr_nuna_brack",
+              "chr_alder_vane"
+            ],
+            "goal": "Settle the tithe and the claims.",
+            "conflict": "Confessing the fraud costs Vane's town its winter credit.",
+            "outcome": "The routes are rejoined; the seedways run whole for the first time in a generation.",
+            "depends_on": [
+              "scn_frost_race"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's hand-tool seedway setting; deterministic validators are clean and there are no blocking defects."
+}

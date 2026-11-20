@@ -1,0 +1,125 @@
+{
+  "world_id": "wld_perihelion_yard",
+  "name": "Perihelion Yard",
+  "description": "A sail shipyard in a sun-grazing orbit inside Mercury's, where crews re-mirror sails under brutal heat budgets, and every gram of salvage is owed to the mass ledger.",
+  "locations": [
+    {
+      "id": "loc_yard_spine",
+      "name": "The Yard Spine",
+      "description": "The kilometre-long gantry truss where sail hulls are berthed and re-mirrored."
+    },
+    {
+      "id": "loc_mirror_shed",
+      "name": "The Mirror Shed",
+      "description": "A shadowed workshop where crews re-silver sail film under vacuum."
+    },
+    {
+      "id": "loc_bastion_hulk",
+      "name": "The Bastion Hulk",
+      "description": "The radiation-shielded command module where the yard office and audit berth sit."
+    },
+    {
+      "id": "loc_shadow_dock",
+      "name": "Shadow Dock",
+      "description": "A dry dock permanently eclipsed behind the yard's own truss, invisible to thermal survey."
+    }
+  ],
+  "factions": [
+    {
+      "id": "fac_riggers_union",
+      "name": "The Riggers' Union",
+      "description": "The perihelion riggers' union, which holds the heat rosters and the safety charter.",
+      "location_ids": [
+        "loc_yard_spine",
+        "loc_mirror_shed"
+      ]
+    },
+    {
+      "id": "fac_charter_audit",
+      "name": "The Charter Audit Office",
+      "description": "Auditors with a permanent berth at the Bastion Hulk, empowered to seize the mass ledger.",
+      "location_ids": [
+        "loc_bastion_hulk"
+      ]
+    },
+    {
+      "id": "fac_helio_tank",
+      "name": "The Helio Tank Consortium",
+      "description": "The owners' consortium that charters the yard and buys every scrapped hull.",
+      "location_ids": [
+        "loc_bastion_hulk"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "rul_light_delay",
+      "statement": "A tight-beam reply from the inner system takes at least ten minutes; nobody gets an instant answer.",
+      "category": "physics"
+    },
+    {
+      "id": "rul_heat_budget",
+      "statement": "No crew may work sunside longer than their logged heat budget allows; the duty log is law.",
+      "category": "physics"
+    },
+    {
+      "id": "rul_mass_ledger",
+      "statement": "Every gram that leaves the yard is entered in the mass ledger; unlogged salvage is theft.",
+      "category": "social"
+    },
+    {
+      "id": "rul_shadow_dock",
+      "statement": "Shadow Dock never sees the sun; anything berthed there does not register on thermal survey.",
+      "category": "physics"
+    }
+  ],
+  "history": [
+    {
+      "id": "evt_keel_year",
+      "name": "The Keel Year",
+      "era": "First Perihelion",
+      "description": "The yard truss was assembled from cannibalised tankers to service the inner-system sail fleet.",
+      "location_ids": [
+        "loc_yard_spine"
+      ]
+    },
+    {
+      "id": "evt_sail_fire",
+      "name": "The Sail Fire",
+      "era": "The Austerity",
+      "description": "A mis-folded sail focused the sun onto a dock crew; the safety charter was rewritten in its wake.",
+      "location_ids": [
+        "loc_mirror_shed"
+      ]
+    },
+    {
+      "id": "evt_audit_charter",
+      "name": "The Audit Charter",
+      "era": "The Austerity",
+      "description": "The owners granted the audit office a permanent berth after a season of ledger fraud.",
+      "location_ids": [
+        "loc_bastion_hulk"
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "cnf_scrap_ledger",
+      "name": "The Scrap Ledger",
+      "description": "The union suspects hulls logged as scrapped are being kept as spares in Shadow Dock, off the mass ledger.",
+      "faction_ids": [
+        "fac_riggers_union",
+        "fac_charter_audit"
+      ]
+    },
+    {
+      "id": "cnf_heat_roster",
+      "name": "The Heat Roster",
+      "description": "Helio Tank wants longer sunside shifts than the union's heat budget allows.",
+      "faction_ids": [
+        "fac_helio_tank",
+        "fac_riggers_union"
+      ]
+    }
+  ]
+}

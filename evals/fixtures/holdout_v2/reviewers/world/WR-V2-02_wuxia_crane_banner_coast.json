@@ -1,0 +1,150 @@
+{
+  "case_id": "WR-V2-02",
+  "agent": "world",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "wuxia_crane_banner_coast",
+  "context_validated": true,
+  "brief": {
+    "title": "Feathers Over the Mist",
+    "premise": "A disowned sword-student must carry her late master's tally-stick to three rival sects to call a peace moot, before the island clans' feud burns the last crane rookeries.",
+    "genre": "wuxia fantasy",
+    "tone": "lyrical",
+    "target_audience": "adult",
+    "location_count": 4,
+    "constraints": [
+      "forbid:gunpowder",
+      "require:crane",
+      "Duels are settled by formal challenge, never ambush.",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_crane_banner_coast",
+    "name": "The Crane Banner Coast",
+    "description": "A mist-bound coast of rocky islets where martial sects hold fishing rights under an old dueling covenant, and the cranes that nest in the rookeries are counted as omens by every school.",
+    "locations": [
+      {
+        "id": "loc_mist_rookery",
+        "name": "The Mist Rookery",
+        "description": "Crane nesting islets whose shallows hold the richest eel grounds on the coast."
+      },
+      {
+        "id": "loc_bannerhall",
+        "name": "Bannerhall",
+        "description": "The hall where challenges are recorded beneath the Crane Banner pact."
+      },
+      {
+        "id": "loc_saltmarket_isle",
+        "name": "Saltmarket Isle",
+        "description": "A neutral trade isle where envoys may meet under the market peace."
+      },
+      {
+        "id": "loc_thunder_reed_dojo",
+        "name": "Thunder Reed Dojo",
+        "description": "A weathered school built in the reed marshes, where the tally-stick's late keeper taught."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_crane_sect",
+        "name": "The Crane Sect",
+        "description": "Keepers of the dueling covenant, who witness every formal challenge at Bannerhall.",
+        "location_ids": [
+          "loc_bannerhall"
+        ]
+      },
+      {
+        "id": "fac_eel_school",
+        "name": "The Eel School",
+        "description": "An aggressive school claiming ancestral fishing rights to the rookery shallows.",
+        "location_ids": [
+          "loc_mist_rookery"
+        ]
+      },
+      {
+        "id": "fac_salt_wardens",
+        "name": "The Salt Wardens",
+        "description": "Neutral market wardens who guarantee safe conduct for envoys on Saltmarket Isle.",
+        "location_ids": [
+          "loc_saltmarket_isle"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_challenge",
+        "statement": "No blade may be drawn between sects except after a formal challenge witnessed at Bannerhall.",
+        "category": "social"
+      },
+      {
+        "id": "rul_rookery",
+        "statement": "No nets may be cast within sight of the Mist Rookery while the cranes are nesting.",
+        "category": "social"
+      },
+      {
+        "id": "rul_tally",
+        "statement": "A master's tally-stick, once presented, obliges every sect named on it to send an envoy to the moot.",
+        "category": "social"
+      },
+      {
+        "id": "rul_light_body",
+        "statement": "The light-body art lets a trained adept run across reeds, rigging and rooftops, but never over open water.",
+        "category": "metaphysics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_net_wars",
+        "name": "The Net Wars",
+        "era": "The Hungry Years",
+        "description": "Sects feuded over the rookery shallows until the eel grounds were nearly fished out.",
+        "location_ids": [
+          "loc_mist_rookery"
+        ]
+      },
+      {
+        "id": "evt_broken_challenge",
+        "name": "The Broken Challenge",
+        "era": "The Hungry Years",
+        "description": "An ambush disguised as a formal duel nearly destroyed the covenant and the market peace.",
+        "location_ids": [
+          "loc_saltmarket_isle"
+        ]
+      },
+      {
+        "id": "evt_first_banner",
+        "name": "The First Banner",
+        "era": "The Gathering",
+        "description": "The sects swore the Crane Banner pact at Bannerhall and ended the Net Wars.",
+        "location_ids": [
+          "loc_bannerhall"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_rookery_rights",
+        "name": "The Rookery Rights",
+        "description": "The Eel School presses its claim to fish the rookery shallows while the Crane Sect holds the nesting ban.",
+        "faction_ids": [
+          "fac_eel_school",
+          "fac_crane_sect"
+        ]
+      },
+      {
+        "id": "cnf_unanswered_tally",
+        "name": "The Unanswered Tally",
+        "description": "The sects are deadlocked over whether a tally-stick carried by a disowned student still binds them.",
+        "faction_ids": [
+          "fac_crane_sect",
+          "fac_eel_school"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's crane-and-covenant wuxia setting; deterministic validators are clean and there are no blocking defects."
+}

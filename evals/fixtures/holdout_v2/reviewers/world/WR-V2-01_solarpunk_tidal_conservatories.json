@@ -1,0 +1,151 @@
+{
+  "case_id": "WR-V2-01",
+  "agent": "world",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "solarpunk_tidal_conservatories",
+  "context_validated": true,
+  "brief": {
+    "title": "The Glass Tide",
+    "premise": "A junior tide-warden discovers that the lagoon gates are silting shut weeks ahead of schedule, and must convince the guilds to halt the glassblowing season before the city loses the tide that powers it.",
+    "genre": "solarpunk",
+    "tone": "hopeful",
+    "target_audience": "adult",
+    "location_count": 4,
+    "constraints": [
+      "forbid:dragon",
+      "require:tide",
+      "No combustion engines or fossil fuels anywhere in the setting.",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_tidal_conservatories",
+    "name": "The Tidal Conservatories",
+    "description": "A terraced city grown into a shallow lagoon, where mangrove walls, vitrified glass locks and tide-mills turn the twice-daily flood into power, food and light.",
+    "locations": [
+      {
+        "id": "loc_glassgate_locks",
+        "name": "The Glassgate Locks",
+        "description": "Vitrified gates that meter the tide into the lagoon; their sills are silting up weeks ahead of the survey."
+      },
+      {
+        "id": "loc_mangrove_terraces",
+        "name": "The Mangrove Terraces",
+        "description": "Stepped root-gardens where families tend silt-traps and grow the city's rice and reed stock."
+      },
+      {
+        "id": "loc_algae_fields",
+        "name": "The Algae Fields",
+        "description": "Raft-farms of oil algae that feed the kiln digesters and the lamp vats."
+      },
+      {
+        "id": "loc_bellmakers_quay",
+        "name": "Bellmaker's Quay",
+        "description": "The wharf where channel bells and glass floats are cast, and the seat of the glassblower guilds."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_tide_wardens",
+        "name": "The Tide Wardens",
+        "description": "Engineers sworn to keep the locks clear and read the tide tables for the whole lagoon.",
+        "location_ids": [
+          "loc_glassgate_locks"
+        ]
+      },
+      {
+        "id": "fac_glassblower_guild",
+        "name": "The Glassblower Guild",
+        "description": "Artisans who fire their kilns on lagoon gas and hold the charter for every bell and window.",
+        "location_ids": [
+          "loc_bellmakers_quay"
+        ]
+      },
+      {
+        "id": "fac_ferry_cooperative",
+        "name": "The Ferry Cooperative",
+        "description": "Sail and paddle barge crews who haul harvest, glass and dredged silt across the lagoon.",
+        "location_ids": [
+          "loc_algae_fields"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_tide_power",
+        "statement": "All power in the city comes from the tide, the sun or the algae digesters; combustion engines are banned by charter.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_lock_oath",
+        "statement": "Every gate crew must clear its lock before each spring tide, whatever the guild calendar says.",
+        "category": "social"
+      },
+      {
+        "id": "rul_bell_code",
+        "statement": "A channel bell cast out of tune must be recast within a day, because the whole lagoon navigates by its ring.",
+        "category": "social"
+      },
+      {
+        "id": "rul_silt_debt",
+        "statement": "Whoever dredges silt from the locks owns the fertile silt, but must spread it on the terraces within a season.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_gates_raised",
+        "name": "The Raising of the Glassgates",
+        "era": "The Founding Tides",
+        "description": "The first locks were fused from lagoon glass so the tide could be let in without drowning the terraces.",
+        "location_ids": [
+          "loc_glassgate_locks"
+        ]
+      },
+      {
+        "id": "evt_great_silting",
+        "name": "The Great Silting",
+        "era": "The Lean Years",
+        "description": "A storm choked the gates with silt; the city went hungry until the terraces dug the locks out.",
+        "location_ids": [
+          "loc_glassgate_locks",
+          "loc_mangrove_terraces"
+        ]
+      },
+      {
+        "id": "evt_bell_charter",
+        "name": "The Bell Charter",
+        "era": "The Lean Years",
+        "description": "After a night collision in fog, the guilds bound themselves to recast any mistuned channel bell within a day.",
+        "location_ids": [
+          "loc_bellmakers_quay"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_kiln_calendar",
+        "name": "The Kiln Calendar",
+        "description": "The Glassblower Guild wants a long firing season, but the Tide Wardens need the gates shut for dredging before the spring tide.",
+        "faction_ids": [
+          "fac_glassblower_guild",
+          "fac_tide_wardens"
+        ]
+      },
+      {
+        "id": "cnf_silt_rights",
+        "name": "The Silt Rights",
+        "description": "The Ferry Cooperative claims the rich silt it dredges, while the Tide Wardens say it belongs to the terrace commons.",
+        "faction_ids": [
+          "fac_ferry_cooperative",
+          "fac_tide_wardens"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's tide-powered solarpunk setting; deterministic validators are clean and there are no blocking defects."
+}

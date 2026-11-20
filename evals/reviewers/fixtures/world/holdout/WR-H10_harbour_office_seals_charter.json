@@ -1,0 +1,190 @@
+{
+  "case_id": "WR-H10",
+  "agent": "world",
+  "split": "holdout",
+  "category": "conflicting_information",
+  "slug": "harbour_office_seals_charter",
+  "context_validated": true,
+  "brief": {
+    "title": "The Lantern Coast",
+    "premise": "A ferry-girl who carries smugglers between lantern-lit coves discovers a harbour-master's ledger naming the buyers of a stolen royal charter, and must outrun both the Navy and the smugglers.",
+    "genre": "adventure",
+    "tone": "swashbuckling",
+    "target_audience": "all ages",
+    "constraints": [
+      "forbid:magic",
+      "require:lantern",
+      "No supernatural events; everything has a natural explanation.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_lantern_coast",
+    "name": "The Lantern Coast",
+    "description": "The Lantern Coast is a smugglers' shoreline of coloured signal lanterns, naval patrols and ledgers that name who owns what.",
+    "locations": [
+      {
+        "id": "loc_heron_cove",
+        "name": "Heron Cove",
+        "description": "A shallow cove used by smugglers, marked at night by a single green lantern."
+      },
+      {
+        "id": "loc_harbour_house",
+        "name": "Harbour-Master's House",
+        "description": "A whitewashed house above Port Sable where the harbour-master keeps his ledgers."
+      },
+      {
+        "id": "loc_port_sable",
+        "name": "Port Sable",
+        "description": "A busy harbour town with a naval garrison and crowded quays."
+      },
+      {
+        "id": "loc_cliff_light",
+        "name": "Cliff Light",
+        "description": "A lighthouse on a sheer cliff whose lantern guides ships past the reef."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_garrison",
+        "name": "Sable Garrison",
+        "description": "Naval officers who patrol the coast and enforce the customs.",
+        "location_ids": [
+          "loc_port_sable"
+        ]
+      },
+      {
+        "id": "fac_runners",
+        "name": "Lantern Runners",
+        "description": "Smugglers who signal with coloured lanterns from Heron Cove.",
+        "location_ids": [
+          "loc_heron_cove"
+        ]
+      },
+      {
+        "id": "fac_harbour_office",
+        "name": "Harbour Office",
+        "description": "Clerks and the harbour-master, who record every ship's cargo.",
+        "location_ids": [
+          "loc_harbour_house",
+          "loc_port_sable"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_lantern_code",
+        "statement": "Smugglers signal with lantern colours: green means safe, red means patrol.",
+        "category": "social"
+      },
+      {
+        "id": "rul_reef",
+        "statement": "Ships may pass the reef only at high tide, guided by the Cliff Light.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_ledger",
+        "statement": "Every ship entering Port Sable must be entered in the harbour-master's ledger.",
+        "category": "social"
+      },
+      {
+        "id": "rul_charter",
+        "statement": "Royal charters can be sealed only by the crown's seal.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_light_built",
+        "name": "Building of the Cliff Light",
+        "era": "Old Reign",
+        "description": "Engineers built the Cliff Light after three ships were lost on the reef.",
+        "location_ids": [
+          "loc_cliff_light"
+        ]
+      },
+      {
+        "id": "evt_garrison_founded",
+        "name": "Founding of the Sable Garrison",
+        "era": "Old Reign",
+        "description": "The crown posted a naval garrison at Port Sable to enforce customs.",
+        "location_ids": [
+          "loc_port_sable"
+        ]
+      },
+      {
+        "id": "evt_charter_theft",
+        "name": "Theft of the Royal Charter",
+        "era": "Young Reign",
+        "description": "A smuggler broke into the Harbour-Master's House and stole a sealed royal charter.",
+        "location_ids": [
+          "loc_harbour_house"
+        ]
+      },
+      {
+        "id": "evt_green_night",
+        "name": "The Green Night",
+        "era": "Young Reign",
+        "description": "The Lantern Runners landed a full cargo at Heron Cove under a green lantern while the Garrison patrolled elsewhere.",
+        "location_ids": [
+          "loc_heron_cove"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_charter_hunt",
+        "name": "The Charter Hunt",
+        "description": "The Sable Garrison hunts the Lantern Runners for the stolen royal charter, which the Harbour Office had sealed with its own seal on the crown's behalf.",
+        "faction_ids": [
+          "fac_garrison",
+          "fac_runners"
+        ]
+      },
+      {
+        "id": "cnf_ledger_secrets",
+        "name": "The Ledger Secrets",
+        "description": "The Harbour Office guards a ledger naming the charter's buyers from both the Garrison and the Lantern Runners.",
+        "faction_ids": [
+          "fac_harbour_office",
+          "fac_garrison",
+          "fac_runners"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "RULE_HISTORY_CONTRADICTION",
+        "ENTITY_DESCRIPTION_CONFLICT"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.conflicts[0].description"
+      ],
+      "reference_paths": [
+        "$.rules[3].statement"
+      ],
+      "evidence_quotes": [
+        "sealed with its own seal on the crown's behalf",
+        "can be sealed only by the crown's seal"
+      ],
+      "anchor_terms": [
+        "its own seal"
+      ],
+      "rationale": "A charter sealed by the Harbour Office contradicts the crown-seal rule.",
+      "correction_hint": "Remove the Harbour Office's seal from the charter.",
+      "label_id": "WR-H10-L1"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "A conflict says the Harbour Office sealed the royal charter with its own seal; the rule allows only the crown's seal."
+}

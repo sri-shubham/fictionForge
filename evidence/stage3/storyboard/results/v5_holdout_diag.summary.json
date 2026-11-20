@@ -1,0 +1,975 @@
+{
+  "label": "v5_holdout_diag",
+  "calibration_only": false,
+  "prompt_version": "v5",
+  "prompt_path": "evidence/stage3/storyboard/prompts/v5.md",
+  "prompt_sha256": "22c1d4061cb95e23ad08831a5bc03cd124b1b7a5ca6b707a8209de91affa4265",
+  "split": [
+    "holdout"
+  ],
+  "raw_result_file": "evidence/stage3/storyboard/results/v5_holdout_diag.json",
+  "raw_result_sha256": "0eeadbc11f210b62382f788b521cf68a7c67080e33a9948f41e2d3d06e51804c",
+  "eval_id": "eval-qxR-2026-11-13T10:13:39",
+  "timestamp": "2026-11-13T10:13:39.555Z",
+  "promptfoo_version": "0.124.1",
+  "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+  "dataset_sha256": {
+    "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+    "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+  },
+  "summarizer_sha256": "0a2ad1097935cc4ec2b98b4297646d67580ee659c3878e1df648d380fc17640a",
+  "models": {
+    "generation": {
+      "model": "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium",
+      "timeout": 600000,
+      "devin_timeout": 180,
+      "retries": 1,
+      "respect_workspace_trust": false
+    },
+    "grader": {
+      "model": "swe-2-medium",
+      "timeout": 600000,
+      "devin_timeout": 90,
+      "retries": 1,
+      "respect_workspace_trust": false
+    }
+  },
+  "cases_attempted": 10,
+  "provider_errors": [],
+  "grader_errors": [],
+  "criteria": {
+    "structural_validity": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "schema_validity": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "referential_integrity": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "dependency_validity": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "narrative_phase_correctness": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "format_discipline": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": null
+    },
+    "causal_coherence": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": 4.7
+    },
+    "character_consistency": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": 4.6
+    },
+    "narrative_structure": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": 4.6
+    },
+    "world_consistency": {
+      "scored": 10,
+      "passed": 10,
+      "pass_rate": 1.0,
+      "not_evaluable": 0,
+      "mean_score": 4.9
+    },
+    "pacing": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "not_evaluable": 0,
+      "mean_score": 4.6
+    }
+  },
+  "overall_quality": {
+    "cases_scored": 10,
+    "cases_passed": 9,
+    "pass_rate": 0.9,
+    "pass_rate_strict_of_attempted": 0.9
+  },
+  "weighted_score": {
+    "cases": 10,
+    "mean": 0.935,
+    "weights": {
+      "causal_coherence": 0.3,
+      "character_consistency": 0.25,
+      "narrative_structure": 0.2,
+      "world_consistency": 0.15,
+      "pacing": 0.1
+    }
+  },
+  "failed_cases": [
+    {
+      "case": "10_conflicting_count_min",
+      "failures": [
+        {
+          "metric": "structural_validity",
+          "score": 0,
+          "reason": "Storyboard validation failed with 1 issue(s): missing narrative phase(s): ['climax', 'resolution', 'rising_action']"
+        },
+        {
+          "metric": "narrative_phase_correctness",
+          "score": 0,
+          "reason": "1 narrative-phase issue(s): missing narrative phase(s): ['climax', 'resolution', 'rising_action']"
+        },
+        {
+          "metric": "format_discipline",
+          "score": 0,
+          "reason": "Raw reply is not a single bare JSON object (fence, prose or malformed JSON)"
+        },
+        {
+          "metric": "character_consistency",
+          "score": 1,
+          "reason": "(a) cannot be verified\u2014scn_ddying_hum_placeholder has 'x' placeholder content showing no actions; (b) no abilities demonstrated; (c) no relationships used; (d) Elara's arc (letting go) not realised\u2014no pivotal event or end state shown; (e) goal pursuit and flaw-driven complication absent in the single placeholder scene"
+        },
+        {
+          "metric": "narrative_structure",
+          "score": 1,
+          "reason": "(a) setup act exists with a scene, though placeholder text; (b) no rising_action act at all; (c) no climax act; (d) no resolution act; (e) title/logline/theme present but the single-act structure delivers no escalation and min_locations:5 is impossible yet only loc_bay used; no recognizable beginning-middle-end beyond a setup stub"
+        },
+        {
+          "metric": "pacing",
+          "score": 1,
+          "reason": "(a) single placeholder scene with 'x' goals, no distinct beats; (b) no rising action or escalation exists; (c) only a setup act \u2014 no rising action, climax, or resolution scenes; (d) scene content is placeholder text, not conflict; (e) no aftermath or settled final state \u2014 story effectively absent"
+        }
+      ]
+    }
+  ],
+  "per_case": {
+    "01_scifi_space_station": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene follows from a prior outcome \u2014 decoding leads to the meeting, pursuit leads to The Hollow, the cable build leads to the sabotage seizure, which leads to public disclosure and the standoff; (b) all depends_on entries are truthful \u2014 e.g., scn_rivals_meet genuinely needs both the decoding and Kael's ledger discovery, scn_relay_standoff needs both the public signal and the seized cable; (c) every pre-final outcome is used later, no dead-end scenes; (d) reversals are set up \u2014 sabotage seeded by the Wardens' accusations, Kael's turn prepared by his stated belief and the relay standoff, Maris's corridors established earlier; (e) the climax joins the cable, decoding and factions built in prior scenes, and the resolution's toll reform, harvest and shared charts follow directly from the answer being sent",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Veya's secrecy and stubbornness, Kael's pragmatic control-seeking, and Maris's slow trust all match traits/motivations/flaws; (b) wind-sight, ledger-mastery and pathfinding used within stated limits, no unsupported knowledge (Kael deduces the find via ledgers); (c) rival and ally relationships used as defined, changes driven by shown events (scn_rivals_meet, scn_choice_to_answer); (d) Veya's hoarded-to-shared arc realised in scn_charts_shared/scn_new_charts, Kael's control-costs-more arc in scn_relay_standoff/scn_new_charter, Maris's arc in scn_hollow_harvest; (e) each main character pursues stated goal and flaws cause complications (Veya's hidden decoding in scn_sabotage_proof, Kael's price-equals-worth, Maris's distrust)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Veya, the signal discovery and Cartel stakes before escalation; (b) rising action escalates from refusal, to flight, to seized cable/arrests, to forced disclosure; (c) climax directly confronts the answer-the-signal vs Cartel-control conflict with decisive choices by Veya and Kael; (d) resolution shows concrete toll, levy and openness consequences across three scenes; (e) title/logline/theme match, no dragon, all 4 locations used",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations and travel is motivated (Veya: Silverspine\u2192Docks\u2192Hollow\u2192Emberroost\u2192Silverspine); (b) only World entities named \u2014 Academy, Wardens, Cartel, Hollow Circle, four locations; (c) wind-debt invoked in scn_choice_to_answer, forge-pits shield rule honored in scn_forge_cables, no forbidden tech/dragons; (d) Toll War and Grain Levy drive scn_secret_paths, scn_sabotage_proof, scn_new_charter, scn_hollow_harvest and factions act per description; (e) Dyson swarm premise adapted into World terms via the skybridge relay and signal, no invented named places/factions",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 14 scenes have distinct goals/conflicts/outcomes with no repeated beats; (b) rising action escalates from rivalry to pursuit, sabotage exposure and seizure of the cable/charts, with reveals ordered to build momentum; (c) act sizes 3/5/2/3 \u2014 setup shorter than rising action, climax and resolution each have multiple scenes with specific goals/conflicts/outcomes; (d) no scene is pure backstory or briefing \u2014 even setup scenes contain active conflict; (e) three post-climax scenes show aftermath (toll reform, harvest, published charts) ending in a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "02_fantasy_underwater": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene follows a prior outcome (pursuit from scn_toll_at_docks, race from scn_kael_sabotage, isolation from scn_hoarded_truth); (b) all depends_on entries truthful, e.g. scn_archive_descent uses the map fragment from scn_emberroost_cables and the race from scn_kael_sabotage; (c) every outcome is consumed later (open charts in scn_charts_shared, Kael's reform in scn_hollow_harvest); (d) Maris's return is set up by her loyalty/internal conflict, Kael's turn by his established arc; (e) climax enacts the hoard-vs-share choice and resolutions follow directly from it",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Veya's stubbornness and flaw drive scn_hoarded_truth; Kael's pragmatic ruthlessness and admiration fit throughout; Maris's slow trust and loyalty motivate her arc. (b) Abilities used correctly: wind-sight, pathfinding, ledger-mastery; no unsupported knowledge\u2014Kael learns of the archive via scn_kael_sabotage. (c) Rival history acknowledged in scn_toll_at_docks; Veya-Maris alliance built then strained and repaired through shown events. (d) Both arcs realised: Veya shares the truth at scn_confrontation_archive and admits error in scn_charts_shared; Kael sees control's cost and reforms tolls in scn_kael_ledger. (e) Veya pursues charting a safe route, Kael pursues seizing stable routes; Veya's flaw and Kael's price-equals-worth flaw each cause complications. Minor niggle: Maris 'realising hiding can be as brave as standing still' is only lightly dramatised but still shown in scn_hollow_harvest.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Veya, the cartel-vs-charts conflict and stakes before escalation; (b) rising scenes escalate from evidence-gathering to sabotage, discovery, and a personal low point; (c) climax directly confronts the logline's hoard-vs-share conflict with a decisive choice; (d) resolution spans three scenes showing concrete consequences for Veya, Kael, Maris and the isles; (e) title/logline/theme match, history requirement fulfilled via the archive and First Weaving, all 4 locations used.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) scenes match their locations and travel is explained via passage, corridors, and pursuit; (b) all named places/factions/events (Silverspine, Mistral Docks, The Hollow, Emberroost, Cartel, Wardens, Hollow Circle, Great Calm, First Weaving) exist in the World \u2014 'the archive' is a generic discovery, not a new named location; (c) wind-debt rule is honored in scn_toll_at_docks and no open-flame or foreign tech/magic violations appear; (d) Cartel, Wardens, and Hollow Circle act per their descriptions, and the toll war, grain levy, and First Weaving drive multiple scenes; (e) the brief's lost-archive premise is adapted into World terms below the cloud layer without inventing new factions or places.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal and advances plot or character; (b) rising action escalates from evidence-gathering to sabotage to descent to betrayal; (c) setup (3) is shorter than rising action (4), and climax and resolution each contain scenes with goal/conflict/outcome; (d) no exposition-only scenes, setup scenes carry conflict; (e) three resolution scenes show earned aftermath ending in a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "03_mystery_venetian": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) nearly all scenes follow from prior outcomes; scn_kael_visits_emberroost is only loosely caused by scn_enforcers_close_in but grounded in his CharacterSet conflict; (b) depends_on entries mostly truthful, though scn_silverspine_archive relies on manifests from the Maris scenes rather than scn_kael_visits_emberroost, and scn_new_charts_silverspine's dep on scn_hollow_peace is weak; (c) outcomes are all used by later scenes; (d) unmasking, forced alliance, and Kael's reversal are adequately set up by sigil/ledger trail and his arc; (e) climax flows from the ledger heist and resolution from the public exposure \u2014 a few minor weak dependency links but no clear failure",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit motivations/traits/flaws \u2014 Kael's guarded ledger, Veya's stubbornness, Maris's slow trust; (b) no unsupported abilities or knowledge \u2014 Veya's wind-sight and Maris's corridors used as defined; (c) rival/ally relationships honored and shift only via shown events (scn_ledger_heist); (d) both main arcs realized \u2014 Kael opens ledger and abandons cargo (scn_masked_merchant_confrontation, scn_bridge_stand), Veya shares charts (scn_new_charts_silverspine); (e) goals pursued (Kael in scn_kael_visits_emberroost, Veya throughout) and flaws cause complications (Veya in scn_silverspine_archive, Kael in scn_bridge_stand)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) setup establishes Veya/Kael, the poisoned deals and ledger stakes before escalation; b) rising scenes escalate from manifest discovery to enforcer ambush, framing of Kael, and the ledger heist forcing an alliance; c) climax directly confronts the masked merchant plot with Kael's decisive choice to open the ledger and Veya's wind-sight; d) resolution shows concrete consequences\u2014Kael loses his post, charts shared openly, levy relaxed, threads closed across three scenes; e) title/logline/theme match delivered scenes and all 4 world locations are used with no constraint violations",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations and travel is sequential/plausible; (b) only World-named places, factions (Drift Cartel, Bridge Wardens) and conflicts (Toll War, Grain Levy) are referenced \u2014 no invented named entities; (c) no rule contradicted \u2014 no open flame, wind-debt not violated though unused; (d) factions act per description and the Toll War plus Grain Levy drive multiple scenes (scn_kael_visits_emberroost, scn_maris_secret_route, scn_enforcers_close_in); (e) brief elements adapted into World terms with no foreign imports.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal and advances plot/character with no repeated beats; (b) rising action escalates from smuggling evidence to ambush to framed accusations to the ledger heist, with reveals ordered to build; (c) act sizes proportionate (3/5/2/3), climax and resolution each have scenes with goal/conflict/outcome; (d) no pure-exposition scenes, setup already contains conflict; (e) three resolution scenes show aftermath (reckoning, Hollow peace, published charts) ending in a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 0.94
+    },
+    "04_horror_asylum": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes flow from prior outcomes; (b) depends_on entries are truthful though scn_charts_shift's dependency on scn_stalled_caravan is a weak temporal link rather than an enabling one (the calm causes both independently); (c) every outcome is used later; (d) Kael's climactic reversal is set up by his barges losing anchorage and prior setup, Maris's corridors and the Warden accusation are pre-established; (e) climax and resolution consequences follow cleanly",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit motivations/traits\u2014Veya's curiosity and stubbornness, Kael's ruthless pragmatism, Maris's slow trust; (b) abilities within limits\u2014Wind-sight, Pathfinding, no unsupported knowledge; (c) rival/ally relationships honored and evolve through shown events (scn_bridge_confrontation); (d) Veya's arc completes in scn_shared_chart, Kael's in scn_new_ledger; (e) both mains pursue stated goals and flaws cause complications (scn_hidden_corridor dead-end, scn_dream_map hoarding, scn_forged_supplies insult)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup introduces Veya, the stalled-caravan conflict and stakes before escalation; (b) rising scenes escalate from discovery to blocked resources to the chart being threatened; (c) climax directly confronts the share-vs-seize conflict with Veya's decisive open sharing; (d) three resolution scenes show concrete changes (open chart, lowered tolls/levy, reopened trade); (e) title/logline/theme match and all 4 world locations used with no magic beyond defined abilities",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their location_ids and travel is explained (Veya journeys to the afflicted span, Maris's corridors, Kael's barges); (b) only World places/factions are named \u2014 Mistral Docks, Silverspine, The Hollow, Emberroost, Wardens, Cartel, Hollow millers; 'Academy elders' and 'Cartel princes' are generic members of existing bodies; (c) no rule contradicted \u2014 no open flame, and the wind-debt rule is not violated by any depicted crossing; (d) Toll War and Grain Levy drive multiple scenes (scn_miller_warning, scn_forged_supplies, scn_new_ledger), Wardens and Cartel act per description; (e) the forbidden 'magic' is rendered through the established Wind-sight ability and the premise's dream phenomenon rather than new named powers.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each of the 12 scenes has a distinct goal/conflict/outcome with no repeated beats; (b) rising action escalates from discovery to sabotage accusation to a threatened sole copy of the map; (c) setup (3) is shorter than rising action (4), and climax (2) and resolution (3) each have concrete goals/conflicts/outcomes; (d) no pure-exposition scenes\u2014setup scenes already carry conflict; (e) resolution spans three aftermath scenes ending in a settled state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "05_adventure_western": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes follow from earlier outcomes (scn_kael_ledger and scn_emberroost_cable lack depends_on but their summaries clearly follow prior scenes); (b) all depends_on entries truthful, incl. scn_veya_admits enabled by Maris's summons; (c) every outcome is used later (exposed route, flame evidence, corrected charts); (d) fracture, alliance, Kael's mercy all set up by flaws/traits in CharacterSet and earlier scenes; (e) climax pays off debt/shortfall choices and resolution follows its outcome",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all actions fit motivations/flaws\u2014Veya's inability to admit error drives scn_silverspine_error, Kael's price-equals-worth flaw drives scn_bridge_standoff and scn_kael_ledger, Maris's slow trust drives scn_alliance_forged and scn_hollow_return; (b) abilities respected\u2014wind-sight, pathfinding, ledger-mastery each used within stated limits, no unsupported knowledge; (c) rival/ally relationships honored, alliance frays and repairs only through shown events; (d) Veya's arc completes via scn_veya_admits and scn_silverspine_charts, Kael's via scn_bridge_crossing and scn_kael_reckoning; (e) both mains pursue stated goals and flaws cause complications (scn_silverspine_error, scn_bridge_standoff); supporting Maris consistent throughout.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Veya/Maris, the wind-debt and stakes of losing the last bridge; (b) rising action escalates from obtaining cable to near-disaster to alliance fracture to betrayal test and confession; (c) climax confronts the debt/bridge closure directly with Veya's decisive choice to share her charts; (d) resolution shows concrete consequences for Kael, Maris, Veya and the Toll War across three scenes; (e) title, logline, theme and wind-debt constraint all match, 4 locations used",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes match their location descriptions and travel between isles is narrated; (b) only World-named places/factions (Drift Cartel, Bridge Wardens, Hollow Circle, Silverspine, Mistral Docks, Emberroost, The Hollow) appear; (c) wind-debt rule drives the plot and rul_no_fire_aloft is honored in scn_flame_near_miss, no foreign tech/magic; (d) factions act per description and cnf_grain_levy/cnf_toll_war plus both rules drive multiple scenes; (e) brief's smugglers/wind-debt premise maps cleanly onto Maris and the levy, nothing imported",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 14 scenes have distinct goals/beats; (b) rising action escalates from cable run to exposed routes to alliance fracture to betrayal choice; (c) setup (4) < rising (5), climax and resolution each have scenes with goal/conflict/outcome; (d) every setup scene embeds active conflict, no pure exposition; (e) three aftermath scenes settle Kael, Maris, and Veya into a stable end state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "06_historical_napoleonic": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) each scene follows an earlier outcome via depends_on or stated goals (e.g., scn_wardens_accuse's goal traces to scn_charts_at_silverspine's discovery); (b) all depends_on entries check out except scn_wardens_accuse -> scn_levy_at_mistral, which is weak: the levy's outcome (Kael aware of the charts) doesn't clearly enable the sabotage accusation; (c) every pre-final outcome is used later (withheld chart feeds silverspine_council, sabotage accusation resolved in emberroost_cables); (d) the alliance, raid, chart correction and Kael's reversal are all set up by earlier scenes or the CharacterSet; (e) the docks assembly follows from the shared-chart choice and the resolution scenes follow from Kael yielding the Charter. One minor weak dependency link.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) All actions fit traits/motivations: Veya's stubbornness (scn_charts_at_silverspine, scn_enforcers_raid), Kael's pragmatism/price-equals-worth flaw (scn_levy_at_mistral, scn_kaels_choice), Maris's slow trust and resourcefulness (scn_maris_hides_grain, scn_hollow_harvest). (b) No unsupported abilities or foreknowledge: Veya uses wind-sight, Kael ledger-mastery, Maris pathfinding, each as defined; chart knowledge flows through shown scenes. (c) Rivalry rel_veya_kael used with apprentice history and chart conflict (scn_levy_at_mistral), ally rel_veya_maris formed onscreen (scn_veya_meets_maris). (d) Arcs realized: Veya chooses to share the chart (scn_silverspine_council, scn_silverspine_new_charter); Kael sees control costs more (scn_kaels_choice); Maris learns hiding can be brave (scn_hollow_harvest). (e) Goals pursued (Veya charts safe route, Kael seizes routes in scn_kael_closes_in) and flaws cause complications (Veya's denied misread in scn_enforcers_raid, Kael's hesitation, Maris's distrust).",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Veya, the levy/routes conflict and stakes; (b) rising scenes escalate from levy to sabotage, raid losses and council confrontation; (c) climax directly confronts route control and trade-law representation, with Veya/Maris forcing the issue and Kael decisively yielding; (d) resolution shows concrete consequences (levy lifted, sabotage settled, new charter signed); (e) title, logline and shared-truth theme match the scenes and all 4 locations are used with no constraints violated",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes fit their locations (Silverspine map halls, Mistral Docks port, The Hollow windmills/granaries, Emberroost forge) and travel follows depends_on ordering plausibly; (b) only World-named places, factions and the Cartel Charter appear \u2014 'the council' is a generic body formed in-story; (c) no rule contradicted \u2014 no open flame aloft, wind-debt never violated on-page; (d) Cartel levies/tolls, Wardens guarding bridges and Hollow Circle farmers all act per description, with cnf_grain_levy and cnf_toll_war driving multiple scenes; (e) brief elements map cleanly onto existing World conflicts",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 13 scenes have distinct goals advancing plot/character; (b) rising action escalates from levy to raid to chart-sharing with ordered reveals; (c) setup (2 scenes) < rising (6), climax and resolution each have specific scenes; (d) setup scenes already carry conflict, no pure-exposition scene; (e) three resolution scenes show aftermath ending in a settled new charter",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 0.94
+    },
+    "07_minimal_input": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene follows causally from prior outcomes (battery decline \u2192 rationing \u2192 repair attempts \u2192 failure \u2192 acceptance); (b) all depends_on links are truthful enablers; (c) every outcome feeds a later scene; (d) no abrupt developments\u2014irreversibility is grounded in world rule rul_life_support and Elara's flaw; (e) climax (scn_final_repair, scn_letting_go) follows accumulated failures and the resolution follows her acceptance",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Elara's methodical diagnostics, stubborn repair attempts, and self-sacrificing compassion (scn_rationing_the_heat, scn_the_cold_deepens) all fit her traits, motivation, and flaw; (b) only her stated Systems Diagnostics ability is used, within limits; (c) no relationships exist to violate; (d) arc realized via scn_final_repair/scn_letting_go, ending in acceptance at scn_last_light; (e) she pursues 'repair the battery' across multiple scenes and her flaw causes complications in scn_denial_and_recalculation and scn_final_repair; no supporting characters.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Elara, the failing battery and survival stakes; (b) rising scenes escalate from repair attempt to denial to heat-vs-power sacrifice; (c) climax directly confronts the unrepairable battery and forces the decisive choice to let go; (d) resolution shows concrete consequences\u2014reduced bay, acceptance, quiet routine\u2014across two scenes; (e) title/logline/theme align and single-location constraint is respected",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes occur in loc_bay, the only location, no teleportation; (b) no invented named places, factions or events \u2014 only generic nouns (dome, battery, bay); (c) rul_life_support is respected: repair attempts fail and the battery is ultimately accepted as unrepairable (scn_final_repair, scn_letting_go); (d) the battery rule drives goal/conflict/outcome of nearly every scene; (e) the empty brief is fully adapted to World terms with no imported elements",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal and advances Elara's struggle without repeating beats; (b) rising action escalates from repair attempt to denial to sacrificing heat, building momentum; (c) acts sized 2/3/2/2 with setup shorter than rising action and climax/resolution each having goal-conflict-outcome scenes; (d) no pure exposition\u2014setup scenes already contain conflict; (e) two aftermath scenes show Elara's acceptance and the story settles into a quiet resolved state",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "08_forbidden_dragon": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene follows from a prior outcome (charts\u2192rumours\u2192levy\u2192forge\u2192ambush\u2192betrayal\u2192sacrifice\u2192confrontation\u2192crossing\u2192accord\u2192publication\u2192harvest); (b) all depends_on links are truthful, e.g. scn_docks_confrontation genuinely uses both Maris's message (scn_hollow_sacrifice) and the Wardens' reinforced cables (scn_emberroost_forge); (c) every outcome before the finale is used later, including the chart error corrected at Emberroost which pays off in the climax; (d) Kael's turn on the bridge is set up by his admiration/hesitation in scn_docks_rumours and scn_kael_ambush, and the wyrm reveal is foreshadowed throughout; (e) climax follows from Veya's hoarding choice and Maris's alliance, resolution consequences (accord, shared charts, forgiveness) follow from the crossing.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Veya's stubbornness, hoarding flaw and wind-sight use are consistent; Kael's pragmatic ruthlessness and price-equals-worth flaw drive his deals and hesitation; Maris's slow trust and resourcefulness fit. (b) Wind-sight, ledger-mastery and pathfinding used as stated; no unsupported abilities or knowledge. (c) Rivalry and alliance relationships honored; reconciliation shown via shown events. (d) Veya's arc realized via scn_silverspine_betrayal and scn_silverspine_new_charts; Kael's via scn_bridge_crossing. (e) Both mains pursue goals in multiple scenes; Veya's flaw causes the betrayal fallout, Kael's flaw complicates the accord. Maris supports consistently.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Veya, the failing skybridges, and Cartel stakes; (b) rising action escalates from supply shortage to ambush to betrayal to enforcers closing in; (c) climax directly confronts the chart/monopoly conflict with Veya's decisive public sharing and Kael's turn; (d) resolution delivers concrete consequences: accord, capped tolls, published charts, restored grain trade; (e) title/logline/theme match, no dragon appears per the forbid constraint, all 4 locations used",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes match their location descriptions and travel is motivated; (b) only World-named places/factions appear, 'wyrm' stays an unnamed rumour; (c) wind-debt rule is invoked and repaid in labour (scn_docks_confrontation, scn_wardens_accord), no open flame violates rul_no_fire_aloft; (d) Cartel, Wardens and Hollow Circle act per description, with cnf_toll_war and cnf_grain_levy driving multiple scenes; (e) forbidden dragon is adapted as a false rumour explained by failing cloudstone, satisfying the constraint.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each scene has a distinct goal and advances plot or character with no repeated beats; (b) rising action escalates \u2014 chart error, ambush, betrayal, silos under threat \u2014 building to the climax; (c) act sizes proportionate: 3 setup, 4 rising, 2 climax, 3 resolution, each with goal/conflict/outcome; (d) no pure exposition scenes, setup scenes already carry conflict; (e) resolution earned with three aftermath scenes ending in a settled state (accord signed, charts published, forgiveness)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 1.0
+    },
+    "09_required_chosen_one": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Storyboard is structurally and referentially valid",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": true,
+        "score": 1,
+        "reason": "No narrative-phase issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) nearly all scenes flow from prior outcomes; scn_emberroost_cables follows scn_kael_offer only loosely (the verification trip would read the same without the offer, though the concealed-error thread it plants is later used); (b) all other depends_on entries are truthful \u2014 kael_offer\u2192docks_toll, docks_confrontation\u2192emberroost_cables+enforcer_chase (exposed error, exposed routes), climax/resolution deps all enable their scenes; (c) every outcome is consumed by a later scene (concealed error \u2192 docks_confrontation \u2192 maris_choice \u2192 gambit); (d) prophecy payoff, Kael's turn, and Maris's trust are all set up earlier; (e) climax follows from the shared-route plan and resolution follows the crossing",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) All actions fit traits/goals: Veya's stubborn concealment of her error (scn_emberroost_cables), Kael's pragmatic toll-seizure, Maris's slow trust all consistent; Kael's turn is motivated by scn_bridge_crossing. (b) Wind-sight, ledger-mastery and pathfinding are used within stated limits; no unsupported knowledge. (c) Rival history (shared apprenticeship) and ally trade relationship are used as given; changes occur through shown events. (d) Veya shares truths openly in scn_silverspine_atlas; Kael concedes control in scn_kael_reckoning \u2014 both arcs realised with pivotal choices shown. (e) Veya charts routes, Kael pursues the routes in scn_emberroost_gambit; flaws cause complications in scn_docks_confrontation (Veya cannot admit fault, loses the room) and scn_maris_choice.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) setup establishes Veya, the failing bridges and Kael's threat to her charts; (b) rising action escalates from verification to alliance, enforcer chase, public discrediting and broken trust; (c) climax directly confronts the chart-control conflict and forces Veya's choice to share and Kael's to relinquish control; (d) resolution gives concrete consequences \u2014 levy lifted, monopoly ended, open atlas; (e) title, logline and theme match, 'prophecy' appears, all 4 locations used",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all scenes match their location descriptions and travel between isles is plausible via bridges/skiffs; (b) every named place, faction and institution (Silverspine, Mistral Docks, Emberroost, The Hollow, Drift Cartel, Bridge Wardens, Hollow Circle) exists in the World \u2014 no invented names; (c) wind-debt rule is honored (scn_enforcer_chase, scn_kael_reckoning) and no open-flame or foreign tech/magic appears; (d) factions act per description and the Toll War and Grain Levy conflicts drive multiple scenes; (e) the brief's 'prophecy' element is adapted as an in-world prophecy about repairing bridges, nothing imported.",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all 13 scenes have distinct goals/beats; (b) rising action escalates from concealed error to public discrediting to enforced chase; (c) setup 3 < rising 5, climax 2 and resolution 3 each with goal/conflict/outcome; (d) no pure-exposition scenes, setup scenes carry conflict; (e) three aftermath scenes settle levy, trade, and the shared atlas",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 0.94
+    },
+    "10_conflicting_count_min": {
+      "structural_validity": {
+        "pass": false,
+        "score": 0,
+        "reason": "Storyboard validation failed with 1 issue(s): missing narrative phase(s): ['climax', 'resolution', 'rising_action']",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "schema_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Output parses and satisfies the Storyboard schema",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "referential_integrity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No referential-integrity issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "dependency_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "No scene-dependency issues",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_phase_correctness": {
+        "pass": false,
+        "score": 0,
+        "reason": "1 narrative-phase issue(s): missing narrative phase(s): ['climax', 'resolution', 'rising_action']",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "format_discipline": {
+        "pass": false,
+        "score": 0,
+        "reason": "Raw reply is not a single bare JSON object (fence, prose or malformed JSON)",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "causal_coherence": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) only one scene exists (scn_ddying_hum_placeholder), and it is the first scene so no follow-on requirement applies; (b) no depends_on entries to falsify; (c) the sole scene is the final scene, so its outcome need not be reused; (d) placeholder content introduces no unsupported developments; (e) with a single scene the climax/resolution is trivially consistent",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "character_consistency": {
+        "pass": false,
+        "score": 1,
+        "reason": "(a) cannot be verified\u2014scn_ddying_hum_placeholder has 'x' placeholder content showing no actions; (b) no abilities demonstrated; (c) no relationships used; (d) Elara's arc (letting go) not realised\u2014no pivotal event or end state shown; (e) goal pursuit and flaw-driven complication absent in the single placeholder scene",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "narrative_structure": {
+        "pass": false,
+        "score": 1,
+        "reason": "(a) setup act exists with a scene, though placeholder text; (b) no rising_action act at all; (c) no climax act; (d) no resolution act; (e) title/logline/theme present but the single-act structure delivers no escalation and min_locations:5 is impossible yet only loc_bay used; no recognizable beginning-middle-end beyond a setup stub",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) only loc_bay used, valid; (b) no invented named places/factions; (c) logline's 'irreparable battery' honors rul_life_support; (d) the battery rule drives the logline/theme though scene fields are vacuous 'x' placeholders; (e) min_locations:5 correctly not imported as invented locations \u2014 minor deduction for placeholder scene content that cannot demonstrate consistency",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "pacing": {
+        "pass": false,
+        "score": 1,
+        "reason": "(a) single placeholder scene with 'x' goals, no distinct beats; (b) no rising action or escalation exists; (c) only a setup act \u2014 no rising action, climax, or resolution scenes; (d) scene content is placeholder text, not conflict; (e) no aftermath or settled final state \u2014 story effectively absent",
+        "grader_error": false,
+        "not_evaluable": false
+      },
+      "_weighted_score": 0.53
+    }
+  }
+}

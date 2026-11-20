@@ -1,0 +1,212 @@
+{
+  "case_id": "WR-D23",
+  "agent": "world",
+  "split": "dev",
+  "category": "multiple_subtle",
+  "slug": "entity_explained_chapel_lit_surveyor_returns",
+  "context_validated": true,
+  "brief": {
+    "title": "Hollowmere",
+    "premise": "A surveyor arrives in a mist-bound village where no one will say what happens to those who leave before dawn, and learns that the village's lanterns are keeping something out.",
+    "genre": "horror",
+    "tone": "dread",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:vampire",
+      "require:lantern",
+      "Do not explain the entity in the mist; its nature must stay unknown.",
+      "max_locations:4"
+    ],
+    "location_count": 3
+  },
+  "world": {
+    "world_id": "wld_hollowmere",
+    "name": "Hollowmere",
+    "description": "Hollowmere is a mist-bound village of lantern posts and silent rules, where the night belongs to something no one will name.",
+    "locations": [
+      {
+        "id": "loc_lantern_green",
+        "name": "Lantern Green",
+        "description": "The village common, ringed by iron lantern posts lit from dusk to dawn."
+      },
+      {
+        "id": "loc_chapel_ruin",
+        "name": "Chapel Ruin",
+        "description": "A roofless chapel at the village edge where the mist is always thickest."
+      },
+      {
+        "id": "loc_ferry_stair",
+        "name": "Ferry Stair",
+        "description": "A stone stair down to the mere, where the only road out begins."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_lamp_wardens",
+        "name": "Lamp Wardens",
+        "description": "Villagers who tend the lantern posts and keep a nightly vigil.",
+        "location_ids": [
+          "loc_lantern_green"
+        ]
+      },
+      {
+        "id": "fac_chapel_remnant",
+        "name": "Chapel Remnant",
+        "description": "A few elders who still hold services in the Chapel Ruin and say the mist is a judgment.",
+        "location_ids": [
+          "loc_chapel_ruin"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_lantern_night",
+        "statement": "The lanterns on Lantern Green must burn from dusk to dawn, and the mist does not cross lit ground.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_dawn_leave",
+        "statement": "No one may leave Hollowmere before dawn; those who do are not seen again.",
+        "category": "social"
+      },
+      {
+        "id": "rul_no_name",
+        "statement": "Villagers never speak of what lives in the mist.",
+        "category": "social"
+      },
+      {
+        "id": "rul_ferry_day",
+        "statement": "The ferry crosses the mere only in daylight.",
+        "category": "other"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_first_lanterns",
+        "name": "The Lighting of the Posts",
+        "era": "Generations ago",
+        "description": "After the first night of mist, the villagers raised iron posts and kept them burning, and the mist stopped at the lit ground, because the thing in it is a drowned ferryman's hunger.",
+        "location_ids": [
+          "loc_lantern_green"
+        ]
+      },
+      {
+        "id": "evt_chapel_fall",
+        "name": "The Fall of the Chapel",
+        "era": "Two generations ago",
+        "description": "The chapel roof collapsed during a night when every lantern burned bright, yet the mist poured across the lit ground and took the cellar.",
+        "location_ids": [
+          "loc_chapel_ruin"
+        ]
+      },
+      {
+        "id": "evt_missing_surveyor",
+        "name": "The Missing Surveyor",
+        "era": "Last decade",
+        "description": "A surveyor walked down Ferry Stair before dawn, was seen again the next evening, and told the Lamp Wardens what he had found in the mist.",
+        "location_ids": [
+          "loc_ferry_stair"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_vigil_dispute",
+        "name": "The Vigil Dispute",
+        "description": "The Chapel Remnant says the lanterns defy judgment, while the Lamp Wardens say the vigil is the only thing keeping them alive.",
+        "faction_ids": [
+          "fac_chapel_remnant",
+          "fac_lamp_wardens"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "BRIEF_CONSTRAINT_VIOLATION",
+        "RULE_HISTORY_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.history[0].description"
+      ],
+      "reference_paths": [
+        "brief::$.constraints[2]",
+        "$.rules[2].statement"
+      ],
+      "evidence_quotes": [
+        "the thing in it is a drowned ferryman's hunger",
+        "its nature must stay unknown"
+      ],
+      "anchor_terms": [
+        "drowned ferryman"
+      ],
+      "rationale": "The entity's nature is explained.",
+      "correction_hint": "Remove the explanation of the entity.",
+      "label_id": "WR-D23-L1"
+    },
+    {
+      "suffix": "L2",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "RULE_HISTORY_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.history[1].description"
+      ],
+      "reference_paths": [
+        "$.rules[0].statement"
+      ],
+      "evidence_quotes": [
+        "the mist poured across the lit ground",
+        "the mist does not cross lit ground"
+      ],
+      "anchor_terms": [
+        "poured across the lit ground"
+      ],
+      "rationale": "The mist crosses lit ground while every lantern burns.",
+      "correction_hint": "Make the lanterns gutter before the mist enters.",
+      "label_id": "WR-D23-L2"
+    },
+    {
+      "suffix": "L3",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "RULE_HISTORY_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.history[2].description"
+      ],
+      "reference_paths": [
+        "$.rules[1].statement"
+      ],
+      "evidence_quotes": [
+        "was seen again the next evening",
+        "those who do are not seen again"
+      ],
+      "anchor_terms": [
+        "seen again the next evening"
+      ],
+      "rationale": "A pre-dawn leaver returns, contradicting the dawn rule.",
+      "correction_hint": "Keep the surveyor missing.",
+      "label_id": "WR-D23-L3"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Three defects: the entity is explained (brief forbids), the mist crosses lit ground (rule forbids), and a pre-dawn leaver is seen again (rule forbids)."
+}

@@ -1,0 +1,97 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# Promptfoo configuration for the Storyboard Building evaluation.
+# Reuses the shared Devin CLI Python provider and a separate grader model.
+#
+# Generation model: capable model (Claude Sonnet fusion).
+# Quality criteria are judged by a separate cheap model (swe-2-medium).
+# Weights: causal coherence 30%, character consistency 25%, narrative structure 20%,
+# world consistency 15%, pacing 10%.
+
+description: Storyboard Building evaluation (Devin CLI)
+
+prompts:
+  - file://../prompts/storyboard.md
+
+providers:
+  - id: file://world_provider.py
+    config:
+      model: fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium
+      # promptfoo Python-worker timeout in milliseconds
+      timeout: 600000
+      # timeout for the individual devin CLI call in seconds
+      devin_timeout: 180
+      retries: 1
+      respect_workspace_trust: false
+
+tests: file://storyboard_tests_smoke.json
+
+defaultTest:
+  assert:
+    - type: python
+      value: file://storyboard_assert.py
+      metric: structural_validity
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.8
+      metric: causal_coherence
+      value: |-
+        Rate the storyboard's causal coherence from 1 (events are disconnected or contradictory) to 5 (every event follows logically, conflicts arise from established circumstances, scene outcomes drive later scenes, major developments are well set up, and the climax follows from earlier choices). Assess specific evidence from the generated storyboard and the provided StoryBrief, World, and CharacterSet. Choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true exactly when the integer is 4 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses. Reject scores of 3 or below for critical causal contradictions. Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.8
+      metric: character_consistency
+      value: |-
+        Rate the storyboard's character consistency from 1 (characters act out of character or gain unsupported abilities) to 5 (every action is grounded in the provided motivations, goals, flaws, abilities, and relationships, with explained changes). Assess specific evidence from the generated storyboard and the provided CharacterSet and World. Choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true exactly when the integer is 4 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses. Reject scores of 3 or below for material contradictions with the provided characters. Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.8
+      metric: narrative_structure
+      value: |-
+        Rate the storyboard's narrative structure from 1 (no coherent beginning/middle/end) to 5 (setup establishes the central conflict, rising action escalates stakes, the climax addresses the primary conflict, the resolution follows from the climax, and the whole arc is clear and compelling). Assess specific evidence from the generated storyboard and the provided StoryBrief. Choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true exactly when the integer is 4 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses. Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.8
+      metric: world_consistency
+      value: |-
+        Rate the storyboard's world consistency from 1 (events contradict world rules or invent unsupported elements) to 5 (events fully respect world rules, locations and factions behave consistently, abilities stay within constraints, and world history meaningfully influences events). Assess specific evidence from the generated storyboard and the provided World and CharacterSet. Choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true exactly when the integer is 4 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses. Reject scores of 3 or below for material world or character contradictions. Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.8
+      metric: pacing
+      value: |-
+        Rate the storyboard's pacing from 1 (scenes are disconnected or the resolution is abrupt) to 5 (every scene contributes to plot or character, conflicts escalate, exposition is balanced, major events are developed, and the resolution feels earned). Assess specific evidence from the generated storyboard. Choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true exactly when the integer is 4 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses. A high pacing score must not compensate for critical causal or world/character contradictions. Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}

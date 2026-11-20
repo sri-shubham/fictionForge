@@ -1,0 +1,239 @@
+# FictionForge end-to-end workflow evaluation configuration
+dataset:
+  version: "workflow-v1.1.0"
+  fixtures_dir: "evals/fixtures/workflow"
+  manifest: "evals/fixtures/workflow/manifest.json"
+
+runner:
+  # Production workflow configuration; the harness uses this unless overridden.
+  config: "config/workflow.yaml"
+  # The default client is the Devin CLI; pass --provider or --model to override.
+  provider: "devin"
+  # Set to an empty string or omit to use the workflow config default.
+  # model: "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium"
+
+grader:
+  # Deterministic rubrics use the production validators and cross-artifact checks.
+  # When an LLM grader is desired, set use_llm_rubrics and provide a model.
+  use_llm_rubrics: false
+  model: "swe-2-medium"
+  threshold: 3
+
+output:
+  # Base output directory for per-run artifacts (the runner writes under runs/).
+  runs_dir: "runs"
+  # Where the harness writes aggregate evidence and the success-rate report.
+  evidence_dir: "evidence"
+
+# What to run by default.  Use --splits dev, --splits holdout, or --splits all on the CLI.
+default_splits:
+  - "dev"
+
+# ---------------------------------------------------------------------------
+# Workflow-level evaluation criteria (definition of record).
+#
+# These criteria evaluate the COMPLETE workflow, not individual prompts.
+# Each names its measurement method and evidence artifact.  "offline"
+# measurements are deterministic and verifiable with `pytest` and by
+# re-checking run directories; "live" measurements require a manual run of
+# `python scripts/run_workflow_evals.py --splits all`, which invokes real
+# models and must be executed by a human operator — never from CI or an agent.
+# The harness writes evidence/success_rate.json, evidence/audit_trail.jsonl,
+# evidence/punch_out.md and appends to evidence/iterations/workflow.md.
+# ---------------------------------------------------------------------------
+criteria:
+
+  - id: WF-EVAL-1
+    name: end_to_end_narrative_quality
+    purpose: >
+      A completed workflow produces a world, character set and storyboard that
+      all remain valid under the production validators when re-checked after
+      the run, i.e. no artifact was accepted on a transient or inconsistent
+      basis.
+    inputs: >
+      Every case in evals/fixtures/workflow with expected == "completed";
+      run artifacts runs/<run_id>/{world,characters,storyboard}.json.
+    measurement: >
+      live harness + deterministic grading: scripts/run_workflow_evals.py
+      re-validates each artifact post-hoc (validate_world, validate_characters,
+      validate_storyboard) and sets end_to_end_success only when all three are
+      valid. Optional LLM rubric grading is configured under `grader:`
+      (use_llm_rubrics, threshold 3) but is OFF by default and manual-only.
+    expected: >
+      status == "completed", exit_code == 0, all three artifacts post-hoc
+      valid, all three gate decisions recorded (APPROVED under enforced mode).
+    pass_fail: >
+      Case pass = end_to_end_success true.  Suite threshold:
+      end_to_end_success_rate >= 0.85 over eligible cases (last recorded
+      baseline: 1.0 over 6 eligible cases, pre-enforcement — see
+      evidence/success_rate.json).
+    evidence: evidence/success_rate.json (per_case_results, summary rates)
+
+  - id: WF-EVAL-2
+    name: handoff_correctness
+    purpose: >
+      Downstream steps consume only approved upstream artifacts; approvals
+      bind the exact artifact hash, input hashes and review record.
+    inputs: >
+      Any run directory; gates/<gate>.approved sentinels and
+      gates/<gate>_review.json records; audit.jsonl gate_decision events.
+    measurement: >
+      offline/deterministic: verify_approval re-checks signature, run id,
+      artifact sha256, input_artifact_hashes, review_record_sha256 and
+      enforcement mode; enforced by tests
+      (tests/test_stage4_integration.py req02/req09/req10 and the
+      final-acceptance test) and inspectable per run.
+    expected: >
+      Each of world/characters/storyboard has an APPROVED gate record written
+      before its signed sentinel; downstream generator calls never precede a
+      verified upstream approval; the run cannot reach "completed" without all
+      three verified approvals including input-hash binding.
+    pass_fail: >
+      Pass = for every completed run, all three approvals verify against the
+      saved artifacts (100%); any run reaching "completed" with an
+      unverifiable approval is a hard fail.
+    evidence: runs/<run_id>/gates/, runs/<run_id>/audit.jsonl,
+      tests/test_stage4_integration.py
+
+  - id: WF-EVAL-3
+    name: reviewer_gate_enforcement
+    purpose: >
+      The three adversarial reviewers actually run at their gates, their
+      verdicts are parsed on the shared contract and grounded, and REVISE
+      verdicts trigger bounded regeneration — never silent pass, never
+      unbounded loops.
+    inputs: >
+      gates/<gate>_review.json + gates/history/<gate>_attempt_N.json;
+      audit.jsonl reviewer_call / validation / gate_decision events;
+      regenerated artifacts under attempts/.
+    measurement: >
+      offline/deterministic for enforcement semantics (verdict parsing,
+      grounding, decide(), retry wiring: tests req01/req03/req04/req05/
+      req12/req13, test_review_guardrails.py); live reviewer-quality
+      measurement is the Stage-3 reviewer evaluation suite
+      (evals/reviewers/, scripts/reviewer_stage3.py) — not re-run here.
+    expected: >
+      Every accepted artifact has a gate record with reviewer verdict +
+      policy decision recorded; every regenerated attempt shows fresh
+      validation + fresh review; every REVISE consumes one
+      max_attempts_per_step budget unit.
+    pass_fail: >
+      Pass = 100% of gate records contain a reviewer verdict or an explicit
+      reviewer error_code, and every recorded RETRY is followed by exactly one
+      new generator attempt. Any approval without a corresponding gate record
+      hash match is a hard fail.
+    evidence: runs/<run_id>/gates/, runs/<run_id>/audit.jsonl,
+      evidence/stage3/reviewers/
+
+  - id: WF-EVAL-4
+    name: branching_and_retry_correctness
+    purpose: >
+      Every documented branch has the implemented outcome: retryable failures
+      retry within budget, non-retryable failures stop the step, exhausted
+      budgets fail the run, terminal statuses and exit codes match.
+    inputs: >
+      summary.json step statuses/attempts/error codes; audit.jsonl
+      retry_decision events; WorkflowStatus/StepStatus enums.
+    measurement: >
+      offline/deterministic: pytest scenario coverage
+      (tests/test_runner.py success/failure/retry/exhaustion/timeout/
+      punch-out/tamper/no-downstream cases; test_stage4_integration.py
+      req05/req06/req13; test_bypass.py).
+    expected: >
+      failed step -> no downstream step starts; exit codes 0/1/2/3 per
+      outcome class; retry counts never exceed max_attempts_per_step per step
+      (budget is shared across validator, JSON, provider and reviewer
+      rejections).
+    pass_fail: >
+      Pass = all offline tests pass and no recorded run shows a step with
+      more attempts than the configured budget or a step running after an
+      upstream terminal failure. Hard fail on any counterexample.
+    evidence: tests/test_runner.py, tests/test_stage4_integration.py,
+      tests/test_bypass.py, runs/<run_id>/summary.json
+
+  - id: WF-EVAL-5
+    name: human_escalation_correctness
+    purpose: >
+      Punch-outs happen only for policy-reserved conditions, halt the run
+      before downstream work, produce an auditable record, and require an
+      explicit human approval to resume — while ordinary model failures never
+      escalate.
+    inputs: >
+      Punch-out fixtures workflow_dev_06..10 (guardrail-bypass output at each
+      generation step, reviewer-confirmed POLICY_* escalation at the world
+      gate, and brief-injection corroboration); punch_out audit events;
+      runs/<run_id>/summary.json punch_out_records;
+      runs/<run_id>/punch_outs/*.pending.json + signed *.decision.json.
+    measurement: >
+      offline for mechanism (test_punch_out_handling, req06 confirmed/
+      unconfirmed reviewer punch-outs, tamper/approval halts, and
+      tests/test_punch_out_decisions.py covering PO-01..PO-17: pending
+      persistence, denied/forged/mismatched decisions, approve+resume, deny,
+      approvability, audit events, replay) plus executed mocked evidence via
+      scripts/run_punch_out_evidence.py; live for the end-to-end fixture
+      (harness assesses expected == "punch_out" -> status punch_out_required
+      with records).
+    expected: >
+      exit_code == 2, status punch_out_required, a PunchOutRecord with
+      reason/policy/evidence, zero downstream attempts, resume refused
+      without a valid signed decision (PUNCH_OUT_NOT_APPROVED), invalid/
+      forged/mismatched decisions denied, deny terminal (human_denied),
+      security halts never approvable, unconfirmed reviewer
+      PUNCH_OUT downgraded to REVISE.
+    pass_fail: >
+      Pass = every punch_out-expected case ends punch_out_required with a
+      record (100%), no completed/failed_automated run contains a
+      punch_out event, and resume requires a verified signed decision
+      bound to the run, punch-out ID and artifact context. Any escalation
+      caused by reviewer text alone (unconfirmed) is a hard fail.
+    evidence: evidence/punch_out.md, evidence/stage4/punch_out/, runs/<run_id>/audit.jsonl
+
+  - id: WF-EVAL-6
+    name: execution_reliability
+    purpose: >
+      The workflow completes eligible cases reliably, recovers from transient
+      failures via bounded retries, and degrades predictably (durations,
+      per-agent failure rates, first-pass vs recovery rates).
+    inputs: All evaluated cases; per-case durations, attempt counts, statuses.
+    measurement: >
+      live harness aggregates (end_to_end_success_rate,
+      first_pass_success_rate, retry_recovery_rate, per-agent
+      attempts/failures, p95 duration, token consumption per agent) +
+      offline determinism tests (test_deterministic_state_transitions).
+    expected: >
+      Rates computed over eligible completion cases; rejected and punch_out
+      cases tracked separately, never counted as successes or silent
+      failures.
+    pass_fail: >
+      Pass = every case's expected outcome matches actual (case-level pass in
+      per_case_results). Reliability targets: end_to_end_success_rate >= 0.85,
+      first_pass_success_rate reported (no fixed floor — sampling variance),
+      p95 duration reported for operator review.
+    evidence: evidence/success_rate.json, evidence/iterations/workflow.md
+
+  - id: WF-EVAL-7
+    name: audit_completeness_and_cost_attribution
+    purpose: >
+      Every run is fully reconstructible from its audit trail: step starts/
+      completes, prompt and artifact hashes, validation results, reviewer
+      calls, gate decisions, retry decisions, session discovery, resume and
+      punch-out events — with token/ACU cost attribution per invocation.
+    inputs: runs/<run_id>/audit.jsonl, summary.json, session_exports/.
+    measurement: >
+      offline/deterministic: audit schema/event coverage asserted in
+      test_audit_trail_completeness, test_req14_audit_evidence_fields,
+      test_req14_token_usage_summed, tests/test_session_tracking.py; the
+      harness aggregates per-run audit.jsonl into
+      evidence/audit_trail.jsonl.
+    expected: >
+      Every attempt has step_start + step_complete with prompt_hash,
+      input/output artifact hashes and workflow_status; every gate has
+      review_start + reviewer_call + gate_decision; cost_details carry
+      labelled estimated_usd derived from the configured acu_usd_rate and an
+      immutable pricing snapshot — never actual billing.
+    pass_fail: >
+      Pass = offline audit tests green and every evaluated run has a
+      non-empty audit.jsonl covering all recorded steps (100%). Missing
+      events for any executed step is a hard fail.
+    evidence: evidence/audit_trail.jsonl, runs/<run_id>/audit.jsonl,
+      data/pricing/snapshots/

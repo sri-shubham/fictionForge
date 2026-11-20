@@ -1,0 +1,524 @@
+{
+  "label": "v6_holdout_diag",
+  "calibration_only": false,
+  "prompt_version": "v6",
+  "prompt_path": "prompts/versions/world_v6.md",
+  "prompt_sha256": "539ecd6a3dc9c81899fd5bdefb5d02a8b1ebcf99eaeb3fd9c59faa316312a84f",
+  "split": [
+    "holdout"
+  ],
+  "raw_result_file": "evidence/stage3/world/results/v6_holdout_diag.json",
+  "raw_result_sha256": "258c852e6064d6458a0388b16b4d9e921b546e86a72f6f3902fc1527bf2ff586",
+  "eval_id": "eval-4fv-2026-11-13T08:45:05",
+  "timestamp": "2026-11-13T08:45:05.186Z",
+  "promptfoo_version": "0.124.1",
+  "config_sha256": "2dceef84b26d436bc5eeec1bcdfa4d849a3bb71fcd5932db23a957d870f861c5",
+  "dataset_sha256": {
+    "dev": "abec0d7adadb51f228a854accefc71c1fbafeb487767af1ce5e6a00c1a9a4103",
+    "holdout": "e3e2f32dd07e58c70a7207efd7c4a543ab7ca96dee5ca3aaf76c373e33682a16"
+  },
+  "summarizer_sha256": "bfb26a97e5a798f8080f15ca2cb7813456e8bf57e8ac39511ae87536cc792ded",
+  "models": {
+    "generation": {
+      "model": "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium",
+      "timeout": 600000,
+      "devin_timeout": 180,
+      "retries": 1,
+      "respect_workspace_trust": false
+    },
+    "grader": {
+      "model": "swe-2-medium",
+      "timeout": 600000,
+      "devin_timeout": 90,
+      "retries": 1,
+      "respect_workspace_trust": false
+    }
+  },
+  "cases_total": 10,
+  "provider_errors": [],
+  "grader_errors": [],
+  "structural_validity": {
+    "pass": 9,
+    "total": 10,
+    "pass_rate": 0.9
+  },
+  "criteria": {
+    "contradiction_handling": {
+      "scored": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "format_discipline": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "mean_score": null
+    },
+    "internal_consistency": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "mean_score": 4.889
+    },
+    "narrative_potential": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "originality": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "mean_score": 4.889
+    },
+    "premise_genre_alignment": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "structural_validity": {
+      "scored": 10,
+      "passed": 9,
+      "pass_rate": 0.9,
+      "mean_score": null
+    },
+    "worldbuilding_depth": {
+      "scored": 9,
+      "passed": 9,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    }
+  },
+  "overall_quality": {
+    "cases_scored": 10,
+    "cases_passed": 9,
+    "pass_rate": 0.9
+  },
+  "failed_cases": [
+    {
+      "case": "06_historical_napoleonic",
+      "failures": [
+        {
+          "metric": "structural_validity",
+          "score": 0,
+          "reason": "World validation failed with 1 issue(s): field contains forbidden term 'gunpowder'"
+        }
+      ]
+    }
+  ],
+  "per_case": {
+    "01_scifi_space_station": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Seventh Assembly linked to orchard+spine, Concord to concourse+cistern, Wardens to spine+concourse\u2014all consistent; (b) events are chronologically coherent and locations match (Departure at concourse, Levy spans orchard/concourse, Spine Cut at severed spine); (c) both conflicts list exactly the factions their descriptions involve; (d) no rule contradicted\u2014counterweight wobble, spin gravity, air quota, cistern reading, ledger oath and no-open-flame all agree with descriptions; (e) names and descriptions used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) premise fully realized: Ring Seven secession, severed elevators, wobble appear as locations, factions, events and conflicts; (b) SF conventions evident in generation ship, spin gravity, counterweight physics, air recycling; (c) tense tone clear in rationing, standoffs, deadline of the wobble; (d) no audience specified, no gunpowder and ring constraint honored",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) locations each have distinct function/atmosphere/hazard (orchard belt, severed shaft with drones, panic concourse, wobble-tracking cistern); b) factions have goals, grievances and resources (harvests, thrusters/air quotas, rigger skills); c) history is a causal chain: departure charter \u2192 harvest levy \u2192 spine cut explains the crisis; d) rules carry consequences (wobble worsens per cycle, ~1 year air, oath costs, weapon limits); e) top description integrates secession, wobble stakes and faction leverage coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Secession Standoff pits Assembly vs Concord with the wobble as mutual stakes; (b) directly tied to premise of severed elevators and ring independence; (c) orchard, severed spine, concourse, and cistern offer distinct arenas (supply, siege, politics, foresight); (d) roles open via hydrologist secret, divided Wardens, Assembly council; (e) air-quota and counterweight-wobble rules create concrete ticking-clock dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: names like Long Tithe, Ballast Cistern, Cable Wardens avoid stock sci-fi defaults; b: severed elevator cables doubling as spin counterweights causing an escalating wobble is a distinctive twist beyond the secession premise; c: rules interlock non-obviously (cables as counterweights, cistern as gyroscopic damper readable only by one apprentice-trained hydrologist, ledger oaths gating movement); d: details like wind-bent orchard deck, tools-and-tethers combat, and air quotas are specific to this ship and not swappable",
+        "grader_error": false
+      }
+    },
+    "02_fantasy_underwater": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: each faction's role matches its linked locations; b: events are causally ordered (Descent then Tithes) and location_ids fit the named places; c: both conflicts list exactly the factions their descriptions involve; d: bells/air, oath-memory, air-debt and materials rules are reflected consistently with no contradiction; e: all names and titles used consistently across entities",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) cathedral, trench, scheming merchants and nobles all concretely realized as locations, factions, events and conflicts; b) fantasy conventions evident in magical bells, oath-remembering water and relics; c) mysterious tone carried by whispered contracts, veiled bargains and unknown builders; d) no target audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) each location has distinct function/atmosphere/hazard detail (bazaar, bell mechanics, lie-detecting candles, inside-sealed tombs); b) all three factions state goals/methods/resources (air tithes, liturgical titles, wax records of oaths); c) history chains causally: drowning \u2192 charter \u2192 cracked bell producing today's scarcity and dispute; d) every rule carries a consequence (fouled air, undeniable vows, lost court voice, material limits); e) description weaves bells, air-debts, courts and oath-memory into one coherent picture",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) Charter Dispute pits Tidewrights vs House of the Vigil with control of the bells/air at stake; b) conflict is directly tied to the drowned-cathedral scheming premise; c) five distinct arenas (market, spire, court, warrens, apse) support varied scene stakes; d) guild schemers, hereditary nobles, secret-keeping Wax Sealers and unresolved events (cracked bell, misquoted charter) offer clear protagonist/antagonist openings; e) air-debt and oath-memory rules create concrete dilemmas (lose court voice, vows can be replayed)",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) names are non-stock (Nave Market, Wax Sealers, Tidewrights' Guild, House of the Vigil); b) distinctive twists beyond the brief: bells produce air on a schedule, water remembers and replays oaths, air traded as binding debt; c) rules/factions/history interlock well \u2014 the charter oath the water remembers, the Wax Sealers holding the only proof, cracked bell driving scarcity; d) details like wax-sealed tombs and the Silent Apse are world-specific, not swappable",
+        "grader_error": false
+      }
+    },
+    "03_mystery_venetian": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) each faction's description matches its linked locations (Vesperi\u2013palazzo/quay, Order\u2013registry, Tidewalkers\u2013quay/palazzo); b) events are causally coherent and each names the location it links to (Registry for pact/fire, quay+palazzo for drowning); c) both conflicts describe exactly the factions in their faction_ids; d) no rule is contradicted\u2014tide submerging the quay, wax tamper-evidence, mask immunity and one-mask rule all align with descriptions; e) names are used consistently throughout with no renames; mask constraint satisfied, no gunpowder",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) carnival of masks, dead diplomat in canal-side palazzo all appear as concrete locations (Palazzo Vesperi, Registry of Faces, Drowned Quay), factions, rules and conflicts; (b) mystery conventions evident via locked mirror room, ledgers, warrants, hidden evidence and sold secrets; (c) elegant tone clear in vocabulary (etiquette, gilded shutters, whispered bargains); (d) no audience specified; mask requirement deeply integrated and no gunpowder present",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) locations have distinct functions, atmosphere and hazards (locked mirror room, oath-bound archive, tidal evidence disposal); b) factions state resources and methods (glassmaking wealth/favours, seal-keeping clerks, secret-carrying gondoliers) though goals are partly implicit via conflicts; c) history forms a causal chain \u2014 the Pact explains mask immunity, the burned ledger explains Registry gaps, the drowning explains Vesperi secrecy; d) rules carry costs and consequences (immunity until final bell, forgery crime, tide erases evidence, tamper-evident seals); e) description integrates masks, law, tide and murder into a coherent whole",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) Warrant Dispute and Price of Silence name factions with incompatible goals and stakes; b) conflicts directly center on the dead diplomat investigation; c) palazzo crime scene, oath-bound Registry, and tidal Drowned Quay offer distinct arenas; d) hidden heir drowning, burned ledger, and mask-name ledger open protagonist/antagonist roles; e) mask immunity rule blocks naming/arresting suspects, a concrete obstacle",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names like Palazzo Vesperi, Registry of Faces, Drowned Quay, Order of the Seal are genre-appropriate and non-stock; (b) legally protected carnival anonymity enforced by sealed mask registration is a distinctive twist beyond the murder-mystery default; (c) mask-immunity law, the burned Registry ledger, and the tide-erased quay interlock non-obviously to drive the investigation; (d) details like wax-seal tamper cracks and one-mask-per-citizen law are specific to this world.",
+        "grader_error": false
+      }
+    },
+    "04_horror_asylum": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both factions are described as operating within the asylum and correctly link loc_blackwood_asylum; (b) founding \u2192 matching dreams \u2192 psychiatrist's arrival is chronological, causally coherent, and each names the asylum; (c) the conflict description names the Observation Staff and the Stair Congregation exactly as listed; (d) no rule is contradicted \u2014 no-sky aligns with shuttered windows, sedation aligns with the interwar event, extra floor and shared dream match all descriptions; (e) all names used consistently throughout.",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) psychiatrist, asylum and shared dream realized as locations, factions, history events and a central conflict; (b) horror shown through impossible architecture, contagious dream and bodily anomalies; (c) clinical tone sustained via charts, ledgers, dosages and observation protocols; (d) no audience specified; asylum required and daylight forbidden both honored",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: single location richly detailed (wings, sealed stair, extra dream floor) fitting brief's location_count; b: both factions have goals and methods (suppress/chart vs map/descend); c: founding\u2192matching dreams\u2192psychiatrist forms a causal chain to the present; d: rules carry consequences (sky-sight breaks waking, sedation advances the stair, ledger rewrites itself); e: description integrates dream, protocol, no-sky rule and building rewrite into one coherent clinical-horror picture",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Observation Staff vs Stair Congregation with incompatible goals and stakes (cure vs complete the descent, trust in question); (b) conflict is directly rooted in the shared-dream premise; (c) single location but description names distinct sub-arenas (admissions, wards, hydrotherapy, records vault, sealed east stair, dream floor) with varied stakes; (d) clear protagonist (new psychiatrist) and antagonist openings (suppressors, dream contagion, unknown ledger hand); (e) multiple rules create dilemmas, e.g. sedatives advance the stair while erasing memory, and looking at the sky costs the ability to wake",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) names like 'The Observation Staff' and 'The Stair Congregation' are evocative and non-stock; b) the shared-dream asylum is a familiar trope but the 'stair that descends upward into a ward that rewrites the building' adds a distinctive twist beyond the brief; c) rules interlock non-obviously \u2014 sedation accelerates the stair, dream additions propagate to all dreamers, the extra floor requires seven nights of dreaming; d) details (ledger handwriting changing, missing reflections, sky-taboo tied to waking) are specific and not swappable",
+        "grader_error": false
+      }
+    },
+    "05_adventure_western": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) faction locations match descriptions; b) events are causally ordered and correctly located; c) conflicts match listed factions; d) no rule contradicted; e) names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) stolen locomotive, marshal, con artist and land baron all appear as concrete factions, events (Theft of the Widow Maker) and conflicts; (b) desert rail chase, gunmen, trestle sabotage and scarce water embody adventure conventions; (c) 'sun-scorched', 'hard choices, dry humor and stubborn loyalty' deliver the rugged tone throughout; (d) no target audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) locations have distinct functions, hazards and resources (water tower, mirage navigation, rigged trestle, signal gallows); b) factions state goals and methods (Vane's buy/forge/burn, Guild selling secrets, settlers' claims); c) history chains causally: drought -> water value -> registry fire -> forged deeds -> locomotive theft; d) rules carry real costs and limits (water per 40 miles, binding heliograph, heat slowdown, deed control); e) description integrates train, stakes, factions and tone coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: Water for the Basin pits Vane's Company vs settlers/marshals with monopoly on water at stake; b: directly tied to the brief's marshal/con-artist/stolen-locomotive premise; c: depot town, salt flats, rigged trestle, fortified junction offer distinct arenas; d: marshal, con artist, and Vane roles are open with secrets (hidden charges, registry fire) and unresolved events; e: boiler thirst, midday rail heat, and telegraph rules create concrete obstacles",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) names like Bone Salt Flats, Widow Trestle, Salt Signal Guild are non-stock western-desert flavored; b) water-claim heist via heliograph guild adds a twist beyond the chase premise; c) heliograph-as-legally-binding rule interlocks with the guild's double-selling conflict and telegraph-cutting rule non-obviously; d) details like rail warp hours, water-per-forty-miles, and registry deeds are specific to this world",
+        "grader_error": false
+      }
+    },
+    "06_historical_napoleonic": {
+      "structural_validity": {
+        "pass": false,
+        "score": 0,
+        "reason": "World validation failed with 1 issue(s): field contains forbidden term 'gunpowder'",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) all factions' locations match their described bases; b) events are chronologically coherent and location_ids match named places; c) both conflicts' faction_ids match the factions involved in their descriptions; d) no rule contradicts any entity (no gunpowder referenced anywhere, tide-ink/lantern/marque/kinship rules all consistent); e) names used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) premise fully concretized: brother-vs-brother admirals as factions, conflict, and event; (b) Napoleonic-inspired naval genre evident in rams, ballistae, signal lanterns, letters of marque; (c) stoic tone clear in vocabulary (duty, grief carried without display, honour by endurance); (d) no audience specified; fleet required and gunpowder forbidden per constraints.",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) each location has function/atmosphere/tactical detail (tide-timed strait, neutral ledger rock, ballista-ringed harbour); b) factions have methods and resources (signal doctrine, flanking/lantern codes, certified tide-ink); c) history chains from Code's founding to the Vane parting to the Glass Tide defeat, explaining the present war and rivalry; d) every rule carries a cost or consequence (expiring orders, oath-breaker branding, forfeited prizes, removal from rolls); e) description weaves tone, tech limits, factions and the brother premise coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Brother Against Brother pits Meridian Navy vs Dravan Armada with explicit stakes (betrayal of blood or duty); (b) main conflict directly mirrors the premise (officer vs estranged brother admiral); (c) locations are distinct arenas \u2014 walled harbour, tide-locked strait, neutral law-rock, enemy citadel; (d) clear protagonist/antagonist slots with secrets (kinship concealment, forged marques); (e) kin-cannot-command and fading tide-ink rules create concrete dilemmas and time pressure",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) names like Tidewrit, Saltglass Reach, Isle of Ledgers are evocative and non-stock; (b) tide-ink that expires and the kin-disclosure rule add a distinctive twist beyond the brother-vs-brother brief; (c) rules interlock well\u2014tide-ink, letters of marque, and the Corsair's Code feed the forged-marque conflict and the kinship dilemma; (d) details like ink legible only in salt water and timed-tide battles are specific and non-transferable; conceit is a familiar trope elevated by inventive mechanics rather than wholly novel",
+        "grader_error": false
+      }
+    },
+    "07_minimal_input": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each faction's description matches its linked locations (Doorwardens at the garden/lane doors, Magpies at market/clocktower, Ferry Dames at the harbour); (b) events are chronologically coherent across the two eras and each named/linked location fits; (c) both conflicts correctly reference the factions named in their descriptions; (d) no rule is contradicted \u2014 the hoarded-minutes conflict is a violation of the in-world Jar Treaty event, not of a stated rule, and 'retired children' Doorwardens do not clearly violate the children-see-doors rule; (e) names are used consistently throughout",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: door-to-yesterday premise realized as concrete locations (Crooked Garden door, Yesterday Lane), factions (Doorwardens), events (The Hiccup) and conflicts (Overfull Jar); b: fantasy conventions evident in living clocks, time-trade magic, and whimsical metaphysics rules; c: tone strongly whimsical throughout ('clocks gossip', 'umbrellas have opinions', 'biscuit crumbs'); d: no target audience specified, content suits general/childlike whimsy",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) locations each have distinct function/atmosphere/detail; (b) factions have goals, methods and resources (keys, hoarding, passage-for-stories); (c) history forms a loose causal chain (first door \u2192 wardens' oath \u2192 clock sulk \u2192 jar treaty) explaining the present; (d) rules all carry limits or consequences (one-day-back limit, ripples, crumbling objects, snitching clocks); (e) description integrates doors, rules, and the hoarded-minutes conflict coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: Doorwardens vs Minute Magpies over the hoarded minutes, with today 'running short' as stakes; b: hoarded-minutes conflict grows directly out of the door-to-yesterday premise; c: five distinct arenas (garden door, market, clocktower, harbour) support varied scene stakes; d: clear roles \u2014 child door-finder protagonist, Magpie leader antagonist with a secret stockpile, neutral Ferry Dames with gossip leverage; e: rules like 'objects crumble unless gifted' and 'clocks honestly report what visitors did' create concrete obstacles/dilemmas",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names like Tuppence Hollow, Teacup Harbour, Minute Magpies and Hinge-of-Yesterday are fresh and non-stock; (b) time-as-a-house with visitable, sulky yesterday goes well beyond the brief's door premise; (c) gossiping-clock rule, Jar Treaty history, and magpie hoarding conflict interlock non-obviously; (d) details like doors sized as bread boxes at dawn and prices paid in memories of small kindnesses are world-specific",
+        "grader_error": false
+      }
+    },
+    "08_forbidden_dragon": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 4,
+        "reason": "a) faction-location links agree with descriptions (Accord Hall for Accord, Roost/Fields for Wardens, cave for Tidewrights); b) events are chronologically ordered and each cites the named place; c) both conflicts' factions match their descriptions; d) no rule is directly contradicted, though Saltglass Cave's 'tidal heat' keeping the egg warm sits in mild tension with the grief-keeps-eggs-viable rule; e) names are used consistently throughout.",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: extinction-by-hunt, secret hatching egg, and riders' legacy are concretized in factions (Crown Accord, Tidewrights, Ember Wardens), locations (Saltglass Cave, Cinder Roost), history events, and conflicts; b: fantasy conventions evident in wyrm-bonded riders, metaphysical egg rules, barrows and forges; c: melancholy tone pervasive ('mourning', 'grief', 'unfinished farewells', tolling bells for extinct bloodlines); d: no audience specified; constraints honored (no 'dragon', egg required, 5 locations)",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) locations have distinct functions/atmosphere (ruined aerie, tidal egg-cave, bone-trade port, decree hall, burial fields); (b) factions have goals and methods (Accord policing survivors, Wardens tending shrines, Tidewrights guarding the egg); (c) history chains causally from bonding to decree to burial to the egg's discovery; (d) rules carry costs/limits (grief-dependent viability, no open-sky fire, exile penalty, finite bone stock); (e) description integrates extinction, the secret egg, and the melancholy tone coherently",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: two conflicts pit named factions (Accord vs Tidewrights/Wardens) with incompatible goals and stakes; b: conflicts directly derive from the hidden hatchling premise; c: five locations are distinct arenas (ruined aerie, secret cave, port, seat of power, burial fields); d: clear role openings \u2014 Tidewright child/elders, Warden rebels, Accord hunters; e: grief-warmth rule forces characters to actively mourn to keep the egg alive",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names like Cinder Roost, Veil Harbor, Tidewrights, Saltglass Cave are evocative and non-stock; (b) grief-powered egg warmth and guilt-haunted hunters add a distinctive twist beyond the brief; (c) rules interlock with factions and history non-obviously (finite wyrm-bone forging stock, sky-fire ban, licensing law feeding the Accord's economy); (d) details like the bell tolling per extinct bloodline and tidal-heated salt cave are world-specific and non-transferable.",
+        "grader_error": false
+      }
+    },
+    "09_required_chosen_one": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "World is structurally valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "internal_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all faction descriptions align with their linked locations; (b) events are chronologically ordered (Utterance \u2192 Echoes \u2192 Present) and each names its linked location; (c) each conflict's factions match its description; (d) no rule is contradicted \u2014 silence zones, one-voice, echo debt, high-water law and bell-bronze all cohere with locations/factions/events; (e) names are used consistently throughout (loc_throne_of_tides named 'The Tidewarden's Hall' is a naming quirk but consistent with the Tidewardens faction)",
+        "grader_error": false
+      },
+      "premise_genre_alignment": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) failed initiate, dead language of world-shapers, and chosen-one premise are embodied in the Cantor Order, Isenne's expulsion event, the one-voice rule, and Order-vs-speaker conflicts; (b) drowned continent, salt-cathedrals, memory-cost magic clearly fulfill fantasy conventions; (c) earnest tone evident in sincere treatment of grief, duty and unasked-for destiny; (d) no target audience specified",
+        "grader_error": false
+      },
+      "worldbuilding_depth": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) six locations each have distinct function and atmosphere (bell-bronze tower, singing brine bridge, tide-locked archive, silent grove); b) all four factions state goals and methods (Order's imitation monopoly, Tidewardens' coastal wealth, Quiet Tide's moral stance, Marrow Folk's protection); c) history chains causally: First Sentence -> Long Silence -> founding of the Order -> Isenne's expulsion setting up the present; d) rules carry real costs/limits (memory debt, single-voice succession, silence zones nullifying speech) though bell-bronze and high-water rules are milder; e) description integrates language, institutions, gift and cost into a coherent earnest picture",
+        "grader_error": false
+      },
+      "narrative_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a: three named faction conflicts with stakes (control of Isenne, coastlines, the moral case for silence); b: all conflicts stem directly from the dead-language/chosen-one premise; c: six distinct arenas (spire, causeway, drowned archive, quay, silent orchard, tide hall); d: clear protagonist (reluctant speaker) and antagonist openings (Order, Tidewardens, Quiet Tide, regret over expulsion); e: echo-debt rule forces a concrete dilemma\u2014every spoken word costs a memory",
+        "grader_error": false
+      },
+      "originality": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) names like Vael Ashenmere, Saltglass Causeway, Hushed Orchard, Quiet Tide are non-stock; b) the dead language that answers only one voice and costs a self-chosen memory adds a real twist beyond the chosen-one brief; c) factions and rules interlock non-obviously (a mute fellowship guarding silence zones, law binding only at high tide, bell-bronze that can only imitate); d) details like the Drowned Archive at decade-low tides and the causeway as 'last unbroken sentence' are world-specific.",
+        "grader_error": false
+      }
+    },
+    "10_conflicting_count_min": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Contradictory brief correctly rejected (28 issue(s))",
+        "grader_error": false
+      },
+      "contradiction_handling": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) names both conflicting constraints (location_count:2 vs min_locations:5); (b) returns an error, no world presented; (c) no silent violation",
+        "grader_error": false
+      }
+    }
+  }
+}

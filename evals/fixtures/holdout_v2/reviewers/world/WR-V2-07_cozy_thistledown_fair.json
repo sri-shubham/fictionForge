@@ -1,0 +1,150 @@
+{
+  "case_id": "WR-V2-07",
+  "agent": "world",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "cozy_thistledown_fair",
+  "context_validated": true,
+  "brief": {
+    "title": "Tea at the Ninth Stall",
+    "premise": "A hedge-witch tea merchant follows a travelling fair that appears only in leap-season, trying to win back her family's lost stall before the fair folds its lanes and moves on.",
+    "genre": "cozy fantasy",
+    "tone": "gentle",
+    "target_audience": "all ages",
+    "location_count": 4,
+    "constraints": [
+      "forbid:violence",
+      "require:fair",
+      "Conflicts are settled by bargains, contests and trade, never violence.",
+      "max_locations:5"
+    ]
+  },
+  "world": {
+    "world_id": "wld_thistledown",
+    "name": "The Thistledown Fair",
+    "description": "A travelling fair that unfolds its lanes only in leap-season, where stall rights are held in favours, debts are settled in trade, and the fair itself seems to remember every promise made under its lanterns.",
+    "locations": [
+      {
+        "id": "loc_leap_lane",
+        "name": "Leap Lane",
+        "description": "The fair's main way, which appears in an ordinary field at leap-season and folds away at season's end."
+      },
+      {
+        "id": "loc_ninth_stall",
+        "name": "The Ninth Stall",
+        "description": "A shuttered stall at the lane's turn whose lease was forfeited on an unkept favour a generation ago."
+      },
+      {
+        "id": "loc_kettle_commons",
+        "name": "The Kettle Commons",
+        "description": "The cluster of tea tents where merchants trade gossip, samples and favours."
+      },
+      {
+        "id": "loc_wishing_barn",
+        "name": "The Wishing Barn",
+        "description": "The tallykeepers' barn where every promised favour is written on a wishing tag and hung until kept."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_stallholders",
+        "name": "The Stallholders' Round",
+        "description": "The merchants who hold the fair's leases and vote the stall rights.",
+        "location_ids": [
+          "loc_kettle_commons"
+        ]
+      },
+      {
+        "id": "fac_tallykeepers",
+        "name": "The Tallykeepers",
+        "description": "The clerks who record every favour on wishing tags and judge disputes of debt.",
+        "location_ids": [
+          "loc_wishing_barn"
+        ]
+      },
+      {
+        "id": "fac_carters",
+        "name": "The Carter Kin",
+        "description": "The families whose wains carry the fair between fields and keep the lanes' secrets.",
+        "location_ids": [
+          "loc_leap_lane"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_leap_season",
+        "statement": "The fair exists only in leap-season; at season's end the lanes fold back into ordinary fields.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_favour_currency",
+        "statement": "Debts at the fair are paid in favours, and a favour once promised must be kept before the fair moves.",
+        "category": "social"
+      },
+      {
+        "id": "rul_no_sharp_edges",
+        "statement": "No contest at the fair may risk harm; disputes go to the Tallykeepers and are settled by bargain or contest.",
+        "category": "social"
+      },
+      {
+        "id": "rul_ninth_lease",
+        "statement": "The Ninth Stall's lease can be claimed only by the family that lost it, before the third bell of closing day.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_first_fair",
+        "name": "The First Fair",
+        "era": "The First Leap",
+        "description": "The fair appeared uninvited in a fallow field, traded for a season, and left a lane where none had been.",
+        "location_ids": [
+          "loc_leap_lane"
+        ]
+      },
+      {
+        "id": "evt_stall_forfeit",
+        "name": "The Forfeit of the Ninth",
+        "era": "The Middle Leaps",
+        "description": "A tea merchant's family lost their stall when a promised favour went unkept past the third bell.",
+        "location_ids": [
+          "loc_ninth_stall"
+        ]
+      },
+      {
+        "id": "evt_tally_accord",
+        "name": "The Tally Accord",
+        "era": "The Middle Leaps",
+        "description": "The tallykeepers were given authority over favour-debts after a season of duelling claims.",
+        "location_ids": [
+          "loc_wishing_barn"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_ninth_claim",
+        "name": "The Ninth Claim",
+        "description": "The Carter Kin are quietly selling the Ninth Stall's lease, while the family that forfeited it still holds a claim.",
+        "faction_ids": [
+          "fac_stallholders",
+          "fac_carters"
+        ]
+      },
+      {
+        "id": "cnf_favour_shortage",
+        "name": "The Favour Shortage",
+        "description": "More favours are owed than can be kept before closing day, and the tallykeepers must rule which debts ride with the fair.",
+        "faction_ids": [
+          "fac_tallykeepers",
+          "fac_stallholders"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's gentle travelling-fair setting; deterministic validators are clean and there are no blocking defects."
+}

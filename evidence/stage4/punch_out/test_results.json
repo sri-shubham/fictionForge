@@ -1,0 +1,213 @@
+{
+  "code_sha256": "ad207dd00e1bb7064a64cc70492acf6744be524ab1089faadf2fb4ecd485a916",
+  "generated_at": "2026-11-18T06:06:29.401090+00:00",
+  "method": "mocked_offline (MockClient; no model calls, no network)",
+  "scenarios": [
+    {
+      "actual": "status=punch_out_required; steps=2; pending=po-83d706476d4a4ab2-01",
+      "audit_events": [
+        "workflow_start",
+        "step_start",
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete"
+      ],
+      "expected": "punch_out_required; no downstream steps; pending decision persisted",
+      "method": "mocked_offline",
+      "passed": true,
+      "punch_out_id": "po-83d706476d4a4ab2-01",
+      "run_id": "83d706476d4a4ab2",
+      "scenario_id": "PO-01/02 trigger and halt",
+      "trigger": "guardrail_bypass_attempt in world_generation output"
+    },
+    {
+      "actual": "denied code=PUNCH_OUT_NOT_APPROVED",
+      "audit_events": [
+        "workflow_start",
+        "step_start",
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete",
+        "human_decision"
+      ],
+      "expected": "PUNCH_OUT_NOT_APPROVED",
+      "method": "mocked_offline",
+      "passed": true,
+      "run_id": "83d706476d4a4ab2",
+      "scenario_id": "PO-03 resume without approval",
+      "trigger": "resume() with no decision file"
+    },
+    {
+      "actual": "denied code=PUNCH_OUT_NOT_APPROVED",
+      "audit_events": [
+        "workflow_start",
+        "step_start",
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete",
+        "human_decision",
+        "human_decision"
+      ],
+      "expected": "PUNCH_OUT_NOT_APPROVED",
+      "method": "mocked_offline",
+      "passed": true,
+      "run_id": "83d706476d4a4ab2",
+      "scenario_id": "PO-05 free-text approval insufficient",
+      "trigger": "resume(approved_by=...) with no signed decision"
+    },
+    {
+      "actual": "denied code=DECISION_SIGNATURE_INVALID",
+      "audit_events": [
+        "step_start",
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete",
+        "human_decision",
+        "human_decision",
+        "human_decision"
+      ],
+      "expected": "DECISION_SIGNATURE_INVALID",
+      "method": "mocked_offline",
+      "passed": true,
+      "run_id": "83d706476d4a4ab2",
+      "scenario_id": "PO-04 invalid approval evidence",
+      "trigger": "decision file signed with wrong key"
+    },
+    {
+      "actual": "rejected code=APPROVER_NOT_AUTHORIZED",
+      "audit_events": [
+        "step_start",
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete",
+        "human_decision",
+        "human_decision",
+        "human_decision"
+      ],
+      "expected": "APPROVER_NOT_AUTHORIZED",
+      "method": "mocked_offline",
+      "passed": true,
+      "run_id": "83d706476d4a4ab2",
+      "scenario_id": "PO-05b forged approver identity",
+      "trigger": "--decide approve by unlisted approver"
+    },
+    {
+      "actual": "denied code=DECISION_RUN_MISMATCH",
+      "audit_events": [
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete",
+        "human_decision",
+        "human_decision",
+        "human_decision",
+        "human_decision"
+      ],
+      "expected": "DECISION_RUN_MISMATCH",
+      "method": "mocked_offline",
+      "passed": true,
+      "run_id": "83d706476d4a4ab2",
+      "scenario_id": "PO-06 approval for a different run",
+      "trigger": "decision bound to run_id=different-run-99"
+    },
+    {
+      "actual": "denied code=DECISION_CONTEXT_MISMATCH",
+      "audit_events": [
+        "punch_out",
+        "workflow_complete",
+        "human_decision",
+        "human_decision",
+        "human_decision",
+        "human_decision",
+        "human_decision",
+        "human_decision"
+      ],
+      "expected": "DECISION_CONTEXT_MISMATCH",
+      "method": "mocked_offline",
+      "passed": true,
+      "run_id": "83d706476d4a4ab2",
+      "scenario_id": "PO-07/08 approval after artifact modification",
+      "trigger": "brief.json modified after decision recorded"
+    },
+    {
+      "actual": "status=completed; approved_by=['stage4-operator']",
+      "audit_events": [
+        "step_complete",
+        "step_start",
+        "deterministic_validation",
+        "step_complete",
+        "step_start",
+        "deterministic_validation",
+        "step_complete",
+        "workflow_complete"
+      ],
+      "expected": "run completes; approval bound to run/context",
+      "method": "mocked_offline",
+      "passed": true,
+      "punch_out_id": "po-6416700c382b4ff4-01",
+      "run_id": "6416700c382b4ff4",
+      "scenario_id": "PO-09/10/16 authorized approval and resume",
+      "trigger": "signed approve decision; resume in a new process"
+    },
+    {
+      "actual": "summary_status=human_denied; resumes=['HUMAN_DENIED', 'HUMAN_DENIED']",
+      "audit_events": [
+        "workflow_start",
+        "step_start",
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete",
+        "human_decision"
+      ],
+      "expected": "status human_denied; every resume denied",
+      "method": "mocked_offline",
+      "passed": true,
+      "punch_out_id": "po-b147a836b7314714-01",
+      "run_id": "b147a836b7314714",
+      "scenario_id": "PO-11/12 explicit human denial",
+      "trigger": "--decide deny by carol; two resume attempts"
+    },
+    {
+      "actual": "['PUNCH_OUT_NOT_APPROVABLE', 'PUNCH_OUT_NOT_APPROVABLE']",
+      "audit_events": [],
+      "expected": "PUNCH_OUT_NOT_APPROVABLE for both",
+      "method": "mocked_offline",
+      "passed": true,
+      "run_id": "sec-run",
+      "scenario_id": "PO-14 security halts not approvable",
+      "trigger": "approve decision on artifact_tampered / gate_approval_invalid pendings"
+    },
+    {
+      "actual": "status=punch_out_required; pendings=2; resume=PUNCH_OUT_NOT_APPROVED",
+      "audit_events": [
+        "resume",
+        "step_start",
+        "deterministic_validation",
+        "step_complete",
+        "step_start",
+        "punch_out",
+        "workflow_complete",
+        "human_decision"
+      ],
+      "consumed_decision": "po-39f8884e491d488f-01",
+      "expected": "new pending requires its own decision; old one does not authorize",
+      "method": "mocked_offline",
+      "new_pending": "po-39f8884e491d488f-02",
+      "passed": true,
+      "run_id": "39f8884e491d488f",
+      "scenario_id": "PO-17 replayed authorization",
+      "trigger": "consumed approval on po-01; new punch-out po-02 during resume"
+    }
+  ],
+  "summary": {
+    "failed": 0,
+    "passed": 11,
+    "total": 11
+  }
+}

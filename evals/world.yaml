@@ -1,0 +1,113 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# Promptfoo configuration for the World Generation evaluation.
+# This uses a custom Python provider that wraps the Devin CLI.
+#
+# Generation uses a capable model (Claude Sonnet fusion).
+# Quality rubrics are judged by a separate cheap model (swe-2-medium).
+
+description: World Generation evaluation (Devin CLI)
+
+prompts:
+  - file://../prompts/world.md
+
+providers:
+  - id: file://world_provider.py
+    config:
+      model: fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium
+      # promptfoo Python worker timeout in milliseconds
+      timeout: 600000
+      # timeout for the individual devin CLI call in seconds
+      devin_timeout: 180
+      retries: 1
+      respect_workspace_trust: false
+
+tests: file://world_tests_smoke.json
+
+defaultTest:
+  assert:
+    - type: python
+      value: file://world_assert.py
+      metric: structural_validity
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 3
+      metric: internal_consistency
+      value: |-
+        Rate the generated world on internal consistency from 1 (contradictory) to 5 (fully consistent).
+        The score MUST be an integer between 1 and 5 inclusive (never a fraction or a 0-1 value),
+        and "pass" MUST be true exactly when score >= 3.
+        Return a JSON object: {"score": 3, "pass": true, "reason": "..."}.
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 3
+      metric: premise_genre_alignment
+      value: |-
+        Rate how well the world aligns with the brief's premise and genre from 1 (off-genre) to 5 (excellent).
+        The score MUST be an integer between 1 and 5 inclusive (never a fraction or a 0-1 value),
+        and "pass" MUST be true exactly when score >= 3.
+        Return a JSON object: {"score": 3, "pass": true, "reason": "..."}.
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 3
+      metric: worldbuilding_depth
+      value: |-
+        Rate the depth and richness of the worldbuilding from 1 (shallow) to 5 (deep and immersive).
+        Judge depth relative to the scope the brief requests — do not penalise a small location count
+        if the brief itself asks for few locations.
+        The score MUST be an integer between 1 and 5 inclusive (never a fraction or a 0-1 value),
+        and "pass" MUST be true exactly when score >= 3.
+        Return a JSON object: {"score": 3, "pass": true, "reason": "..."}.
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 3
+      metric: narrative_potential
+      value: |-
+        Rate the narrative potential and conflict hooks from 1 (weak) to 5 (strong and compelling).
+        The score MUST be an integer between 1 and 5 inclusive (never a fraction or a 0-1 value),
+        and "pass" MUST be true exactly when score >= 3.
+        Return a JSON object: {"score": 3, "pass": true, "reason": "..."}.
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 3
+      metric: originality
+      value: |-
+        Rate the originality and freshness of the world from 1 (generic/cliché) to 5 (highly original).
+        Familiar tropes with inventive twists or a cohesive distinctive conceit should score 4 or higher.
+        The score MUST be an integer between 1 and 5 inclusive (never a fraction or a 0-1 value),
+        and "pass" MUST be true exactly when score >= 3.
+        Return a JSON object: {"score": 3, "pass": true, "reason": "..."}.

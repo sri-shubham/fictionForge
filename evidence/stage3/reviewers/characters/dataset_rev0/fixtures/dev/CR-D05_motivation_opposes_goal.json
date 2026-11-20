@@ -1,0 +1,298 @@
+{
+  "case_id": "CR-D05",
+  "agent": "characters",
+  "split": "dev",
+  "category": "single_contradiction",
+  "slug": "motivation_opposes_goal",
+  "context_validated": true,
+  "brief": {
+    "title": "The Salt Ledger",
+    "premise": "In a city built on a tidal flat, a debt-clerk discovers that the tide-bound magic that keeps the sea out is being quietly overdrawn, and must expose the guild hiding the shortfall before the next spring tide.",
+    "genre": "fantasy",
+    "tone": "tense",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:gunpowder",
+      "require:tide",
+      "Magic must always carry a visible physical cost.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_saltmere",
+    "name": "Saltmere",
+    "description": "Saltmere is a walled city on a tidal flat where tide-bound magic holds back the sea and every working of it is recorded as a debt in the Salt Clerks' ledgers.",
+    "locations": [
+      {
+        "id": "loc_ledger_hall",
+        "name": "Ledger Hall",
+        "description": "The counting-house where tide-debts are recorded in salt-ink ledgers, built on the highest ground of the flat."
+      },
+      {
+        "id": "loc_drowned_quay",
+        "name": "Drowned Quay",
+        "description": "A harbour district that floods twice daily, home to ferrymen and smugglers."
+      },
+      {
+        "id": "loc_brine_gate",
+        "name": "Brine Gate",
+        "description": "The great sluice-wall holding back the sea, protected by tide-bound wardings renewed each month."
+      },
+      {
+        "id": "loc_mudflat_market",
+        "name": "Mudflat Market",
+        "description": "A stilted bazaar on the exposed flats, open only at low tide."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_salt_clerks",
+        "name": "Salt Clerks",
+        "description": "A guild of accountants who record and ration tide-magic debts.",
+        "location_ids": [
+          "loc_ledger_hall"
+        ]
+      },
+      {
+        "id": "fac_gate_wardens",
+        "name": "Gate Wardens",
+        "description": "Warders who renew the wardings on the Brine Gate each month, paying for it with their own bodies.",
+        "location_ids": [
+          "loc_brine_gate"
+        ]
+      },
+      {
+        "id": "fac_quay_ferrymen",
+        "name": "Quay Ferrymen",
+        "description": "Boatmen and smugglers who work the flooded streets and resent the clerks' levies.",
+        "location_ids": [
+          "loc_drowned_quay",
+          "loc_mudflat_market"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_tide_cost",
+        "statement": "Every working of tide-magic leaves a visible mark on the caster, such as salt-crusted skin or white hair.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_spring_renewal",
+        "statement": "Tide-bound wardings can be renewed only at the turn of a spring tide.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_debt_binds",
+        "statement": "A tide-debt, once entered in the ledger, binds the debtor's family until it is paid.",
+        "category": "social"
+      },
+      {
+        "id": "rul_salt_ink",
+        "statement": "Entries written in salt-ink cannot be altered without leaving a pale scar on the page.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_founding",
+        "name": "The Founding of the Gate",
+        "era": "Age of Walls",
+        "description": "Settlers raised the Brine Gate on the flat and bound it with the first tide-wardings.",
+        "location_ids": [
+          "loc_brine_gate"
+        ]
+      },
+      {
+        "id": "evt_first_ledger",
+        "name": "The First Ledger",
+        "era": "Age of Debt",
+        "description": "The Salt Clerks began recording tide-debts after the first warding renewal drained a ferryman's family of its savings.",
+        "location_ids": [
+          "loc_ledger_hall"
+        ]
+      },
+      {
+        "id": "evt_great_flood",
+        "name": "The Great Flood",
+        "era": "Age of Debt",
+        "description": "A warding lapsed and the sea flooded the Drowned Quay for a week, until the Gate Wardens renewed the wardings at the next spring tide.",
+        "location_ids": [
+          "loc_drowned_quay"
+        ]
+      },
+      {
+        "id": "evt_market_charter",
+        "name": "The Market Charter",
+        "era": "Age of Levies",
+        "description": "The Salt Clerks granted the Quay Ferrymen the right to trade on the flats at low tide in return for a levy.",
+        "location_ids": [
+          "loc_mudflat_market"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_levy_dispute",
+        "name": "The Levy Dispute",
+        "description": "The Quay Ferrymen refuse to pay the Salt Clerks' rising levies on low-tide trade.",
+        "faction_ids": [
+          "fac_quay_ferrymen",
+          "fac_salt_clerks"
+        ]
+      },
+      {
+        "id": "cnf_overdrawn_gate",
+        "name": "The Overdrawn Gate",
+        "description": "The Gate Wardens suspect the Salt Clerks of hiding how much tide-magic the Brine Gate has already consumed.",
+        "faction_ids": [
+          "fac_gate_wardens",
+          "fac_salt_clerks"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_saltmere",
+    "characters": [
+      {
+        "id": "chr_ines",
+        "name": "Ines Varro",
+        "role": "protagonist",
+        "description": "A junior debt-clerk at Ledger Hall who audits salt-ink entries and keeps a private tally of every correction she finds.",
+        "personality_traits": [
+          "meticulous",
+          "wary",
+          "stubborn"
+        ],
+        "motivation": "To protect the Salt Clerks' credit at any cost and keep the shortfall quiet.",
+        "goal": "Prove the shortfall in the ledgers and present it to the Gate Wardens.",
+        "flaw": "Trusts written records over people.",
+        "internal_conflict": "She owes her post to the guild she is about to expose.",
+        "external_conflict": "Senior clerks bury her audit requests.",
+        "home_location_id": "loc_ledger_hall",
+        "faction_id": "fac_salt_clerks",
+        "abilities": [
+          {
+            "name": "Salt-ink reading",
+            "description": "Spots erased or recopied entries by the pale scars and fresh ink they leave on the page.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Ines learns that records are only as honest as the people who keep them."
+      },
+      {
+        "id": "chr_oren",
+        "name": "Oren Dask",
+        "role": "antagonist",
+        "description": "The ledger-master of Ledger Hall, who hides the Brine Gate's shortfall by recopying whole ledger pages instead of correcting them.",
+        "personality_traits": [
+          "calm",
+          "precise",
+          "ruthless"
+        ],
+        "motivation": "To keep the guild's credit intact until the next spring tide.",
+        "goal": "Silence Ines and keep the shortfall off the record.",
+        "flaw": "Mistakes secrecy for prudence.",
+        "internal_conflict": "He knows the gate cannot be renewed on the guild's accounts alone.",
+        "external_conflict": "The Gate Wardens demand a full audit.",
+        "home_location_id": "loc_ledger_hall",
+        "faction_id": "fac_salt_clerks",
+        "abilities": [
+          {
+            "name": "Page-recopying",
+            "description": "Recopies a ledger page in a flawless hand so that no scar shows.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Oren's concealment collapses when the Wardens demand the original pages."
+      },
+      {
+        "id": "chr_tamsin",
+        "name": "Tamsin Reel",
+        "role": "supporting",
+        "description": "A ferrywoman whose family is bound by a tide-debt entered before she was born.",
+        "personality_traits": [
+          "bold",
+          "resentful",
+          "generous"
+        ],
+        "motivation": "To free her family from a debt it never chose.",
+        "goal": "Find the ledger entry that created the debt and have it cancelled.",
+        "flaw": "Acts before thinking.",
+        "internal_conflict": "She resents the clerks but needs Ines's access.",
+        "external_conflict": "The clerks levy her low-tide trade.",
+        "home_location_id": "loc_drowned_quay",
+        "faction_id": "fac_quay_ferrymen",
+        "abilities": [
+          {
+            "name": "Flood-navigation",
+            "description": "Poles a ferry through the Drowned Quay's streets at any tide.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Tamsin learns the debt can be challenged openly rather than dodged."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_ines_oren",
+        "source_character_id": "chr_ines",
+        "target_character_id": "chr_oren",
+        "relationship_type": "subordinate",
+        "description": "Oren trained Ines and still reviews her audits.",
+        "conflict": "She is auditing his books."
+      },
+      {
+        "id": "rel_ines_tamsin",
+        "source_character_id": "chr_ines",
+        "target_character_id": "chr_tamsin",
+        "relationship_type": "ally",
+        "description": "Tamsin gives Ines access to the quay's unofficial tide records in return for help tracing her family's debt.",
+        "conflict": null
+      },
+      {
+        "id": "rel_oren_tamsin",
+        "source_character_id": "chr_oren",
+        "target_character_id": "chr_tamsin",
+        "relationship_type": "creditor",
+        "description": "Oren's office holds the entry that binds Tamsin's family.",
+        "conflict": "He refuses to release it."
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "MOTIVATION_INCONSISTENCY"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.characters[0].motivation"
+      ],
+      "reference_paths": [
+        "$.characters[0].goal"
+      ],
+      "evidence_quotes": [
+        "keep the shortfall quiet",
+        "Prove the shortfall in the ledgers and present it to the Gate Wardens"
+      ],
+      "anchor_terms": [
+        "keep the shortfall quiet"
+      ],
+      "rationale": "The motivation is the opposite of the stated goal.",
+      "correction_hint": "Rewrite Ines's motivation to match her goal of exposing the shortfall.",
+      "label_id": "CR-D05-L1"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Ines's motivation (protect the guild and keep the shortfall quiet) opposes her goal (prove the shortfall and present it to the Wardens) and her arc."
+}

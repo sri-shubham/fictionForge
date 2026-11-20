@@ -1,0 +1,252 @@
+{
+  "case_id": "CR-V2-03",
+  "agent": "characters",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "hard_sf_perihelion_yard",
+  "context_validated": true,
+  "brief": {
+    "title": "Sunside",
+    "premise": "A salvage rigger at a solar-sail shipyard inside Mercury's orbit finds a hull logged as scrapped still drawing power, and must prove it before the yard's charter auditors arrive.",
+    "genre": "hard science fiction",
+    "tone": "gritty",
+    "target_audience": "adult",
+    "location_count": 4,
+    "constraints": [
+      "forbid:teleporter",
+      "require:sail",
+      "No faster-than-light travel or communication; everything obeys orbital mechanics.",
+      "max_locations:5"
+    ]
+  },
+  "world": {
+    "world_id": "wld_perihelion_yard",
+    "name": "Perihelion Yard",
+    "description": "A sail shipyard in a sun-grazing orbit inside Mercury's, where crews re-mirror sails under brutal heat budgets, and every gram of salvage is owed to the mass ledger.",
+    "locations": [
+      {
+        "id": "loc_yard_spine",
+        "name": "The Yard Spine",
+        "description": "The kilometre-long gantry truss where sail hulls are berthed and re-mirrored."
+      },
+      {
+        "id": "loc_mirror_shed",
+        "name": "The Mirror Shed",
+        "description": "A shadowed workshop where crews re-silver sail film under vacuum."
+      },
+      {
+        "id": "loc_bastion_hulk",
+        "name": "The Bastion Hulk",
+        "description": "The radiation-shielded command module where the yard office and audit berth sit."
+      },
+      {
+        "id": "loc_shadow_dock",
+        "name": "Shadow Dock",
+        "description": "A dry dock permanently eclipsed behind the yard's own truss, invisible to thermal survey."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_riggers_union",
+        "name": "The Riggers' Union",
+        "description": "The perihelion riggers' union, which holds the heat rosters and the safety charter.",
+        "location_ids": [
+          "loc_yard_spine",
+          "loc_mirror_shed"
+        ]
+      },
+      {
+        "id": "fac_charter_audit",
+        "name": "The Charter Audit Office",
+        "description": "Auditors with a permanent berth at the Bastion Hulk, empowered to seize the mass ledger.",
+        "location_ids": [
+          "loc_bastion_hulk"
+        ]
+      },
+      {
+        "id": "fac_helio_tank",
+        "name": "The Helio Tank Consortium",
+        "description": "The owners' consortium that charters the yard and buys every scrapped hull.",
+        "location_ids": [
+          "loc_bastion_hulk"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_light_delay",
+        "statement": "A tight-beam reply from the inner system takes at least ten minutes; nobody gets an instant answer.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_heat_budget",
+        "statement": "No crew may work sunside longer than their logged heat budget allows; the duty log is law.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_mass_ledger",
+        "statement": "Every gram that leaves the yard is entered in the mass ledger; unlogged salvage is theft.",
+        "category": "social"
+      },
+      {
+        "id": "rul_shadow_dock",
+        "statement": "Shadow Dock never sees the sun; anything berthed there does not register on thermal survey.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_keel_year",
+        "name": "The Keel Year",
+        "era": "First Perihelion",
+        "description": "The yard truss was assembled from cannibalised tankers to service the inner-system sail fleet.",
+        "location_ids": [
+          "loc_yard_spine"
+        ]
+      },
+      {
+        "id": "evt_sail_fire",
+        "name": "The Sail Fire",
+        "era": "The Austerity",
+        "description": "A mis-folded sail focused the sun onto a dock crew; the safety charter was rewritten in its wake.",
+        "location_ids": [
+          "loc_mirror_shed"
+        ]
+      },
+      {
+        "id": "evt_audit_charter",
+        "name": "The Audit Charter",
+        "era": "The Austerity",
+        "description": "The owners granted the audit office a permanent berth after a season of ledger fraud.",
+        "location_ids": [
+          "loc_bastion_hulk"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_scrap_ledger",
+        "name": "The Scrap Ledger",
+        "description": "The union suspects hulls logged as scrapped are being kept as spares in Shadow Dock, off the mass ledger.",
+        "faction_ids": [
+          "fac_riggers_union",
+          "fac_charter_audit"
+        ]
+      },
+      {
+        "id": "cnf_heat_roster",
+        "name": "The Heat Roster",
+        "description": "Helio Tank wants longer sunside shifts than the union's heat budget allows.",
+        "faction_ids": [
+          "fac_helio_tank",
+          "fac_riggers_union"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_perihelion_yard",
+    "characters": [
+      {
+        "id": "chr_ria_callum",
+        "name": "Ria Callum",
+        "role": "protagonist",
+        "description": "A salvage rigger with ten perihelion seasons on the Spine, who trusts torque wrenches and duty logs more than offices.",
+        "personality_traits": [
+          "methodical",
+          "suspicious",
+          "loyal"
+        ],
+        "motivation": "To prove the scrapped hull is real before the auditors can bury it.",
+        "goal": "Document the ghost hull's power draw and get it on the record.",
+        "flaw": "She hoards evidence instead of trusting anyone with it.",
+        "internal_conflict": "She wants justice but fears what it will cost her crewmates' berths.",
+        "external_conflict": "The audit office can classify her evidence and her along with it.",
+        "home_location_id": "loc_yard_spine",
+        "faction_id": "fac_riggers_union",
+        "abilities": [
+          {
+            "name": "Load-path reading",
+            "description": "Traces power and load draws through a hull's conduit plan by inspection.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Ria learns to put the evidence in other people's hands before it can be silenced."
+      },
+      {
+        "id": "chr_director_savane",
+        "name": "Director Savane",
+        "role": "antagonist",
+        "description": "The audit director who certified the ghost hull's scrap certificate and controls what the charter sees.",
+        "personality_traits": [
+          "impeccable",
+          "patient",
+          "controlling"
+        ],
+        "motivation": "To close the merger before the spare hull is discovered on the books.",
+        "goal": "Keep the Shadow Dock berth unlogged until the merger seals.",
+        "flaw": "He believes procedure shields him from arithmetic.",
+        "internal_conflict": "He knows the hull is irregular but has convinced himself it is necessary.",
+        "external_conflict": "Ria's measurements put the lie in his own ledger.",
+        "home_location_id": "loc_bastion_hulk",
+        "faction_id": "fac_charter_audit",
+        "abilities": [
+          {
+            "name": "Ledger forensics",
+            "description": "Finds and hides discrepancies inside mass ledgers better than anyone in the audit office.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Savane's own charter turns on him when the numbers are read aloud."
+      },
+      {
+        "id": "chr_bex_osei",
+        "name": "Bex Osei",
+        "role": "supporting",
+        "description": "The Mirror Shed forewoman who re-silvers sail film and guards her crew's heat budget like blood.",
+        "personality_traits": [
+          "blunt",
+          "protective",
+          "unflappable"
+        ],
+        "motivation": "To keep her crew under budget and out of the audit's way.",
+        "goal": "Verify the mass-ledger gap without burning her crew's exposure.",
+        "flaw": "She shields her people so hard they never see the whole truth.",
+        "internal_conflict": "Helping Ria means endangering the crew she protects.",
+        "external_conflict": "The audit can pull her crew's heat budget if she cooperates.",
+        "home_location_id": "loc_mirror_shed",
+        "faction_id": "fac_riggers_union",
+        "abilities": [
+          {
+            "name": "Film-welding",
+            "description": "Splices and re-silvers torn sail film in vacuum under a strict time budget.",
+            "category": "technological"
+          }
+        ],
+        "arc": "Bex stops protecting her crew from the truth and lets them choose it."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_ria_bex",
+        "source_character_id": "chr_ria_callum",
+        "target_character_id": "chr_bex_osei",
+        "relationship_type": "ally",
+        "description": "Bex is the only forewoman Ria trusts with the ledger gap.",
+        "conflict": "Bex wants it handled quietly; Ria wants it on the record."
+      },
+      {
+        "id": "rel_ria_savane",
+        "source_character_id": "chr_ria_callum",
+        "target_character_id": "chr_director_savane",
+        "relationship_type": "adversary",
+        "description": "Savane audited the scrap certificate Ria is disproving.",
+        "conflict": "Each controls a different copy of the truth."
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's orbital-mechanics shipyard setting; deterministic validators are clean and there are no blocking defects."
+}

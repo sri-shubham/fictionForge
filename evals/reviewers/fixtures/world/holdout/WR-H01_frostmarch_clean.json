@@ -1,0 +1,159 @@
+{
+  "case_id": "WR-H01",
+  "agent": "world",
+  "split": "holdout",
+  "category": "valid",
+  "slug": "frostmarch_clean",
+  "context_validated": true,
+  "brief": {
+    "title": "The Rime Crown",
+    "premise": "A disgraced border-warden crosses a frozen march to deliver a thaw-oath to a rival clan before the winter muster, only to find that the clans' beacon-fires have gone dark.",
+    "genre": "fantasy",
+    "tone": "grim",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:dragon",
+      "require:rime",
+      "Magic is rare, and every working shortens the caster's life.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_frostmarch",
+    "name": "The Frostmarch",
+    "description": "The Frostmarch is a frozen borderland of rime-glazed forest and stone holds where rival clans keep an uneasy peace under oath and signal fire.",
+    "locations": [
+      {
+        "id": "loc_beacon_hold",
+        "name": "Beacon Hold",
+        "description": "A stone fortress whose signal fire warns the clans of raiders."
+      },
+      {
+        "id": "loc_rimewood",
+        "name": "The Rimewood",
+        "description": "A forest of frost-glazed pines where rime coats every branch and sound carries for miles."
+      },
+      {
+        "id": "loc_oath_stone",
+        "name": "Oath Stone",
+        "description": "A standing stone where clan oaths are sworn and witnessed."
+      },
+      {
+        "id": "loc_thaw_lake",
+        "name": "Thaw Lake",
+        "description": "A frozen lake that cracks open for only a few days each spring."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_ironvale",
+        "name": "Ironvale Clan",
+        "description": "A mountain clan that keeps Beacon Hold and trades iron for grain.",
+        "location_ids": [
+          "loc_beacon_hold"
+        ]
+      },
+      {
+        "id": "fac_rimewood_clan",
+        "name": "Rimewood Clan",
+        "description": "Hunters who live among the frost-glazed pines and watch the northern approaches.",
+        "location_ids": [
+          "loc_rimewood"
+        ]
+      },
+      {
+        "id": "fac_oath_wardens",
+        "name": "Oath Wardens",
+        "description": "Neutral wardens who witness oaths between clans and punish oath-breakers.",
+        "location_ids": [
+          "loc_oath_stone"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_beacon",
+        "statement": "A lit beacon at Beacon Hold must be answered by every clan within a day, under pain of exile.",
+        "category": "social"
+      },
+      {
+        "id": "rul_oath",
+        "statement": "An oath sworn at the Oath Stone cannot be broken without the oath-breaker losing their clan name.",
+        "category": "social"
+      },
+      {
+        "id": "rul_magic_cost",
+        "statement": "Magic is rare; each working shortens the caster's life by a year.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_lake_thaw",
+        "statement": "Thaw Lake can be crossed on foot only while it is frozen; it is impassable in the spring thaw.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_beacons_raised",
+        "name": "The Raising of the Beacons",
+        "era": "Early Winters",
+        "description": "The clans built Beacon Hold and agreed that its fire would call all clans to arms.",
+        "location_ids": [
+          "loc_beacon_hold"
+        ]
+      },
+      {
+        "id": "evt_first_oath",
+        "name": "The First Oath",
+        "era": "Early Winters",
+        "description": "Ironvale and Rimewood swore peace at the Oath Stone, witnessed by the first Oath Wardens.",
+        "location_ids": [
+          "loc_oath_stone"
+        ]
+      },
+      {
+        "id": "evt_lake_drowning",
+        "name": "The Drowning at Thaw Lake",
+        "era": "Middle Winters",
+        "description": "A war-band crossing Thaw Lake in the spring thaw fell through the cracking ice and drowned.",
+        "location_ids": [
+          "loc_thaw_lake"
+        ]
+      },
+      {
+        "id": "evt_answered_fires",
+        "name": "The Night of Answered Fires",
+        "era": "Late Winters",
+        "description": "Beacon Hold's fire was lit against a raid, and every clan answered within the day.",
+        "location_ids": [
+          "loc_beacon_hold"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_dark_fires",
+        "name": "The Dark Fires",
+        "description": "The Ironvale Clan blames the Rimewood Clan for the beacon-fires that have gone dark across the march.",
+        "faction_ids": [
+          "fac_ironvale",
+          "fac_rimewood_clan"
+        ]
+      },
+      {
+        "id": "cnf_oath_challenge",
+        "name": "The Oath Challenge",
+        "description": "The Oath Wardens threaten to strip the clan name from whichever clan breaks the thaw-oath.",
+        "faction_ids": [
+          "fac_oath_wardens",
+          "fac_rimewood_clan"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world is internally consistent and respects every brief constraint; deterministic validators are clean."
+}

@@ -1,0 +1,437 @@
+{
+  "case_id": "SR-H10",
+  "agent": "storyboard",
+  "split": "holdout",
+  "category": "single_contradiction",
+  "slug": "raider_chief_confesses_from_nowhere",
+  "context_validated": true,
+  "brief": {
+    "title": "The Rime Crown",
+    "premise": "A disgraced border-warden crosses a frozen march to deliver a thaw-oath to a rival clan before the winter muster, only to find that the clans' beacon-fires have gone dark.",
+    "genre": "fantasy",
+    "tone": "grim",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:dragon",
+      "require:rime",
+      "Magic is rare, and every working shortens the caster's life.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_frostmarch",
+    "name": "The Frostmarch",
+    "description": "The Frostmarch is a frozen borderland of rime-glazed forest and stone holds where rival clans keep an uneasy peace under oath and signal fire.",
+    "locations": [
+      {
+        "id": "loc_beacon_hold",
+        "name": "Beacon Hold",
+        "description": "A stone fortress whose signal fire warns the clans of raiders."
+      },
+      {
+        "id": "loc_rimewood",
+        "name": "The Rimewood",
+        "description": "A forest of frost-glazed pines where rime coats every branch and sound carries for miles."
+      },
+      {
+        "id": "loc_oath_stone",
+        "name": "Oath Stone",
+        "description": "A standing stone where clan oaths are sworn and witnessed."
+      },
+      {
+        "id": "loc_thaw_lake",
+        "name": "Thaw Lake",
+        "description": "A frozen lake that cracks open for only a few days each spring."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_ironvale",
+        "name": "Ironvale Clan",
+        "description": "A mountain clan that keeps Beacon Hold and trades iron for grain.",
+        "location_ids": [
+          "loc_beacon_hold"
+        ]
+      },
+      {
+        "id": "fac_rimewood_clan",
+        "name": "Rimewood Clan",
+        "description": "Hunters who live among the frost-glazed pines and watch the northern approaches.",
+        "location_ids": [
+          "loc_rimewood"
+        ]
+      },
+      {
+        "id": "fac_oath_wardens",
+        "name": "Oath Wardens",
+        "description": "Neutral wardens who witness oaths between clans and punish oath-breakers.",
+        "location_ids": [
+          "loc_oath_stone"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_beacon",
+        "statement": "A lit beacon at Beacon Hold must be answered by every clan within a day, under pain of exile.",
+        "category": "social"
+      },
+      {
+        "id": "rul_oath",
+        "statement": "An oath sworn at the Oath Stone cannot be broken without the oath-breaker losing their clan name.",
+        "category": "social"
+      },
+      {
+        "id": "rul_magic_cost",
+        "statement": "Magic is rare; each working shortens the caster's life by a year.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_lake_thaw",
+        "statement": "Thaw Lake can be crossed on foot only while it is frozen; it is impassable in the spring thaw.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_beacons_raised",
+        "name": "The Raising of the Beacons",
+        "era": "Early Winters",
+        "description": "The clans built Beacon Hold and agreed that its fire would call all clans to arms.",
+        "location_ids": [
+          "loc_beacon_hold"
+        ]
+      },
+      {
+        "id": "evt_first_oath",
+        "name": "The First Oath",
+        "era": "Early Winters",
+        "description": "Ironvale and Rimewood swore peace at the Oath Stone, witnessed by the first Oath Wardens.",
+        "location_ids": [
+          "loc_oath_stone"
+        ]
+      },
+      {
+        "id": "evt_lake_drowning",
+        "name": "The Drowning at Thaw Lake",
+        "era": "Middle Winters",
+        "description": "A war-band crossing Thaw Lake in the spring thaw fell through the cracking ice and drowned.",
+        "location_ids": [
+          "loc_thaw_lake"
+        ]
+      },
+      {
+        "id": "evt_answered_fires",
+        "name": "The Night of Answered Fires",
+        "era": "Late Winters",
+        "description": "Beacon Hold's fire was lit against a raid, and every clan answered within the day.",
+        "location_ids": [
+          "loc_beacon_hold"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_dark_fires",
+        "name": "The Dark Fires",
+        "description": "The Ironvale Clan blames the Rimewood Clan for the beacon-fires that have gone dark across the march.",
+        "faction_ids": [
+          "fac_ironvale",
+          "fac_rimewood_clan"
+        ]
+      },
+      {
+        "id": "cnf_oath_challenge",
+        "name": "The Oath Challenge",
+        "description": "The Oath Wardens threaten to strip the clan name from whichever clan breaks the thaw-oath.",
+        "faction_ids": [
+          "fac_oath_wardens",
+          "fac_rimewood_clan"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_frostmarch",
+    "characters": [
+      {
+        "id": "chr_asa",
+        "name": "Asa Korl",
+        "role": "protagonist",
+        "description": "A disgraced Ironvale border-warden, stripped of her post after a failed patrol, who carries the thaw-oath to the Rimewood Clan.",
+        "personality_traits": [
+          "proud",
+          "tireless",
+          "wary"
+        ],
+        "motivation": "To restore her name by delivering the thaw-oath.",
+        "goal": "Reach the Rimewood Clan's camp before the winter muster.",
+        "flaw": "Pride keeps her from asking for help.",
+        "internal_conflict": "She doubts the oath is worth the lives it costs.",
+        "external_conflict": "Ironvale's captains want the oath undelivered.",
+        "home_location_id": "loc_beacon_hold",
+        "faction_id": "fac_ironvale",
+        "abilities": [
+          {
+            "name": "Frost-tracking",
+            "description": "Reads rime on branches to tell how recently anyone passed.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Asa discovers the oath binds her as tightly as it binds the clans."
+      },
+      {
+        "id": "chr_torvald",
+        "name": "Torvald Ryke",
+        "role": "antagonist",
+        "description": "An Ironvale captain who keeps Beacon Hold and wants the thaw-oath to fail.",
+        "personality_traits": [
+          "rigid",
+          "shrewd",
+          "proud"
+        ],
+        "motivation": "To keep Ironvale's iron trade free of Rimewood claims.",
+        "goal": "Keep the thaw-oath from reaching the Rimewood Clan.",
+        "flaw": "Sees compromise as weakness.",
+        "internal_conflict": "He fears the dark beacon-fires will be blamed on him.",
+        "external_conflict": "Asa carries a legitimate oath.",
+        "home_location_id": "loc_beacon_hold",
+        "faction_id": "fac_ironvale",
+        "abilities": [
+          {
+            "name": "Signal-reading",
+            "description": "Reads signal-fire patterns across the march.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Torvald is forced to answer to the Oath Wardens."
+      },
+      {
+        "id": "chr_sigrun",
+        "name": "Sigrun Vale",
+        "role": "supporting",
+        "description": "A Rimewood hunter who watches the northern approaches.",
+        "personality_traits": [
+          "quiet",
+          "exact",
+          "loyal"
+        ],
+        "motivation": "To learn why the beacon-fires went dark.",
+        "goal": "Track down whoever put the beacon-fires out.",
+        "flaw": "Trusts Ironvale too little.",
+        "internal_conflict": "She wonders whether her own clan is to blame.",
+        "external_conflict": "Ironvale accuses her clan.",
+        "home_location_id": "loc_rimewood",
+        "faction_id": "fac_rimewood_clan",
+        "abilities": [
+          {
+            "name": "Bow-craft",
+            "description": "Hits a moving target at long range in poor light.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Sigrun accepts help from the clan she distrusts."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_asa_torvald",
+        "source_character_id": "chr_asa",
+        "target_character_id": "chr_torvald",
+        "relationship_type": "former superior",
+        "description": "Torvald stripped Asa of her post.",
+        "conflict": "He wants her oath undelivered."
+      },
+      {
+        "id": "rel_asa_sigrun",
+        "source_character_id": "chr_asa",
+        "target_character_id": "chr_sigrun",
+        "relationship_type": "ally",
+        "description": "Sigrun guides Asa through the Rimewood.",
+        "conflict": null
+      }
+    ]
+  },
+  "storyboard": {
+    "world_id": "wld_frostmarch",
+    "title": "The Rime Crown",
+    "logline": "Asa carries the thaw-oath through the Rimewood to the Rimewood Clan before the winter muster.",
+    "theme": "oaths and the price of peace",
+    "acts": [
+      {
+        "id": "act_setup",
+        "title": "Setup",
+        "purpose": "setup",
+        "scenes": [
+          {
+            "id": "scn_oath_given",
+            "title": "The Oath",
+            "summary": "Asa receives the thaw-oath at the Oath Stone from the Oath Wardens, who warn that breaking it costs the oath-breaker their clan name.",
+            "location_id": "loc_oath_stone",
+            "character_ids": [
+              "chr_asa"
+            ],
+            "goal": "Receive the oath.",
+            "conflict": "Torvald sent word that the oath must not leave Beacon Hold.",
+            "outcome": "Asa leaves for the Rimewood carrying the oath.",
+            "depends_on": []
+          },
+          {
+            "id": "scn_beacon_dark",
+            "title": "The Dark Beacon",
+            "summary": "Asa stops at Beacon Hold to find the signal fire dark, and Torvald orders her to stay.",
+            "location_id": "loc_beacon_hold",
+            "character_ids": [
+              "chr_asa",
+              "chr_torvald"
+            ],
+            "goal": "Pass through Beacon Hold.",
+            "conflict": "Torvald wants the oath to fail.",
+            "outcome": "Asa slips out at night.",
+            "depends_on": [
+              "scn_oath_given"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_rising",
+        "title": "Rising Action",
+        "purpose": "rising_action",
+        "scenes": [
+          {
+            "id": "scn_rimewood_tracks",
+            "title": "The Rimewood",
+            "summary": "In the Rimewood, Sigrun finds Asa by the rime she disturbed and offers to guide her.",
+            "location_id": "loc_rimewood",
+            "character_ids": [
+              "chr_asa",
+              "chr_sigrun"
+            ],
+            "goal": "Find the way to the clan camp.",
+            "conflict": "Sigrun distrusts any Ironvale warden.",
+            "outcome": "Sigrun agrees to guide Asa.",
+            "depends_on": [
+              "scn_beacon_dark"
+            ]
+          },
+          {
+            "id": "scn_thaw_lake",
+            "title": "The Ice",
+            "summary": "Asa and Sigrun reach Thaw Lake and cross the frozen ice before dawn, because the lake will be impassable once the thaw comes.",
+            "location_id": "loc_thaw_lake",
+            "character_ids": [
+              "chr_asa",
+              "chr_sigrun"
+            ],
+            "goal": "Cross the lake.",
+            "conflict": "The ice is already beginning to crack.",
+            "outcome": "They reach the far shore as the first meltwater runs.",
+            "depends_on": [
+              "scn_rimewood_tracks"
+            ]
+          },
+          {
+            "id": "scn_torvald_pursues",
+            "title": "The Beacon Lit",
+            "summary": "Torvald learns Asa has crossed the march and lights the Beacon Hold fire to call the clans against her.",
+            "location_id": "loc_beacon_hold",
+            "character_ids": [
+              "chr_torvald"
+            ],
+            "goal": "Stop the oath.",
+            "conflict": "A lit beacon must be answered by every clan within a day.",
+            "outcome": "The clans answer the beacon within the day.",
+            "depends_on": [
+              "scn_beacon_dark"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_climax",
+        "title": "Climax",
+        "purpose": "climax",
+        "scenes": [
+          {
+            "id": "scn_muster",
+            "title": "The Muster",
+            "summary": "At the muster, the clans gather to answer the beacon; Asa delivers the thaw-oath before the Oath Wardens, and Torvald must either honour it or lose his clan name.",
+            "location_id": "loc_oath_stone",
+            "character_ids": [
+              "chr_asa",
+              "chr_torvald",
+              "chr_sigrun"
+            ],
+            "goal": "Deliver the oath before the muster ends.",
+            "conflict": "Torvald demands the oath be set aside.",
+            "outcome": "Torvald honours the oath after the raider chief who put out the beacon-fires is dragged in and confesses.",
+            "depends_on": [
+              "scn_torvald_pursues",
+              "scn_thaw_lake"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_resolution",
+        "title": "Resolution",
+        "purpose": "resolution",
+        "scenes": [
+          {
+            "id": "scn_oath_sworn",
+            "title": "The Thaw Oath",
+            "summary": "Ironvale and the Rimewood Clan swear the thaw-oath before the Oath Wardens, and Asa's name is restored.",
+            "location_id": "loc_oath_stone",
+            "character_ids": [
+              "chr_asa",
+              "chr_sigrun"
+            ],
+            "goal": "Seal the peace.",
+            "conflict": "Each clan fears the other will break it first.",
+            "outcome": "The clans keep an uneasy peace under oath.",
+            "depends_on": [
+              "scn_muster"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "MISSING_SETUP",
+        "UNSUPPORTED_PLOT_DEVELOPMENT",
+        "CAUSALITY_BREAK"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.acts[2].scenes[0].outcome"
+      ],
+      "reference_paths": [
+        "$.acts[0].scenes[1].summary"
+      ],
+      "evidence_quotes": [
+        "the raider chief who put out the beacon-fires is dragged in and confesses",
+        "to find the signal fire dark"
+      ],
+      "anchor_terms": [
+        "raider chief"
+      ],
+      "rationale": "A decisive confession from a character no earlier scene introduces.",
+      "correction_hint": "Resolve the climax through the oath and the Wardens already established.",
+      "label_id": "SR-H10-L1"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "The climax is resolved when a raider chief who appears in no earlier scene is dragged in and confesses."
+}

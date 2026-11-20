@@ -1,0 +1,175 @@
+{
+  "case_id": "WR-D03",
+  "agent": "world",
+  "split": "dev",
+  "category": "false_contradiction_trap",
+  "slug": "falsified_ledger_claim",
+  "context_validated": true,
+  "brief": {
+    "title": "The Salt Ledger",
+    "premise": "In a city built on a tidal flat, a debt-clerk discovers that the tide-bound magic that keeps the sea out is being quietly overdrawn, and must expose the guild hiding the shortfall before the next spring tide.",
+    "genre": "fantasy",
+    "tone": "tense",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:gunpowder",
+      "require:tide",
+      "Magic must always carry a visible physical cost.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_saltmere",
+    "name": "Saltmere",
+    "description": "Saltmere is a walled city on a tidal flat where tide-bound magic holds back the sea and every working of it is recorded as a debt in the Salt Clerks' ledgers.",
+    "locations": [
+      {
+        "id": "loc_ledger_hall",
+        "name": "Ledger Hall",
+        "description": "The counting-house where tide-debts are recorded in salt-ink ledgers, built on the highest ground of the flat."
+      },
+      {
+        "id": "loc_drowned_quay",
+        "name": "Drowned Quay",
+        "description": "A harbour district that floods twice daily, home to ferrymen and smugglers."
+      },
+      {
+        "id": "loc_brine_gate",
+        "name": "Brine Gate",
+        "description": "The great sluice-wall holding back the sea, protected by tide-bound wardings renewed each month."
+      },
+      {
+        "id": "loc_mudflat_market",
+        "name": "Mudflat Market",
+        "description": "A stilted bazaar on the exposed flats, open only at low tide."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_salt_clerks",
+        "name": "Salt Clerks",
+        "description": "A guild of accountants who record and ration tide-magic debts.",
+        "location_ids": [
+          "loc_ledger_hall"
+        ]
+      },
+      {
+        "id": "fac_gate_wardens",
+        "name": "Gate Wardens",
+        "description": "Warders who renew the wardings on the Brine Gate each month, paying for it with their own bodies.",
+        "location_ids": [
+          "loc_brine_gate"
+        ]
+      },
+      {
+        "id": "fac_quay_ferrymen",
+        "name": "Quay Ferrymen",
+        "description": "Boatmen and smugglers who work the flooded streets and resent the clerks' levies.",
+        "location_ids": [
+          "loc_drowned_quay",
+          "loc_mudflat_market"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_tide_cost",
+        "statement": "Every working of tide-magic leaves a visible mark on the caster, such as salt-crusted skin or white hair.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_spring_renewal",
+        "statement": "Tide-bound wardings can be renewed only at the turn of a spring tide.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_debt_binds",
+        "statement": "A tide-debt, once entered in the ledger, binds the debtor's family until it is paid.",
+        "category": "social"
+      },
+      {
+        "id": "rul_salt_ink",
+        "statement": "Entries written in salt-ink cannot be altered without leaving a pale scar on the page.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_founding",
+        "name": "The Founding of the Gate",
+        "era": "Age of Walls",
+        "description": "Settlers raised the Brine Gate on the flat and bound it with the first tide-wardings.",
+        "location_ids": [
+          "loc_brine_gate"
+        ]
+      },
+      {
+        "id": "evt_first_ledger",
+        "name": "The First Ledger",
+        "era": "Age of Debt",
+        "description": "The Salt Clerks began recording tide-debts after the first warding renewal drained a ferryman's family of its savings.",
+        "location_ids": [
+          "loc_ledger_hall"
+        ]
+      },
+      {
+        "id": "evt_great_flood",
+        "name": "The Great Flood",
+        "era": "Age of Debt",
+        "description": "A warding lapsed and the sea flooded the Drowned Quay for a week; the Salt Clerks' ledgers record the warding as renewed at a neap tide, but the Gate Wardens in fact renewed it at the next spring tide.",
+        "location_ids": [
+          "loc_drowned_quay"
+        ]
+      },
+      {
+        "id": "evt_market_charter",
+        "name": "The Market Charter",
+        "era": "Age of Levies",
+        "description": "The Salt Clerks granted the Quay Ferrymen the right to trade on the flats at low tide in return for a levy.",
+        "location_ids": [
+          "loc_mudflat_market"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_levy_dispute",
+        "name": "The Levy Dispute",
+        "description": "The Quay Ferrymen refuse to pay the Salt Clerks' rising levies on low-tide trade.",
+        "faction_ids": [
+          "fac_quay_ferrymen",
+          "fac_salt_clerks"
+        ]
+      },
+      {
+        "id": "cnf_overdrawn_gate",
+        "name": "The Overdrawn Gate",
+        "description": "The Gate Wardens suspect the Salt Clerks of hiding how much tide-magic the Brine Gate has already consumed.",
+        "faction_ids": [
+          "fac_gate_wardens",
+          "fac_salt_clerks"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [
+    {
+      "suffix": "T1",
+      "artifact_paths": [
+        "$.history[2].description"
+      ],
+      "evidence_quotes": [
+        "record the warding as renewed at a neap tide"
+      ],
+      "anchor_terms": [
+        "neap"
+      ],
+      "why_not_a_defect": "The neap-tide claim is a falsified ledger entry; the sentence states the true renewal was at a spring tide.",
+      "trap_id": "WR-D03-T1"
+    }
+  ],
+  "evidence_summary": "The neap-tide renewal is an attributed ledger claim that the same sentence says is false; the actual renewal respects the spring-tide rule."
+}

@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+# Promptfoo configuration for the Character Design evaluation.
+# Reuses the Devin CLI Python provider and a separate grader model.
+#
+# Generation model: capable model (Claude Sonnet fusion).
+# Quality criteria are judged by a separate cheap model (swe-2-medium).
+# Weights: motivation 25%, world consistency 25%, differentiation 20%,
+# conflict 20%, development 10%.
+
+description: Character Design evaluation (Devin CLI)
+
+prompts:
+  - file://../prompts/characters.md
+
+providers:
+  - id: file://world_provider.py
+    config:
+      model: fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium
+      # promptfoo Python-worker timeout in milliseconds
+      timeout: 600000
+      # timeout for the individual devin CLI call in seconds
+      devin_timeout: 180
+      retries: 1
+      respect_workspace_trust: false
+
+tests: file://characters_tests_smoke.json
+
+defaultTest:
+  assert:
+    - type: python
+      value: file://characters_assert.py
+      metric: structural_validity
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.6
+      metric: motivation_clarity
+      value: |-
+        Rate the character set's motivation clarity from 1 (vague or generic) to 5 (specific, emotionally grounded, and distinct for every character). The original prompt contains the StoryBrief and World. Use that context. First choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true when the integer is 3 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses. Do not claim the score is deterministic.
+        Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.6
+      metric: world_consistency
+      value: |-
+        Rate how consistently the characters fit the provided World from 1 (contradictory or anachronistic) to 5 (deeply grounded in locations, factions, rules, and conflicts). The original prompt contains the StoryBrief and World. Use that context. First choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true when the integer is 3 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses. Reject critically inconsistent characters regardless of score.
+        Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.6
+      metric: character_differentiation
+      value: |-
+        Rate how differentiated the characters are from 1 (interchangeable stereotypes) to 5 (distinct voices, motivations, flaws, and goals that would not work if swapped). The original prompt contains the StoryBrief and World. Use that context. First choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true when the integer is 3 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses.
+        Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.6
+      metric: conflict_potential
+      value: |-
+        Rate the conflict potential of the character set from 1 (no meaningful opposition) to 5 (multiple interlocking internal and external conflicts that clearly drive a plot). The original prompt contains the StoryBrief and World. Use that context. First choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true when the integer is 3 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses.
+        Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}
+    - type: llm-rubric
+      provider:
+        id: file://world_provider.py
+        config:
+          model: swe-2-medium
+          timeout: 600000
+          devin_timeout: 60
+          retries: 1
+          respect_workspace_trust: false
+      threshold: 0.6
+      metric: character_development
+      value: |-
+        Rate the character development arcs from 1 (flat or missing) to 5 (believable, consequential arcs that respond to conflicts and the world). The original prompt contains the StoryBrief and World. Use that context. First choose an integer 1-5, then return a JSON object where `score` equals that integer divided by 5.0, `pass` is true when the integer is 3 or higher, and `reason` gives 1-2 sentences of evidence and any material weaknesses.
+        Return only this JSON: {"score": 0.8, "pass": true, "reason": "..."}

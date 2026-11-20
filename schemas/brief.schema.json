@@ -1,0 +1,90 @@
+{
+  "additionalProperties": false,
+  "description": "Commissioning brief describing the desired world.",
+  "properties": {
+    "constraints": {
+      "description": "Explicit world restrictions. Entries beginning with a known directive prefix (forbid:, require:, min_locations:, max_locations:) are machine-readable and enforced by guardrails.",
+      "items": {
+        "maxLength": 500,
+        "minLength": 1,
+        "type": "string"
+      },
+      "maxItems": 50,
+      "title": "Constraints",
+      "type": "array"
+    },
+    "genre": {
+      "description": "Primary genre of the story.",
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Genre",
+      "type": "string"
+    },
+    "location_count": {
+      "anyOf": [
+        {
+          "maximum": 50,
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Optional exact number of locations the world must define.",
+      "title": "Location Count"
+    },
+    "premise": {
+      "description": "Required, non-empty summary of the story premise.",
+      "maxLength": 4000,
+      "minLength": 1,
+      "title": "Premise",
+      "type": "string"
+    },
+    "target_audience": {
+      "anyOf": [
+        {
+          "maxLength": 120,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Optional intended audience.",
+      "title": "Target Audience"
+    },
+    "title": {
+      "anyOf": [
+        {
+          "maxLength": 120,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Optional working title for the story.",
+      "title": "Title"
+    },
+    "tone": {
+      "description": "Desired narrative tone.",
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Tone",
+      "type": "string"
+    }
+  },
+  "required": [
+    "premise",
+    "genre",
+    "tone"
+  ],
+  "title": "StoryBrief",
+  "type": "object"
+}

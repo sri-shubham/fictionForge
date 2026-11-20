@@ -1,0 +1,98 @@
+workflow:
+  max_attempts_per_step: 3
+  stop_on_failure: true
+
+  retryable_errors:
+    # Stable validator error codes from fictionforge.guardrails.validators.ErrorCode
+    - SCHEMA_VIOLATION
+    - MISSING_REQUIRED_FIELD
+    - COUNT_BELOW_MIN
+    - COUNT_ABOVE_MAX
+    - DUPLICATE_ID
+    - UNKNOWN_LOCATION_REF
+    - UNKNOWN_FACTION_REF
+    - UNKNOWN_CHARACTER_REF
+    - UNKNOWN_SCENE_REF
+    - BRIEF_LOCATION_COUNT_MISMATCH
+    - BRIEF_LOCATIONS_BELOW_MIN
+    - BRIEF_LOCATIONS_ABOVE_MAX
+    - BRIEF_FORBIDDEN_TERM
+    - BRIEF_REQUIRED_TERM_MISSING
+    - WORLD_ID_MISMATCH
+    - SELF_RELATIONSHIP
+    - DUPLICATE_RELATIONSHIP
+    - MISSING_PROTAGONIST
+    - SELF_DEPENDENCY
+    - FORWARD_DEPENDENCY
+    - CYCLIC_DEPENDENCY
+    - MISSING_NARRATIVE_PHASE
+    - NARRATIVE_PHASE_ORDER
+    # Operational / runner-level codes
+    - INVALID_JSON
+    - MODEL_TIMEOUT
+    - REVIEW_REVISE
+
+  non_retryable_errors:
+    - BRIEF_CONSTRAINT_MALFORMED
+    - POLICY_VIOLATION
+    - PROVIDER_CONFIGURATION_ERROR
+    - ARTIFACT_TAMPERED
+    - PUNCH_OUT
+    - REVIEWER_TIMEOUT
+    - REVIEWER_PROVIDER_ERROR
+    - REVIEWER_INVALID_RESPONSE
+    - REVIEW_RETRIES_EXHAUSTED
+    - REVIEW_PUNCH_OUT
+    - GATE_APPROVAL_INVALID
+    - GATE_WRITE_FAILED
+
+  output_dir: runs
+  provider: devin
+  # Generation model: gpt-6-luna-medium — validated on holdout_v2 with 3
+  # consecutive runs ≥95% pooled per agent (world 29/30, characters 29/30,
+  # storyboard 30/30; zero malformed-JSON/placeholder recurrences) —
+  # see evidence/stage3/luna_model_comparison.md. Supersedes
+  # fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium.
+  model: gpt-6-luna-medium
+  timeout: 300.0
+  temperature: 0.7
+
+  # Adversarial review gates (independent reviewer model, deliberately
+  # different from the generation model). `model` is the default;
+  # `models` overrides per gate (world / characters / storyboard).
+  # Split assignment (2026-11-17): storyboard and characters run
+  # deepseek-v4-1-flash-1017-high — dev-under-dsv4 validated detection
+  # (storyboard r2/r3 12/12 critical, characters 30/30) and the prompts'
+  # false-positive gains were measured under that model. World stays on
+  # swe-2-medium: under dsv4 it showed a stable over-charity miss
+  # (WR-D20, 2/3 runs, narrated-breach read as strained norm).
+  review:
+    enabled: true
+    mode: enforced
+    model: swe-2-medium
+    models:
+      characters: deepseek-v4-1-flash-1017-high
+      storyboard: deepseek-v4-1-flash-1017-high
+    timeout: 300.0
+    max_attempts: 2
+    temperature: 0.0
+
+  # Billing estimate rate: converts reported ACU consumption into a labelled
+  # estimated_usd.  Never treated as actual billing data.
+  cost:
+    acu_usd_rate: 1.25
+
+  # Human punch-out authorization boundary.  A punched-out run resumes only
+  # after `python runner.py --decide approve --run-id R --punch-out ID
+  # --approver NAME` writes an HMAC-signed decision file under
+  # runs/R/punch_outs/.  `approvers` is the allowlist of identities that may
+  # sign; the signature key comes from FICTIONFORGE_APPROVAL_KEY or
+  # `key_file` (default config/approval_signing.key, auto-generated 0600).
+  # Security halts (artifact_tampered, gate_approval_invalid) are never
+  # approvable.  Possession of the key + allowlist membership is the local
+  # authorization boundary — approver identity is attested, not
+  # authenticated.
+  human_approvals:
+    approvers:
+      - stage4-operator
+    # key_file: config/approval_signing.key

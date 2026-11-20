@@ -1,0 +1,125 @@
+{
+  "world_id": "wld_lantern_parish",
+  "name": "The Lantern Parish",
+  "description": "A remote moor parish whose boundary wall carries a line of lanterns that must never all go dark on one night, for the bog walks when the light fails.",
+  "locations": [
+    {
+      "id": "loc_lantern_wall",
+      "name": "The Lantern Wall",
+      "description": "The parish boundary wall, niched with lamps that are lit each dusk without fail."
+    },
+    {
+      "id": "loc_moot_kirk",
+      "name": "The Moot Kirk",
+      "description": "The parish church where the ledger of lit nights is kept and the council sits."
+    },
+    {
+      "id": "loc_bog_hollow",
+      "name": "The Bog Hollow",
+      "description": "The peat cuttings below the moor where lights drown and voices carry wrong."
+    },
+    {
+      "id": "loc_keepers_croft",
+      "name": "The Keeper's Croft",
+      "description": "The lamplighter's cottage at the wall's foot, with its oil store and wick bench."
+    }
+  ],
+  "factions": [
+    {
+      "id": "fac_lamp_wardens",
+      "name": "The Lamp Wardens",
+      "description": "The guild that keeps the wall, cuts the wicks and owes the parish its lit nights.",
+      "location_ids": [
+        "loc_keepers_croft",
+        "loc_lantern_wall"
+      ]
+    },
+    {
+      "id": "fac_moot_council",
+      "name": "The Moot Council",
+      "description": "The parish council that keeps the ledger and calls in the oil tithe.",
+      "location_ids": [
+        "loc_moot_kirk"
+      ]
+    },
+    {
+      "id": "fac_turf_cutters",
+      "name": "The Turf-Cutters",
+      "description": "The families who cut peat in the bog and owe oil to the wall.",
+      "location_ids": [
+        "loc_bog_hollow"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "rul_never_dark",
+      "statement": "Never may all the lanterns go dark on the same night; at least one wick must burn on the wall.",
+      "category": "metaphysics"
+    },
+    {
+      "id": "rul_lit_ledger",
+      "statement": "Every lit night is entered in the ledger at the Moot Kirk; an unentered night did not happen.",
+      "category": "social"
+    },
+    {
+      "id": "rul_bog_line",
+      "statement": "No lantern may be carried past the bog line after dusk.",
+      "category": "social"
+    },
+    {
+      "id": "rul_oil_tithe",
+      "statement": "Every hearth owes a measure of oil to the wall; unpaid tithes are called in at midwinter.",
+      "category": "social"
+    }
+  ],
+  "history": [
+    {
+      "id": "evt_dark_winter",
+      "name": "The Dark Winter",
+      "era": "The Founding",
+      "description": "In the parish's first year, every lamp failed on one night and half the hearths were empty by spring.",
+      "location_ids": [
+        "loc_bog_hollow"
+      ]
+    },
+    {
+      "id": "evt_first_wick",
+      "name": "The First Wick",
+      "era": "The Founding",
+      "description": "The wall was raised and the lantern rite begun so no night would ever be wholly dark again.",
+      "location_ids": [
+        "loc_lantern_wall"
+      ]
+    },
+    {
+      "id": "evt_missing_page",
+      "name": "The Missing Page",
+      "era": "Last Winter",
+      "description": "A page was cut from the ledger of lit nights, and no warden will say which night it held.",
+      "location_ids": [
+        "loc_moot_kirk"
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "cnf_missing_night",
+      "name": "The Missing Night",
+      "description": "The cut page may hide a night the wall went dark, and the council and wardens each blame the other for the silence.",
+      "faction_ids": [
+        "fac_moot_council",
+        "fac_lamp_wardens"
+      ]
+    },
+    {
+      "id": "cnf_oil_shortfall",
+      "name": "The Oil Shortfall",
+      "description": "The turf-cutters owe oil and say the wardens over-count the call-in, while the wall burns short.",
+      "faction_ids": [
+        "fac_turf_cutters",
+        "fac_lamp_wardens"
+      ]
+    }
+  ]
+}

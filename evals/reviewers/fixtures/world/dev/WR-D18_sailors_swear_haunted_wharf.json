@@ -1,0 +1,177 @@
+{
+  "case_id": "WR-D18",
+  "agent": "world",
+  "split": "dev",
+  "category": "false_contradiction_trap",
+  "slug": "sailors_swear_haunted_wharf",
+  "context_validated": true,
+  "brief": {
+    "title": "The Gaslamp Quay",
+    "premise": "A tide-clock inspector in a fog-bound port city investigates the death of a lamplighter found drowned in a locked lamp-house, and discovers that the harbour board has been selling false curfews.",
+    "genre": "mystery",
+    "tone": "noir",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:electric",
+      "require:lamplighter",
+      "Nothing supernatural: every event must have a natural explanation.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_gaslamp_quay",
+    "name": "Gaslamp Quay",
+    "description": "Gaslamp Quay is a fog-bound estuary port lit by coal gas and ruled by the Harbour Board, where curfews are bought and sold.",
+    "locations": [
+      {
+        "id": "loc_lamp_house_row",
+        "name": "Lamp-House Row",
+        "description": "A terrace of locked lamp-houses where gas lamps are filled and tended each dusk."
+      },
+      {
+        "id": "loc_harbour_hall",
+        "name": "Harbour Board Hall",
+        "description": "The marble hall where curfews, tide tables and mooring licences are issued."
+      },
+      {
+        "id": "loc_fog_wharf",
+        "name": "Fog Wharf",
+        "description": "A timber wharf where fog off the estuary hides ships and smugglers alike, and where sailors swear the fog is haunted by the ghosts of the drowned."
+      },
+      {
+        "id": "loc_tide_clock",
+        "name": "Tide-Clock Tower",
+        "description": "A brass clock tower whose gearing tracks the tides and sets the city's curfew bell."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_lamplighters",
+        "name": "Lamplighters' Guild",
+        "description": "A guild that fills, lights and locks the city's gas lamps.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "fac_harbour_board",
+        "name": "Harbour Board",
+        "description": "Officials who issue curfews and mooring licences, and profit from both.",
+        "location_ids": [
+          "loc_harbour_hall",
+          "loc_tide_clock"
+        ]
+      },
+      {
+        "id": "fac_fog_runners",
+        "name": "Fog Runners",
+        "description": "Smugglers who use the curfew gaps to slip cargo past the wharf.",
+        "location_ids": [
+          "loc_fog_wharf"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_gas_clockwork",
+        "statement": "The city is lit by coal gas and driven by clockwork and steam.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_curfew_bell",
+        "statement": "After the curfew bell, wharf gates are locked until dawn and may be opened only by a Harbour Board officer's key.",
+        "category": "social"
+      },
+      {
+        "id": "rul_lamp_lock",
+        "statement": "Each lamp-house is locked at dusk with a guild key; only the lamplighter assigned to it and the guild master hold keys.",
+        "category": "social"
+      },
+      {
+        "id": "rul_fog_tide",
+        "statement": "Fog thickens on the wharf at the turn of the tide, hiding ships for about an hour.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_gas_laid",
+        "name": "Laying of the Gas Mains",
+        "era": "1840s",
+        "description": "The Harbour Board laid the first coal-gas mains along Lamp-House Row.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "evt_clock_raised",
+        "name": "Raising of the Tide-Clock",
+        "era": "1850s",
+        "description": "Clockmakers raised the Tide-Clock Tower and tied the curfew bell to its tide gearing.",
+        "location_ids": [
+          "loc_tide_clock"
+        ]
+      },
+      {
+        "id": "evt_guild_charter",
+        "name": "The Lamplighters' Charter",
+        "era": "1860s",
+        "description": "The Lamplighters' Guild won a charter granting its members exclusive keys to the lamp-houses.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "evt_false_curfew",
+        "name": "The First False Curfew",
+        "era": "1870s",
+        "description": "The Harbour Board secretly rang an early curfew bell so that the Fog Runners could bribe an officer to unlock the wharf gates.",
+        "location_ids": [
+          "loc_fog_wharf",
+          "loc_harbour_hall"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_false_curfews",
+        "name": "The False Curfews",
+        "description": "The Lamplighters' Guild accuses the Harbour Board of selling false curfews.",
+        "faction_ids": [
+          "fac_lamplighters",
+          "fac_harbour_board"
+        ]
+      },
+      {
+        "id": "cnf_wharf_smuggling",
+        "name": "The Wharf Smuggling",
+        "description": "The Harbour Board quietly tolerates the Fog Runners' smuggling in return for bribes.",
+        "faction_ids": [
+          "fac_harbour_board",
+          "fac_fog_runners"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [
+    {
+      "suffix": "T1",
+      "artifact_paths": [
+        "$.locations[2].description"
+      ],
+      "evidence_quotes": [
+        "sailors swear the fog is haunted by the ghosts of the drowned"
+      ],
+      "anchor_terms": [
+        "haunted",
+        "ghosts of the drowned"
+      ],
+      "why_not_a_defect": "An attributed superstition, not a world fact.",
+      "trap_id": "WR-D18-T1"
+    }
+  ],
+  "evidence_summary": "The haunting is explicitly what sailors swear, an in-world belief; nothing supernatural is asserted as fact."
+}

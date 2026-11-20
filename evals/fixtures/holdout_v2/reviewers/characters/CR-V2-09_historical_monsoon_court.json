@@ -1,0 +1,251 @@
+{
+  "case_id": "CR-V2-09",
+  "agent": "characters",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "historical_monsoon_court",
+  "context_validated": true,
+  "brief": {
+    "title": "When the Wind Turns",
+    "premise": "A harbour scribe in a monsoon-trade port must reconcile three foreign envoys' rival claims to the first sailing slot before the wind turns and the season is lost.",
+    "genre": "historical fiction",
+    "tone": "sumptuous and tense",
+    "target_audience": "adult",
+    "location_count": 4,
+    "constraints": [
+      "forbid:telegraph",
+      "require:monsoon",
+      "Setting is a pre-industrial Indian Ocean trade port; nothing later than the sixteenth century.",
+      "max_locations:5"
+    ]
+  },
+  "world": {
+    "world_id": "wld_monsoon_court",
+    "name": "The Monsoon Court",
+    "description": "A great trade port whose whole calendar is set by the monsoon: fleets wait on the wind, sailing slots are worth fortunes, and the harbour court rules who sails first when the wind turns.",
+    "locations": [
+      {
+        "id": "loc_harbour_office",
+        "name": "The Harbour Office",
+        "description": "The court's counting house where sailing-slot claims are entered in the harbour ledger."
+      },
+      {
+        "id": "loc_envoy_house",
+        "name": "The Envoy House",
+        "description": "The lodging of foreign delegations, where rival claims are argued under the same roof."
+      },
+      {
+        "id": "loc_pepper_warehouses",
+        "name": "The Pepper Warehouses",
+        "description": "The bonded cargo rows where the season's wealth waits on the wind."
+      },
+      {
+        "id": "loc_pilot_ghat",
+        "name": "The Pilot Ghat",
+        "description": "The harbour steps where the master pilots read the sea and declare the monsoon turned."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_harbour_court",
+        "name": "The Harbour Court",
+        "description": "The scribes, weighers and slot-keepers who rule the sailing order.",
+        "location_ids": [
+          "loc_harbour_office"
+        ]
+      },
+      {
+        "id": "fac_majlis",
+        "name": "The Captains' Majlis",
+        "description": "The dhow captains' council that bargains for the fleet's slots as one.",
+        "location_ids": [
+          "loc_envoy_house"
+        ]
+      },
+      {
+        "id": "fac_pepper_factors",
+        "name": "The Pepper Factors",
+        "description": "The bonded merchants whose cargo makes the season and whose gifts smooth its way.",
+        "location_ids": [
+          "loc_pepper_warehouses"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_wind_law",
+        "statement": "No fleet may sail before the pilot ghat declares the monsoon turned.",
+        "category": "social"
+      },
+      {
+        "id": "rul_slot_order",
+        "statement": "The first sailing slot belongs to the claim filed earliest in the harbour ledger.",
+        "category": "social"
+      },
+      {
+        "id": "rul_gift_register",
+        "statement": "Every gift to a court official is entered in the gift register, or it is a bribe.",
+        "category": "social"
+      },
+      {
+        "id": "rul_oath_spice",
+        "statement": "An oath sworn over pepper is binding before the harbour court.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_first_charter",
+        "name": "The First Charter",
+        "era": "The Founding Monsoons",
+        "description": "The sailing slots were created to end the dock riots that met every turning wind.",
+        "location_ids": [
+          "loc_harbour_office"
+        ]
+      },
+      {
+        "id": "evt_three_envoys",
+        "name": "The Year of Three Envoys",
+        "era": "The Middle Monsoons",
+        "description": "Three delegations once deadlocked the court so long that the wind turned around them and the season was lost.",
+        "location_ids": [
+          "loc_envoy_house"
+        ]
+      },
+      {
+        "id": "evt_ghat_oath",
+        "name": "The Ghat Oath",
+        "era": "The Middle Monsoons",
+        "description": "After a pilot was bought to misread the sea, the ghat's declarations were bound to public rite.",
+        "location_ids": [
+          "loc_pilot_ghat"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_slot_rivalry",
+        "name": "The First Slot",
+        "description": "Three envoys claim to have filed in the same hour for the first sailing slot of the monsoon.",
+        "faction_ids": [
+          "fac_harbour_court",
+          "fac_majlis"
+        ]
+      },
+      {
+        "id": "cnf_gift_scandal",
+        "name": "The Unregistered Gifts",
+        "description": "Unregistered gifts have surfaced in the pepper warehouses, implicating the slot-keepers.",
+        "faction_ids": [
+          "fac_pepper_factors",
+          "fac_harbour_court"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_monsoon_court",
+    "characters": [
+      {
+        "id": "chr_deva_anai",
+        "name": "Deva Anai",
+        "role": "protagonist",
+        "description": "A junior scribe of the Harbour Office who keeps the slot ledger and can read an hour's filing in the grain of its ink.",
+        "personality_traits": [
+          "scrupulous",
+          "patient",
+          "overlooked"
+        ],
+        "motivation": "To see the first slot go to whoever filed first, and only them.",
+        "goal": "Establish the true filing order before the wind turns.",
+        "flaw": "She believes the ledger is never wrong, which is exactly what the forgers count on.",
+        "internal_conflict": "Proving a forged filing means accusing the office that raised her.",
+        "external_conflict": "Three envoys, a factor and half the court want the audit to end inconclusive.",
+        "home_location_id": "loc_harbour_office",
+        "faction_id": "fac_harbour_court",
+        "abilities": [
+          {
+            "name": "Ledger memory",
+            "description": "Recites any entry she has ever copied and detects a hand that is not the clerk's own.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Deva learns a ledger is only as honest as the hand allowed to write it."
+      },
+      {
+        "id": "chr_suleiman_qadir",
+        "name": "Suleiman Qadir",
+        "role": "antagonist",
+        "description": "The richest of the pepper factors, who pre-dated a filing to buy the first slot for a cargo that cannot wait a second turn.",
+        "personality_traits": [
+          "urbane",
+          "generous in public",
+          "cornered"
+        ],
+        "motivation": "To sail on the first wind before his cargo's buyers walk away.",
+        "goal": "Keep the first slot he bought until the monsoon is declared.",
+        "flaw": "He believes every record has a price because his always did.",
+        "internal_conflict": "The forged filing saved his season and may cost his name.",
+        "external_conflict": "Deva's audit can prove his entry was written out of order.",
+        "home_location_id": "loc_pepper_warehouses",
+        "faction_id": "fac_pepper_factors",
+        "abilities": [
+          {
+            "name": "Factor's credit",
+            "description": "Borrows against a season not yet sailed and makes creditors wait smiling.",
+            "category": "social"
+          }
+        ],
+        "arc": "Qadir must choose between the slot that saves his fortune and the name that carries it."
+      },
+      {
+        "id": "chr_amara",
+        "name": "Amara",
+        "role": "supporting",
+        "description": "The senior pilot of the ghat, whose declaration of the turned wind is the only testimony the court cannot buy.",
+        "personality_traits": [
+          "weathered",
+          "incorruptible",
+          "wry"
+        ],
+        "motivation": "To declare the wind honestly and see the fleet sail in the right order.",
+        "goal": "Settle the filing hour by the only record no one could forge: the sea's.",
+        "flaw": "She speaks in omen-rite that the court must take on faith.",
+        "internal_conflict": "Her declaration will end one envoy's season whichever way she calls it.",
+        "external_conflict": "Every claimant wants her declaration delayed until after their filing stands.",
+        "home_location_id": "loc_pilot_ghat",
+        "faction_id": null,
+        "abilities": [
+          {
+            "name": "Wind-reading",
+            "description": "Reads the turn of the monsoon a day before the sea shows it.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Amara declares the wind on the honest hour and the court must follow."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_deva_amara",
+        "source_character_id": "chr_deva_anai",
+        "target_character_id": "chr_amara",
+        "relationship_type": "ally",
+        "description": "Amara's declaration can corroborate the true filing hour.",
+        "conflict": "Her rite names the hour; Deva's ledger names the claimant."
+      },
+      {
+        "id": "rel_deva_suleiman",
+        "source_character_id": "chr_deva_anai",
+        "target_character_id": "chr_suleiman_qadir",
+        "relationship_type": "adversary",
+        "description": "Deva's ink-reading can prove Qadir's filing was pre-dated.",
+        "conflict": "Qadir's gifts to the court make the audit dangerous for her."
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's pre-industrial monsoon-trade setting; deterministic validators are clean and there are no blocking defects."
+}

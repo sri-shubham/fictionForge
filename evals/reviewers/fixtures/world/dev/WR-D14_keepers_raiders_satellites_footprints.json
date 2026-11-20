@@ -1,0 +1,249 @@
+{
+  "case_id": "WR-D14",
+  "agent": "world",
+  "split": "dev",
+  "category": "multiple_subtle",
+  "slug": "keepers_raiders_satellites_footprints",
+  "context_validated": true,
+  "brief": {
+    "title": "Ashfall Verge",
+    "premise": "Two generations after the sky burned, a water-diviner leads a caravan across the Verge, a belt of ash-dunes where a cult is hoarding the last working wells.",
+    "genre": "post-apocalyptic",
+    "tone": "bleak but hopeful",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:radiation",
+      "require:well",
+      "No functioning electronics: all machinery is mechanical.",
+      "min_locations:3",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_ashfall_verge",
+    "name": "The Ashfall Verge",
+    "description": "The Ashfall Verge is a belt of ash-dunes and slag walls two generations after the sky burned, where water is the only real power.",
+    "locations": [
+      {
+        "id": "loc_cinder_well",
+        "name": "Cinder Well",
+        "description": "The deepest surviving well, ringed by a wall of fused slag."
+      },
+      {
+        "id": "loc_ash_dunes",
+        "name": "The Ash Dunes",
+        "description": "A belt of grey dunes where footprints stay sharp for decades, so caravans simply follow the old tracks."
+      },
+      {
+        "id": "loc_rust_depot",
+        "name": "Rust Depot",
+        "description": "A salvage yard of hand-cranked machines and rusted rail wagons."
+      },
+      {
+        "id": "loc_glass_ridge",
+        "name": "Glass Ridge",
+        "description": "A ridge of fused sand that shelters a caravan stop with a rain-catching cistern."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_well_keepers",
+        "name": "Well Keepers",
+        "description": "A cult that rations water from Cinder Well and preaches that the sky punished the wasteful.",
+        "location_ids": [
+          "loc_cinder_well"
+        ]
+      },
+      {
+        "id": "fac_dune_runners",
+        "name": "Dune Runners",
+        "description": "Caravaners who guide travellers across the Ash Dunes by reading satellite weather feeds.",
+        "location_ids": [
+          "loc_ash_dunes",
+          "loc_glass_ridge"
+        ]
+      },
+      {
+        "id": "fac_depot_menders",
+        "name": "Depot Menders",
+        "description": "Mechanics who restore hand-cranked machines for trade.",
+        "location_ids": [
+          "loc_rust_depot"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_no_power",
+        "statement": "No electronic device works anymore; every working machine is mechanical or hand-cranked.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_ash_hides",
+        "statement": "Wind erases tracks within hours, so travel across the dunes needs a diviner's or a runner's guidance.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_water_tithe",
+        "statement": "Anyone drawing from Cinder Well must leave a tithe of grain or labour.",
+        "category": "social"
+      },
+      {
+        "id": "rul_rain_rare",
+        "statement": "Rain falls only a few times a year and only on Glass Ridge.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_sky_burned",
+        "name": "The Burning Sky",
+        "era": "Year 0",
+        "description": "The sky burned for a season, scorching the land and killing the old cities.",
+        "location_ids": [
+          "loc_ash_dunes"
+        ]
+      },
+      {
+        "id": "evt_well_walled",
+        "name": "Walling of Cinder Well",
+        "era": "Year 9",
+        "description": "Survivors fused a slag wall around the Cinder Well to protect it from the Well Keepers' raiders.",
+        "location_ids": [
+          "loc_cinder_well"
+        ]
+      },
+      {
+        "id": "evt_depot_founded",
+        "name": "Founding of Rust Depot",
+        "era": "Year 21",
+        "description": "Menders gathered wrecked rail wagons and rebuilt them as hand-cranked haulers.",
+        "location_ids": [
+          "loc_rust_depot"
+        ]
+      },
+      {
+        "id": "evt_cult_rises",
+        "name": "Rise of the Well Keepers",
+        "era": "Year 33",
+        "description": "The Well Keepers began charging tithes at Cinder Well, claiming the sky's judgement.",
+        "location_ids": [
+          "loc_cinder_well"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_water_tithe",
+        "name": "The Water Tithe",
+        "description": "The Dune Runners resent the Well Keepers' growing tithes at Cinder Well.",
+        "faction_ids": [
+          "fac_dune_runners",
+          "fac_well_keepers"
+        ]
+      },
+      {
+        "id": "cnf_haulage_rights",
+        "name": "The Haulage Rights",
+        "description": "The Depot Menders and the Dune Runners disagree over who may use the rebuilt wagons on the dunes.",
+        "faction_ids": [
+          "fac_depot_menders",
+          "fac_dune_runners"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "TIMELINE_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.history[1].description"
+      ],
+      "reference_paths": [
+        "$.history[3]"
+      ],
+      "evidence_quotes": [
+        "the Well Keepers' raiders",
+        "Rise of the Well Keepers"
+      ],
+      "anchor_terms": [
+        "keepers' raiders"
+      ],
+      "rationale": "The Well Keepers only arise in Year 33 but raid in Year 9.",
+      "correction_hint": "Remove the Well Keepers from the Year 9 event.",
+      "label_id": "WR-D14-L1"
+    },
+    {
+      "suffix": "L2",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "RULE_HISTORY_CONTRADICTION",
+        "UNSUPPORTED_CAPABILITY",
+        "BRIEF_CONSTRAINT_VIOLATION"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.factions[1].description"
+      ],
+      "reference_paths": [
+        "$.rules[0].statement",
+        "brief::$.constraints[2]"
+      ],
+      "evidence_quotes": [
+        "reading satellite weather feeds",
+        "No electronic device works anymore"
+      ],
+      "anchor_terms": [
+        "satellite"
+      ],
+      "rationale": "Satellite feeds are electronic.",
+      "correction_hint": "Have the Dune Runners read wind and dune patterns only.",
+      "label_id": "WR-D14-L2"
+    },
+    {
+      "suffix": "L3",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "RULE_HISTORY_CONTRADICTION",
+        "ENTITY_DESCRIPTION_CONFLICT"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.locations[1].description"
+      ],
+      "reference_paths": [
+        "$.rules[1].statement"
+      ],
+      "evidence_quotes": [
+        "footprints stay sharp for decades",
+        "Wind erases tracks within hours"
+      ],
+      "anchor_terms": [
+        "footprints stay sharp",
+        "follow the old tracks"
+      ],
+      "rationale": "Tracks persisting for decades contradicts the wind-erasure rule.",
+      "correction_hint": "Restore the shifting-dune description.",
+      "label_id": "WR-D14-L3"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Three independent defects: an anachronistic faction in Year 9, satellite feeds in a world without working electronics, and permanent footprints in a dune belt that erases tracks within hours."
+}

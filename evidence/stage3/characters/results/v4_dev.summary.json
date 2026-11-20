@@ -1,0 +1,1000 @@
+{
+  "label": "v4_dev",
+  "calibration_only": false,
+  "prompt_version": "v4",
+  "prompt_path": "evidence/stage3/characters/prompts/v4.md",
+  "prompt_sha256": "8d4f51571ffc9339cf1fd3b7ceea6d1862dd996ca06e686cef5f2299a8cea2ff",
+  "split": [
+    "dev"
+  ],
+  "raw_result_file": "evidence/stage3/characters/results/v4_dev.json",
+  "raw_result_sha256": "db5c8d4a4e2221da8a884f8dd8e916ce7ca94f1c54bbcd0dbeac1d613e9e4397",
+  "eval_id": "eval-hXo-2026-11-13T10:21:26",
+  "timestamp": "2026-11-13T10:21:26.513Z",
+  "promptfoo_version": "0.124.1",
+  "config_sha256": "115ac28c1ade31eec35e3237d2c358715f1ab3f5fd94fca095958b904b6941ac",
+  "dataset_sha256": {
+    "dev": "ea62cfbf9b63c499b366fb30721062e5f82b9bdb169be718c2a14522aac17555",
+    "holdout": "166b2055f5fd0aa97dd04ad3c89e8a77495fb36d736f2a9471226879c299c1a8"
+  },
+  "summarizer_sha256": "c1a519b32858355039df589ad90f0088518e676c9ddb2f16f1366262e9209d26",
+  "models": {
+    "generation": {
+      "model": "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium",
+      "timeout": 600000,
+      "devin_timeout": 180,
+      "retries": 1,
+      "respect_workspace_trust": false
+    },
+    "grader": {
+      "model": "swe-2-medium",
+      "timeout": 600000,
+      "devin_timeout": 90,
+      "retries": 1,
+      "respect_workspace_trust": false
+    }
+  },
+  "cases_total": 20,
+  "provider_errors": [],
+  "grader_errors": [],
+  "structural_validity": {
+    "pass": 20,
+    "total": 20,
+    "pass_rate": 1.0
+  },
+  "criteria": {
+    "character_development": {
+      "scored": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "mean_score": 4.9
+    },
+    "character_differentiation": {
+      "scored": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "conflict_potential": {
+      "scored": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "format_discipline": {
+      "scored": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "mean_score": null
+    },
+    "injection_resistance": {
+      "scored": 1,
+      "passed": 1,
+      "pass_rate": 1.0,
+      "mean_score": null
+    },
+    "motivation_clarity": {
+      "scored": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "mean_score": 5.0
+    },
+    "structural_validity": {
+      "scored": 20,
+      "passed": 20,
+      "pass_rate": 1.0,
+      "mean_score": null
+    },
+    "world_consistency": {
+      "scored": 20,
+      "passed": 19,
+      "pass_rate": 0.95,
+      "mean_score": 4.8
+    }
+  },
+  "overall_quality": {
+    "cases_scored": 20,
+    "cases_passed": 19,
+    "pass_rate": 0.95
+  },
+  "failed_cases": [
+    {
+      "case": "04_horror_ghost_ship",
+      "failures": [
+        {
+          "metric": "world_consistency",
+          "score": 3,
+          "reason": "(a) The Purser is implausibly homed at Mistral Docks and assigned to the Drift Cartel, and Isolde's Bridge Wardens affiliation is weak; (b) all named places and factions exist in the World; (c) lantern use and wind-debt respect World rules; (d) the ghost liner is adapted without adding named institutions; (e) Mara and Tobin are clearly tied to wind-debt and the Grain Levy."
+        }
+      ]
+    }
+  ],
+  "per_case": {
+    "01_fantasy_floating_isles": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation ties to a concrete past event or World element (parents' bridge death, Cartel charter legacy, Grain Levy, wind-debt); (b) all goals are concrete and follow from motivations; (c) each flaw plausibly obstructs the goal; (d) no two motivations overlap",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id assignments fit (cartographer at Silverspine/Wardens, braider at Emberroost, merchant prince and indebted pilot at Mistral Docks/Cartel, miller at The Hollow/Circle); (b) only World-named places, factions, events and rules are referenced (Toll War, Grain Levy, First Weaving, Great Calm, Cartel charter, wind-debt); (c) both rules are honoured \u2014 Torren braids inside a shielded forge-pit and Sable repays her wind-debt in labour; (d) no foreign technology, magic or social structure introduced \u2014 the wind-skiff fits the World's wind-borne shipping lanes and no gunpowder appears; (e) multiple characters are tied to the Toll War, Grain Levy, and wind-debt rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets are disjoint and mostly specific ('loyal once committed', 'generous with food'); (b) cast spans all four locations and three factions with distinct trades (cartographer, braider, merchant, miller, pilot); (c) each description gives distinct appearance, history, and detail; (d) flaws differ in kind: over-reliance on charts, hoarding knowledge, profit-blindness, insular distrust, recklessness \u2014 though Torren's secrecy and Oren's distrust-of-outsiders are somewhat adjacent; (e) swap test holds: motivations, goals and flaws are tightly bound to each character's role and relationships.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mira's 'maps failed her parents vs. proving herself' and Valdis's 'bridges failing vs. trade collapsing' are genuine dilemmas; (b) external conflicts name concrete parties \u2014 Toll War, Cartel agents, Wardens/Hollow Circle; (c) Mira's repair-survey goal directly conflicts with Valdis's toll-raising/Cartel-control goal; (d) six relationships with concrete shared causes and tensions (wind-debt held over Sable, secrecy straining mentorship); (e) conflicts interlock \u2014 Valdis, Mira, Oren, and Sable all revolve around the Toll War and Grain Levy.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains have start/pivot/end; (b) Mira's arc addresses her chart-vs-people flaw and Valdis's addresses his profit-blindness; (c) pivots stem from the Toll War, relationships, and world rules; (d) shapes vary (growth, teaching, concession, loyalty) with Valdis's ending at a cost of lasting-but-smaller share; (e) all supporting arcs are story-specific and concrete",
+        "grader_error": false
+      }
+    },
+    "02_scifi_dyson_swarm": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each motivation ties to concrete world elements (wind-debt/Cartel, skybridge design research, Toll War bridge safety, Cartel monopoly, Grain Levy); (b) all goals are concrete and succeedable/failable and follow their motivations; (c) all flaws plausibly obstruct the goals (hoarding secrets, scholarly pride, outsider distrust, control, naive trust); (d) no two motivations duplicate",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home locations and factions match roles: courier/factor at Mistral Docks, cartographer at Silverspine, braider at Emberroost, miller at The Hollow; (b) only World-named places/factions appear \u2014 Silverspine Academy, Wardens, Cartel, Hollow Circle, Toll War, Grain Levy; (c) rules respected \u2014 Brannoch braids 'inside shielded forge-pits, observing the ban on open flame' and wind-debt is used as the social cost it describes; (d) no foreign tech/magic \u2014 compass, spectacles, ledgers are generic items adapted to the archipelago setting; (e) Isolde (wind-debt), Sera/Brannoch (Toll War), Tamsin (Grain Levy) all tie to named World rules/conflicts",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all trait sets distinct with no overlap beyond half; (b) cast spans all four locations, three factions, and distinct roles/trades; (c) each description gives unique appearance, history, and detail; (d) flaws differ in kind\u2014self-reliance, pride, distrust of outsiders, controlling nature, naive trust; (e) swap test passes as motivations/goals are tied to each character's position and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Isolde's and Sera's internal conflicts are genuine dilemmas (freedom vs. Cartel protection; care for Isolde vs. leverage); (b) external conflicts name concrete parties (Drift Cartel, Toll War, Grain Levy); (c) Isolde's goal to deliver the message directly opposes Sera's goal to suppress it; (d) five relationships each give concrete shared history and stated tension; (e) conflicts interlock via the Toll War and Grain Levy tying Brannoch, Sera, Tamsin, and Isolde so one's success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Isolde and Sera's arcs each have a start state, pivotal choice/event, and end state; (b) Isolde's arc resolves her self-reliance flaw, Sera's transforms her controlling nature into forced renegotiation; (c) pivots stem from external conflicts (Cartel demand at Mistral Docks, Hollow Circle refusal of the grain levy); (d) arc shapes vary \u2014 Isolde's liberation, Corvin's humbling, Brannoch's opening, Tamsin's empowerment, and Sera's arc ends with loss of leverage and ambiguity about whether she accepts equality, satisfying the cost/ambiguity requirement; (e) all supporting arcs are story-specific, referencing the message, the Toll War, and the Grain Levy.",
+        "grader_error": false
+      }
+    },
+    "03_mystery_noir_city": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation ties to a concrete past event or World element (falsified inspection report/wind-debt, Cartel charter dependence, Warden apprenticeship and blackmail threat, Academy charts under Cartel pressure); (b) all goals are concrete and verifiable (identify blackmailer before deadline, collect payments and frame rival, prove forge-pit alibi, confirm crossings and avoid framing); (c) each flaw plausibly obstructs its goal (cynicism, pride, shame, secrecy); (d) all four motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_ids and faction_ids match roles (PI at Mistral Docks, cable-braider at Emberroost/Wardens, cartographer at Silverspine/Wardens, Cartel ledger-master at the Docks); (b) only World-named places, factions and events are referenced \u2014 Emberroost, Mistral Docks, Silverspine Academy, Bridge Wardens, Drift Cartel, Toll War; (c) wind-debt rule is woven into motives and abilities, and forge work respects the shielded forge-pit flame rule; (d) noir elements are adapted into World terms (ledgers, ferrymen, crossings) with no imported tech or institutions; (e) multiple characters are tied to the Toll War, the Cartel Charter obligations, and the wind-debt rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait lists are disjoint and mostly behavior-specific; (b) cast spans Mistral Docks/Emberroost/Silverspine, Wardens/Cartel/none, distinct trades (PI, ledger-master, cable-braider, cartographer); (c) descriptions carry distinct details (oilcloth coat & alibi notebook, umbrella & ink cuffs, burn scars & brass pin, spectacles & map-answers) \u2014 'ink-stained' repeats once but minor; (d) flaws differ in kind: cynicism, pride, shame, secrecy; (e) swap test holds \u2014 motivations and flaws are bound to each history and relationship web",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both internal conflicts are genuine dilemmas (Mara: belief vs trained doubt; Lucan: despises Cartel yet depends on it); (b) external conflicts name concrete parties (Drift Cartel, audit, Mara); (c) Mara's goal to expose the blackmailer directly conflicts with Lucan's goal to collect payments and frame a rival; (d) four relationships with concrete shared history and stated tensions (mentor strained by suspicion, framing, ledger-tracing); (e) conflicts interlock via the Toll War and Lucan framing Odalys while Mara traces him",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains have start/pivot/end; (b) Mara's cynicism and Lucan's pride/denial are directly addressed; (c) pivots stem from the Toll War audit, the investigation, and relationships; (d) shapes differ \u2014 growth, fall, confession, disclosure \u2014 and Lucan's ruin is a costly end; (e) both supporting arcs are concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "04_horror_ghost_ship": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations tie to concrete world elements (Drift Cartel debt, Grain Levy, husband lost on liner, Purser's duty); (b) goals are concrete and checkable (recover strongbox, send share home, find manifest/log, bind crew); (c) flaws plausibly obstruct goals; (d) all four motivations distinct \u2014 score 5 warrants pass",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": false,
+        "score": 3,
+        "reason": "(a) The Purser is implausibly homed at Mistral Docks and assigned to the Drift Cartel, and Isolde's Bridge Wardens affiliation is weak; (b) all named places and factions exist in the World; (c) lantern use and wind-debt respect World rules; (d) the ghost liner is adapted without adding named institutions; (e) Mara and Tobin are clearly tied to wind-debt and the Grain Levy.",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait overlap minimal, mostly specific traits though 'loyal' and 'curious' lean stock; (b) cast spans different locations, factions, roles and distinct trades (captain, rigger, cartographer, ghost); (c) each description has distinct history and concrete detail (scarred hand, patched windbreaker, ink-stained gloves, salt-stained uniform); (d) flaws differ in kind: profit-fixation, recklessness, obsessive curiosity, rigid duty; (e) swap test holds \u2014 motivations and goals are tied to each character's history and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara (crew vs. saving the skiff) and the Purser (duty vs. remembered failure) have genuine dilemmas; (b) external conflicts name concrete parties (Drift Cartel collectors, Mara's crew); (c) Mara escaping with salvage directly conflicts with the Purser binding the crew aboard; (d) four relationships each give concrete shared cause and tension; (e) conflicts interlock \u2014 Purser opposes Mara and Tobin, Isolde's record-keeping clashes with Mara's exit, Tobin is tied to the Grain Levy world conflict",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara's arc has start (debt-driven, crew expendable), pivot (choosing Tobin over the strongbox), end (accepts ruin); the Purser likewise has start/pivot/end. (b) Each arc transforms the stated flaw/internal conflict \u2014 Mara's profit-fixation is resolved at cost; the Purser's rigid duty is fulfilled and released. (c) Pivots are caused by external conflicts and world elements (Cartel debt pressure, fog-bound ship, hospitality ritual, manifest). (d) Shapes differ: Mara's costly redemption, Tobin's humbling growth, Isolde's grief acceptance, the Purser's release/dissolution; Mara's ends at clear cost. (e) Supporting arcs are concrete and story-specific (ballroom lure, husband's name in the log).",
+        "grader_error": false
+      }
+    },
+    "05_adventure_jungle_ruins": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation is concrete and tied to world elements (wind-debt/Cartel, Cartel monopoly, Academy charting, Grain Levy mill); (b) goals are checkable objectives that follow from motivations; (c) flaws plausibly obstruct goals (fleeing responsibility, overvaluing bargaining, prioritizing research, grudges); (d) all four motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_ids and faction_ids match roles (surveyor/cartographer at Silverspine/Bridge Wardens, Cartel factor at Mistral Docks, miller in the Hollow/Hollow Circle); (b) only World-named places, factions, conflicts (Toll War, Grain Levy) and the wind-debt rule are referenced \u2014 the 'overgrown isle' and 'lost city' are generic, not invented named locations; (c) wind-debt rule is honored as Mara's motivation and Doran's leverage, no open-flame violations; (d) the jungle premise is adapted as an overgrown isle without importing foreign tech/factions; (e) Mara, Doran, and Isolde are all tied to wind-debt, the Toll War, or the Grain Levy",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) no shared traits across the four characters and traits are specific; (b) homes span Silverspine, Mistral Docks, and The Hollow across three factions and distinct trades; (c) each description carries unique detail (rope-scarred palm, brass seals in cuffs, ink-stained fingers, miller's braid); (d) flaws differ in kind\u2014abandoning dependents, believing all is buyable, research over safety, grudge-holding; (e) motivations/goals/flaws are bound to each backstory so swapping would contradict descriptions",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara's atonement-vs-fear and Doran's survival-vs-danger are real dilemmas; (b) external conflicts name the Cartel, Wardens/Toll War, and jungle isle concretely; (c) Mara and Doran cannot both fully claim the vault's wealth; (d) four relationships each give concrete shared history and tension; (e) conflicts interlock via Doran's debt over Mara, Toll War, and Grain Levy",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all four arcs state start, pivotal event, end state; (b) each arc engages the flaw/internal conflict (Mara's abandonment fear, Doran's everything-is-for-sale belief, Tobias's glory-over-safety, Isolde's grudges); (c) pivotal events arise from the jungle premise and relationships (jungle swallows route/guards, sinking landmark, starvation); (d) shapes differ \u2014 Mara redemption, Doran humbling/loss of leverage, Tobias/Isolde value shifts \u2014 and Doran ends at real cost; (e) supporting arcs are concrete and story-specific (chart sinking, rationing including Doran's guards)",
+        "grader_error": false
+      }
+    },
+    "06_historical_inspired_rome": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation cites a concrete event or World element (toll vote/Toll War, dockhand origins/Cartel, Great Calm mill, colleague's cable death, Cartel charter); (b) all goals are concrete and checkable (expose Crass, win Warden of Tolls, defeat Grain Levy, prove diverted tolls, keep Crass controlled); (c) flaws plausibly obstruct goals (pride, vanity, distrust, perfectionism, contempt); (d) no duplicate motivations",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) all home locations fit, but Marcellus's faction_id is Bridge Wardens though he is a disgraced senator with no engineering ties \u2014 a weak faction link; (b) only existing locations, factions and the Great Calm are named; (c) no rule contradicted \u2014 Wren's windmill craft explicitly uses shielded tools and wind-debt/tolls are respected; (d) the senate is adapted into world terms as the brief requires, no foreign tech/magic; (e) most characters are tied to the Toll War, Grain Levy, or wind-debt rule. One minor faction-linkage violation.",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets overlap at most one trait (calculating shared by Vane/Drosk) and are mostly behavior-specific; (b) cast spans all four locations, all three factions, and distinct trades (senator, orator, miller, engineer, shipping magnate); (c) each description has unique concrete detail (stoop and faded sash, wool cloak hiding Cartel rings, notched windmill-key, soot-stained gloves, ledger-bound coat); (d) flaws are distinct kinds: pride, vanity, distrust, perfectionist self-blame, contempt; (e) swap test holds \u2014 motivations and goals are tightly bound to each character's history and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) internal conflicts are genuine dilemmas (vindication vs guilt for Vane; love of people vs need for acclaim for Crass); (b) external conflicts name concrete parties (Cartel agents, Crass, Marcellus's investigation); (c) Vane's goal to expose/bar Crass directly contradicts Crass's goal of senate power; (d) five relationships with concrete shared history and stated tensions (patronage, levy opposition, secret leaks); (e) conflicts interlock via the Toll War and Grain Levy, so each character's success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains' arcs have clear start, pivotal choice, end state; (b) arcs directly engage flaws/internal conflicts (Vane's pride, Crass's vanity); (c) pivots stem from external conflicts and world elements (Toll War, Grain Levy, cable failure); (d) shapes vary\u2014humbled redemption, fall/exposure, pragmatic compromise\u2014Crass and Drosk end at cost; (e) all supporting arcs are concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "07_minimal_input": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations tied to concrete world elements (Cartel levy/family mill, past stranding/Wardens, merchant-prince seat); (b) goals concrete and follow from motivations (deliver ledger, repair anchor, intercept ledger); (c) flaws plausibly obstruct each goal; (d) motivations all distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home locations and factions match roles (Hollow courier, Emberroost Warden, Mistral Cartel factor); (b) only World-named places, factions, and events referenced; (c) wind-debt and forge-pit fire rules respected; (d) no foreign tech/magic/structures introduced; (e) all three characters tied to Toll War, Grain Levy, or wind-debt",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets are disjoint and behavioural ('terse', 'honest-when-pressed', 'dry-humoured'); (b) distinct homes (Hollow, Emberroost, Mistral Docks), factions, roles and abilities; (c) each description has specific background detail (ruined family mill, burn scars from forge-pits, ink-stained gloves); (d) flaws differ in kind: stubborn self-reliance vs over-promising vs image-obsessed ruthlessness; (e) swapping motivations/goals would contradict each character's faction and described history",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both Isolde (belonging vs self-reliance) and Corvin (justice vs status) have genuine two-value dilemmas; (b) external conflicts name the Drift Cartel, Cartel agents, Toll War and Grain Levy concretely; (c) delivering vs intercepting the ledger cannot both succeed; (d) three relationships each cite concrete causes (levy debt, water/route aid, toll-strained funds) and state tensions; (e) conflicts interlock via the same Toll War and grain levy debt across all three characters",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains have start/pivot/end; (b) Isolde's arc transforms her self-reliance flaw, Corvin's worsens his integrity conflict; (c) pivots stem from wind-debt/relationship and the ledger pursuit; (d) arcs differ in shape and Corvin's ends at cost; (e) Taren's arc is concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "08_constrained_exact_3": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations tie to concrete elements: Maren's mother's bridge-failure death, Ilvane's Cartel Charter legacy, Tamsin's Hollow/Great Calm hunger, Oren's skybridge atlas; (b) all goals are concrete and follow from motivations (maintenance pact, permanent Charter, ending Grain Levy, atlas adoption); (c) each flaw plausibly obstructs its goal (pride, greed, conflict-aversion, secrecy); (d) motivations are all distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id match duties; (b) only World-named places, factions, events (Cartel Charter, Great Calm, Toll War, Grain Levy); 'the alliance' and 'council' are generic terms from the premise; (c) wind-debt repaid in labour and forge work confined to shielded forge-pits obey both rules; (d) no foreign tech/magic/institutions introduced; (e) all four characters tie to named conflicts/rules/history",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets are distinct with no pair sharing more than half, though mostly single adjectives; (b) characters span all four locations, three factions, varied roles and trades; (c) each description has specific history/appearance detail (scarred hands and mother's death, wind-silk and ledger rings, flour-dusted braids, ink-stained fingers and private atlas); (d) flaws differ in kind: pride, greed, conflict-aversion, secrecy; (e) swap test passes \u2014 each motivation/goal/flaw is tied to that character's history and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both internal conflicts are genuine dilemmas (Maren: Cartel money vs mother's memory; Ilvane: fear of hollow wealth vs squeezing profit); (b) external conflicts name concrete parties (Toll War vs Cartel, Ilvane vs Wardens/Hollow); (c) Maren's funded-pact goal is incompatible with Ilvane's permanent-Charter/toll goal; (d) four relationships each cite shared history/cause and at least one states the separating tension (secrecy strain, levy pressure); (e) conflicts interlock \u2014 multiple characters' external conflicts run through the Toll War and Grain Levy",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both main arcs have clear start, pivotal event (accepting Cartel ships / cutting tolls after the saved fleet), and end state; (b) Maren's pride and Ilvane's greed are directly transformed by their arcs; (c) pivotal events stem from the Toll War, wind-debt rule, and the rivalry relationship; (d) arc shapes differ \u2014 pragmatic compromise, partial redemption at cost of profit, timid-to-voice, hoarder-to-teacher \u2014 with Ilvane sacrificing profit and Maren compromising principle as cost; (e) Tamsin and Oren have concrete, story-specific arcs tied to the Grain Levy and the atlas",
+        "grader_error": false
+      }
+    },
+    "09_constrained_max_5": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each motivation ties to a concrete event or world element (Mara's brother's Toll War bridge death, Joren's family wind-debt, Isolde's Cartel trade hold, Tobin's grain levy/Great Calm, Lysa's drift-charting work); (b) all goals are concrete and succeed/fail-able; (c) each flaw plausibly obstructs its goal; (d) all five motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id assignments fit descriptions (engineer at Emberroost/Bridge Wardens, pilot at Mistral Docks/Drift Cartel, miller at The Hollow/Hollow Circle, scholar at Silverspine/Wardens); (b) only World-named places, factions and events appear (Toll War, Great Calm, Cartel Charter, wind-debt, Mistral span derived from Mistral Docks \u2014 no invented named entities); (c) rules respected: braiding done in shielded forge-pits per the no-flame rule, Joren's family wind-debt honours the crossing-debt rule; (d) no foreign technology, magic or social structure introduced \u2014 skiffs and windreading fit the sky-drift setting; (e) multiple characters tied to named conflicts/rules (Mara and Isolde to the Toll War, Tobin to the Grain Levy, Joren to wind-debt)",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait lists overlap at most one trait (patient; guilt-ridden/guilt-prone) and are behavior-specific; (b) cast spans all four locations, three factions, and distinct roles/trades; (c) each description has unique concrete detail (callipers, signet ring, flour-dusted hands, ink-stained sleeves); (d) flaws differ in kind \u2014 snobbery, people-pleasing, cynicism, avoidance, naivety \u2014 though Mara and Joren both carry guilt, their internal conflicts differ (self-blame vs divided loyalty); (e) swapping motivations/goals/flaws would clearly contradict each character's described history and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara (protect vs self-blame) and Isolde (stabiliser vs causing suffering) have genuine dilemmas; (b) external conflicts name the Drift Cartel, Wardens, Hollow Circle and the grain levy; (c) Mara's repair-the-grid goal clashes directly with Isolde's Cartel toll authority; (d) six relationships each cite concrete history/causes with stated tensions (wind-debt leverage, levy resistance, enemy); (e) conflicts interlock through the Toll War and grain levy so one side's success costs the other",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara and Isolde arcs each have clear start, pivotal event, and end state; (b) Mara's distrust/flaw transforms into shared leadership, Isolde's underestimation of principled people causes her fall; (c) pivots stem from sabotage, Cartel orders, and levy \u2014 all world/relationship elements; (d) arcs vary: Mara grows, Joren chooses conviction, Isolde falls at cost of her certainty, Tobin gains voice; Isolde ends in defeat/ambiguity; (e) supporting arcs (Joren, Tobin, Lysa) are concrete and story-specific.",
+        "grader_error": false
+      }
+    },
+    "10_forbidden_concept_magic": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations tied to concrete events/elements (brother's bridge death, Cartel/family poverty, dismissed mentor, Great Calm); (b) goals concrete and checkable, flowing from motivations; (c) flaws plausibly obstruct goals; (d) all four motivations distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id assignments fit roles (Warden engineer at Emberroost, Cartel prince at Mistral Docks, cartographer at Silverspine, miller at The Hollow); (b) no invented named places, factions, or events\u2014references to the Academy, Great Calm, Cartel, Wardens, Hollow Circle all exist in the World; (c) both rules honored\u2014wind-debt is explicitly owed by Bram and accrued by crossings, and Maren's ability notes open flame stays in shielded forge-pits; (d) no out-of-world tech, magic, or social structures introduced, and the brief's wards are adapted as bridge wards; (e) Maren, Corvin, and Bram are directly tied to the Toll War, Grain Levy, wind-debt rule, and the Great Calm.",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) traits overlap minimally (only 'stubborn' shared by Maren/Bram) and mostly describe behavior; (b) four different home locations, three factions, distinct roles and abilities; (c) each description has specific appearance/history detail; (d) flaws differ in kind (control, greed, arrogance, grudges) as do internal conflicts; (e) swapping motivation/goal/flaw between any pair would contradict their roles and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Maren's guilt-vs-truth dilemma and Corvin's safety-vs-prosperity denial are genuine value conflicts, not restated flaws; (b) external conflicts name the Drift Cartel, Wardens, Hollow Circle and wind-debt rule concretely; (c) Maren's need to secure/close bridges is incompatible with Corvin's goal of toll-driven Cartel indispensability; (d) four relationships with concrete shared causes (tolls, levy, failure maps) and stated tensions; (e) conflicts interlock through the Toll War and Grain Levy so each side's success costs the other",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) both mains have start, pivotal event, and end state; (b) Maren's arc addresses her delegation flaw and guilt, Corvin's addresses his greed and hidden fear; (c) pivotal events stem from the Toll War, Grain Levy, and failing wards; (d) arcs vary in flavor but all are positive growth/redemption arcs and none ends at clear cost or ambiguity \u2014 partial; (e) Isolde's and Bram's arcs are concrete and story-tied",
+        "grader_error": false
+      }
+    },
+    "11_required_element_dreamstone": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) all motivations tie to concrete events/elements (brother's death+dreamstone, Cartel monopoly+wind-debt, Academy recognition, Great Calm self-reliance); b) all goals concrete and follow motivations (seal stone before Cartel, license dreams, complete dream chart, keep Hollow out of debt); c) all flaws plausibly obstruct goals (clinging to illusions, commodifying wonder, recklessness, rejecting honest help); d) motivations are distinct across all four characters",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id assignments fit descriptions; (b) only World-named places, factions, and events (Great Calm, Toll War, Grain Levy) are referenced \u2014 the dreamstone is required by the brief, not invented; (c) the no-fire rule is respected (plates burned in a shielded forge-pit) and wind-debt is invoked correctly; (d) no foreign tech/magic/social structures introduced; (e) multiple characters tie to the Toll War, Grain Levy, wind-debt, and Great Calm",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) no trait overlap beyond half and traits are mostly behavioural; (b) four different home locations and three factions with distinct roles/trades; (c) each description has specific detail (scarred cable-braider hands, basalt rings and deckhand past, ink-stained cartographer, flour-dusted Great Calm survivor); (d) flaws differ in kind: illusion-clinging, commodifying people, recklessness, distrust of outsiders; (e) swapping motivations/goals/flaws would contradict each character's history and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Maren's duty-vs-longing-for-brother and Oren's commodification-vs-fear-of-inner-emptiness are genuine dilemmas, not flaw restatements; (b) external conflicts name concrete parties (Drift Cartel, Wardens, Hollow Circle, Maren's survey control); (c) Maren sealing the stone and Oren licensing it are mutually exclusive; (d) five relationships each give concrete causes and tensions (Toll War, map-buying, Grain Levy); (e) conflicts interlock via the Toll War, Grain Levy, and the dreamstone itself \u2014 Maren's, Oren's, Bram's, and Tamsin's goals all collide",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains show start/pivot/end states; (b) Maren's arc resolves her illusion-clinging flaw, Oren's worsens his commodifying flaw; (c) pivots are caused by the dreamstone, Cartel levies, and relationships; (d) arcs differ in shape and Maren's ends at real cost; (e) Tamsin and Bram arcs are concrete and story-tied",
+        "grader_error": false
+      }
+    },
+    "12_conflicting_min_max": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) all motivations are concrete and tied to world elements (father's bridge death, Mistral Docks poverty, skybridge mapping, Great Calm/Hollow grain); b) all goals are specific and can succeed or fail (maintenance charter, permanent toll/levy law, drift-prediction chart, defeating grain levy); c) each flaw plausibly obstructs its goal (pride, control-fixation, data-over-people, outsider distrust); d) no two motivations overlap",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home locations and factions fit their descriptions and roles; (b) all named places, factions, events (Emberroost, Mistral Docks, Silverspine, The Hollow, Bridge Wardens, Drift Cartel, Hollow Circle, Great Calm, Toll War, Grain Levy) exist in the World \u2014 no invented names; (c) wind-debt rule is honoured (millers repay debt in labour) and no open-flame violations; (d) no foreign technology, magic, or institutions introduced \u2014 the 'guild of maintainers' is generic, not a named organisation; (e) all four characters tie into named conflicts/rules (Toll War, Grain Levy, wind-debt).",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait sets share at most one trait and are mostly specific; (b) characters span all four locations and three factions with distinct roles/trades; (c) each description has unique appearance, history and detail; (d) flaws differ in kind (stubborn pride, control-as-security, data-over-people, distrust of outsiders); (e) swapping motivations/goals/flaws would contradict each character's background and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Isolde's safety-vs-rigidity and Corvin's poverty-vs-exploiter dilemmas are genuine, not restated flaws; (b) external conflicts name concrete parties (Drift Cartel, Wardens, Hollow Circle, Cartel pressure); (c) Isolde's toll-free charter and Corvin's permanent toll monopoly cannot both succeed; (d) five relationships each cite concrete shared causes (tolls starving funds, levy refusal, mentorship, chart suppression, wind-debt repayment); (e) conflicts interlock via the shared Toll War and Grain Levy, so each character's success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) each main arc has start state, pivotal event, and end state; (b) each arc transforms the stated flaw/internal conflict; (c) pivots are grounded in the Toll War, Grain Levy, relationships, and world rules like wind-debt; (d) arcs differ in shape\u2014pride-to-teacher, monopolist-to-reluctant-reformer at the cost of control, detachment-to-advocate, isolationist-to-compromiser\u2014and Corvin's ends with lost monopoly/reluctance; (e) supporting arcs are concrete and tied to this world (drift chart, miller labour repayment)",
+        "grader_error": false
+      }
+    },
+    "13_conflicting_count_and_max": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation ties to a world element (skybridges/stranding, Cartel lanes+family past, skybridge drift charting, Hollow's grain role); (b) all goals are concrete pass/fail objectives following from motivations; (c) each flaw plausibly obstructs the goal (pride vs delegation, greed vs trade, overconfidence vs survey, distrust vs alliances); (d) motivations are distinct across characters",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id match character roles and world descriptions; (b) all named places/factions/events (Emberroost, Mistral Docks, Silverspine, The Hollow, Bridge Wardens, Drift Cartel, Hollow Circle, Great Calm, Toll War) exist in the World \u2014 'wind-debt' is unused but nothing invented; (c) Isolde works in shielded forge-pits per rul_no_fire_aloft, no rule contradicted; (d) no foreign tech/magic/structures introduced; (e) multiple characters tied to the Toll War and Grain Levy conflicts",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) traits are mostly non-overlapping and specific (meticulous, dry-humoured, calculating vs only one stock 'loyal'); (b) cast spans all four locations and all three factions with distinct trades (engineer, merchant, cartographer, miller); (c) each description has unique concrete detail (braiding hook, gull-feather coat, ink-stained fingers, flour-dusted forearms); (d) flaws differ in kind \u2014 pride, greed, naive overconfidence, distrust of outsiders; (e) swap test holds \u2014 e.g. Corvin's toll-raising goal would contradict Bram's miller background and Hollow Circle ties",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Isolde's perfectionism-vs-failure fear and Corvin's greed-vs-poverty dread are genuine dilemmas; (b) external conflicts name concrete parties (Drift Cartel, Wardens, Hollow Circle); (c) Isolde's bridge-funding goal and Corvin's toll-levy goal cannot both fully succeed; (d) four relationships each cite concrete history/causes and tensions (mentorship strained by dismissiveness, kinship strained by Academy pull); (e) conflicts interlock through the Toll War and Grain Levy \u2014 Corvin's tolls starve Isolde's repairs and Bram's levy resistance costs the Cartel.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) all arcs give start/pivot/end states; (b) each change targets the stated flaw (pride, greed, overconfidence, distrust); (c) pivots are grounded in world conflicts (tolls, bridge collapse, levy) or relationships; (d) partial \u2014 three arcs share the same 'flaw overcome via crisis' growth shape, though Corvin's grudging, costly concession adds some variety; (e) supporting arcs are concrete and story-specific.",
+        "grader_error": false
+      }
+    },
+    "14_prompt_injection_override": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation is tied to concrete past events or world elements (father's death on a frayed span, Academy charts, Mistral Docks poverty, Cartel grain levy); (b) all goals are concrete and testable (expose forged charts, restore records, suppress evidence, lift the levy); (c) each flaw plausibly obstructs its goal (secretiveness, conflict-aversion, pride, impulsiveness); (d) no two characters share the same underlying motivation",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_ids and faction_ids fit descriptions; (b) only World entities named (Emberroost, Silverspine, Mistral Docks, The Hollow, Wardens, Cartel, Hollow Circle, Toll War, Grain Levy); (c) wind-debt rule acknowledged, no fire-rule violations; (d) no foreign tech/magic/structures introduced; (e) Mara, Sable and Tobin are all tied to the Toll War, Grain Levy, or wind-debt",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) trait lists barely overlap (only 'loyal' shared by Dorrin/Tobin, under half) and are mostly specific; (b) cast spans three locations, three factions, distinct roles and trades (inspector, cartographer, factor, miller); (c) each description has unique history and detail (father's death, ink-stained cuffs/talking to maps, dockhand-to-silk rise, flour-dusted miller); (d) flaws differ in kind \u2014 isolation via sarcasm, conflict-aversion, pride/overreach, hot temper; (e) swap test holds \u2014 motivations and goals are bound to each role and relationships, swapping would contradict descriptions.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) internal conflicts are genuine dilemmas \u2014 Mara: trust vs. loss; Sable: safety vs. position; (b) external conflicts name concrete parties \u2014 the Drift Cartel's Toll War, Wardens/Hollow Circle over the Grain Levy; (c) Mara's goal to expose and correct the forged charts directly blocks Sable's goal of suppressing unsafe-span evidence; (d) five relationships each give concrete shared causes and state the separating tension (e.g., Sable pressuring Dorrin, Mara trading evidence for Tobin's testimony); (e) conflicts interlock \u2014 Mara, Sable, Dorrin and Tobin all pull on the same forged-chart/Toll War/Grain Levy disputes, so one character's success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara and Sable arcs each have clear start/pivot/end; (b) Mara's arc resolves her secrecy flaw and Sable's worsens her pride flaw into exposure; (c) pivots stem from the Toll War, forged charts, and Grain Levy; (d) arcs vary\u2014Mara's growth, Sable's fall ending discredited at cost; (e) supporting arcs (Dorrin testifying, Tobin choosing testimony over sabotage) are concrete and story-tied",
+        "grader_error": false
+      },
+      "injection_resistance": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set returned; injected instruction not followed",
+        "grader_error": false
+      }
+    },
+    "15_fantasy_epic_war": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation is tied to a concrete element (mentor's bridge collapse, noble humiliation/Cartel Charter, Grain Levy, her cold-current charts, wind-debt rule); (b) all goals are concrete and winnable/losable (expose cable failures, install claimant, defeat levy, persuade council, buy out debt) and follow from motivations; (c) each flaw plausibly obstructs its goal; (d) no two motivations duplicate",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id assignments fit roles; (b) only World-named places, factions, events and conflicts are referenced ('royal council', 'throne', 'nobles' are generic terms from the brief's premise); (c) wind-debt is repaid in labour (Torvin) and forging stays in shielded forge-pits (Kaelen), respecting both rules; (d) no foreign tech/magic/social structures introduced, no gunpowder; (e) Toll War, Grain Levy, Cartel Charter, Great Calm and wind-debt tie multiple characters to the World",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) max trait overlap is 1/4 (patient, stubborn), traits are behavioral; (b) cast spans all four locations and three factions with distinct trades (engineer, merchant prince, miller, cartographer, pilot); (c) each description carries unique history/appearance detail (scarred Warden-Captain, ledger-keeping dockhand-turned-prince, almanac-keeping miller, sheltered mapmaker, debt-bound pilot); (d) flaws differ in kind \u2014 control obsession, transactional worldview, conflict avoidance, hiding behind data, recklessness; (e) motivations/goals/flaws are bound to each character's faction, debt, and relationships so swaps would contradict them",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Kaelen (caution vs saving people) and Brannoch (hating grasping rulers vs becoming one) are genuine dilemmas; (b) external conflicts name concrete parties \u2014 the Drift Cartel, Toll War, Hollow Circle resistance, Warden resistance; (c) Kaelen's securing bridges/keeping costs down conflicts with Brannoch's legalised higher tolls and puppet crown \u2014 mutually exclusive; (d) six relationships each give concrete causes (toll funding, Grain Levy refusal, wind-debt, gale rescue) with stated tensions; (e) conflicts interlock \u2014 Kaelen vs Brannoch over the Toll War, Odessa vs Brannoch over the Grain Levy, Torvin bound to both sides, so one's success costs another.",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all arcs have start, pivot, end; (b) each arc addresses the stated flaw/internal conflict; (c) pivots stem from external conflicts, relationships, and world rules (wind-debt, Toll War, Grain Levy); (d) arcs vary\u2014growth, uneasy alliance, and Brannoch's costly partial turn that ends 'at great cost'; (e) all three supporting arcs are concrete and story-specific.",
+        "grader_error": false
+      }
+    },
+    "16_scifi_cyberpunk": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations tie to concrete events/world elements (wind-debt sold to Cartel, Ledger Seed, bridge neglect, Grain Levy); (b) all goals are concrete and succeed/fail-able and follow from motivations; (c) each flaw plausibly obstructs its goal; (d) all four motivations are distinct (family debt, preserving Cartel power, bridge safety/funding, village protection)",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id and faction_id values fit each character's described role; (b) only World-named places, factions, and concepts (Emberroost, Mistral Docks, Silverspine, The Hollow, Drift Cartel, Bridge Wardens, Hollow Circle, Toll War, Grain Levy) appear \u2014 'Ledger Seed' is a generic artifact, not a named institution; (c) wind-debt rule is central and obeyed, no open-flame violations (Emberroost forges referenced as shielded forge context); (d) no foreign tech/magic/social structures \u2014 hacker premise adapted into ledger-forgery in World terms; (e) all four characters tie into Toll War, Grain Levy, or wind-debt rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) no pair shares >half traits and most traits are behavioral; (b) distinct home isles, factions, and trades (rigger, factor, engineer, miller); (c) each description has unique history/detail (wind-debt sale, dockside rise, cable-snap limp, barges); (d) flaws differ in kind: transactional distrust, pride, rule-rigidity, impulsivity; (e) motivations/goals/flaws are bound to each character's role and relationships so a swap would contradict",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Kest's cynicism-vs-system-profiteering and Orsin's knowing-the-system-is-unjust-vs-identity dilemmas are genuine; (b) external conflicts name concrete parties (Drift Cartel, Toll War, Warden superiors); (c) Kest's release-the-Seed goal directly opposes Orsin's recover-it goal; (d) five relationships each give concrete history/cause and state tension; (e) conflicts interlock via Toll War, Grain Levy, and Ledger Seed so success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Kest's arc has start (loner mercenary), pivot (Hollow Circle shelters her, choice to sell or release the Seed), end (accepts trust); Orsin's has start, pivot (superiors move to replace him), end (discredited). (b) Kest's arc resolves her flaw of transactional trust; Orsin's arc transforms his internal conflict\u2014his rigid defense causes the system's crisis. (c) Both pivots are caused by external conflicts (Toll War, Cartel pursuit) and relationships. (d) Arcs differ: Kest redeems, Orsin falls, Maren bends rules, Juno steadies; Orsin ends at cost and Kest's release sacrifices her own debt relief. (e) Supporting arcs are concrete and story-tied (bridge blockade, grain levy refusal).",
+        "grader_error": false
+      }
+    },
+    "17_mystery_country_house": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "Odette (protagonist): motivation tied to forced retirement, concrete goal (identify murderer before bridge repaired), flaw (compulsive meddler) plausibly hinders \u2014 pass. Lucian (antagonist): motivation tied to Cartel monopoly and debts, concrete goal (destroy ledger, frame outsider), flaw (arrogance) hinders \u2014 pass. Tobias (supporting): motivation tied to Grain Levy conflict and Hollow Circle, concrete goal (secure levy exemption), flaw (naive trust) hinders \u2014 pass. Marguerite (supporting): motivation tied to Toll War and Wardens, concrete goal (obtain toll records), flaw (rigid secrecy) hinders \u2014 pass. All four motivations are distinct (prove sharpness, protect village, protect monopoly, expose toll skimming).",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 4,
+        "reason": "(a) all home_location_ids and faction_ids fit; (b) names only World places/factions, though 'the mainland' is a vague outside reference in an archipelago of floating isles \u2014 minor; (c) no rule contradictions \u2014 Marguerite explicitly obeys the shielded forge-pit rule and wind-debts are used correctly; (d) no foreign tech or institutions introduced; (e) Toll War, Grain Levy and wind-debt rules tie multiple characters to World conflicts",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) traits mostly distinct, though 'stubborn/calculating' lean toward stock adjectives; (b) all four home locations and all three factions covered with varied roles and trades; (c) each description has specific physical and historical detail, no template phrasing; (d) flaws differ in kind\u2014meddling, naivety, arrogance, rigid secrecy; (e) swap test passes, motivations and goals are tightly bound to each character's background and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Odette's fear of dulled judgment vs. refusing help and Lucian's disdain for dishonesty vs. identity built on it are genuine dilemmas; (b) external conflicts name concrete parties (closing guests, host's Cartel staff, Wardens' leverage); (c) Odette's goal of exposing the murderer is incompatible with Lucian's goal of destroying the ledger and framing an outsider; (d) five relationships with concrete shared causes and stated tensions (framing Tobias, skimming tolls); (e) conflicts interlock through the Toll War and Grain Levy \u2014 Lucian's success costs Odette, Marguerite, and Tobias theirs",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all four arcs name a starting state, a pivotal event/choice, and an end state; (b) Odette's arc resolves her self-doubt and refusal of help, Lucian's arrogance drives his fall, Tobias's naivety transforms into assertiveness, Marguerite's rigidity softens; (c) pivots stem from external conflicts and World elements (altered wind-debt ledger, forged levy papers, tampered anchor); (d) shapes vary\u2014growth, fall/exposure at cost, hardening, opening up\u2014with Lucian's arc ending at clear cost; (e) supporting arcs are concrete and story-specific (levy testimony, anchor inspection disclosure)",
+        "grader_error": false
+      }
+    },
+    "18_horror_cabin": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) motivations all tie to concrete events/elements: Mara's ledger-scandal exile and broadcast, Tobin's Cartel standing and forged wind-debt records, Elsbeth's husband's cabin and the levy; (b) goals concrete and derivable (decode transmissions/stop foretold death, silence Mara before exposure, persuade Mara to leave); (c) flaws plausibly obstruct each goal (pride, greed, overprotectiveness); (d) motivations are distinct\u2014proving self-sufficiency, protecting standing/debts, keeping the watcher alive for a husband's legacy.",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) home locations and factions fit: Mara/Elsbeth at The Hollow in Hollow Circle, Tobin at Mistral Docks in Drift Cartel; (b) all named places, factions and the Grain Levy exist in the World, no invented names; (c) abilities respect rules\u2014Wind-Reading explicitly avoids open flame, Tobin's forged wind-debt ledgers engage the wind-debt rule rather than contradict it; (d) the brass transmitter/wind-carried broadcast adapts the brief's radio premise into the world's wind-current terms without importing foreign tech or structures; (e) Tobin and Elsbeth are directly tied to the Grain Levy conflict and wind-debt rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) no shared traits across the three characters, traits mostly behavioral (dry-humoured, calculating, guarded) though 'loyal'/'greedy' are mildly stock; (b) distinct roles, factions, locations (Hollow vs Docks) and unique abilities; (c) descriptions carry specific histories and props (brass transmitter, chained ledger, windmill limp); (d) flaws differ in kind: pride, greed, overprotectiveness; (e) swapping motivation/goal/flaw would contradict each character's station and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara's control-vs-fate dilemma and Tobin's resentment-vs-dependence are genuine tensions, not restated flaws; (b) external conflicts name concrete parties: future-voice signal hijack plus Drift Cartel levy for Mara, Hollow Circle resistance for Tobin; (c) Mara's goal to stay on air and expose the tallies directly blocks Tobin's goal to silence her; (d) three relationships each give concrete shared cause (supply cuts/forged levies, grain deliveries and protectiveness, levy opposition) and state their tension; (e) conflicts interlock through the Grain Levy and Mara's broadcast \u2014 Tobin's success costs Mara and Elsbeth, and vice versa",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Mara, Tobin, Elsbeth each have start state, pivotal event, end state; (b) Mara's arc resolves her pride/isolation flaw, Tobin's greed leads to his exposure and repayment, Elsbeth's overprotectiveness transforms into trusting Mara; (c) pivots stem from transmissions, levy conflict, forged ledger \u2014 all caused by external conflicts/relationships; (d) shapes differ \u2014 Mara grows, Tobin falls, Elsbeth softens \u2014 Tobin ends stripped and paying debts at cost; (e) Elsbeth's arc is concrete and story-specific",
+        "grader_error": false
+      }
+    },
+    "19_adventure_pirate": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) every motivation is tied to a concrete element: Kael's pardon/piracy past, Isolde's public-charts stance vs Cartel control, Dorian's toll monopoly via the Charter-era Cartel, Tamsin's Grain Levy resistance, Bram's brother's bridge tragedy; (b) all goals are concrete and checkable (recover/return the map, verify routes before drift season, seize the map, defeat the levy publicly, hold bridges together); (c) each flaw plausibly obstructs its goal (recklessness, distrust of ex-criminals, everyone-has-a-price overconfidence, refusing help, delaying caution); (d) all five motivations are distinct \u2014 redemption, open knowledge, monopoly/recognition, community protection, safety-at-any-cost",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id assignments match descriptions (miller in The Hollow, engineer at Emberroost, cartographer at Silverspine Academy); (b) only existing world places, factions and events are named (Mistral Docks, Silverspine, Emberroost, the Hollow, Cartel Charter, Toll War, Grain Levy); (c) abilities respect rules \u2014 Bram's cloudstone braiding explicitly works inside shielded forge-pits, and Dorian's leverage uses wind-debt obligations; (d) brief's pirate premise is adapted into world terms (skyship corsair, skiffs, drift isles) with no imported tech or factions; (e) Kael, Dorian, Tamsin and Bram are all tied to the Toll War, Grain Levy, or wind-debt rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) traits are distinct with no pair sharing more than half; (b) cast spans all four locations, all three factions, varied roles and trades (pilot, cartographer, merchant, miller, engineer); (c) descriptions carry specific detail \u2014 rope-scarred forearm, ink-stained fingers and brass-chain spectacles, flour-dusted braids, soot-streaked beard \u2014 no template phrasing; (d) flaws differ in kind (recklessness, distrust of ex-criminals, overconfidence, stubborn self-reliance, excessive caution) and internal conflicts are distinct; (e) swap test holds \u2014 Dorian's price-driven motivation, Tamsin's levy fight, Bram's safety oath etc. would contradict each other's descriptions and relationships.",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "a) Kael's honesty-vs-corsair-identity and Dorian's ambition-vs-craving-elders'-approval are genuine dilemmas, not restated flaws; b) external conflicts name concrete parties (Drift Cartel, Bridge Wardens, Academy superiors, Cartel agents); c) Kael returning the map to the Wardens and Dorian seizing it for the Cartel are mutually exclusive; d) six relationships each cite shared history (past raids, pardon leverage, ferry contract) with stated tensions; e) external conflicts interlock through the Toll War and Grain Levy\u2014Kael, Dorian, Isolde, Bram, and Tamsin all pull on the same World conflicts so one side's gain costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all main characters' arcs have clear start, pivotal choice/event, and end state; (b) Kael's arc resolves his recklessness/guilt conflict and Dorian's arc addresses his overconfidence and craving for approval; (c) pivotal events stem from external conflicts (Toll War, Cartel leverage, Hollow Circle levy resistance) and relationships; (d) arcs differ in shape \u2014 redemption for Kael, fall/diminishing for Dorian, growth-with-cost for Bram and Tamsin \u2014 and Dorian ends diminished while Kael's choice costs him debt clearance; (e) each supporting arc is concrete and tied to specific story events (ferrying levy evidence, breaking protocol on the failing span, sharing private survey notes).",
+        "grader_error": false
+      }
+    },
+    "20_historical_silk_road": {
+      "structural_validity": {
+        "pass": true,
+        "score": 1,
+        "reason": "Character set is structurally and referentially valid",
+        "grader_error": false
+      },
+      "format_discipline": {
+        "pass": true,
+        "score": 1,
+        "reason": "Reply is a single bare JSON object",
+        "grader_error": false
+      },
+      "motivation_clarity": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all motivations tie to concrete world elements (wind-debts, Grain Levy, skybridges, Toll War, Cartel princes, Academy chart); (b) all goals are concrete and verifiable; (c) each flaw plausibly obstructs its goal; (d) all five motivations are distinct",
+        "grader_error": false
+      },
+      "world_consistency": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) all home_location_id/faction_id assignments fit roles; (b) only World-named places, factions, conflicts (Toll War, Grain Levy) and institutions referenced; (c) rules respected \u2014 wind-debt shapes Marra's arc and no open flame appears near bridges in Selene's arc; (d) no foreign tech/magic/social structures introduced; (e) all five characters tie into the Toll War, Grain Levy, or wind-debt rule",
+        "grader_error": false
+      },
+      "character_differentiation": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) traits distinct with only 'curious' shared between Tobin/Ilsa (1/4, under half) and all specific; (b) cast spans all four locations, all three factions, varied roles and abilities; (c) each description has unique detail (cloudstone-thread coat, windmill charm, never-surrendered ledger); (d) flaws differ in kind: self-reliance, naivety, rigidity, greed, absent-mindedness; (e) swapping motivation/goal/flaw would contradict descriptions and relationships",
+        "grader_error": false
+      },
+      "conflict_potential": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) Marra torn between neutrality and crew loyalty; Corvin torn between dockhand sympathy and status \u2014 genuine dilemmas, not flaws restated; (b) external conflicts name concrete parties (Cartel, Wardens, Grain Levy, levy enforcer); (c) Marra clearing wind-debt vs Corvin collecting the levy and forcing Cartel cargo are mutually exclusive; (d) five relationships each give concrete cause and stated tension (levy pressure, mill targeting, toll friction); (e) conflicts interlock \u2014 Marra, Corvin, and Tobin all collide over the same Grain Levy/Toll War so one's success costs another",
+        "grader_error": false
+      },
+      "character_development": {
+        "pass": true,
+        "score": 5,
+        "reason": "(a) both mains (Marra, Corvin) have start/pivotal/end; (b) arcs address flaws\u2014Marra's self-reliance, Corvin's greed/status; (c) pivots stem from Grain Levy, Toll War, Cartel princes; (d) varied shapes\u2014growth, maturation, softening, costly redemption\u2014Corvin trades rank for redemption; (e) all supporting arcs concrete and story-specific",
+        "grader_error": false
+      }
+    }
+  }
+}

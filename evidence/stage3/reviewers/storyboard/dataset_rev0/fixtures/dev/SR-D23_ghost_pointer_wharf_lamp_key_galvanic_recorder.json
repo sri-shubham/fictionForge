@@ -1,0 +1,503 @@
+{
+  "case_id": "SR-D23",
+  "agent": "storyboard",
+  "split": "dev",
+  "category": "multiple_subtle",
+  "slug": "ghost_pointer_wharf_lamp_key_galvanic_recorder",
+  "context_validated": true,
+  "brief": {
+    "title": "The Gaslamp Quay",
+    "premise": "A tide-clock inspector in a fog-bound port city investigates the death of a lamplighter found drowned in a locked lamp-house, and discovers that the harbour board has been selling false curfews.",
+    "genre": "mystery",
+    "tone": "noir",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:electric",
+      "require:lamplighter",
+      "Nothing supernatural: every event must have a natural explanation.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_gaslamp_quay",
+    "name": "Gaslamp Quay",
+    "description": "Gaslamp Quay is a fog-bound estuary port lit by coal gas and ruled by the Harbour Board, where curfews are bought and sold.",
+    "locations": [
+      {
+        "id": "loc_lamp_house_row",
+        "name": "Lamp-House Row",
+        "description": "A terrace of locked lamp-houses where gas lamps are filled and tended each dusk."
+      },
+      {
+        "id": "loc_harbour_hall",
+        "name": "Harbour Board Hall",
+        "description": "The marble hall where curfews, tide tables and mooring licences are issued."
+      },
+      {
+        "id": "loc_fog_wharf",
+        "name": "Fog Wharf",
+        "description": "A timber wharf where fog off the estuary hides ships and smugglers alike."
+      },
+      {
+        "id": "loc_tide_clock",
+        "name": "Tide-Clock Tower",
+        "description": "A brass clock tower whose gearing tracks the tides and sets the city's curfew bell."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_lamplighters",
+        "name": "Lamplighters' Guild",
+        "description": "A guild that fills, lights and locks the city's gas lamps.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "fac_harbour_board",
+        "name": "Harbour Board",
+        "description": "Officials who issue curfews and mooring licences, and profit from both.",
+        "location_ids": [
+          "loc_harbour_hall",
+          "loc_tide_clock"
+        ]
+      },
+      {
+        "id": "fac_fog_runners",
+        "name": "Fog Runners",
+        "description": "Smugglers who use the curfew gaps to slip cargo past the wharf.",
+        "location_ids": [
+          "loc_fog_wharf"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_gas_clockwork",
+        "statement": "The city is lit by coal gas and driven by clockwork and steam.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_curfew_bell",
+        "statement": "After the curfew bell, wharf gates are locked until dawn and may be opened only by a Harbour Board officer's key.",
+        "category": "social"
+      },
+      {
+        "id": "rul_lamp_lock",
+        "statement": "Each lamp-house is locked at dusk with a guild key; only the lamplighter assigned to it and the guild master hold keys.",
+        "category": "social"
+      },
+      {
+        "id": "rul_fog_tide",
+        "statement": "Fog thickens on the wharf at the turn of the tide, hiding ships for about an hour.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_gas_laid",
+        "name": "Laying of the Gas Mains",
+        "era": "1840s",
+        "description": "The Harbour Board laid the first coal-gas mains along Lamp-House Row.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "evt_clock_raised",
+        "name": "Raising of the Tide-Clock",
+        "era": "1850s",
+        "description": "Clockmakers raised the Tide-Clock Tower and tied the curfew bell to its tide gearing.",
+        "location_ids": [
+          "loc_tide_clock"
+        ]
+      },
+      {
+        "id": "evt_guild_charter",
+        "name": "The Lamplighters' Charter",
+        "era": "1860s",
+        "description": "The Lamplighters' Guild won a charter granting its members exclusive keys to the lamp-houses.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "evt_false_curfew",
+        "name": "The First False Curfew",
+        "era": "1870s",
+        "description": "The Harbour Board secretly rang an early curfew bell so that the Fog Runners could bribe an officer to unlock the wharf gates.",
+        "location_ids": [
+          "loc_fog_wharf",
+          "loc_harbour_hall"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_false_curfews",
+        "name": "The False Curfews",
+        "description": "The Lamplighters' Guild accuses the Harbour Board of selling false curfews.",
+        "faction_ids": [
+          "fac_lamplighters",
+          "fac_harbour_board"
+        ]
+      },
+      {
+        "id": "cnf_wharf_smuggling",
+        "name": "The Wharf Smuggling",
+        "description": "The Harbour Board quietly tolerates the Fog Runners' smuggling in return for bribes.",
+        "faction_ids": [
+          "fac_harbour_board",
+          "fac_fog_runners"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_gaslamp_quay",
+    "characters": [
+      {
+        "id": "chr_cato",
+        "name": "Cato Wren",
+        "role": "protagonist",
+        "description": "A tide-clock inspector who checks the Tide-Clock Tower's gearing against the tide tables each month.",
+        "personality_traits": [
+          "dogged",
+          "dry",
+          "observant"
+        ],
+        "motivation": "To find out who left a lamplighter drowned in a locked lamp-house.",
+        "goal": "Work out who held a key to the lamp-house that night.",
+        "flaw": "Pursues a theory past the evidence.",
+        "internal_conflict": "He owes the Harbour Board his post.",
+        "external_conflict": "The Board obstructs his inquiries.",
+        "home_location_id": "loc_tide_clock",
+        "faction_id": null,
+        "abilities": [
+          {
+            "name": "Gear-reading",
+            "description": "Spots a mistimed curfew bell by the sound of the gearing.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Cato learns that the curfews were sold, and that his own tables were used to justify them."
+      },
+      {
+        "id": "chr_marguerite",
+        "name": "Marguerite Ashby",
+        "role": "supporting",
+        "description": "Master of the Lamplighters' Guild, who holds one of the keys to every lamp-house.",
+        "personality_traits": [
+          "fierce",
+          "loyal",
+          "proud"
+        ],
+        "motivation": "To clear her Guild's name after a lamplighter's death.",
+        "goal": "Hand Cato the Guild's key logs.",
+        "flaw": "Shields her people even when they are wrong.",
+        "internal_conflict": "She suspects one of her own.",
+        "external_conflict": "The Board blames the Guild.",
+        "home_location_id": "loc_lamp_house_row",
+        "faction_id": "fac_lamplighters",
+        "abilities": [
+          {
+            "name": "Lamp-lore",
+            "description": "Knows every lamp-house's filling schedule by heart.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Marguerite accepts that protecting the Guild means exposing a member."
+      },
+      {
+        "id": "chr_osric",
+        "name": "Osric Dunne",
+        "role": "antagonist",
+        "description": "A Harbour Board officer who sells early curfews and holds a key that opens the wharf gates after the bell.",
+        "personality_traits": [
+          "smooth",
+          "greedy",
+          "watchful"
+        ],
+        "motivation": "To keep the curfew trade profitable and quiet.",
+        "goal": "Pin the lamplighter's death on the Guild.",
+        "flaw": "Overconfident in his cover.",
+        "internal_conflict": "He is unsettled that the dead man was a friend.",
+        "external_conflict": "Cato's inquiry threatens to expose the trade.",
+        "home_location_id": "loc_harbour_hall",
+        "faction_id": "fac_harbour_board",
+        "abilities": [
+          {
+            "name": "Bribe-brokering",
+            "description": "Arranges payments between smugglers and the Board without a written trace.",
+            "category": "social"
+          }
+        ],
+        "arc": "Osric's network unravels as Cato matches curfew bells to payments."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_cato_marguerite",
+        "source_character_id": "chr_cato",
+        "target_character_id": "chr_marguerite",
+        "relationship_type": "ally",
+        "description": "Marguerite shares the Guild's key logs with Cato.",
+        "conflict": null
+      },
+      {
+        "id": "rel_cato_osric",
+        "source_character_id": "chr_cato",
+        "target_character_id": "chr_osric",
+        "relationship_type": "adversary",
+        "description": "Cato's inquiry threatens Osric's curfew trade.",
+        "conflict": "Osric obstructs the inquiry."
+      },
+      {
+        "id": "rel_marguerite_osric",
+        "source_character_id": "chr_marguerite",
+        "target_character_id": "chr_osric",
+        "relationship_type": "accuser",
+        "description": "Marguerite accuses Osric of selling false curfews.",
+        "conflict": null
+      }
+    ]
+  },
+  "storyboard": {
+    "world_id": "wld_gaslamp_quay",
+    "title": "The Gaslamp Quay",
+    "logline": "Cato traces a drowned lamplighter's death to a trade in false curfews.",
+    "theme": "who profits from the dark",
+    "acts": [
+      {
+        "id": "act_setup",
+        "title": "Setup",
+        "purpose": "setup",
+        "scenes": [
+          {
+            "id": "scn_body_found",
+            "title": "The Locked Room",
+            "summary": "Marguerite shows Cato the locked lamp-house where a lamplighter was found drowned with his clothes soaked in estuary water.",
+            "location_id": "loc_lamp_house_row",
+            "character_ids": [
+              "chr_cato",
+              "chr_marguerite"
+            ],
+            "goal": "Establish how the lamplighter died.",
+            "conflict": "Only the assigned lamplighter and the guild master held keys.",
+            "outcome": "Cato notes that the door was locked and that only the dead man and Marguerite held keys, and the dead man's ghost points Cato toward the wharf.",
+            "depends_on": []
+          },
+          {
+            "id": "scn_tide_tables",
+            "title": "The Early Bell",
+            "summary": "Cato checks the Tide-Clock Tower's gearing and finds, on the Tower's new galvanic recorder, that the curfew bell rang an hour early on the night of the death.",
+            "location_id": "loc_tide_clock",
+            "character_ids": [
+              "chr_cato"
+            ],
+            "goal": "Check the bell against the tide tables.",
+            "conflict": "The Harbour Board holds the bell records.",
+            "outcome": "He learns the curfew was rung early and the wharf gates were locked early.",
+            "depends_on": [
+              "scn_body_found"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_rising",
+        "title": "Rising Action",
+        "purpose": "rising_action",
+        "scenes": [
+          {
+            "id": "scn_wharf_inquiry",
+            "title": "The Smuggler",
+            "summary": "At Fog Wharf, Cato questions a smuggler who admits the early bell let a cargo slip past the locked gates, which were opened with an ordinary lamp-house key.",
+            "location_id": "loc_fog_wharf",
+            "character_ids": [
+              "chr_cato"
+            ],
+            "goal": "Learn who opened the wharf gates.",
+            "conflict": "The Fog Runners fear the Board's reprisals.",
+            "outcome": "The smuggler names Osric as the officer behind the early bell.",
+            "depends_on": [
+              "scn_tide_tables"
+            ]
+          },
+          {
+            "id": "scn_osric_denies",
+            "title": "The Denial",
+            "summary": "Cato confronts Osric, who admits only that officers hold keys to the wharf gates.",
+            "location_id": "loc_harbour_hall",
+            "character_ids": [
+              "chr_cato",
+              "chr_osric"
+            ],
+            "goal": "Pin the early bell on Osric.",
+            "conflict": "Osric blames the Lamplighters' Guild.",
+            "outcome": "Osric hints the Guild killed its own man to cover a theft.",
+            "depends_on": [
+              "scn_wharf_inquiry"
+            ]
+          },
+          {
+            "id": "scn_key_logs",
+            "title": "The Key Logs",
+            "summary": "Marguerite hands Cato the Guild's key logs, which show the dead lamplighter signed his lamp-house key out at dusk and never signed it back.",
+            "location_id": "loc_lamp_house_row",
+            "character_ids": [
+              "chr_cato",
+              "chr_marguerite"
+            ],
+            "goal": "Trace the dead man's key.",
+            "conflict": "The Guild fears the logs will condemn one of its own.",
+            "outcome": "Cato learns the dead man was last seen at the wharf after the early bell, which puts him there when the cargo slipped through.",
+            "depends_on": [
+              "scn_osric_denies",
+              "scn_body_found"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_climax",
+        "title": "Climax",
+        "purpose": "climax",
+        "scenes": [
+          {
+            "id": "scn_confrontation",
+            "title": "The Board",
+            "summary": "Cato matches the early bell, the key logs and the smuggler's testimony and confronts Osric before the Board.",
+            "location_id": "loc_harbour_hall",
+            "character_ids": [
+              "chr_cato",
+              "chr_osric",
+              "chr_marguerite"
+            ],
+            "goal": "Prove Osric sold the early curfew and killed the lamplighter who saw it.",
+            "conflict": "Osric produces a forged alibi.",
+            "outcome": "Osric's alibi fails when the key logs and the smuggler place the dead man at the wharf while Osric held the gate key.",
+            "depends_on": [
+              "scn_key_logs",
+              "scn_wharf_inquiry"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_resolution",
+        "title": "Resolution",
+        "purpose": "resolution",
+        "scenes": [
+          {
+            "id": "scn_curfews_ended",
+            "title": "The Honest Bell",
+            "summary": "The Board strips Osric of his key; Marguerite and the Guild reopen the lamp-houses, and Cato resets the curfew bell to the tide tables.",
+            "location_id": "loc_tide_clock",
+            "character_ids": [
+              "chr_cato",
+              "chr_marguerite"
+            ],
+            "goal": "Restore the honest curfew.",
+            "conflict": "The Board resists admitting the trade.",
+            "outcome": "Osric is dismissed and the curfew bell follows the tide tables again.",
+            "depends_on": [
+              "scn_confrontation"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "BRIEF_CONSTRAINT_VIOLATION",
+        "UNSUPPORTED_PLOT_DEVELOPMENT"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.acts[0].scenes[0].outcome"
+      ],
+      "reference_paths": [
+        "brief::$.constraints[2]"
+      ],
+      "evidence_quotes": [
+        "the dead man's ghost points Cato toward the wharf",
+        "Nothing supernatural: every event must have a natural explanation."
+      ],
+      "anchor_terms": [
+        "ghost"
+      ],
+      "rationale": "A ghost guiding the detective is supernatural.",
+      "correction_hint": "Remove the ghost; have a living witness point to the wharf.",
+      "label_id": "SR-D23-L1"
+    },
+    {
+      "suffix": "L2",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "WORLD_RULE_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.acts[1].scenes[0].summary"
+      ],
+      "reference_paths": [
+        "world::$.rules[1].statement"
+      ],
+      "evidence_quotes": [
+        "which were opened with an ordinary lamp-house key",
+        "may be opened only by a Harbour Board officer's key"
+      ],
+      "anchor_terms": [
+        "ordinary lamp-house key"
+      ],
+      "rationale": "Wharf gates open only to an officer's key after the bell.",
+      "correction_hint": "Have an officer's key open the gates.",
+      "label_id": "SR-D23-L2"
+    },
+    {
+      "suffix": "L3",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "WORLD_RULE_CONTRADICTION",
+        "BRIEF_CONSTRAINT_VIOLATION",
+        "UNSUPPORTED_PLOT_DEVELOPMENT"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.acts[0].scenes[1].summary"
+      ],
+      "reference_paths": [
+        "world::$.rules[0].statement",
+        "brief::$.constraints[0]"
+      ],
+      "evidence_quotes": [
+        "the Tower's new galvanic recorder",
+        "The city is lit by coal gas and driven by clockwork and steam"
+      ],
+      "anchor_terms": [
+        "galvanic recorder"
+      ],
+      "rationale": "A galvanic recorder is electric technology.",
+      "correction_hint": "Have Cato read the gearing and tide tables by hand.",
+      "label_id": "SR-D23-L3"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Three defects: a ghost guides Cato (brief), wharf gates opened with an ordinary lamp-house key (world rule), and a galvanic recorder (electric technology forbidden)."
+}

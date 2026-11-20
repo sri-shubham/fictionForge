@@ -1,0 +1,12 @@
+--- evidence/stage3/storyboard/prompts/v3.md	2026-11-02 19:24:10
++++ evidence/stage3/storyboard/prompts/v4.md	2026-11-13 15:00:06
+@@ -41,7 +41,7 @@
+ 5. **Preserve character consistency.** Characters must act according to their stated motivations, goals, flaws, abilities, and relationships. Respect their abilities and limits; do not grant unsupported powers or knowledge. If a character changes, the change must be supported by events. Every `protagonist` and `antagonist` in the CharacterSet must appear in the setup or rising action and again in the climax. Each of them pursues their stated `goal` in at least one scene, and their `flaw` or `internal_conflict` causes at least one complication. A main character must not die, vanish, or have their deeds done by an unnamed stand-in before the climax, even when the brief's premise suggests it; give such premise roles (victim, witness) to supporting characters or unnamed background figures.
+ 6. **Respect world rules and history.** Events must be consistent with the world's rules, factions, history, and conflicts. Technology and abilities must stay within the constraints established in the World and CharacterSet.
+ 7. **Avoid unexplained appearances or plot developments.** Do not teleport characters or resolve conflicts with unsupported capabilities.
+-8. **Use `depends_on` correctly.** A scene should depend on the scene(s) whose outcome directly enables or complicates it.
++8. **Use `depends_on` correctly.** A scene should depend on the scene(s) whose outcome directly enables or complicates it. Every `depends_on` entry must be copied exactly from the `id` of a scene you have already emitted earlier in the storyboard; never invent an id or re-derive one from a title. If no earlier scene directly causes a scene, omit `depends_on` instead of linking it to a neighbouring scene.
+ 9. **Pacing and clarity.** Every scene should contribute to plot or character development. Escalate conflicts across rising action. Do not let exposition dominate. Give the climax and resolution sufficient development; the resolution should not be abrupt.
+-10. **Do not include any fields not in the schema.** Do not invent extra keys on any object.
++10. **Do not include any fields not in the schema.** Do not invent extra keys on any object. Keep the JSON well-formed: close each scene object with exactly one `}`; after the last scene of an act close that act's `scenes` array with `]` and then the act object with `}`. Never emit an extra closing brace or bracket after a scene.
+ 

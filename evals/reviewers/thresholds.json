@@ -1,0 +1,43 @@
+{
+  "weights": {
+    "contradiction_detection": 0.30,
+    "evidence_grounding": 0.25,
+    "false_positive_avoidance": 0.20,
+    "issue_classification": 0.15,
+    "actionable_feedback": 0.10
+  },
+  "case_pass_rule": "A case passes only if every assertion attached to it passes: contract_validity (gate), false_positive_avoidance, issue_classification, evidence_grounding, plus contradiction_detection and actionable_feedback on cases with blocking reference labels. High scores elsewhere never compensate for a failed assertion.",
+  "per_case": {
+    "label_weight": {"critical": 2, "major": 1},
+    "detection_min_weighted_recall": 0.66,
+    "detection_requires_all_critical_labels": true,
+    "grounding_min_issue_fraction": 0.8,
+    "grounding_requires_all_blocking_issues": true,
+    "false_positive_max_unsupported_blocking_issues": 0,
+    "classification_requires_verdict_match": true,
+    "actionable_feedback_min_rubric_score": 4
+  },
+  "suite": {
+    "case_pass_rate_min": 0.95,
+    "critical_detection_rate_min": 0.95,
+    "false_positive_rate_max": 0.05,
+    "blocking_precision_min": 0.90,
+    "blocking_recall_min": 0.90,
+    "verdict_accuracy_min": 0.95,
+    "evidence_grounding_rate_min": 0.95,
+    "weighted_score_min": 0.90,
+    "contract_validity_rate_min": 1.0
+  },
+  "hard_gates": ["critical_detection_rate", "false_positive_rate", "contract_validity_rate"],
+  "metric_definitions": {
+    "critical_detection_rate": "critical reference labels detected / critical reference labels (over cases with blocking labels)",
+    "false_positive_rate": "expected-PASS cases where the reviewer returned a verdict other than PASS or any critical/major issue / expected-PASS cases",
+    "false_negative_rate": "expected-REVISE or expected-PUNCH_OUT cases where the reviewer returned PASS / those cases",
+    "blocking_precision": "reported critical/major issues matching a blocking reference label / reported critical/major issues",
+    "blocking_recall": "blocking reference labels detected / blocking reference labels",
+    "verdict_accuracy": "cases where verdict equals expected verdict / cases",
+    "evidence_grounding_rate": "reported issues passing the deterministic grounding check / reported issues",
+    "contract_validity_rate": "reviewer responses accepted by the strict shared contract parser / cases",
+    "weighted_score": "mean over cases of sum(weight*score over applicable criteria)/sum(weight over applicable criteria)"
+  }
+}

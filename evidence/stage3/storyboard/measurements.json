@@ -1,0 +1,1709 @@
+{
+  "agent": "storyboard_building",
+  "frozen_config_file": "evidence/stage3/storyboard/frozen_eval_config.json",
+  "frozen_config_sha256": "1848926c7c77d39018b6a755f1f4e22a25e2a734fd32c9f33af65c3282df9ed8",
+  "frozen_files": {
+    "evals/storyboard_stage3.yaml": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+    "evals/storyboard_stage3_tests.json": "57b25d4087641ff388d0a796571c9b04da79baf3e4e61283b3e80bf683ef9b0e",
+    "evals/storyboard_tests.json": "8db5d4cf7aef283d29ee7498278c06aec536c2806ce48d97210f1482406eca79",
+    "evals/storyboard_assert.py": "13121b4b145ce1d45bf95e377236ca8db42b96678ce7fc0630dcee6232085314",
+    "evals/storyboard_stage3_assert.py": "0f247caa373e2482e4d85d02b3e4c2237aaaa2ed8203968ddebae33188881b2c",
+    "evals/storyboard_stage3_provider.py": "ea4078d02c7735ba934459dbb66b87de6d8555c0db9cfc0ee8dafc840eb436b1",
+    "evals/world_provider.py": "465601323964fcf10173afb4a37ce805a12a881095e4f45539241f292cf56e6d",
+    "src/fictionforge/guardrails/validators.py": "142f60598467760e597cbd8be198bd79f5301d28fc1a13ae1e9b45e402a7477c",
+    "src/fictionforge/models.py": "33e4eb04a476cb588507403572e365ea2a590154d340ed22cbf5a41520c70904",
+    "schemas/storyboard.schema.json": "f39eecf13428a37bc7943b0038a98d6ab4b8fff2261f089fdb44a415c233b09e",
+    "scripts/generate_storyboard_stage3_tests.py": "228aa4e63606c5bf5937a21aaddb3943412104be56482f4582f8ac69c01b89f6"
+  },
+  "dataset_sha256": {
+    "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+    "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+  },
+  "models": {
+    "generation": "fusion-claude-sonnet-5-5-medium-sidekick-claude-haiku-5-5-medium",
+    "grader": "swe-2-medium"
+  },
+  "rubric_weights": {
+    "causal_coherence": 0.3,
+    "character_consistency": 0.25,
+    "narrative_structure": 0.2,
+    "world_consistency": 0.15,
+    "pacing": 0.1
+  },
+  "versions": {
+    "v1": {
+      "prompt_file": "evidence/stage3/storyboard/prompts/v1.md",
+      "prompt_sha256": "3c7a30470fd3dcf5632a51cd9f26a5b0283be9a159c11e455738a67258cf75d1",
+      "instructions": 32,
+      "load_bearing": 27,
+      "load_bearing_pct": 84.4,
+      "matrix_file": "evidence/stage3/storyboard/matrices/load_bearing_v1.json",
+      "dev": {
+        "eval_id": "eval-LIi-2026-11-02T12:00:54",
+        "timestamp": "2026-11-02T12:00:54.646Z",
+        "split": [
+          "dev"
+        ],
+        "prompt_version": "v1",
+        "prompt_sha256": "3c7a30470fd3dcf5632a51cd9f26a5b0283be9a159c11e455738a67258cf75d1",
+        "raw_result_file": "evidence/stage3/storyboard/results/v1_dev.json",
+        "raw_result_sha256": "3b88331c8cd04b2e58f60e488df5fa4e91e278c3d3a7443da0ea93de7128417b",
+        "summary_file": "evidence/stage3/storyboard/results/v1_dev.summary.json",
+        "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+        "dataset_sha256": {
+          "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+          "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+        },
+        "cases_attempted": 25,
+        "provider_errors": 0,
+        "grader_errors": 0,
+        "criteria": {
+          "structural_validity": {
+            "scored": 25,
+            "passed": 16,
+            "pass_rate": 0.64,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "schema_validity": {
+            "scored": 25,
+            "passed": 16,
+            "pass_rate": 0.64,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "referential_integrity": {
+            "scored": 16,
+            "passed": 16,
+            "pass_rate": 1.0,
+            "not_evaluable": 9,
+            "mean_score": null
+          },
+          "dependency_validity": {
+            "scored": 16,
+            "passed": 16,
+            "pass_rate": 1.0,
+            "not_evaluable": 9,
+            "mean_score": null
+          },
+          "narrative_phase_correctness": {
+            "scored": 16,
+            "passed": 16,
+            "pass_rate": 1.0,
+            "not_evaluable": 9,
+            "mean_score": null
+          },
+          "format_discipline": {
+            "scored": 25,
+            "passed": 24,
+            "pass_rate": 0.96,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "causal_coherence": {
+            "scored": 25,
+            "passed": 23,
+            "pass_rate": 0.92,
+            "not_evaluable": 0,
+            "mean_score": 4.48
+          },
+          "character_consistency": {
+            "scored": 25,
+            "passed": 24,
+            "pass_rate": 0.96,
+            "not_evaluable": 0,
+            "mean_score": 4.8
+          },
+          "narrative_structure": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.92
+          },
+          "world_consistency": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 5.0
+          },
+          "pacing": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.96
+          }
+        },
+        "overall_quality": {
+          "cases_scored": 25,
+          "cases_passed": 14,
+          "pass_rate": 0.56,
+          "pass_rate_strict_of_attempted": 0.56
+        },
+        "weighted_score": {
+          "cases": 25,
+          "mean": 0.9548,
+          "weights": {
+            "causal_coherence": 0.3,
+            "character_consistency": 0.25,
+            "narrative_structure": 0.2,
+            "world_consistency": 0.15,
+            "pacing": 0.1
+          }
+        },
+        "failed_cases": [
+          {
+            "case": "02_scifi_exploration",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "03_mystery_investigation",
+            "failures": [
+              {
+                "metric": "character_consistency",
+                "score": 2
+              }
+            ]
+          },
+          {
+            "case": "08_morally_ambiguous_antagonist",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "11_restricted_abilities",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "12_minimum_supported_acts",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "14_single_location",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              },
+              {
+                "metric": "causal_coherence",
+                "score": 3
+              }
+            ]
+          },
+          {
+            "case": "18_prompt_injection_world",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "19_prompt_injection_characters",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "20_nonexistent_character",
+            "failures": [
+              {
+                "metric": "causal_coherence",
+                "score": 3
+              }
+            ]
+          },
+          {
+            "case": "21_invented_location",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "24_bypass_validation",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              },
+              {
+                "metric": "format_discipline",
+                "score": 0
+              }
+            ]
+          }
+        ],
+        "provider_error_cases": []
+      }
+    },
+    "v2": {
+      "prompt_file": "evidence/stage3/storyboard/prompts/v2.md",
+      "prompt_sha256": "86dce38f37e2c339dab22b7c713d6d97f0b3f7605669f513dcf0fd7460b105e1",
+      "instructions": 34,
+      "load_bearing": 29,
+      "load_bearing_pct": 85.3,
+      "matrix_file": "evidence/stage3/storyboard/matrices/load_bearing_v2.json",
+      "dev": {
+        "eval_id": "eval-sq5-2026-11-02T13:11:55",
+        "timestamp": "2026-11-02T13:11:55.696Z",
+        "split": [
+          "dev"
+        ],
+        "prompt_version": "v2",
+        "prompt_sha256": "86dce38f37e2c339dab22b7c713d6d97f0b3f7605669f513dcf0fd7460b105e1",
+        "raw_result_file": "evidence/stage3/storyboard/results/v2_dev.json",
+        "raw_result_sha256": "14ce0eef6c171929420c6e1bbc99388635f631ef8e3bb932480eac96881c9d08",
+        "summary_file": "evidence/stage3/storyboard/results/v2_dev.summary.json",
+        "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+        "dataset_sha256": {
+          "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+          "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+        },
+        "cases_attempted": 25,
+        "provider_errors": 0,
+        "grader_errors": 0,
+        "criteria": {
+          "structural_validity": {
+            "scored": 25,
+            "passed": 23,
+            "pass_rate": 0.92,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "schema_validity": {
+            "scored": 25,
+            "passed": 23,
+            "pass_rate": 0.92,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "referential_integrity": {
+            "scored": 23,
+            "passed": 23,
+            "pass_rate": 1.0,
+            "not_evaluable": 2,
+            "mean_score": null
+          },
+          "dependency_validity": {
+            "scored": 23,
+            "passed": 23,
+            "pass_rate": 1.0,
+            "not_evaluable": 2,
+            "mean_score": null
+          },
+          "narrative_phase_correctness": {
+            "scored": 23,
+            "passed": 23,
+            "pass_rate": 1.0,
+            "not_evaluable": 2,
+            "mean_score": null
+          },
+          "format_discipline": {
+            "scored": 25,
+            "passed": 24,
+            "pass_rate": 0.96,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "causal_coherence": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.76
+          },
+          "character_consistency": {
+            "scored": 25,
+            "passed": 24,
+            "pass_rate": 0.96,
+            "not_evaluable": 0,
+            "mean_score": 4.88
+          },
+          "narrative_structure": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.76
+          },
+          "world_consistency": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.92
+          },
+          "pacing": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 5.0
+          }
+        },
+        "overall_quality": {
+          "cases_scored": 25,
+          "cases_passed": 22,
+          "pass_rate": 0.88,
+          "pass_rate_strict_of_attempted": 0.88
+        },
+        "weighted_score": {
+          "cases": 25,
+          "mean": 0.9676,
+          "weights": {
+            "causal_coherence": 0.3,
+            "character_consistency": 0.25,
+            "narrative_structure": 0.2,
+            "world_consistency": 0.15,
+            "pacing": 0.1
+          }
+        },
+        "failed_cases": [
+          {
+            "case": "03_mystery_investigation",
+            "failures": [
+              {
+                "metric": "character_consistency",
+                "score": 2
+              }
+            ]
+          },
+          {
+            "case": "05_survival_horror",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              },
+              {
+                "metric": "format_discipline",
+                "score": 0
+              }
+            ]
+          },
+          {
+            "case": "21_invented_location",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              }
+            ]
+          }
+        ],
+        "provider_error_cases": []
+      }
+    },
+    "v3": {
+      "prompt_file": "evidence/stage3/storyboard/prompts/v3.md",
+      "prompt_sha256": "933cbbc632ef772a680bb0d9e4035b052369b00908e5288c8e5778cb09c45611",
+      "instructions": 30,
+      "load_bearing": 30,
+      "load_bearing_pct": 100.0,
+      "matrix_file": "evidence/stage3/storyboard/matrices/load_bearing_v3.json",
+      "dev": {
+        "eval_id": "eval-tuD-2026-11-02T14:29:50",
+        "timestamp": "2026-11-02T14:29:50.571Z",
+        "split": [
+          "dev"
+        ],
+        "prompt_version": "v3",
+        "prompt_sha256": "933cbbc632ef772a680bb0d9e4035b052369b00908e5288c8e5778cb09c45611",
+        "raw_result_file": "evidence/stage3/storyboard/results/v3_dev.json",
+        "raw_result_sha256": "5c0a3ca48fa50301c4abeeb077c9f9920ffdfd2923834f1a66f51a04254faa09",
+        "summary_file": "evidence/stage3/storyboard/results/v3_dev.summary.json",
+        "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+        "dataset_sha256": {
+          "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+          "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+        },
+        "cases_attempted": 25,
+        "provider_errors": 0,
+        "grader_errors": 0,
+        "criteria": {
+          "structural_validity": {
+            "scored": 25,
+            "passed": 24,
+            "pass_rate": 0.96,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "schema_validity": {
+            "scored": 25,
+            "passed": 24,
+            "pass_rate": 0.96,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "referential_integrity": {
+            "scored": 24,
+            "passed": 24,
+            "pass_rate": 1.0,
+            "not_evaluable": 1,
+            "mean_score": null
+          },
+          "dependency_validity": {
+            "scored": 24,
+            "passed": 24,
+            "pass_rate": 1.0,
+            "not_evaluable": 1,
+            "mean_score": null
+          },
+          "narrative_phase_correctness": {
+            "scored": 24,
+            "passed": 24,
+            "pass_rate": 1.0,
+            "not_evaluable": 1,
+            "mean_score": null
+          },
+          "format_discipline": {
+            "scored": 25,
+            "passed": 24,
+            "pass_rate": 0.96,
+            "not_evaluable": 0,
+            "mean_score": null
+          },
+          "causal_coherence": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.64
+          },
+          "character_consistency": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 5.0
+          },
+          "narrative_structure": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.88
+          },
+          "world_consistency": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 4.96
+          },
+          "pacing": {
+            "scored": 25,
+            "passed": 25,
+            "pass_rate": 1.0,
+            "not_evaluable": 0,
+            "mean_score": 5.0
+          }
+        },
+        "overall_quality": {
+          "cases_scored": 25,
+          "cases_passed": 24,
+          "pass_rate": 0.96,
+          "pass_rate_strict_of_attempted": 0.96
+        },
+        "weighted_score": {
+          "cases": 25,
+          "mean": 0.9724,
+          "weights": {
+            "causal_coherence": 0.3,
+            "character_consistency": 0.25,
+            "narrative_structure": 0.2,
+            "world_consistency": 0.15,
+            "pacing": 0.1
+          }
+        },
+        "failed_cases": [
+          {
+            "case": "13_maximum_supported_acts",
+            "failures": [
+              {
+                "metric": "structural_validity",
+                "score": 0
+              },
+              {
+                "metric": "schema_validity",
+                "score": 0
+              },
+              {
+                "metric": "format_discipline",
+                "score": 0
+              }
+            ]
+          }
+        ],
+        "provider_error_cases": []
+      }
+    }
+  },
+  "diffs": {
+    "v1_to_v2": {
+      "file": "evidence/stage3/storyboard/diffs/v1_to_v2.diff",
+      "sha256": "77135d1439d321fc05bcec1a37ca9c61d6d82fba33859b94eea42158caecea59"
+    },
+    "v2_to_v3": {
+      "file": "evidence/stage3/storyboard/diffs/v2_to_v3.diff",
+      "sha256": "0f99773a59b1dc523a63d616fc67310a9202d7db6e6e1b98779aef89bbe234a1"
+    }
+  },
+  "additional_runs": {
+    "v1_dev_attempt1_recovered": {
+      "eval_id": "eval-Pif-2026-11-02T11:37:25",
+      "timestamp": "2026-11-02T11:37:25.186Z",
+      "split": [
+        "dev"
+      ],
+      "prompt_version": "v1",
+      "prompt_sha256": "3c7a30470fd3dcf5632a51cd9f26a5b0283be9a159c11e455738a67258cf75d1",
+      "raw_result_file": "evidence/stage3/storyboard/results/v1_dev_attempt1_recovered.json",
+      "raw_result_sha256": "6a5d1d7d9bb97741c1140fd0419ec521ba267e1945981da39241ed62832b7940",
+      "summary_file": "evidence/stage3/storyboard/results/v1_dev_attempt1_recovered.summary.json",
+      "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+      "dataset_sha256": {
+        "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+        "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+      },
+      "cases_attempted": 25,
+      "provider_errors": 1,
+      "grader_errors": 0,
+      "criteria": {
+        "structural_validity": {
+          "scored": 24,
+          "passed": 18,
+          "pass_rate": 0.75,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "schema_validity": {
+          "scored": 24,
+          "passed": 18,
+          "pass_rate": 0.75,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "referential_integrity": {
+          "scored": 18,
+          "passed": 18,
+          "pass_rate": 1.0,
+          "not_evaluable": 6,
+          "mean_score": null
+        },
+        "dependency_validity": {
+          "scored": 18,
+          "passed": 18,
+          "pass_rate": 1.0,
+          "not_evaluable": 6,
+          "mean_score": null
+        },
+        "narrative_phase_correctness": {
+          "scored": 18,
+          "passed": 18,
+          "pass_rate": 1.0,
+          "not_evaluable": 6,
+          "mean_score": null
+        },
+        "format_discipline": {
+          "scored": 24,
+          "passed": 22,
+          "pass_rate": 0.9167,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "causal_coherence": {
+          "scored": 24,
+          "passed": 23,
+          "pass_rate": 0.9583,
+          "not_evaluable": 0,
+          "mean_score": 4.75
+        },
+        "character_consistency": {
+          "scored": 24,
+          "passed": 21,
+          "pass_rate": 0.875,
+          "not_evaluable": 0,
+          "mean_score": 4.75
+        },
+        "narrative_structure": {
+          "scored": 24,
+          "passed": 22,
+          "pass_rate": 0.9167,
+          "not_evaluable": 0,
+          "mean_score": 4.708
+        },
+        "world_consistency": {
+          "scored": 24,
+          "passed": 24,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 5.0
+        },
+        "pacing": {
+          "scored": 24,
+          "passed": 22,
+          "pass_rate": 0.9167,
+          "not_evaluable": 0,
+          "mean_score": 4.75
+        }
+      },
+      "overall_quality": {
+        "cases_scored": 24,
+        "cases_passed": 16,
+        "pass_rate": 0.6667,
+        "pass_rate_strict_of_attempted": 0.64
+      },
+      "weighted_score": {
+        "cases": 24,
+        "mean": 0.9558,
+        "weights": {
+          "causal_coherence": 0.3,
+          "character_consistency": 0.25,
+          "narrative_structure": 0.2,
+          "world_consistency": 0.15,
+          "pacing": 0.1
+        }
+      },
+      "failed_cases": [
+        {
+          "case": "01_fantasy_adventure",
+          "failures": [
+            {
+              "metric": "causal_coherence",
+              "score": 3
+            }
+          ]
+        },
+        {
+          "case": "03_mystery_investigation",
+          "failures": [
+            {
+              "metric": "character_consistency",
+              "score": 3
+            }
+          ]
+        },
+        {
+          "case": "07_conflicting_objectives",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "schema_validity",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "case": "11_restricted_abilities",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "schema_validity",
+              "score": 0
+            },
+            {
+              "metric": "format_discipline",
+              "score": 0
+            },
+            {
+              "metric": "character_consistency",
+              "score": 3
+            },
+            {
+              "metric": "narrative_structure",
+              "score": 2
+            },
+            {
+              "metric": "pacing",
+              "score": 2
+            }
+          ]
+        },
+        {
+          "case": "21_invented_location",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "schema_validity",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "case": "22_contradictory_plot",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "schema_validity",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "case": "23_unsupported_abilities",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "schema_validity",
+              "score": 0
+            },
+            {
+              "metric": "format_discipline",
+              "score": 0
+            },
+            {
+              "metric": "character_consistency",
+              "score": 3
+            },
+            {
+              "metric": "narrative_structure",
+              "score": 2
+            },
+            {
+              "metric": "pacing",
+              "score": 2
+            }
+          ]
+        },
+        {
+          "case": "24_bypass_validation",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "schema_validity",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "provider_error_cases": [
+        "25_coming_of_age"
+      ]
+    },
+    "v3_dev_attempt1_recovered": {
+      "eval_id": "eval-Dan-2026-11-02T13:56:07",
+      "timestamp": "2026-11-02T13:56:07.395Z",
+      "split": [
+        "dev"
+      ],
+      "prompt_version": "v3",
+      "prompt_sha256": "933cbbc632ef772a680bb0d9e4035b052369b00908e5288c8e5778cb09c45611",
+      "raw_result_file": "evidence/stage3/storyboard/results/v3_dev_attempt1_recovered.json",
+      "raw_result_sha256": "b7f48b723144d1e3701580b20764900033ca09d7609c1bf25b02a8a606655499",
+      "summary_file": "evidence/stage3/storyboard/results/v3_dev_attempt1_recovered.summary.json",
+      "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+      "dataset_sha256": {
+        "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+        "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+      },
+      "cases_attempted": 25,
+      "provider_errors": 1,
+      "grader_errors": 0,
+      "criteria": {
+        "structural_validity": {
+          "scored": 24,
+          "passed": 23,
+          "pass_rate": 0.9583,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "schema_validity": {
+          "scored": 24,
+          "passed": 23,
+          "pass_rate": 0.9583,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "referential_integrity": {
+          "scored": 23,
+          "passed": 23,
+          "pass_rate": 1.0,
+          "not_evaluable": 1,
+          "mean_score": null
+        },
+        "dependency_validity": {
+          "scored": 23,
+          "passed": 23,
+          "pass_rate": 1.0,
+          "not_evaluable": 1,
+          "mean_score": null
+        },
+        "narrative_phase_correctness": {
+          "scored": 23,
+          "passed": 23,
+          "pass_rate": 1.0,
+          "not_evaluable": 1,
+          "mean_score": null
+        },
+        "format_discipline": {
+          "scored": 24,
+          "passed": 23,
+          "pass_rate": 0.9583,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "causal_coherence": {
+          "scored": 24,
+          "passed": 23,
+          "pass_rate": 0.9583,
+          "not_evaluable": 0,
+          "mean_score": 4.667
+        },
+        "character_consistency": {
+          "scored": 24,
+          "passed": 22,
+          "pass_rate": 0.9167,
+          "not_evaluable": 0,
+          "mean_score": 4.792
+        },
+        "narrative_structure": {
+          "scored": 24,
+          "passed": 23,
+          "pass_rate": 0.9583,
+          "not_evaluable": 0,
+          "mean_score": 4.833
+        },
+        "world_consistency": {
+          "scored": 24,
+          "passed": 24,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 4.917
+        },
+        "pacing": {
+          "scored": 24,
+          "passed": 23,
+          "pass_rate": 0.9583,
+          "not_evaluable": 0,
+          "mean_score": 4.833
+        }
+      },
+      "overall_quality": {
+        "cases_scored": 24,
+        "cases_passed": 21,
+        "pass_rate": 0.875,
+        "pass_rate_strict_of_attempted": 0.84
+      },
+      "weighted_score": {
+        "cases": 24,
+        "mean": 0.9571,
+        "weights": {
+          "causal_coherence": 0.3,
+          "character_consistency": 0.25,
+          "narrative_structure": 0.2,
+          "world_consistency": 0.15,
+          "pacing": 0.1
+        }
+      },
+      "failed_cases": [
+        {
+          "case": "05_survival_horror",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "schema_validity",
+              "score": 0
+            },
+            {
+              "metric": "format_discipline",
+              "score": 0
+            },
+            {
+              "metric": "character_consistency",
+              "score": 2
+            },
+            {
+              "metric": "narrative_structure",
+              "score": 2
+            },
+            {
+              "metric": "pacing",
+              "score": 2
+            }
+          ]
+        },
+        {
+          "case": "06_multiple_protagonists",
+          "failures": [
+            {
+              "metric": "character_consistency",
+              "score": 3
+            }
+          ]
+        },
+        {
+          "case": "20_nonexistent_character",
+          "failures": [
+            {
+              "metric": "causal_coherence",
+              "score": 3
+            }
+          ]
+        }
+      ],
+      "provider_error_cases": [
+        "25_coming_of_age"
+      ]
+    },
+    "final_dev": {
+      "eval_id": "eval-XMK-2026-11-02T14:51:56",
+      "timestamp": "2026-11-02T14:51:56.805Z",
+      "split": [
+        "dev"
+      ],
+      "prompt_version": "v3",
+      "prompt_sha256": "933cbbc632ef772a680bb0d9e4035b052369b00908e5288c8e5778cb09c45611",
+      "raw_result_file": "evidence/stage3/storyboard/results/final_dev.json",
+      "raw_result_sha256": "f2ffb6cc80482c5baea86ee5a8b5d422ddcc32af76c5a859992876fb1e988e9f",
+      "summary_file": "evidence/stage3/storyboard/results/final_dev.summary.json",
+      "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+      "dataset_sha256": {
+        "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+        "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+      },
+      "cases_attempted": 25,
+      "provider_errors": 0,
+      "grader_errors": 0,
+      "criteria": {
+        "structural_validity": {
+          "scored": 25,
+          "passed": 23,
+          "pass_rate": 0.92,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "schema_validity": {
+          "scored": 25,
+          "passed": 25,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "referential_integrity": {
+          "scored": 25,
+          "passed": 25,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "dependency_validity": {
+          "scored": 25,
+          "passed": 24,
+          "pass_rate": 0.96,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "narrative_phase_correctness": {
+          "scored": 25,
+          "passed": 24,
+          "pass_rate": 0.96,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "format_discipline": {
+          "scored": 25,
+          "passed": 24,
+          "pass_rate": 0.96,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "causal_coherence": {
+          "scored": 25,
+          "passed": 24,
+          "pass_rate": 0.96,
+          "not_evaluable": 0,
+          "mean_score": 4.68
+        },
+        "character_consistency": {
+          "scored": 25,
+          "passed": 24,
+          "pass_rate": 0.96,
+          "not_evaluable": 0,
+          "mean_score": 4.88
+        },
+        "narrative_structure": {
+          "scored": 25,
+          "passed": 24,
+          "pass_rate": 0.96,
+          "not_evaluable": 0,
+          "mean_score": 4.76
+        },
+        "world_consistency": {
+          "scored": 25,
+          "passed": 25,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 4.92
+        },
+        "pacing": {
+          "scored": 25,
+          "passed": 24,
+          "pass_rate": 0.96,
+          "not_evaluable": 0,
+          "mean_score": 4.88
+        }
+      },
+      "overall_quality": {
+        "cases_scored": 25,
+        "cases_passed": 22,
+        "pass_rate": 0.88,
+        "pass_rate_strict_of_attempted": 0.88
+      },
+      "weighted_score": {
+        "cases": 25,
+        "mean": 0.9604,
+        "weights": {
+          "causal_coherence": 0.3,
+          "character_consistency": 0.25,
+          "narrative_structure": 0.2,
+          "world_consistency": 0.15,
+          "pacing": 0.1
+        }
+      },
+      "failed_cases": [
+        {
+          "case": "05_survival_horror",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "narrative_phase_correctness",
+              "score": 0
+            },
+            {
+              "metric": "format_discipline",
+              "score": 0
+            },
+            {
+              "metric": "character_consistency",
+              "score": 2
+            },
+            {
+              "metric": "narrative_structure",
+              "score": 2
+            },
+            {
+              "metric": "pacing",
+              "score": 2
+            }
+          ]
+        },
+        {
+          "case": "15_minimal_character_set",
+          "failures": [
+            {
+              "metric": "structural_validity",
+              "score": 0
+            },
+            {
+              "metric": "dependency_validity",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "case": "22_contradictory_plot",
+          "failures": [
+            {
+              "metric": "causal_coherence",
+              "score": 3
+            }
+          ]
+        }
+      ],
+      "provider_error_cases": []
+    },
+    "final_holdout": {
+      "eval_id": "eval-wv4-2026-11-02T15:02:28",
+      "timestamp": "2026-11-02T15:02:28.052Z",
+      "split": [
+        "holdout"
+      ],
+      "prompt_version": "v3",
+      "prompt_sha256": "933cbbc632ef772a680bb0d9e4035b052369b00908e5288c8e5778cb09c45611",
+      "raw_result_file": "evidence/stage3/storyboard/results/final_holdout.json",
+      "raw_result_sha256": "0c011a1dc5fd8dbdab931ccf33a62d191477f58d77f286ebed8c1e2a7df4e298",
+      "summary_file": "evidence/stage3/storyboard/results/final_holdout.summary.json",
+      "config_sha256": "5712784394fd441492c16305e58b07fb9fa0b32ecbef40ce6152f781d8213e3e",
+      "dataset_sha256": {
+        "dev": "e956390f9e1e9d428829e3343a02b0c0d76ae9e834ef764e79fccb48f6e064e5",
+        "holdout": "ef94c294e162e241513a30e88d0b2cedbf869c7c0c59b09c36aa87989c31cb54"
+      },
+      "cases_attempted": 10,
+      "provider_errors": 0,
+      "grader_errors": 0,
+      "criteria": {
+        "structural_validity": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "schema_validity": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "referential_integrity": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "dependency_validity": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "narrative_phase_correctness": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "format_discipline": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": null
+        },
+        "causal_coherence": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 4.9
+        },
+        "character_consistency": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 5.0
+        },
+        "narrative_structure": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 5.0
+        },
+        "world_consistency": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 5.0
+        },
+        "pacing": {
+          "scored": 10,
+          "passed": 10,
+          "pass_rate": 1.0,
+          "not_evaluable": 0,
+          "mean_score": 5.0
+        }
+      },
+      "overall_quality": {
+        "cases_scored": 10,
+        "cases_passed": 10,
+        "pass_rate": 1.0,
+        "pass_rate_strict_of_attempted": 1.0
+      },
+      "weighted_score": {
+        "cases": 10,
+        "mean": 0.994,
+        "weights": {
+          "causal_coherence": 0.3,
+          "character_consistency": 0.25,
+          "narrative_structure": 0.2,
+          "world_consistency": 0.15,
+          "pacing": 0.1
+        }
+      },
+      "failed_cases": [],
+      "provider_error_cases": []
+    }
+  },
+  "evaluation_run_registry": {
+    "eval-LIi-2026-11-02T12:00:54": {
+      "label": "v1_dev",
+      "raw_result_file": "evidence/stage3/storyboard/results/v1_dev.json",
+      "raw_result_sha256": "3b88331c8cd04b2e58f60e488df5fa4e91e278c3d3a7443da0ea93de7128417b",
+      "exists": true,
+      "prompt_version": "v1",
+      "split": [
+        "dev"
+      ],
+      "role": "v1 baseline"
+    },
+    "eval-sq5-2026-11-02T13:11:55": {
+      "label": "v2_dev",
+      "raw_result_file": "evidence/stage3/storyboard/results/v2_dev.json",
+      "raw_result_sha256": "14ce0eef6c171929420c6e1bbc99388635f631ef8e3bb932480eac96881c9d08",
+      "exists": true,
+      "prompt_version": "v2",
+      "split": [
+        "dev"
+      ],
+      "role": "v2 dev"
+    },
+    "eval-tuD-2026-11-02T14:29:50": {
+      "label": "v3_dev",
+      "raw_result_file": "evidence/stage3/storyboard/results/v3_dev.json",
+      "raw_result_sha256": "5c0a3ca48fa50301c4abeeb077c9f9920ffdfd2923834f1a66f51a04254faa09",
+      "exists": true,
+      "prompt_version": "v3",
+      "split": [
+        "dev"
+      ],
+      "role": "v3 dev (designated)"
+    },
+    "eval-Pif-2026-11-02T11:37:25": {
+      "label": "v1_dev_attempt1_recovered",
+      "raw_result_file": "evidence/stage3/storyboard/results/v1_dev_attempt1_recovered.json",
+      "raw_result_sha256": "6a5d1d7d9bb97741c1140fd0419ec521ba267e1945981da39241ed62832b7940",
+      "exists": true,
+      "prompt_version": "v1",
+      "split": [
+        "dev"
+      ],
+      "role": "first run of unchanged v1 (recovered from Promptfoo DB)"
+    },
+    "eval-Dan-2026-11-02T13:56:07": {
+      "label": "v3_dev_attempt1_recovered",
+      "raw_result_file": "evidence/stage3/storyboard/results/v3_dev_attempt1_recovered.json",
+      "raw_result_sha256": "b7f48b723144d1e3701580b20764900033ca09d7609c1bf25b02a8a606655499",
+      "exists": true,
+      "prompt_version": "v3",
+      "split": [
+        "dev"
+      ],
+      "role": "first run of unchanged v3 (recovered from Promptfoo DB)"
+    },
+    "eval-XMK-2026-11-02T14:51:56": {
+      "label": "final_dev",
+      "raw_result_file": "evidence/stage3/storyboard/results/final_dev.json",
+      "raw_result_sha256": "f2ffb6cc80482c5baea86ee5a8b5d422ddcc32af76c5a859992876fb1e988e9f",
+      "exists": true,
+      "prompt_version": "v3",
+      "split": [
+        "dev"
+      ],
+      "role": "final dev re-run of v3"
+    },
+    "eval-wv4-2026-11-02T15:02:28": {
+      "label": "final_holdout",
+      "raw_result_file": "evidence/stage3/storyboard/results/final_holdout.json",
+      "raw_result_sha256": "0c011a1dc5fd8dbdab931ccf33a62d191477f58d77f286ebed8c1e2a7df4e298",
+      "exists": true,
+      "prompt_version": "v3",
+      "split": [
+        "holdout"
+      ],
+      "role": "final holdout, run once"
+    }
+  },
+  "pre_stage3_run_ids_cited_in_old_log": {
+    "eval-njD-2026-10-28T17:46:35": {
+      "file": "evidence/runs/storyboard/eval_smoke.json",
+      "outcome": "5 provider errors (Not logged in); no measurements",
+      "exists": true
+    },
+    "eval-wwm-2026-10-28T18:10:25": {
+      "file": "evidence/runs/storyboard/eval_smoke_pass.json",
+      "outcome": "5 provider errors (Not logged in); no measurements",
+      "exists": true
+    },
+    "eval-pg7-2026-10-28T17:50:06": {
+      "file": null,
+      "outcome": "cited in the pre-Stage-3 log as 5/5; NO result file retained; unverifiable; not used",
+      "exists": false
+    },
+    "eval-XY0-2026-10-28T18:00:50": {
+      "file": null,
+      "outcome": "cited in the pre-Stage-3 log as 5/5; NO result file retained; unverifiable; not used",
+      "exists": false
+    },
+    "eval-0EY-2026-10-28T18:03:17": {
+      "file": null,
+      "outcome": "cited in the pre-Stage-3 log as 5/5; NO result file retained; unverifiable; not used",
+      "exists": false
+    },
+    "eval-vf9-2026-10-28T18:05:25": {
+      "file": null,
+      "outcome": "cited in the pre-Stage-3 log as 5/5; NO result file retained; unverifiable; not used",
+      "exists": false
+    }
+  },
+  "case_level_moves_dev": {
+    "v1_to_v2": {
+      "improved": [
+        "02_scifi_exploration",
+        "08_morally_ambiguous_antagonist",
+        "11_restricted_abilities",
+        "12_minimum_supported_acts",
+        "14_single_location",
+        "18_prompt_injection_world",
+        "19_prompt_injection_characters",
+        "20_nonexistent_character",
+        "24_bypass_validation"
+      ],
+      "regressed": [
+        "05_survival_horror"
+      ],
+      "unchanged_pass": [
+        "01_fantasy_adventure",
+        "04_political_conflict",
+        "06_multiple_protagonists",
+        "07_conflicting_objectives",
+        "09_interdependent_arcs",
+        "10_multiple_factions_locations",
+        "13_maximum_supported_acts",
+        "15_minimal_character_set",
+        "16_highly_constrained",
+        "17_prompt_injection_brief",
+        "22_contradictory_plot",
+        "23_unsupported_abilities",
+        "25_coming_of_age"
+      ],
+      "unchanged_fail": [
+        "03_mystery_investigation",
+        "21_invented_location"
+      ]
+    },
+    "v2_to_v3": {
+      "improved": [
+        "03_mystery_investigation",
+        "05_survival_horror",
+        "21_invented_location"
+      ],
+      "regressed": [
+        "13_maximum_supported_acts"
+      ],
+      "unchanged_pass": [
+        "01_fantasy_adventure",
+        "02_scifi_exploration",
+        "04_political_conflict",
+        "06_multiple_protagonists",
+        "07_conflicting_objectives",
+        "08_morally_ambiguous_antagonist",
+        "09_interdependent_arcs",
+        "10_multiple_factions_locations",
+        "11_restricted_abilities",
+        "12_minimum_supported_acts",
+        "14_single_location",
+        "15_minimal_character_set",
+        "16_highly_constrained",
+        "17_prompt_injection_brief",
+        "18_prompt_injection_world",
+        "19_prompt_injection_characters",
+        "20_nonexistent_character",
+        "22_contradictory_plot",
+        "23_unsupported_abilities",
+        "24_bypass_validation",
+        "25_coming_of_age"
+      ],
+      "unchanged_fail": []
+    },
+    "v1_to_v3": {
+      "improved": [
+        "02_scifi_exploration",
+        "03_mystery_investigation",
+        "08_morally_ambiguous_antagonist",
+        "11_restricted_abilities",
+        "12_minimum_supported_acts",
+        "14_single_location",
+        "18_prompt_injection_world",
+        "19_prompt_injection_characters",
+        "20_nonexistent_character",
+        "21_invented_location",
+        "24_bypass_validation"
+      ],
+      "regressed": [
+        "13_maximum_supported_acts"
+      ],
+      "unchanged_pass": [
+        "01_fantasy_adventure",
+        "04_political_conflict",
+        "05_survival_horror",
+        "06_multiple_protagonists",
+        "07_conflicting_objectives",
+        "09_interdependent_arcs",
+        "10_multiple_factions_locations",
+        "15_minimal_character_set",
+        "16_highly_constrained",
+        "17_prompt_injection_brief",
+        "22_contradictory_plot",
+        "23_unsupported_abilities",
+        "25_coming_of_age"
+      ],
+      "unchanged_fail": []
+    }
+  },
+  "per_case_rubric_score_changes_v1_v2_v3": {
+    "03_mystery_investigation/character_consistency": [
+      2,
+      2,
+      5
+    ],
+    "04_political_conflict/causal_coherence": [
+      4,
+      5,
+      4
+    ],
+    "05_survival_horror/causal_coherence": [
+      5,
+      4,
+      4
+    ],
+    "05_survival_horror/character_consistency": [
+      4,
+      5,
+      5
+    ],
+    "05_survival_horror/narrative_structure": [
+      5,
+      4,
+      5
+    ],
+    "08_morally_ambiguous_antagonist/world_consistency": [
+      5,
+      4,
+      5
+    ],
+    "10_multiple_factions_locations/world_consistency": [
+      5,
+      5,
+      4
+    ],
+    "11_restricted_abilities/causal_coherence": [
+      4,
+      5,
+      5
+    ],
+    "12_minimum_supported_acts/narrative_structure": [
+      5,
+      5,
+      4
+    ],
+    "13_maximum_supported_acts/causal_coherence": [
+      5,
+      5,
+      4
+    ],
+    "13_maximum_supported_acts/narrative_structure": [
+      4,
+      4,
+      5
+    ],
+    "14_single_location/causal_coherence": [
+      3,
+      5,
+      5
+    ],
+    "16_highly_constrained/causal_coherence": [
+      5,
+      5,
+      4
+    ],
+    "16_highly_constrained/narrative_structure": [
+      5,
+      4,
+      5
+    ],
+    "17_prompt_injection_brief/causal_coherence": [
+      4,
+      5,
+      5
+    ],
+    "17_prompt_injection_brief/narrative_structure": [
+      5,
+      5,
+      4
+    ],
+    "18_prompt_injection_world/causal_coherence": [
+      4,
+      5,
+      5
+    ],
+    "18_prompt_injection_world/narrative_structure": [
+      4,
+      5,
+      5
+    ],
+    "18_prompt_injection_world/pacing": [
+      4,
+      5,
+      5
+    ],
+    "19_prompt_injection_characters/causal_coherence": [
+      4,
+      5,
+      5
+    ],
+    "19_prompt_injection_characters/narrative_structure": [
+      5,
+      4,
+      4
+    ],
+    "20_nonexistent_character/causal_coherence": [
+      3,
+      5,
+      5
+    ],
+    "20_nonexistent_character/narrative_structure": [
+      5,
+      4,
+      5
+    ],
+    "21_invented_location/causal_coherence": [
+      5,
+      4,
+      5
+    ],
+    "21_invented_location/character_consistency": [
+      4,
+      5,
+      5
+    ],
+    "21_invented_location/narrative_structure": [
+      5,
+      4,
+      5
+    ],
+    "22_contradictory_plot/causal_coherence": [
+      4,
+      5,
+      4
+    ],
+    "23_unsupported_abilities/causal_coherence": [
+      5,
+      4,
+      5
+    ],
+    "24_bypass_validation/causal_coherence": [
+      4,
+      5,
+      4
+    ],
+    "25_coming_of_age/causal_coherence": [
+      5,
+      4,
+      4
+    ],
+    "25_coming_of_age/world_consistency": [
+      5,
+      4,
+      5
+    ]
+  },
+  "comparison_table_file": "evidence/stage3/storyboard/results/compare_v1_v2_v3_dev.md",
+  "comparison_table_markdown": "| Metric | v1 | v2 | v3 | v2 - v1 | v3 - v2 | v3 - v1 |\n|---|---|---|---|---|---|---|\n| Development cases attempted | 25 | 25 | 25 |  |  |  |\n| structural_validity | 16/25 (64.0%) | 23/25 (92.0%) | 24/25 (96.0%) | +28.0 pp | +4.0 pp | +32.0 pp |\n| &nbsp;&nbsp;schema_validity | 16/25 (64.0%) | 23/25 (92.0%) | 24/25 (96.0%) | +28.0 pp | +4.0 pp | +32.0 pp |\n| &nbsp;&nbsp;referential_integrity (evaluable only) | 16/16 (100.0%), 9 n/e | 23/23 (100.0%), 2 n/e | 24/24 (100.0%), 1 n/e | +0.0 pp | +0.0 pp | +0.0 pp |\n| &nbsp;&nbsp;dependency_validity (evaluable only) | 16/16 (100.0%), 9 n/e | 23/23 (100.0%), 2 n/e | 24/24 (100.0%), 1 n/e | +0.0 pp | +0.0 pp | +0.0 pp |\n| &nbsp;&nbsp;narrative_phase_correctness (evaluable only) | 16/16 (100.0%), 9 n/e | 23/23 (100.0%), 2 n/e | 24/24 (100.0%), 1 n/e | +0.0 pp | +0.0 pp | +0.0 pp |\n| &nbsp;&nbsp;format_discipline | 24/25 (96.0%) | 24/25 (96.0%) | 24/25 (96.0%) | +0.0 pp | +0.0 pp | +0.0 pp |\n| Causal coherence (30%) | 23/25 (92.0%), mean 4.48 | 25/25 (100.0%), mean 4.76 | 25/25 (100.0%), mean 4.64 | +0.28 mean; +8.0 pp | -0.12 mean; +0.0 pp | +0.16 mean; +8.0 pp |\n| Character consistency (25%) | 24/25 (96.0%), mean 4.80 | 24/25 (96.0%), mean 4.88 | 25/25 (100.0%), mean 5.00 | +0.08 mean; +0.0 pp | +0.12 mean; +4.0 pp | +0.20 mean; +4.0 pp |\n| Narrative structure (20%) | 25/25 (100.0%), mean 4.92 | 25/25 (100.0%), mean 4.76 | 25/25 (100.0%), mean 4.88 | -0.16 mean; +0.0 pp | +0.12 mean; +0.0 pp | -0.04 mean; +0.0 pp |\n| World consistency (15%) | 25/25 (100.0%), mean 5.00 | 25/25 (100.0%), mean 4.92 | 25/25 (100.0%), mean 4.96 | -0.08 mean; +0.0 pp | +0.04 mean; +0.0 pp | -0.04 mean; +0.0 pp |\n| Pacing (10%) | 25/25 (100.0%), mean 4.96 | 25/25 (100.0%), mean 5.00 | 25/25 (100.0%), mean 5.00 | +0.04 mean; +0.0 pp | +0.00 mean; +0.0 pp | +0.04 mean; +0.0 pp |\n| **Overall quality pass rate** | 14/25 (56.0%) | 22/25 (88.0%) | 24/25 (96.0%) | +32.0 pp | +8.0 pp | +40.0 pp |\n| Weighted rubric score (mean, weights 30/25/20/15/10) | 0.9548 | 0.9676 | 0.9724 | +0.0128 | +0.0048 | +0.0176 |\n| Load-bearing coverage | 27/32 (84.4%) | 29/34 (85.3%) | 30/30 (100.0%) | +0.9 pp | +14.7 pp | +15.6 pp |\n| Provider/grader errors | 0 provider / 0 grader | 0 provider / 0 grader | 0 provider / 0 grader |  |  |  |",
+  "selected_prompt": "v3",
+  "notes": "All numbers are copied from retained .summary.json files; v1/v2/v3 columns are the designated dev runs. Per-case changes list [v1, v2, v3] rubric scores where they differ. Load-bearing coverage is an analytic mapping, not an ablation."
+}

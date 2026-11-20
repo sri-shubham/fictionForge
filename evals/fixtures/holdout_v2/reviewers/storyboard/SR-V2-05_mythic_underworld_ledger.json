@@ -1,0 +1,386 @@
+{
+  "case_id": "SR-V2-05",
+  "agent": "storyboard",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "mythic_underworld_ledger",
+  "context_validated": true,
+  "brief": {
+    "title": "The Last Audit",
+    "premise": "A junior scribe in the courts of the dead finds a mortal soul tallied to the wrong ledger column, and must carry the correction up through the counting-houses before the soul is weighed.",
+    "genre": "mythic fantasy",
+    "tone": "wry and solemn",
+    "target_audience": "adult",
+    "location_count": 5,
+    "constraints": [
+      "forbid:resurrection",
+      "require:ledger",
+      "The dead cannot return to life; only their accounts move.",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_underworld_ledger",
+    "name": "The Underworld Ledger",
+    "description": "The dead are governed as an endless counting-house: every mortal life is tallied in ledgers, and each arriving soul is weighed against its account before it is allowed to rest.",
+    "locations": [
+      {
+        "id": "loc_gate_of_receipts",
+        "name": "The Gate of Receipts",
+        "description": "The arrival gate where each soul surrenders its tally-slip and is queued for weighing."
+      },
+      {
+        "id": "loc_counting_halls",
+        "name": "The Counting Halls",
+        "description": "Warrens of desks where scribes transcribe mortal lives into the ledgers."
+      },
+      {
+        "id": "loc_hall_of_scales",
+        "name": "The Hall of Scales",
+        "description": "The weighing chamber where souls are measured against their ledger entries."
+      },
+      {
+        "id": "loc_erasure_wells",
+        "name": "The Erasure Wells",
+        "description": "Black shafts where accounts that cannot be balanced are dissolved."
+      },
+      {
+        "id": "loc_lamp_archive",
+        "name": "The Lamp Archive",
+        "description": "Sealed stacks holding the ledgers of the long dead, tended by lamplight."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_scribes_order",
+        "name": "The Order of Scribes",
+        "description": "The clerks who transcribe mortal lives and vouch for every ledger entry.",
+        "location_ids": [
+          "loc_counting_halls"
+        ]
+      },
+      {
+        "id": "fac_weighers",
+        "name": "The Collegium of Weighers",
+        "description": "The officers who weigh souls and certify the balances.",
+        "location_ids": [
+          "loc_hall_of_scales"
+        ]
+      },
+      {
+        "id": "fac_lamplighters",
+        "name": "The Lamplighter Kin",
+        "description": "Keepers of the Lamp Archive and its sealed pages.",
+        "location_ids": [
+          "loc_lamp_archive"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_no_return",
+        "statement": "No soul returns to the living; the courts can only correct what is written.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_three_keys",
+        "statement": "A ledger correction stands only if sealed by three keys: a scribe, a weigher and a lamplighter.",
+        "category": "social"
+      },
+      {
+        "id": "rul_erasure",
+        "statement": "A soul weighed against a miscast ledger is sent to the Erasure Wells.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_lamp_oath",
+        "statement": "A lamplighter who reads a sealed page aloud loses their lamp and their post.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_first_tally",
+        "name": "The First Tally",
+        "era": "The Founding Count",
+        "description": "The first ledger was opened so the dead could be judged by what was written, not by what was remembered.",
+        "location_ids": [
+          "loc_counting_halls"
+        ]
+      },
+      {
+        "id": "evt_wrong_war",
+        "name": "The War of the Wrong Column",
+        "era": "The Discordant Count",
+        "description": "Rival weigher houses weighed the same souls twice over a column dispute, and the wells ran dark for a season.",
+        "location_ids": [
+          "loc_hall_of_scales",
+          "loc_erasure_wells"
+        ]
+      },
+      {
+        "id": "evt_lamp_seal",
+        "name": "The Lamp Seal",
+        "era": "The Concordant Count",
+        "description": "The three-key rule was instituted so no correction could be sealed by one office alone.",
+        "location_ids": [
+          "loc_lamp_archive"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_miscast_ledger",
+        "name": "The Miscast Harvest",
+        "description": "Miscast tallies are rising this count, and the scribes and weighers each blame the other's desk.",
+        "faction_ids": [
+          "fac_scribes_order",
+          "fac_weighers"
+        ]
+      },
+      {
+        "id": "cnf_archive_access",
+        "name": "The Sealed Ledgers",
+        "description": "The lamplighters refuse to open sealed ledgers for the audit without a weigher's warrant.",
+        "faction_ids": [
+          "fac_lamplighters",
+          "fac_weighers"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_underworld_ledger",
+    "characters": [
+      {
+        "id": "chr_itho_pel",
+        "name": "Itho Pel",
+        "role": "protagonist",
+        "description": "A junior scribe of the Counting Halls who copies mortal accounts and notices errors his seniors prefer to overlook.",
+        "personality_traits": [
+          "meticulous",
+          "earnest",
+          "obstinate"
+        ],
+        "motivation": "To see the soul weighed against what it actually did.",
+        "goal": "Get the miscast entry corrected and triple-sealed before the weighing.",
+        "flaw": "He trusts ink more than people, and says so.",
+        "internal_conflict": "Correcting the ledger means accusing the offices that feed him.",
+        "external_conflict": "The weighers' collegium bars a junior scribe from the scales.",
+        "home_location_id": "loc_counting_halls",
+        "faction_id": "fac_scribes_order",
+        "abilities": [
+          {
+            "name": "Fault-sight",
+            "description": "Spots a mis-tallied column at a glance, the way a proof-reader spots a dropped letter.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Itho learns that a correction is only ink until three unwilling hands agree to seal it."
+      },
+      {
+        "id": "chr_dame_ors",
+        "name": "Dame Ors",
+        "role": "antagonist",
+        "description": "A senior weigher of the collegium who certified the miscast harvest of tallies and guards the scales' reputation as her own.",
+        "personality_traits": [
+          "august",
+          "unyielding",
+          "self-deceiving"
+        ],
+        "motivation": "To protect the weighers' infallibility, on which the whole court rests.",
+        "goal": "Quash the audit and weigh the soul as written.",
+        "flaw": "She calls her concealment mercy.",
+        "internal_conflict": "She knows the column is wrong and has convinced herself the error is small.",
+        "external_conflict": "Itho's correction would put her seal beside the error.",
+        "home_location_id": "loc_hall_of_scales",
+        "faction_id": "fac_weighers",
+        "abilities": [
+          {
+            "name": "Scale-craft",
+            "description": "Reads a soul's weight to the last dram and detects a doctored balance.",
+            "category": "supernatural"
+          }
+        ],
+        "arc": "Dame Ors must choose between the scales' honesty and her own."
+      },
+      {
+        "id": "chr_hemo_lux",
+        "name": "Hemo Lux",
+        "role": "supporting",
+        "description": "A lamplighter archivist who tends the sealed stacks and remembers the index of every ledger he is forbidden to read.",
+        "personality_traits": [
+          "wry",
+          "careful",
+          "melancholy"
+        ],
+        "motivation": "To keep the archive honest without breaking his lamp oath.",
+        "goal": "Produce the matching archive entry without reading a sealed page.",
+        "flaw": "He hides behind procedure when courage would serve better.",
+        "internal_conflict": "His oath protects the dead but shelters the fraud.",
+        "external_conflict": "Dame Ors threatens his lamp if he assists the audit.",
+        "home_location_id": "loc_lamp_archive",
+        "faction_id": "fac_lamplighters",
+        "abilities": [
+          {
+            "name": "Index memory",
+            "description": "Recalls the position and cross-references of any sealed ledger without opening it.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Hemo risks his lamp to give the correction its third key."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_itho_hemo",
+        "source_character_id": "chr_itho_pel",
+        "target_character_id": "chr_hemo_lux",
+        "relationship_type": "ally",
+        "description": "Hemo's index can find the matching entry that proves the miscast.",
+        "conflict": "Helping Itho puts Hemo's lamp in jeopardy."
+      },
+      {
+        "id": "rel_itho_ors",
+        "source_character_id": "chr_itho_pel",
+        "target_character_id": "chr_dame_ors",
+        "relationship_type": "adversary",
+        "description": "Dame Ors certified the harvest of tallies Itho is auditing.",
+        "conflict": "Her seal is required for the correction she wants buried."
+      }
+    ]
+  },
+  "storyboard": {
+    "world_id": "wld_underworld_ledger",
+    "title": "The Last Audit",
+    "logline": "A junior scribe races a correction through three offices of the dead before a mis-tallied soul is weighed on a false account.",
+    "theme": "what is written endures",
+    "acts": [
+      {
+        "id": "act_setup",
+        "title": "Setup",
+        "purpose": "setup",
+        "scenes": [
+          {
+            "id": "scn_wrong_column",
+            "title": "The Wrong Column",
+            "summary": "Copying accounts in the Counting Halls, Itho finds a charitable soul tallied into the debtors' column.",
+            "location_id": "loc_counting_halls",
+            "character_ids": [
+              "chr_itho_pel"
+            ],
+            "goal": "Verify the miscast entry.",
+            "conflict": "Flagging it accuses the weigher who certified it.",
+            "outcome": "Itho files a correction notice and is warned to drop it.",
+            "depends_on": []
+          },
+          {
+            "id": "scn_receipts_race",
+            "title": "The Tally-Slip",
+            "summary": "At the Gate of Receipts, the mis-tallied soul surrenders its slip and is queued for weighing; the queue is short.",
+            "location_id": "loc_gate_of_receipts",
+            "character_ids": [
+              "chr_itho_pel"
+            ],
+            "goal": "Learn when the soul will be weighed.",
+            "conflict": "The weighing queue cannot be paused by a junior scribe.",
+            "outcome": "The weighing is set for the third bell; Itho has that long.",
+            "depends_on": [
+              "scn_wrong_column"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_rising",
+        "title": "Rising Action",
+        "purpose": "rising_action",
+        "scenes": [
+          {
+            "id": "scn_weigher_denial",
+            "title": "The Weigher's Seal",
+            "summary": "Itho petitions at the Hall of Scales; Dame Ors refuses the correction and revokes his petitioner's badge.",
+            "location_id": "loc_hall_of_scales",
+            "character_ids": [
+              "chr_itho_pel",
+              "chr_dame_ors"
+            ],
+            "goal": "Win a weigher's key.",
+            "conflict": "Dame Ors certified the harvest and will not audit herself.",
+            "outcome": "Itho leaves without her seal, but with her ledger copy.",
+            "depends_on": [
+              "scn_receipts_race"
+            ]
+          },
+          {
+            "id": "scn_archive_index",
+            "title": "The Lamp Index",
+            "summary": "In the Lamp Archive, Hemo finds the matching entry's index cross-reference, which alone can prove the column switch.",
+            "location_id": "loc_lamp_archive",
+            "character_ids": [
+              "chr_itho_pel",
+              "chr_hemo_lux"
+            ],
+            "goal": "Find proof in the archive.",
+            "conflict": "The proof sits in a sealed ledger Hemo may not read.",
+            "outcome": "The index itself proves the switch; Hemo offers his key.",
+            "depends_on": [
+              "scn_weigher_denial"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_climax",
+        "title": "Climax",
+        "purpose": "climax",
+        "scenes": [
+          {
+            "id": "scn_three_keys",
+            "title": "Three Keys",
+            "summary": "At the weighing, Itho lays the index proof before the court; shamed by her own ledgers, Dame Ors sets her seal with the scribe and the lamplighter.",
+            "location_id": "loc_hall_of_scales",
+            "character_ids": [
+              "chr_itho_pel",
+              "chr_dame_ors",
+              "chr_hemo_lux"
+            ],
+            "goal": "Seal the correction before the weighing.",
+            "conflict": "Ors must condemn herself to save the soul.",
+            "outcome": "The correction is triple-sealed; the soul is weighed true.",
+            "depends_on": [
+              "scn_archive_index"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_resolution",
+        "title": "Resolution",
+        "purpose": "resolution",
+        "scenes": [
+          {
+            "id": "scn_weighed_true",
+            "title": "Weighed True",
+            "summary": "The corrected account is read at the scales, the soul passes the wells unharmed, and the harvest audit is opened under three seals.",
+            "location_id": "loc_hall_of_scales",
+            "character_ids": [
+              "chr_itho_pel",
+              "chr_hemo_lux"
+            ],
+            "goal": "Record the true weighing.",
+            "conflict": "The audit Dame Ors feared now begins in earnest.",
+            "outcome": "The ledgers are amended; the counting-houses learn to audit themselves.",
+            "depends_on": [
+              "scn_three_keys"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's bureaucratic afterlife setting; deterministic validators are clean and there are no blocking defects."
+}

@@ -1,0 +1,176 @@
+{
+  "$defs": {
+    "Act": {
+      "additionalProperties": false,
+      "description": "A major division of the storyboard with a narrative purpose.",
+      "properties": {
+        "id": {
+          "pattern": "^act_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "purpose": {
+          "description": "Narrative purpose of the act.",
+          "enum": [
+            "setup",
+            "rising_action",
+            "climax",
+            "resolution"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        },
+        "scenes": {
+          "description": "Ordered scenes that make up the act.",
+          "items": {
+            "$ref": "#/$defs/Scene"
+          },
+          "maxItems": 25,
+          "minItems": 1,
+          "title": "Scenes",
+          "type": "array"
+        },
+        "title": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "purpose",
+        "scenes"
+      ],
+      "title": "Act",
+      "type": "object"
+    },
+    "Scene": {
+      "additionalProperties": false,
+      "description": "A single narrative beat within an act.",
+      "properties": {
+        "character_ids": {
+          "description": "Participating characters; at least one required.",
+          "items": {
+            "pattern": "^chr_[a-z0-9_]{1,48}$",
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "title": "Character Ids",
+          "type": "array"
+        },
+        "conflict": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Conflict",
+          "type": "string"
+        },
+        "depends_on": {
+          "description": "Preceding scene IDs this scene depends on.",
+          "items": {
+            "pattern": "^scn_[a-z0-9_]{1,48}$",
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Depends On",
+          "type": "array"
+        },
+        "goal": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Goal",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^scn_[a-z0-9_]{1,48}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "location_id": {
+          "pattern": "^loc_[a-z0-9_]{1,48}$",
+          "title": "Location Id",
+          "type": "string"
+        },
+        "outcome": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Outcome",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "location_id",
+        "character_ids",
+        "goal",
+        "conflict",
+        "outcome"
+      ],
+      "title": "Scene",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Complete narrative outline for the story-writing workflow.",
+  "properties": {
+    "acts": {
+      "description": "Ordered acts that make up the story.",
+      "items": {
+        "$ref": "#/$defs/Act"
+      },
+      "maxItems": 10,
+      "minItems": 1,
+      "title": "Acts",
+      "type": "array"
+    },
+    "logline": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Logline",
+      "type": "string"
+    },
+    "theme": {
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Theme",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "world_id": {
+      "description": "References the source world.",
+      "pattern": "^wld_[a-z0-9_]{1,48}$",
+      "title": "World Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "world_id",
+    "title",
+    "logline",
+    "theme",
+    "acts"
+  ],
+  "title": "Storyboard",
+  "type": "object"
+}

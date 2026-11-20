@@ -1,0 +1,10 @@
+--- v3.md
++++ v4.md
+@@ -24,6 +24,7 @@
+ ## Evidence
+ - Report a defect only if you can support it with a verbatim quote from the brief or the world. No speculation.
+ - Quote only the text values of fields (the words of a name, description, statement or era, or an id string such as `loc_example_site`), never JSON keys, brackets or quotation marks around keys. To show a broken link, quote the id string and cite the field holding it.
++- Every quoted fragment must be at least eight characters long. Never quote a shorter value on its own; if the decisive value is short (such as an era or an id), identify its field through `artifact_path` or `reference_path` and quote the longer passage containing the defect instead.
+ - Every issue must quote the exact words in `evidence` (join two quotes with ` || `), give the path of the world field containing the defect in `artifact_path`, and give the path of the conflicting rule, constraint or passage in `reference_path` (use null only when no second passage is involved).
+ - Paths use only `.key` and `[index]` segments rooted at `$`. Paths into the world are written `$.rules[0].statement`; paths into the brief are written `brief::$.constraints[1]`.
+ 

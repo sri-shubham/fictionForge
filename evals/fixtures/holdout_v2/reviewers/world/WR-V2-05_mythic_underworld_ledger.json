@@ -1,0 +1,156 @@
+{
+  "case_id": "WR-V2-05",
+  "agent": "world",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "mythic_underworld_ledger",
+  "context_validated": true,
+  "brief": {
+    "title": "The Last Audit",
+    "premise": "A junior scribe in the courts of the dead finds a mortal soul tallied to the wrong ledger column, and must carry the correction up through the counting-houses before the soul is weighed.",
+    "genre": "mythic fantasy",
+    "tone": "wry and solemn",
+    "target_audience": "adult",
+    "location_count": 5,
+    "constraints": [
+      "forbid:resurrection",
+      "require:ledger",
+      "The dead cannot return to life; only their accounts move.",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_underworld_ledger",
+    "name": "The Underworld Ledger",
+    "description": "The dead are governed as an endless counting-house: every mortal life is tallied in ledgers, and each arriving soul is weighed against its account before it is allowed to rest.",
+    "locations": [
+      {
+        "id": "loc_gate_of_receipts",
+        "name": "The Gate of Receipts",
+        "description": "The arrival gate where each soul surrenders its tally-slip and is queued for weighing."
+      },
+      {
+        "id": "loc_counting_halls",
+        "name": "The Counting Halls",
+        "description": "Warrens of desks where scribes transcribe mortal lives into the ledgers."
+      },
+      {
+        "id": "loc_hall_of_scales",
+        "name": "The Hall of Scales",
+        "description": "The weighing chamber where souls are measured against their ledger entries."
+      },
+      {
+        "id": "loc_erasure_wells",
+        "name": "The Erasure Wells",
+        "description": "Black shafts where accounts that cannot be balanced are dissolved."
+      },
+      {
+        "id": "loc_lamp_archive",
+        "name": "The Lamp Archive",
+        "description": "Sealed stacks holding the ledgers of the long dead, tended by lamplight."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_scribes_order",
+        "name": "The Order of Scribes",
+        "description": "The clerks who transcribe mortal lives and vouch for every ledger entry.",
+        "location_ids": [
+          "loc_counting_halls"
+        ]
+      },
+      {
+        "id": "fac_weighers",
+        "name": "The Collegium of Weighers",
+        "description": "The officers who weigh souls and certify the balances.",
+        "location_ids": [
+          "loc_hall_of_scales"
+        ]
+      },
+      {
+        "id": "fac_lamplighters",
+        "name": "The Lamplighter Kin",
+        "description": "Keepers of the Lamp Archive and its sealed pages.",
+        "location_ids": [
+          "loc_lamp_archive"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_no_return",
+        "statement": "No soul returns to the living; the courts can only correct what is written.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_three_keys",
+        "statement": "A ledger correction stands only if sealed by three keys: a scribe, a weigher and a lamplighter.",
+        "category": "social"
+      },
+      {
+        "id": "rul_erasure",
+        "statement": "A soul weighed against a miscast ledger is sent to the Erasure Wells.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_lamp_oath",
+        "statement": "A lamplighter who reads a sealed page aloud loses their lamp and their post.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_first_tally",
+        "name": "The First Tally",
+        "era": "The Founding Count",
+        "description": "The first ledger was opened so the dead could be judged by what was written, not by what was remembered.",
+        "location_ids": [
+          "loc_counting_halls"
+        ]
+      },
+      {
+        "id": "evt_wrong_war",
+        "name": "The War of the Wrong Column",
+        "era": "The Discordant Count",
+        "description": "Rival weigher houses weighed the same souls twice over a column dispute, and the wells ran dark for a season.",
+        "location_ids": [
+          "loc_hall_of_scales",
+          "loc_erasure_wells"
+        ]
+      },
+      {
+        "id": "evt_lamp_seal",
+        "name": "The Lamp Seal",
+        "era": "The Concordant Count",
+        "description": "The three-key rule was instituted so no correction could be sealed by one office alone.",
+        "location_ids": [
+          "loc_lamp_archive"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_miscast_ledger",
+        "name": "The Miscast Harvest",
+        "description": "Miscast tallies are rising this count, and the scribes and weighers each blame the other's desk.",
+        "faction_ids": [
+          "fac_scribes_order",
+          "fac_weighers"
+        ]
+      },
+      {
+        "id": "cnf_archive_access",
+        "name": "The Sealed Ledgers",
+        "description": "The lamplighters refuse to open sealed ledgers for the audit without a weigher's warrant.",
+        "faction_ids": [
+          "fac_lamplighters",
+          "fac_weighers"
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's bureaucratic afterlife setting; deterministic validators are clean and there are no blocking defects."
+}

@@ -1,0 +1,230 @@
+{
+  "case_id": "CR-D29",
+  "agent": "characters",
+  "split": "dev",
+  "category": "malformed_input",
+  "slug": "markup_emoji_unicode_fields",
+  "context_validated": true,
+  "brief": {
+    "title": "Hollowmere",
+    "premise": "A surveyor arrives in a mist-bound village where no one will say what happens to those who leave before dawn, and learns that the village's lanterns are keeping something out.",
+    "genre": "horror",
+    "tone": "dread",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:vampire",
+      "require:lantern",
+      "Do not explain the entity in the mist; its nature must stay unknown.",
+      "max_locations:4"
+    ],
+    "location_count": 3
+  },
+  "world": {
+    "world_id": "wld_hollowmere",
+    "name": "Hollowmere",
+    "description": "Hollowmere is a mist-bound village of lantern posts and silent rules, where the night belongs to something no one will name.",
+    "locations": [
+      {
+        "id": "loc_lantern_green",
+        "name": "Lantern Green",
+        "description": "The village common, ringed by iron lantern posts lit from dusk to dawn."
+      },
+      {
+        "id": "loc_chapel_ruin",
+        "name": "Chapel Ruin",
+        "description": "A roofless chapel at the village edge where the mist is always thickest."
+      },
+      {
+        "id": "loc_ferry_stair",
+        "name": "Ferry Stair",
+        "description": "A stone stair down to the mere, where the only road out begins."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_lamp_wardens",
+        "name": "Lamp Wardens",
+        "description": "Villagers who tend the lantern posts and keep a nightly vigil.",
+        "location_ids": [
+          "loc_lantern_green"
+        ]
+      },
+      {
+        "id": "fac_chapel_remnant",
+        "name": "Chapel Remnant",
+        "description": "A few elders who still hold services in the Chapel Ruin and say the mist is a judgment.",
+        "location_ids": [
+          "loc_chapel_ruin"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_lantern_night",
+        "statement": "The lanterns on Lantern Green must burn from dusk to dawn, and the mist does not cross lit ground.",
+        "category": "metaphysics"
+      },
+      {
+        "id": "rul_dawn_leave",
+        "statement": "No one may leave Hollowmere before dawn; those who do are not seen again.",
+        "category": "social"
+      },
+      {
+        "id": "rul_no_name",
+        "statement": "Villagers never speak of what lives in the mist.",
+        "category": "social"
+      },
+      {
+        "id": "rul_ferry_day",
+        "statement": "The ferry crosses the mere only in daylight.",
+        "category": "other"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_first_lanterns",
+        "name": "The Lighting of the Posts",
+        "era": "Generations ago",
+        "description": "After the first night of mist, the villagers raised iron posts and kept them burning, and the mist stopped at the lit ground.",
+        "location_ids": [
+          "loc_lantern_green"
+        ]
+      },
+      {
+        "id": "evt_chapel_fall",
+        "name": "The Fall of the Chapel",
+        "era": "Two generations ago",
+        "description": "The chapel roof collapsed during a night when the lanterns guttered, and the mist took the cellar.",
+        "location_ids": [
+          "loc_chapel_ruin"
+        ]
+      },
+      {
+        "id": "evt_missing_surveyor",
+        "name": "The Missing Surveyor",
+        "era": "Last decade",
+        "description": "A surveyor walked down Ferry Stair before dawn to leave the village and was never seen again.",
+        "location_ids": [
+          "loc_ferry_stair"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_vigil_dispute",
+        "name": "The Vigil Dispute",
+        "description": "The Chapel Remnant says the lanterns defy judgment, while the Lamp Wardens say the vigil is the only thing keeping them alive.",
+        "faction_ids": [
+          "fac_chapel_remnant",
+          "fac_lamp_wardens"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_hollowmere",
+    "characters": [
+      {
+        "id": "chr_edda",
+        "name": "Edda Mars 🧭",
+        "role": "protagonist",
+        "description": "A surveyor who arrives on the daylight ferry to map the village boundary.",
+        "personality_traits": [
+          "rational",
+          "curious",
+          "impatient"
+        ],
+        "motivation": "To finish her survey and leave before dark.",
+        "goal": "Map the village boundary by dusk.",
+        "flaw": "Dismisses local customs as superstition.",
+        "internal_conflict": "She wants to leave but is curious about the lanterns.",
+        "external_conflict": "The villagers will not answer her questions about the mist.",
+        "home_location_id": "loc_ferry_stair",
+        "faction_id": null,
+        "abilities": [
+          {
+            "name": "Triangulation",
+            "description": "Fixes a boundary line from three sightings with a surveyor's chain and sights.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Edda learns that the village's silence protects its people."
+      },
+      {
+        "id": "chr_wick",
+        "name": "Wick Harrow",
+        "role": "supporting",
+        "description": "A **Lamp Warden** who trims the lantern posts each dusk and keeps the nightly vigil (see `vigil rota` §2).",
+        "personality_traits": [
+          "steady",
+          "taciturn",
+          "haunted"
+        ],
+        "motivation": "To keep the lanterns burning until dawn.",
+        "goal": "Persuade Edda to stay on lit ground after dusk.",
+        "flaw": "Cannot speak of his fear.",
+        "internal_conflict": "He lost a brother to the mist.",
+        "external_conflict": "The Chapel Remnant says the vigil defies judgment.",
+        "home_location_id": "loc_lantern_green",
+        "faction_id": "fac_lamp_wardens",
+        "abilities": [
+          {
+            "name": "Wick-trimming",
+            "description": "Keeps every lantern post burning evenly through the night.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Wick learns to share the vigil's burden."
+      },
+      {
+        "id": "chr_maud",
+        "name": "Sister Maud",
+        "role": "antagonist",
+        "description": "An elder of the Chapel Remnant who holds services in the Chapel Ruin and <i>says</i> the mist is a judgment.",
+        "personality_traits": [
+          "certain",
+          "austere",
+          "proud",
+          "“never again”"
+        ],
+        "motivation": "To prove the mist is a judgment that the lanterns defy.",
+        "goal": "Persuade the village to let one lantern post go dark.",
+        "flaw": "Certainty without proof.",
+        "internal_conflict": "She half-fears she is wrong.",
+        "external_conflict": "The Lamp Wardens guard every post.",
+        "home_location_id": "loc_chapel_ruin",
+        "faction_id": "fac_chapel_remnant",
+        "abilities": [
+          {
+            "name": "Sermon-craft",
+            "description": "Holds a frightened congregation steady with a measured voice.",
+            "category": "social"
+          }
+        ],
+        "arc": "Maud confronts what her certainty would cost."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_wick_edda",
+        "source_character_id": "chr_wick",
+        "target_character_id": "chr_edda",
+        "relationship_type": "ally",
+        "description": "Wick warns Edda to be back on lit ground by dusk.",
+        "conflict": null
+      },
+      {
+        "id": "rel_maud_wick",
+        "source_character_id": "chr_maud",
+        "target_character_id": "chr_wick",
+        "relationship_type": "adversary",
+        "description": "Maud wants the lantern post Wick tends put out.",
+        "conflict": "He will not let it go dark."
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "Names, descriptions and traits carry emoji, Markdown, HTML-like tags, backticks and curly quotes; the cast stays consistent."
+}

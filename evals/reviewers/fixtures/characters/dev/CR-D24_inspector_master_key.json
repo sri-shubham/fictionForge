@@ -1,0 +1,298 @@
+{
+  "case_id": "CR-D24",
+  "agent": "characters",
+  "split": "dev",
+  "category": "single_contradiction",
+  "slug": "inspector_master_key",
+  "context_validated": true,
+  "brief": {
+    "title": "The Gaslamp Quay",
+    "premise": "A tide-clock inspector in a fog-bound port city investigates the death of a lamplighter found drowned in a locked lamp-house, and discovers that the harbour board has been selling false curfews.",
+    "genre": "mystery",
+    "tone": "noir",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:electric",
+      "require:lamplighter",
+      "Nothing supernatural: every event must have a natural explanation.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_gaslamp_quay",
+    "name": "Gaslamp Quay",
+    "description": "Gaslamp Quay is a fog-bound estuary port lit by coal gas and ruled by the Harbour Board, where curfews are bought and sold.",
+    "locations": [
+      {
+        "id": "loc_lamp_house_row",
+        "name": "Lamp-House Row",
+        "description": "A terrace of locked lamp-houses where gas lamps are filled and tended each dusk."
+      },
+      {
+        "id": "loc_harbour_hall",
+        "name": "Harbour Board Hall",
+        "description": "The marble hall where curfews, tide tables and mooring licences are issued."
+      },
+      {
+        "id": "loc_fog_wharf",
+        "name": "Fog Wharf",
+        "description": "A timber wharf where fog off the estuary hides ships and smugglers alike."
+      },
+      {
+        "id": "loc_tide_clock",
+        "name": "Tide-Clock Tower",
+        "description": "A brass clock tower whose gearing tracks the tides and sets the city's curfew bell."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_lamplighters",
+        "name": "Lamplighters' Guild",
+        "description": "A guild that fills, lights and locks the city's gas lamps.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "fac_harbour_board",
+        "name": "Harbour Board",
+        "description": "Officials who issue curfews and mooring licences, and profit from both.",
+        "location_ids": [
+          "loc_harbour_hall",
+          "loc_tide_clock"
+        ]
+      },
+      {
+        "id": "fac_fog_runners",
+        "name": "Fog Runners",
+        "description": "Smugglers who use the curfew gaps to slip cargo past the wharf.",
+        "location_ids": [
+          "loc_fog_wharf"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_gas_clockwork",
+        "statement": "The city is lit by coal gas and driven by clockwork and steam.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_curfew_bell",
+        "statement": "After the curfew bell, wharf gates are locked until dawn and may be opened only by a Harbour Board officer's key.",
+        "category": "social"
+      },
+      {
+        "id": "rul_lamp_lock",
+        "statement": "Each lamp-house is locked at dusk with a guild key; only the lamplighter assigned to it and the guild master hold keys.",
+        "category": "social"
+      },
+      {
+        "id": "rul_fog_tide",
+        "statement": "Fog thickens on the wharf at the turn of the tide, hiding ships for about an hour.",
+        "category": "physics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_gas_laid",
+        "name": "Laying of the Gas Mains",
+        "era": "1840s",
+        "description": "The Harbour Board laid the first coal-gas mains along Lamp-House Row.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "evt_clock_raised",
+        "name": "Raising of the Tide-Clock",
+        "era": "1850s",
+        "description": "Clockmakers raised the Tide-Clock Tower and tied the curfew bell to its tide gearing.",
+        "location_ids": [
+          "loc_tide_clock"
+        ]
+      },
+      {
+        "id": "evt_guild_charter",
+        "name": "The Lamplighters' Charter",
+        "era": "1860s",
+        "description": "The Lamplighters' Guild won a charter granting its members exclusive keys to the lamp-houses.",
+        "location_ids": [
+          "loc_lamp_house_row"
+        ]
+      },
+      {
+        "id": "evt_false_curfew",
+        "name": "The First False Curfew",
+        "era": "1870s",
+        "description": "The Harbour Board secretly rang an early curfew bell so that the Fog Runners could bribe an officer to unlock the wharf gates.",
+        "location_ids": [
+          "loc_fog_wharf",
+          "loc_harbour_hall"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_false_curfews",
+        "name": "The False Curfews",
+        "description": "The Lamplighters' Guild accuses the Harbour Board of selling false curfews.",
+        "faction_ids": [
+          "fac_lamplighters",
+          "fac_harbour_board"
+        ]
+      },
+      {
+        "id": "cnf_wharf_smuggling",
+        "name": "The Wharf Smuggling",
+        "description": "The Harbour Board quietly tolerates the Fog Runners' smuggling in return for bribes.",
+        "faction_ids": [
+          "fac_harbour_board",
+          "fac_fog_runners"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_gaslamp_quay",
+    "characters": [
+      {
+        "id": "chr_cato",
+        "name": "Cato Wren",
+        "role": "protagonist",
+        "description": "A tide-clock inspector who checks the Tide-Clock Tower's gearing each month and opens any lamp-house with his own Harbour Board master key.",
+        "personality_traits": [
+          "dogged",
+          "dry",
+          "observant"
+        ],
+        "motivation": "To find out who left a lamplighter drowned in a locked lamp-house.",
+        "goal": "Work out who held a key to the lamp-house that night.",
+        "flaw": "Pursues a theory past the evidence.",
+        "internal_conflict": "He owes the Harbour Board his post.",
+        "external_conflict": "The Board obstructs his inquiries.",
+        "home_location_id": "loc_tide_clock",
+        "faction_id": null,
+        "abilities": [
+          {
+            "name": "Gear-reading",
+            "description": "Spots a mistimed curfew bell by the sound of the gearing.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Cato learns that the curfews were sold, and that his own tables were used to justify them."
+      },
+      {
+        "id": "chr_marguerite",
+        "name": "Marguerite Ashby",
+        "role": "supporting",
+        "description": "Master of the Lamplighters' Guild, who holds one of the keys to every lamp-house.",
+        "personality_traits": [
+          "fierce",
+          "loyal",
+          "proud"
+        ],
+        "motivation": "To clear her Guild's name after a lamplighter's death.",
+        "goal": "Hand Cato the Guild's key logs.",
+        "flaw": "Shields her people even when they are wrong.",
+        "internal_conflict": "She suspects one of her own.",
+        "external_conflict": "The Board blames the Guild.",
+        "home_location_id": "loc_lamp_house_row",
+        "faction_id": "fac_lamplighters",
+        "abilities": [
+          {
+            "name": "Lamp-lore",
+            "description": "Knows every lamp-house's filling schedule by heart.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Marguerite accepts that protecting the Guild means exposing a member."
+      },
+      {
+        "id": "chr_osric",
+        "name": "Osric Dunne",
+        "role": "antagonist",
+        "description": "A Harbour Board officer who sells early curfews and holds a key that opens the wharf gates after the bell.",
+        "personality_traits": [
+          "smooth",
+          "greedy",
+          "watchful"
+        ],
+        "motivation": "To keep the curfew trade profitable and quiet.",
+        "goal": "Pin the lamplighter's death on the Guild.",
+        "flaw": "Overconfident in his cover.",
+        "internal_conflict": "He is unsettled that the dead man was a friend.",
+        "external_conflict": "Cato's inquiry threatens to expose the trade.",
+        "home_location_id": "loc_harbour_hall",
+        "faction_id": "fac_harbour_board",
+        "abilities": [
+          {
+            "name": "Bribe-brokering",
+            "description": "Arranges payments between smugglers and the Board without a written trace.",
+            "category": "social"
+          }
+        ],
+        "arc": "Osric's network unravels as Cato matches curfew bells to payments."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_cato_marguerite",
+        "source_character_id": "chr_cato",
+        "target_character_id": "chr_marguerite",
+        "relationship_type": "ally",
+        "description": "Marguerite shares the Guild's key logs with Cato.",
+        "conflict": null
+      },
+      {
+        "id": "rel_cato_osric",
+        "source_character_id": "chr_cato",
+        "target_character_id": "chr_osric",
+        "relationship_type": "adversary",
+        "description": "Cato's inquiry threatens Osric's curfew trade.",
+        "conflict": "Osric obstructs the inquiry."
+      },
+      {
+        "id": "rel_marguerite_osric",
+        "source_character_id": "chr_marguerite",
+        "target_character_id": "chr_osric",
+        "relationship_type": "accuser",
+        "description": "Marguerite accuses Osric of selling false curfews.",
+        "conflict": null
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "WORLD_RULE_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.characters[0].description"
+      ],
+      "reference_paths": [
+        "world::$.rules[2].statement"
+      ],
+      "evidence_quotes": [
+        "opens any lamp-house with his own Harbour Board master key",
+        "only the lamplighter assigned to it and the guild master hold keys"
+      ],
+      "anchor_terms": [
+        "master key"
+      ],
+      "rationale": "Cato cannot hold a lamp-house key.",
+      "correction_hint": "Remove the master key from Cato.",
+      "label_id": "CR-D24-L1"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Cato opens any lamp-house with a Harbour Board master key, but only the assigned lamplighter and the guild master hold lamp-house keys."
+}

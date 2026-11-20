@@ -1,0 +1,356 @@
+{
+  "case_id": "CR-H03",
+  "agent": "characters",
+  "split": "holdout",
+  "category": "multiple_subtle",
+  "slug": "live_link_antenna_year_broadcast_goal",
+  "context_validated": true,
+  "brief": {
+    "title": "Ouroboros Station",
+    "premise": "On a deep-space relay station that feeds its own recycled water back to itself, a technician finds that the water loop is contaminated and must decide whether to alert a command that is eleven light-hours away.",
+    "genre": "science fiction",
+    "tone": "tense",
+    "target_audience": "adult",
+    "constraints": [
+      "forbid:teleport",
+      "require:recycled",
+      "No faster-than-light travel or communication: every message is limited by lightspeed.",
+      "max_locations:5"
+    ],
+    "location_count": 4
+  },
+  "world": {
+    "world_id": "wld_ouroboros",
+    "name": "Ouroboros Station",
+    "description": "Ouroboros Station is a deep-space relay that recycles its own water and speaks to command only at the speed of light.",
+    "locations": [
+      {
+        "id": "loc_water_loop",
+        "name": "Water Loop",
+        "description": "The closed network of tanks and filters that recycles every drop on the station."
+      },
+      {
+        "id": "loc_relay_array",
+        "name": "Relay Array",
+        "description": "The antenna farm that sends and receives messages to command, eleven light-hours away."
+      },
+      {
+        "id": "loc_crew_ring",
+        "name": "Crew Ring",
+        "description": "The rotating habitat where the forty crew sleep and eat."
+      },
+      {
+        "id": "loc_cold_store",
+        "name": "Cold Store",
+        "description": "An unpowered vault where spare parts and frozen samples are kept."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_loop_techs",
+        "name": "Loop Technicians",
+        "description": "Engineers who maintain the Water Loop and test every batch of recycled water.",
+        "location_ids": [
+          "loc_water_loop"
+        ]
+      },
+      {
+        "id": "fac_relay_crew",
+        "name": "Relay Crew",
+        "description": "Operators of the Relay Array who time every message to the lightspeed delay.",
+        "location_ids": [
+          "loc_relay_array"
+        ]
+      },
+      {
+        "id": "fac_ring_council",
+        "name": "Ring Council",
+        "description": "Elected crew representatives who decide station policy and ration supplies.",
+        "location_ids": [
+          "loc_crew_ring"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_lightspeed",
+        "statement": "A message to command takes eleven hours to arrive, and the reply takes eleven more.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_closed_loop",
+        "statement": "No water enters or leaves the station; every drop is recycled.",
+        "category": "physics"
+      },
+      {
+        "id": "rul_no_ship",
+        "statement": "The station has no ship; the next supply visit is due in four years.",
+        "category": "technology"
+      },
+      {
+        "id": "rul_council_vote",
+        "statement": "Station policy changes require a majority vote of the Ring Council.",
+        "category": "social"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_sealed",
+        "name": "Sealing of the Loop",
+        "era": "Year 1",
+        "description": "Builders sealed the Water Loop and declared that no water would ever enter or leave.",
+        "location_ids": [
+          "loc_water_loop"
+        ]
+      },
+      {
+        "id": "evt_array_raised",
+        "name": "Relay Array Raised",
+        "era": "Year 2",
+        "description": "The first antennas were raised, linking the station to command at lightspeed delay.",
+        "location_ids": [
+          "loc_relay_array"
+        ]
+      },
+      {
+        "id": "evt_supply_visit",
+        "name": "The Last Supply Visit",
+        "era": "Year 3",
+        "description": "A supply ship delivered spare parts and then departed, leaving the station without a ship.",
+        "location_ids": [
+          "loc_cold_store"
+        ]
+      },
+      {
+        "id": "evt_ration_vote",
+        "name": "The Ration Vote",
+        "era": "Year 5",
+        "description": "The Ring Council voted by majority to cut water rations by a tenth.",
+        "location_ids": [
+          "loc_crew_ring"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_contamination",
+        "name": "The Contamination Claim",
+        "description": "The Loop Technicians dispute the Relay Crew over whether to report the contamination to command.",
+        "faction_ids": [
+          "fac_loop_techs",
+          "fac_relay_crew"
+        ]
+      },
+      {
+        "id": "cnf_ration_cut",
+        "name": "The Ration Cut",
+        "description": "The Ring Council clashes with the Loop Technicians over a vote to cut water rations.",
+        "faction_ids": [
+          "fac_ring_council",
+          "fac_loop_techs"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_ouroboros",
+    "characters": [
+      {
+        "id": "chr_tavi",
+        "name": "Tavi Sorensen",
+        "role": "protagonist",
+        "description": "A Loop Technician who stood at the Relay Array when its first antennas were raised in Year 1 and now tests every batch of recycled water by hand.",
+        "personality_traits": [
+          "exacting",
+          "solitary",
+          "stubborn"
+        ],
+        "motivation": "To find the source of the contamination before it reaches the crew's taps.",
+        "goal": "Trace the contamination to its source inside the Water Loop.",
+        "flaw": "Distrusts anyone outside the Loop.",
+        "internal_conflict": "She fears that reporting will only frighten a crew that cannot be helped.",
+        "external_conflict": "The Relay Crew want it reported to command at once.",
+        "home_location_id": "loc_water_loop",
+        "faction_id": "fac_loop_techs",
+        "abilities": [
+          {
+            "name": "Assay-testing",
+            "description": "Reads contamination levels from a hand-held titration kit.",
+            "category": "technological"
+          }
+        ],
+        "arc": "Tavi accepts that the crew must be told."
+      },
+      {
+        "id": "chr_dmitri",
+        "name": "Dmitri Okafor",
+        "role": "antagonist",
+        "description": "Chair of the Ring Council, who prefers to delay any report to command until the Council has met in closed session.",
+        "personality_traits": [
+          "measured",
+          "cautious",
+          "evasive"
+        ],
+        "motivation": "To avoid panic among the forty crew.",
+        "goal": "Broadcast the contamination to the whole crew at once.",
+        "flaw": "Mistakes delay for calm.",
+        "internal_conflict": "He knows eleven hours each way leaves no room for delay.",
+        "external_conflict": "Tavi and the Relay Crew press him to report.",
+        "home_location_id": "loc_crew_ring",
+        "faction_id": "fac_ring_council",
+        "abilities": [
+          {
+            "name": "Consensus-building",
+            "description": "Steers a divided council toward a majority vote.",
+            "category": "social"
+          }
+        ],
+        "arc": "Dmitri is forced to put the contamination to a full crew vote."
+      },
+      {
+        "id": "chr_yuki",
+        "name": "Yuki Tamura",
+        "role": "supporting",
+        "description": "An operator who times every message to command around the eleven-hour lightspeed delay.",
+        "personality_traits": [
+          "precise",
+          "patient",
+          "dry"
+        ],
+        "motivation": "To send the contamination report before the next signal window.",
+        "goal": "Get the Council's permission to transmit.",
+        "flaw": "Treats rules as more binding than people.",
+        "internal_conflict": "She fears a late report is no report.",
+        "external_conflict": "The Council has not authorised a transmission.",
+        "home_location_id": "loc_relay_array",
+        "faction_id": "fac_relay_crew",
+        "abilities": [
+          {
+            "name": "Live link",
+            "description": "Holds a real-time conversation with command over an entangled relay.",
+            "category": "technological"
+          }
+        ],
+        "arc": "Yuki learns to push the Council to authorise the transmission."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_tavi_dmitri",
+        "source_character_id": "chr_tavi",
+        "target_character_id": "chr_dmitri",
+        "relationship_type": "adversary",
+        "description": "Tavi presses Dmitri to report the contamination.",
+        "conflict": "He wants a closed session before anything is reported."
+      },
+      {
+        "id": "rel_tavi_yuki",
+        "source_character_id": "chr_tavi",
+        "target_character_id": "chr_yuki",
+        "relationship_type": "ally",
+        "description": "Yuki prepares the contamination report for transmission as soon as Tavi finishes testing.",
+        "conflict": null
+      },
+      {
+        "id": "rel_dmitri_yuki",
+        "source_character_id": "chr_dmitri",
+        "target_character_id": "chr_yuki",
+        "relationship_type": "overseer",
+        "description": "Dmitri controls when Yuki may transmit.",
+        "conflict": "He has not authorised the report."
+      }
+    ]
+  },
+  "expected_verdict": "REVISE",
+  "labels": [
+    {
+      "suffix": "L1",
+      "severity": "critical",
+      "blocking": true,
+      "accepted_codes": [
+        "UNSUPPORTED_ABILITY",
+        "WORLD_RULE_CONTRADICTION",
+        "BRIEF_CONSTRAINT_VIOLATION"
+      ],
+      "accepted_severities": [
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.characters[2].abilities[0]"
+      ],
+      "reference_paths": [
+        "world::$.rules[0].statement",
+        "brief::$.constraints[2]"
+      ],
+      "evidence_quotes": [
+        "Holds a real-time conversation with command over an entangled relay",
+        "every message is limited by lightspeed"
+      ],
+      "anchor_terms": [
+        "real-time conversation",
+        "entangled"
+      ],
+      "rationale": "Real-time contact with command violates the lightspeed limit.",
+      "correction_hint": "Remove the live link.",
+      "label_id": "CR-H03-L1"
+    },
+    {
+      "suffix": "L2",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "BACKGROUND_HISTORY_CONTRADICTION"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.characters[0].description"
+      ],
+      "reference_paths": [
+        "world::$.history[1].description"
+      ],
+      "evidence_quotes": [
+        "stood at the Relay Array when its first antennas were raised in Year 1",
+        "The first antennas were raised, linking the station to command at lightspeed delay"
+      ],
+      "anchor_terms": [
+        "first antennas were raised in year 1"
+      ],
+      "rationale": "The antennas were raised in Year 2.",
+      "correction_hint": "Date Tavi's presence to Year 2 or later.",
+      "label_id": "CR-H03-L2"
+    },
+    {
+      "suffix": "L3",
+      "severity": "major",
+      "blocking": true,
+      "accepted_codes": [
+        "MOTIVATION_INCONSISTENCY"
+      ],
+      "accepted_severities": [
+        "major",
+        "critical"
+      ],
+      "artifact_paths": [
+        "$.characters[1].goal"
+      ],
+      "reference_paths": [
+        "$.characters[1].motivation"
+      ],
+      "evidence_quotes": [
+        "Broadcast the contamination to the whole crew at once",
+        "To avoid panic among the forty crew"
+      ],
+      "anchor_terms": [
+        "broadcast the contamination"
+      ],
+      "rationale": "The goal causes the panic the motivation seeks to avoid.",
+      "correction_hint": "Rewrite Dmitri's goal to keep the matter off the agenda.",
+      "label_id": "CR-H03-L3"
+    }
+  ],
+  "traps": [],
+  "evidence_summary": "Three defects: a real-time entangled link to command, Tavi standing at the Relay Array a year before it was raised, and Dmitri's goal of broadcasting to the whole crew against his motivation to avoid panic."
+}

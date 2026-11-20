@@ -1,0 +1,382 @@
+{
+  "case_id": "SR-V2-02",
+  "agent": "storyboard",
+  "split": "holdout_v2",
+  "category": "valid",
+  "slug": "wuxia_crane_banner_coast",
+  "context_validated": true,
+  "brief": {
+    "title": "Feathers Over the Mist",
+    "premise": "A disowned sword-student must carry her late master's tally-stick to three rival sects to call a peace moot, before the island clans' feud burns the last crane rookeries.",
+    "genre": "wuxia fantasy",
+    "tone": "lyrical",
+    "target_audience": "adult",
+    "location_count": 4,
+    "constraints": [
+      "forbid:gunpowder",
+      "require:crane",
+      "Duels are settled by formal challenge, never ambush.",
+      "max_locations:6"
+    ]
+  },
+  "world": {
+    "world_id": "wld_crane_banner_coast",
+    "name": "The Crane Banner Coast",
+    "description": "A mist-bound coast of rocky islets where martial sects hold fishing rights under an old dueling covenant, and the cranes that nest in the rookeries are counted as omens by every school.",
+    "locations": [
+      {
+        "id": "loc_mist_rookery",
+        "name": "The Mist Rookery",
+        "description": "Crane nesting islets whose shallows hold the richest eel grounds on the coast."
+      },
+      {
+        "id": "loc_bannerhall",
+        "name": "Bannerhall",
+        "description": "The hall where challenges are recorded beneath the Crane Banner pact."
+      },
+      {
+        "id": "loc_saltmarket_isle",
+        "name": "Saltmarket Isle",
+        "description": "A neutral trade isle where envoys may meet under the market peace."
+      },
+      {
+        "id": "loc_thunder_reed_dojo",
+        "name": "Thunder Reed Dojo",
+        "description": "A weathered school built in the reed marshes, where the tally-stick's late keeper taught."
+      }
+    ],
+    "factions": [
+      {
+        "id": "fac_crane_sect",
+        "name": "The Crane Sect",
+        "description": "Keepers of the dueling covenant, who witness every formal challenge at Bannerhall.",
+        "location_ids": [
+          "loc_bannerhall"
+        ]
+      },
+      {
+        "id": "fac_eel_school",
+        "name": "The Eel School",
+        "description": "An aggressive school claiming ancestral fishing rights to the rookery shallows.",
+        "location_ids": [
+          "loc_mist_rookery"
+        ]
+      },
+      {
+        "id": "fac_salt_wardens",
+        "name": "The Salt Wardens",
+        "description": "Neutral market wardens who guarantee safe conduct for envoys on Saltmarket Isle.",
+        "location_ids": [
+          "loc_saltmarket_isle"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rul_challenge",
+        "statement": "No blade may be drawn between sects except after a formal challenge witnessed at Bannerhall.",
+        "category": "social"
+      },
+      {
+        "id": "rul_rookery",
+        "statement": "No nets may be cast within sight of the Mist Rookery while the cranes are nesting.",
+        "category": "social"
+      },
+      {
+        "id": "rul_tally",
+        "statement": "A master's tally-stick, once presented, obliges every sect named on it to send an envoy to the moot.",
+        "category": "social"
+      },
+      {
+        "id": "rul_light_body",
+        "statement": "The light-body art lets a trained adept run across reeds, rigging and rooftops, but never over open water.",
+        "category": "metaphysics"
+      }
+    ],
+    "history": [
+      {
+        "id": "evt_net_wars",
+        "name": "The Net Wars",
+        "era": "The Hungry Years",
+        "description": "Sects feuded over the rookery shallows until the eel grounds were nearly fished out.",
+        "location_ids": [
+          "loc_mist_rookery"
+        ]
+      },
+      {
+        "id": "evt_broken_challenge",
+        "name": "The Broken Challenge",
+        "era": "The Hungry Years",
+        "description": "An ambush disguised as a formal duel nearly destroyed the covenant and the market peace.",
+        "location_ids": [
+          "loc_saltmarket_isle"
+        ]
+      },
+      {
+        "id": "evt_first_banner",
+        "name": "The First Banner",
+        "era": "The Gathering",
+        "description": "The sects swore the Crane Banner pact at Bannerhall and ended the Net Wars.",
+        "location_ids": [
+          "loc_bannerhall"
+        ]
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "cnf_rookery_rights",
+        "name": "The Rookery Rights",
+        "description": "The Eel School presses its claim to fish the rookery shallows while the Crane Sect holds the nesting ban.",
+        "faction_ids": [
+          "fac_eel_school",
+          "fac_crane_sect"
+        ]
+      },
+      {
+        "id": "cnf_unanswered_tally",
+        "name": "The Unanswered Tally",
+        "description": "The sects are deadlocked over whether a tally-stick carried by a disowned student still binds them.",
+        "faction_ids": [
+          "fac_crane_sect",
+          "fac_eel_school"
+        ]
+      }
+    ]
+  },
+  "characters": {
+    "world_id": "wld_crane_banner_coast",
+    "characters": [
+      {
+        "id": "chr_lin_wei",
+        "name": "Lin Wei",
+        "role": "protagonist",
+        "description": "A disowned sword-student of the Crane Sect, carrying the tally-stick her dying master cut for the peace moot.",
+        "personality_traits": [
+          "resolute",
+          "self-effacing",
+          "watchful"
+        ],
+        "motivation": "To honour her master's last order and see the peace moot held.",
+        "goal": "Deliver the tally-stick to the three named sects before midsummer.",
+        "flaw": "Shame makes her hide her disowning, even from allies.",
+        "internal_conflict": "She believes she failed her master, though she kept every vow.",
+        "external_conflict": "The Eel School calls her tally void because she is disowned.",
+        "home_location_id": "loc_bannerhall",
+        "faction_id": "fac_crane_sect",
+        "abilities": [
+          {
+            "name": "Reed-step",
+            "description": "Runs across reeds and rigging by the light-body art, in keeping with the covenant's limits.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Lin Wei stops hiding her disowning and lets the tally speak for itself."
+      },
+      {
+        "id": "chr_gao_ren",
+        "name": "Gao Ren",
+        "role": "antagonist",
+        "description": "Senior brother of the Eel School, a hard pragmatist whose school has gone hungry under the nesting ban.",
+        "personality_traits": [
+          "unyielding",
+          "proud",
+          "dutiful"
+        ],
+        "motivation": "To win the rookery fishing rights his school needs to survive.",
+        "goal": "Discredit the tally-stick and void the moot.",
+        "flaw": "He calls his pride pragmatism.",
+        "internal_conflict": "He respects the covenant he is trying to bend.",
+        "external_conflict": "Lin Wei's tally, if honoured, calls a moot that could codify the ban forever.",
+        "home_location_id": "loc_mist_rookery",
+        "faction_id": "fac_eel_school",
+        "abilities": [
+          {
+            "name": "Eel-form grip",
+            "description": "A wrestling style that turns an opponent's balance against them on wet ground.",
+            "category": "physical"
+          }
+        ],
+        "arc": "Gao Ren must decide whether a lawful loss is worth more than a starving victory."
+      },
+      {
+        "id": "chr_mei_sura",
+        "name": "Mei Sura",
+        "role": "supporting",
+        "description": "A Salt Warden clerk on Saltmarket Isle who registers challenges and keeps the market's envoys' book.",
+        "personality_traits": [
+          "precise",
+          "cautious",
+          "dry-humoured"
+        ],
+        "motivation": "To keep Saltmarket neutral and the moot lawful.",
+        "goal": "See the moot convened on her isle, under the market peace.",
+        "flaw": "She hedges every promise until the cost of honesty is clear.",
+        "internal_conflict": "Her neutrality protects the market but starves her of conviction.",
+        "external_conflict": "Both sects pressure her to mislay or hasten filings.",
+        "home_location_id": "loc_saltmarket_isle",
+        "faction_id": "fac_salt_wardens",
+        "abilities": [
+          {
+            "name": "Covenant recall",
+            "description": "Recites the pact and its precedents from memory, word for word.",
+            "category": "mental"
+          }
+        ],
+        "arc": "Mei Sura finally stakes her neutrality on the side of the tally."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "rel_lin_gao",
+        "source_character_id": "chr_lin_wei",
+        "target_character_id": "chr_gao_ren",
+        "relationship_type": "rival",
+        "description": "Gao Ren challenged Lin Wei's right to carry the tally.",
+        "conflict": "Each believes the other's sect is breaking the covenant."
+      },
+      {
+        "id": "rel_lin_mei",
+        "source_character_id": "chr_lin_wei",
+        "target_character_id": "chr_mei_sura",
+        "relationship_type": "ally",
+        "description": "Mei Sura registers Lin Wei's tally over Eel School objections.",
+        "conflict": null
+      }
+    ]
+  },
+  "storyboard": {
+    "world_id": "wld_crane_banner_coast",
+    "title": "Feathers Over the Mist",
+    "logline": "A disowned sword-student carries her master's tally-stick across the mist coast to convene the moot that decides the rookeries' fate.",
+    "theme": "honour without standing",
+    "acts": [
+      {
+        "id": "act_setup",
+        "title": "Setup",
+        "purpose": "setup",
+        "scenes": [
+          {
+            "id": "scn_masters_tally",
+            "title": "The Master's Tally",
+            "summary": "Lin Wei receives the tally-stick at Thunder Reed Dojo from her dying master, who names three sects to summon.",
+            "location_id": "loc_thunder_reed_dojo",
+            "character_ids": [
+              "chr_lin_wei"
+            ],
+            "goal": "Take up the tally.",
+            "conflict": "Accepting it declares her disowning to every sect.",
+            "outcome": "She swears to deliver it and sets out for Bannerhall.",
+            "depends_on": []
+          },
+          {
+            "id": "scn_challenge_posted",
+            "title": "The Counter-Challenge",
+            "summary": "At Bannerhall, Gao Ren posts a counter-challenge naming Lin Wei's tally void because she is disowned.",
+            "location_id": "loc_bannerhall",
+            "character_ids": [
+              "chr_lin_wei",
+              "chr_gao_ren"
+            ],
+            "goal": "Register the tally.",
+            "conflict": "A formal challenge under covenant cannot be ignored.",
+            "outcome": "The tally is logged but the moot is stayed until the challenge is answered.",
+            "depends_on": [
+              "scn_masters_tally"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_rising",
+        "title": "Rising Action",
+        "purpose": "rising_action",
+        "scenes": [
+          {
+            "id": "scn_reed_crossing",
+            "title": "The Reed Crossing",
+            "summary": "Crossing the reed flats toward the moot ground, Lin Wei is intercepted by Eel School adepts and escapes them over the reeds without drawing a blade.",
+            "location_id": "loc_mist_rookery",
+            "character_ids": [
+              "chr_lin_wei",
+              "chr_gao_ren"
+            ],
+            "goal": "Reach Saltmarket with the tally.",
+            "conflict": "Drawing a blade outside a witnessed duel would void her cause.",
+            "outcome": "She crosses without breaking the covenant; Gao Ren's ambush shames his own school.",
+            "depends_on": [
+              "scn_challenge_posted"
+            ]
+          },
+          {
+            "id": "scn_saltmarket_petition",
+            "title": "The Warden's Book",
+            "summary": "Lin Wei petitions Mei Sura to convene the moot under the market peace, and Mei stakes her office on the tally's validity.",
+            "location_id": "loc_saltmarket_isle",
+            "character_ids": [
+              "chr_lin_wei",
+              "chr_mei_sura"
+            ],
+            "goal": "Win the moot ground.",
+            "conflict": "Mei will not break neutrality for a disowned student.",
+            "outcome": "The moot is convened on Saltmarket; the challenge must be answered there.",
+            "depends_on": [
+              "scn_reed_crossing"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_climax",
+        "title": "Climax",
+        "purpose": "climax",
+        "scenes": [
+          {
+            "id": "scn_moot_duel",
+            "title": "The Witnessed Duel",
+            "summary": "Before the assembled envoys, Lin Wei answers Gao Ren's challenge in a formal duel at Bannerhall and wins on points, yielding the finishing stroke.",
+            "location_id": "loc_bannerhall",
+            "character_ids": [
+              "chr_lin_wei",
+              "chr_gao_ren",
+              "chr_mei_sura"
+            ],
+            "goal": "Answer the challenge and seat the moot.",
+            "conflict": "Losing forfeits the tally; killing forfeits the peace.",
+            "outcome": "The tally is upheld; Gao Ren yields and the moot is seated.",
+            "depends_on": [
+              "scn_saltmarket_petition"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "act_resolution",
+        "title": "Resolution",
+        "purpose": "resolution",
+        "scenes": [
+          {
+            "id": "scn_rookery_truce",
+            "title": "The Rookery Truce",
+            "summary": "At the moot, the sects divide the eel grounds by season: the Eel School fishes after the cranes fledge, and the nesting ban stands.",
+            "location_id": "loc_mist_rookery",
+            "character_ids": [
+              "chr_lin_wei",
+              "chr_gao_ren",
+              "chr_mei_sura"
+            ],
+            "goal": "Settle the rookery rights.",
+            "conflict": "Each sect must give up something to keep the covenant.",
+            "outcome": "The truce is sworn under the Crane Banner; Lin Wei's name is restored.",
+            "depends_on": [
+              "scn_moot_duel"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "expected_verdict": "PASS",
+  "labels": [],
+  "traps": [],
+  "evidence_summary": "The world, cast and storyboard satisfy the brief's crane-and-covenant wuxia setting; deterministic validators are clean and there are no blocking defects."
+}
